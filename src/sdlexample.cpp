@@ -15,7 +15,15 @@ typedef struct {
 	SDL_Window *window;
 } Game;
 
+typedef struct {
+    // player here???
+	int x;
+	int y;
+	SDL_Texture *texture;
+} Entity;
 
+
+// Initialize window and renderer
 void initSDL(Game* game) {
 	int rendererFlags, windowFlags;
 
@@ -47,6 +55,7 @@ void initSDL(Game* game) {
 }
 
 
+// Input event
 int doInput(void) {
 
 	SDL_Event event;
@@ -78,6 +87,26 @@ void presentScene(Game* game) {
 }
 
 
+SDL_Texture* loadTexture(Game* game, const char* filename) {
+	SDL_Texture *texture;
+
+	SDL_LogMessage(SDL_LOG_CATEGORY_APPLICATION, SDL_LOG_PRIORITY_INFO, "Loading %s", filename);
+
+	texture = IMG_LoadTexture(game->renderer, filename);
+	return texture;
+}
+
+
+void drawTexture(Game* game, SDL_Texture* texture, int x, int y) {
+	SDL_Rect dest;
+	dest.x = x;
+	dest.y = y;
+
+	SDL_QueryTexture(texture, NULL, NULL, &dest.w, &dest.h);
+	SDL_RenderCopy(game->renderer, texture, NULL, &dest);
+}
+
+
 void exit_game(Game* game) {
 
     SDL_DestroyRenderer(game->renderer);
@@ -88,10 +117,17 @@ void exit_game(Game* game) {
 
 int main() {
     Game game;
+    Entity player;
+
     memset(&game, 0, sizeof(Game));
+    memset(&player, 0, sizeof(Entity));
 
     initSDL(&game);
 
+    player.x = 100;
+    player.y = 100;
+
+    player.texture = loadTexture(&game, "./texture.png");
 
     int quit = 0;
 
@@ -100,6 +136,8 @@ int main() {
         prepareScene(&game);
 
         quit = doInput();
+
+        drawTexture(&game, player.texture, player.x, player.y);
 
         presentScene(&game);
 
