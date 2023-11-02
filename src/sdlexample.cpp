@@ -1,35 +1,63 @@
 
-
-
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 #include <SDL2/SDL_timer.h>
 #include <SDL2/SDL_video.h>
+
+
+#define SCREEN_WIDTH   1280
+#define SCREEN_HEIGHT  720
+
+
+
+
+
+typedef struct {
+	SDL_Renderer *renderer;
+	SDL_Window *window;
+} Game;
+
+
+void initSDL(Game game) {
+	int rendererFlags, windowFlags;
+	rendererFlags = SDL_RENDERER_ACCELERATED;
+	windowFlags = 0;
+
+	game.window = SDL_CreateWindow("game", SDL_WINDOWPOS_UNDEFINED, 
+            SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, windowFlags);
+
+
+}
  
 int main(int argc, char *argv[]) {
+
+    Game game;
  
     // returns zero on success else non-zero
     if (SDL_Init(SDL_INIT_EVERYTHING) != 0) {
         printf("error initializing SDL: %s\n", SDL_GetError());
     }
+
+    /*
     SDL_Window* win = SDL_CreateWindow("GAME", // creates a window
                                        SDL_WINDOWPOS_UNDEFINED,
                                        SDL_WINDOWPOS_UNDEFINED,
-                                       500, 500, 0);
+                                       1000, 1000, 0);
  
     // triggers the program that controls
     // your graphics hardware and sets flags
-    //Uint32 render_flags = SDL_RENDERER_ACCELERATED;
-    Uint32 render_flags = 0;
+
+    */
+    Uint32 render_flags = SDL_RENDERER_ACCELERATED;
  
     // creates a renderer to render our images
-    SDL_Renderer* rend = SDL_CreateRenderer(win, -1, render_flags);
+    SDL_Renderer* rend = SDL_CreateRenderer(game.renderer, -1, render_flags);
  
     // creates a surface to load an image into the main memory
     SDL_Surface* surface;
  
     // please provide a path for your image
-    surface = IMG_Load("path");
+    surface = IMG_Load("./test_background.png");
  
     // loads image to our graphics hardware memory.
     SDL_Texture* tex = SDL_CreateTextureFromSurface(rend, surface);
