@@ -1,14 +1,11 @@
-
+#include <iostream>
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 #include <SDL2/SDL_timer.h>
 #include <SDL2/SDL_video.h>
 
-
 #define SCREEN_WIDTH   1280
 #define SCREEN_HEIGHT  720
-
-
 
 
 
@@ -18,153 +15,91 @@ typedef struct {
 } Game;
 
 
-void initSDL(Game game) {
+void initSDL(Game* game) {
 	int rendererFlags, windowFlags;
+
 	rendererFlags = SDL_RENDERER_ACCELERATED;
+
 	windowFlags = 0;
 
-	game.window = SDL_CreateWindow("game", SDL_WINDOWPOS_UNDEFINED, 
+	if (SDL_Init(SDL_INIT_VIDEO) < 0) {
+		printf("Couldn't initialize SDL: %s\n", SDL_GetError());
+		exit(1);
+	}
+
+	game->window = SDL_CreateWindow("game", SDL_WINDOWPOS_UNDEFINED, 
             SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, windowFlags);
 
+	if (!game->window) {
+		printf("Failed to open %d x %d window: %s\n", SCREEN_WIDTH, SCREEN_HEIGHT, SDL_GetError());
+		exit(1);
+	}
 
+	SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "linear");
+
+	game->renderer = SDL_CreateRenderer(game->window, -1, rendererFlags);
+
+	if (!game->renderer) {
+		printf("Failed to create renderer: %s\n", SDL_GetError());
+		exit(1);
+	}
 }
- 
-int main(int argc, char *argv[]) {
 
-    Game game;
- 
-    // returns zero on success else non-zero
-    if (SDL_Init(SDL_INIT_EVERYTHING) != 0) {
-        printf("error initializing SDL: %s\n", SDL_GetError());
-    }
 
-    /*
-    SDL_Window* win = SDL_CreateWindow("GAME", // creates a window
-                                       SDL_WINDOWPOS_UNDEFINED,
-                                       SDL_WINDOWPOS_UNDEFINED,
-                                       1000, 1000, 0);
- 
-    // triggers the program that controls
-    // your graphics hardware and sets flags
+void doInput(void) {
 
-    */
-    Uint32 render_flags = SDL_RENDERER_ACCELERATED;
- 
-    // creates a renderer to render our images
-    SDL_Renderer* rend = SDL_CreateRenderer(game.renderer, -1, render_flags);
- 
-    // creates a surface to load an image into the main memory
-    SDL_Surface* surface;
- 
-    // please provide a path for your image
-    surface = IMG_Load("./test_background.png");
- 
-    // loads image to our graphics hardware memory.
-    SDL_Texture* tex = SDL_CreateTextureFromSurface(rend, surface);
- 
-    // clears main-memory
-    SDL_FreeSurface(surface);
- 
-    // let us control our image position
-    // so that we can move it with our keyboard.
-    SDL_Rect dest;
- 
-    // connects our texture with dest to control position
-    SDL_QueryTexture(tex, NULL, NULL, &dest.w, &dest.h);
- 
-    // adjust height and width of our image box.
-    dest.w /= 6;
-    dest.h /= 6;
- 
-    // sets initial x-position of object
-    dest.x = (1000 - dest.w) / 2;
- 
-    // sets initial y-position of object
-    dest.y = (1000 - dest.h) / 2;
- 
-    // controls animation loop
-    int close = 0;
- 
-    // speed of box
-    int speed = 300;
- 
-    // animation loop
-    while (!close) {
-        SDL_Event event;
- 
-        // Events management
-        while (SDL_PollEvent(&event)) {
-            switch (event.type) {
- 
-            case SDL_QUIT:
-                // handling of close button
-                close = 1;
-                break;
- 
-            case SDL_KEYDOWN:
-                // keyboard API for key pressed
-                switch (event.key.keysym.scancode) {
-                case SDL_SCANCODE_W:
-                case SDL_SCANCODE_UP:
-                    dest.y -= speed / 30;
-                    break;
-                case SDL_SCANCODE_A:
-                case SDL_SCANCODE_LEFT:
-                    dest.x -= speed / 30;
-                    break;
-                case SDL_SCANCODE_S:
-                case SDL_SCANCODE_DOWN:
-                    dest.y += speed / 30;
-                    break;
-                case SDL_SCANCODE_D:
-                case SDL_SCANCODE_RIGHT:
-                    dest.x += speed / 30;
-                    break;
-                default:
-                    break;
-                }
-            }
-        }
- 
-        // right boundary
-        if (dest.x + dest.w > 1000)
-            dest.x = 1000 - dest.w;
- 
-        // left boundary
-        if (dest.x < 0)
-            dest.x = 0;
- 
-        // bottom boundary
-        if (dest.y + dest.h > 1000)
-            dest.y = 1000 - dest.h;
- 
-        // upper boundary
-        if (dest.y < 0)
-            dest.y = 0;
- 
-        // clears the screen
-        SDL_RenderClear(rend);
-        SDL_RenderCopy(rend, tex, NULL, &dest);
- 
-        // triggers the double buffers
-        // for multiple rendering
-        SDL_RenderPresent(rend);
- 
-        // calculates to 60 fps
-        SDL_Delay(1000 / 60);
-    }
- 
-    // destroy texture
-    SDL_DestroyTexture(tex);
- 
-    // destroy renderer
-    SDL_DestroyRenderer(rend);
- 
-    // destroy window
-    SDL_DestroyWindow(win);
-     
-    // close SDL
+	SDL_Event event;
+
+	while (SDL_PollEvent(&event)) {
+		switch (event.type) {
+			case SDL_QUIT:
+				break;
+
+			default:
+				break;
+		}
+	}
+}
+
+
+void prepareScene(Game* game) {
+	SDL_SetRenderDrawColor(game->renderer, 96, 128, 255, 255);
+	SDL_RenderClear(game->renderer);
+}
+
+void presentScene(Game* game) {
+	SDL_RenderPresent(game->renderer);
+}
+
+void exit_game(Game* game) {
+
+    SDL_DestroyRenderer(game->renderer);
+    SDL_DestroyWindow(game->window);
     SDL_Quit();
- 
-    return 0;
 }
+
+int main() {
+    Game game;
+    memset(&game, 0, sizeof(Game));
+
+    initSDL(&game);
+
+
+    while (1) {
+
+        prepareScene(&game);
+        doInput();
+        presentScene(&game);
+        SDL_Delay(1);
+    }
+    
+
+    SDL_DestroyRenderer(game.renderer);
+    SDL_DestroyWindow(game.window);
+    SDL_Quit();
+
+    exit_game(&game);
+
+}
+
+
