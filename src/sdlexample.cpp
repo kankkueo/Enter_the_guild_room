@@ -13,6 +13,10 @@
 typedef struct {
 	SDL_Renderer *renderer;
 	SDL_Window *window;
+	int up;
+	int down;
+	int left;
+	int right;
 } Game;
 
 typedef struct {
@@ -22,7 +26,7 @@ typedef struct {
 	SDL_Texture *texture;
 } Entity;
 
-
+Game game;
 // Initialize window and renderer
 void initSDL(Game* game) {
 	int rendererFlags, windowFlags;
@@ -54,7 +58,57 @@ void initSDL(Game* game) {
 	}
 }
 
+void doKeyDown(SDL_KeyboardEvent *event)
+{
+	if (event->repeat == 0)
+	{
+		if (event->keysym.scancode == SDL_SCANCODE_UP)
+		{
+			game.up = 1;
+		}
 
+		if (event->keysym.scancode == SDL_SCANCODE_DOWN)
+		{
+			game.down = 1;
+		}
+
+		if (event->keysym.scancode == SDL_SCANCODE_LEFT)
+		{
+			game.left = 1;
+		}
+
+		if (event->keysym.scancode == SDL_SCANCODE_RIGHT)
+		{
+			game.right = 1;
+		}
+	}
+}
+
+void doKeyUp(SDL_KeyboardEvent *event)
+{
+	if (event->repeat == 0)
+	{
+		if (event->keysym.scancode == SDL_SCANCODE_UP)
+		{
+			game.up = 0;
+		}
+
+		if (event->keysym.scancode == SDL_SCANCODE_DOWN)
+		{
+			game.down = 0;
+		}
+
+		if (event->keysym.scancode == SDL_SCANCODE_LEFT)
+		{
+			game.left = 0;
+		}
+
+		if (event->keysym.scancode == SDL_SCANCODE_RIGHT)
+		{
+			game.right = 0;
+		}
+	}
+}
 // Input event
 int doInput(void) {
 
@@ -66,7 +120,12 @@ int doInput(void) {
 				return 1;
 
             case SDL_KEYDOWN:
-                break;
+				doKeyDown(&event.key);
+				break;
+
+			case SDL_KEYUP:
+				doKeyUp(&event.key);
+				break;
 
 			default:
 				break;
@@ -74,6 +133,7 @@ int doInput(void) {
 	}
     return 0;
 }
+
 
 
 void prepareScene(Game* game) {
@@ -116,7 +176,6 @@ void exit_game(Game* game) {
 
 
 int main() {
-    Game game;
     Entity player;
 
     memset(&game, 0, sizeof(Game));
@@ -127,7 +186,7 @@ int main() {
     player.x = 100;
     player.y = 100;
 
-    player.texture = loadTexture(&game, "./texture.png");
+    player.texture = loadTexture(&game, "./dude.png");
 
     int quit = 0;
 
@@ -136,6 +195,26 @@ int main() {
         prepareScene(&game);
 
         quit = doInput();
+		
+		if (game.up)
+		{
+			player.y -= 4;
+		}
+
+		if (game.down)
+		{
+			player.y += 4;
+		}
+
+		if (game.left)
+		{
+			player.x -= 4;
+		}
+
+		if (game.right)
+		{
+			player.x += 4;
+		}
 
         drawTexture(&game, player.texture, player.x, player.y);
 
