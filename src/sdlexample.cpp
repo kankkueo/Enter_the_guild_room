@@ -1,3 +1,4 @@
+#include <SDL2/SDL_events.h>
 #include <iostream>
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
@@ -46,19 +47,23 @@ void initSDL(Game* game) {
 }
 
 
-void doInput(void) {
+int doInput(void) {
 
 	SDL_Event event;
 
 	while (SDL_PollEvent(&event)) {
 		switch (event.type) {
 			case SDL_QUIT:
-				break;
+				return 1;
+
+            case SDL_KEYDOWN:
+                break;
 
 			default:
 				break;
 		}
 	}
+    return 0;
 }
 
 
@@ -67,9 +72,11 @@ void prepareScene(Game* game) {
 	SDL_RenderClear(game->renderer);
 }
 
+
 void presentScene(Game* game) {
 	SDL_RenderPresent(game->renderer);
 }
+
 
 void exit_game(Game* game) {
 
@@ -78,6 +85,7 @@ void exit_game(Game* game) {
     SDL_Quit();
 }
 
+
 int main() {
     Game game;
     memset(&game, 0, sizeof(Game));
@@ -85,18 +93,18 @@ int main() {
     initSDL(&game);
 
 
-    while (1) {
+    int quit = 0;
+
+    while (!quit) {
 
         prepareScene(&game);
-        doInput();
+
+        quit = doInput();
+
         presentScene(&game);
+
         SDL_Delay(1);
     }
-    
-
-    SDL_DestroyRenderer(game.renderer);
-    SDL_DestroyWindow(game.window);
-    SDL_Quit();
 
     exit_game(&game);
 
