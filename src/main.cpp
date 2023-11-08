@@ -9,15 +9,27 @@ int main() {
     Entity ent = Entity();
 
     rend.initSDL();
-    rend.prepareScene();
 
 
     ent.texture_ = rend.loadTexture("./assets/dude.png");
-    rend.drawTexture(ent.texture_, 100, 100);
-    rend.presentScene();
 
-    SDL_Delay(1000);
+
+    int quit = 0;
+    while (!quit) {
+
+        rend.prepareScene();
+
+        quit = doInput();
+		
+        rend.drawTexture(ent.texture_, 100, 100);
+        rend.presentScene();
+
+
+        SDL_Delay(10);
+    }
+
     rend.destroy();
+
 
 }
 

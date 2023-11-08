@@ -28,6 +28,18 @@ private:
 
 };
 
+
+
+
+
+
+int doInput();
+
+
+
+
+
+
+
 #endif
 
-void sdltest();  // REMOVE WHEN NOT NECESSARY

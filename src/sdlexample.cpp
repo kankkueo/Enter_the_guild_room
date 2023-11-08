@@ -4,7 +4,6 @@
 #include <SDL2/SDL_image.h>
 #include <SDL2/SDL_timer.h>
 #include <SDL2/SDL_video.h>
-#include "entity.hpp"
 #include "game.hpp"
 #include "renderer.hpp"
 
@@ -182,7 +181,7 @@ void sdltest() {
     player.x = 100;
     player.y = 100;
 
-    player.texture = loadTexture(&game, "./assets/dude.png");
+    player.texture_ = loadTexture(&game, "./assets/dude.png");
 
     int quit = 0;
 
@@ -212,7 +211,7 @@ void sdltest() {
 			player.x += 1;
 		}
 
-        drawTexture(&game, player.texture, player.x, player.y);
+        drawTexture(&game, player.texture_, player.x, player.y);
 
         presentScene(&game);
 
