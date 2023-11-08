@@ -6,6 +6,7 @@
 #include <SDL2/SDL_video.h>
 #include "entity.hpp"
 #include "game.hpp"
+#include "renderer.hpp"
 
 #define SCREEN_WIDTH   1280
 #define SCREEN_HEIGHT  720
@@ -25,8 +26,11 @@ void initSDL(Game* game) {
 		exit(1);
 	}
 
-	game->window = SDL_CreateWindow("game", SDL_WINDOWPOS_UNDEFINED, 
+    SDL_Window* w;
+	w = SDL_CreateWindow("game", SDL_WINDOWPOS_UNDEFINED, 
             SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, windowFlags);
+
+    game->window = w;
 
 	if (!game->window) {
 		printf("Failed to open %d x %d window: %s\n", SCREEN_WIDTH, SCREEN_HEIGHT, SDL_GetError());
@@ -153,15 +157,16 @@ void drawTexture(Game* game, SDL_Texture* texture, int x, int y) {
 
 
 void exit_game(Game* game) {
-
     SDL_DestroyRenderer(game->renderer);
     SDL_DestroyWindow(game->window);
     SDL_Quit();
 }
 
 
-int main() {
+
+void sdltest() {
     Entity player;
+
 
     memset(&game, 0, sizeof(Game));
     memset(&player, 0, sizeof(Entity));
@@ -171,7 +176,7 @@ int main() {
     player.x = 100;
     player.y = 100;
 
-    player.texture = loadTexture(&game, "./dude.png");
+    player.texture = loadTexture(&game, "./assets/dude.png");
 
     int quit = 0;
 
@@ -207,6 +212,7 @@ int main() {
 
         SDL_Delay(1);
     }
+
 
     exit_game(&game);
 
