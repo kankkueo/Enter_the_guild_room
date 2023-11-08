@@ -25,3 +25,22 @@ Once a simple class structure has been created
 more features can be implemented.
 
 The next meeting is scheduled on wednesday 8.11.
+
+
+### 8.11.2023
+
+Today we created a renderer class and added some assets.
+We also improved the project structure.
+
+Johannes made character models and animations.
+
+Up next:
+
+Elmo will implement proper input handling.
+
+Valtteri will continue working on collision detection
+and create a main menu.
+
+Ville will create classes for different types of entities.
+
+Johannes will continue making assets.
