@@ -4,27 +4,12 @@
 #include <SDL2/SDL_image.h>
 #include <SDL2/SDL_timer.h>
 #include <SDL2/SDL_video.h>
+#include "entity.hpp"
+#include "game.hpp"
 
 #define SCREEN_WIDTH   1280
 #define SCREEN_HEIGHT  720
 
-
-
-typedef struct {
-	SDL_Renderer *renderer;
-	SDL_Window *window;
-	int up;
-	int down;
-	int left;
-	int right;
-} Game;
-
-typedef struct {
-    // player here???
-	int x;
-	int y;
-	SDL_Texture *texture;
-} Entity;
 
 Game game;
 // Initialize window and renderer
@@ -198,22 +183,22 @@ int main() {
 		
 		if (game.up)
 		{
-			player.y -= 4;
+			player.y -= 1;
 		}
 
 		if (game.down)
 		{
-			player.y += 4;
+			player.y += 1;
 		}
 
 		if (game.left)
 		{
-			player.x -= 4;
+			player.x -= 1;
 		}
 
 		if (game.right)
 		{
-			player.x += 4;
+			player.x += 1;
 		}
 
         drawTexture(&game, player.texture, player.x, player.y);
@@ -226,5 +211,4 @@ int main() {
     exit_game(&game);
 
 }
-
 
