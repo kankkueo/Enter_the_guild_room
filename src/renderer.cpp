@@ -19,12 +19,10 @@ void Renderer::initSDL() {
 		exit(1);
 	}
 
-    SDL_Window* win;
-	win = SDL_CreateWindow("game", SDL_WINDOWPOS_UNDEFINED, 
+	window_ = SDL_CreateWindow("game", SDL_WINDOWPOS_UNDEFINED, 
             SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, windowFlags);
 
-
-	if (win) {
+	if (!window_) {
 		printf("Failed to open %d x %d window: %s\n", SCREEN_WIDTH, SCREEN_HEIGHT, SDL_GetError());
 		exit(1);
 	}
@@ -33,7 +31,7 @@ void Renderer::initSDL() {
 
 	renderer_ = SDL_CreateRenderer(window_, -1, rendererFlags);
 
-	if (renderer_) {
+	if (!renderer_) {
 		printf("Failed to create renderer: %s\n", SDL_GetError());
 		exit(1);
 	}

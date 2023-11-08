@@ -10,3 +10,13 @@ public:
 	int left;
 	int right;
 };
+
+class Entity {
+
+public:
+    int x;
+    int y;
+    SDL_Texture *texture_;
+
+};
+

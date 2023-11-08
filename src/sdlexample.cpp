@@ -29,7 +29,13 @@ void initSDL(Game* game) {
     SDL_Window* w;
 	w = SDL_CreateWindow("game", SDL_WINDOWPOS_UNDEFINED, 
             SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, windowFlags);
-
+    /*
+	if (w) {
+		printf("Failed to open %d x %d window: %s\n", SCREEN_WIDTH, SCREEN_HEIGHT, SDL_GetError());
+		exit(1);
+    }
+    */
+	
     game->window = w;
 
 	if (!game->window) {
