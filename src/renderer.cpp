@@ -3,14 +3,12 @@
 #include "renderer.hpp"
 
 
-Renderer::Renderer() {}
+Renderer::Renderer() {
+	renderer_flags_ = SDL_RENDERER_ACCELERATED;
+	window_flags_ = SDL_WINDOW_FULLSCREEN;
+}
 
 void Renderer::initSDL() {
-	int rendererFlags, windowFlags;
-
-	rendererFlags = SDL_RENDERER_ACCELERATED;
-
-	windowFlags = 0;
 
 	if (SDL_Init(SDL_INIT_VIDEO) < 0) {
 		printf("Couldn't initialize SDL: %s\n", SDL_GetError());
@@ -18,7 +16,7 @@ void Renderer::initSDL() {
 	}
 
 	window_ = SDL_CreateWindow("game", SDL_WINDOWPOS_UNDEFINED, 
-            SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, windowFlags);
+            SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, window_flags_);
 
 	if (!window_) {
 		printf("Failed to open %d x %d window: %s\n", SCREEN_WIDTH, SCREEN_HEIGHT, SDL_GetError());
@@ -27,7 +25,7 @@ void Renderer::initSDL() {
 
 	SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "linear");
 
-	renderer_ = SDL_CreateRenderer(window_, -1, rendererFlags);
+	renderer_ = SDL_CreateRenderer(window_, -1, renderer_flags_);
 
 	if (!renderer_) {
 		printf("Failed to create renderer: %s\n", SDL_GetError());
