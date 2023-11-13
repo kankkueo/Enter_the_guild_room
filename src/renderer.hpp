@@ -2,14 +2,13 @@
 #define RENDERER
 
 #include <SDL2/SDL.h>
+#include <SDL2/SDL_events.h>
 
 #define SCREEN_WIDTH   1280
 #define SCREEN_HEIGHT  720
 
 
 class Renderer {
-
-
 public:
 
     Renderer();
@@ -21,7 +20,6 @@ public:
     void destroy();
     void set_flags(uint32_t, uint32_t);
 
-
 private:
 
     SDL_Renderer* renderer_;
@@ -30,18 +28,6 @@ private:
     uint32_t window_flags_;
 
 };
-
-
-
-
-
-
-int doInput();
-
-
-
-
-
 
 
 #endif
