@@ -5,7 +5,10 @@
 
 Renderer::Renderer() {
 	renderer_flags_ = SDL_RENDERER_ACCELERATED;
-	window_flags_ = SDL_WINDOW_FULLSCREEN;
+	//window_flags_ = SDL_WINDOW_FULLSCREEN;
+	window_flags_ = 0;
+
+
 }
 
 void Renderer::initSDL() {

@@ -12,15 +12,11 @@ public:
     int x_;
     int y_;
     int speed_;
-
+    float direction_;
     SDL_Texture *texture_;
 
-    Entity() {
-        x_ = 0;
-        y_ = 0;
-        speed_ = 10;
-    }
-
+    Entity();
+    void move();
 };
 
 
@@ -38,7 +34,7 @@ public:
     void parseInput();
     int tick();
 
-    void playerMove(InputState); //placeholder
+    int playerMove(InputState); //placeholder
 
 };
 

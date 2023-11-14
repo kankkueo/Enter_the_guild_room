@@ -1,6 +1,7 @@
 #include "game.hpp"
 #include "renderer.hpp"
 #include "input.hpp"
+#include <iostream>
 
 Game::Game() {
     input_ = Input();
@@ -9,20 +10,38 @@ Game::Game() {
     running_ = true;
 }
 
-void Game::playerMove(InputState s) {
+int Game::playerMove(InputState s) {
 
-    if (s.up) {
-        entity1_.y_ -= entity1_.speed_;
+    if (s.up && s.right) {
+        entity1_.direction_ = 0.7853982;
     }
-    if (s.down) {
-        entity1_.y_ += entity1_.speed_;
+    else if (s.up && s.left) {
+        entity1_.direction_ = 2.3561945;
     }
-    if (s.left) {
-        entity1_.x_ -= entity1_.speed_;
+    else if (s.down && s.right) {
+        entity1_.direction_ = 5.4977871;
     }
-    if (s.right) {
-        entity1_.x_ += entity1_.speed_;
+    else if (s.down && s.left) {
+        entity1_.direction_ = 3.9269908;
     }
+    else if (s.up) {
+        entity1_.direction_ = 1.5707963;
+    }
+    else if (s.down) {
+        entity1_.direction_ = 4.7123890;
+    }
+    else if (s.left) {
+        entity1_.direction_ = 3.1415927;
+    }
+    else if (s.right) {
+        entity1_.direction_ = 0;
+    }
+    else {
+        return 0;
+    }
+
+    entity1_.move();
+    return 1;
 }
 
 void Game::parseInput() {
