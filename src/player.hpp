@@ -1,3 +1,6 @@
+#ifndef PLAYER
+#define PLAYER
+
 #include <list>
 #include <string>
 #include "entity.hpp"
@@ -29,3 +32,6 @@ private:
     std::list<std::string> inventory_;      // string should be changed to Item when there is a class for it
 
 };
+
+
+#endif

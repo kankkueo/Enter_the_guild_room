@@ -1,3 +1,6 @@
+#ifndef MONSTER
+#define MONSTER
+
 #include "game.hpp"
 
 class Monster: public Entity {
@@ -15,3 +18,5 @@ private:
     int max_speed_;
 
 };
+
+#endif

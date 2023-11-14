@@ -12,9 +12,11 @@ Entity(x, y, size_x, size_y) {
 int Monster::GetHP() {
     return hp_;
 }
+
 int Monster::GetDMG() {
     return dmg_;
 }
+
 void Monster::TakeDMG(int value) {
     if (hp_ - value <= 0) {
         hp_ -= value;
