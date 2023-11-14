@@ -1,7 +1,7 @@
 FLAGS = -lSDL2 -lSDL2_image
 
 game: src/renderer.o src/input.o src/main.o src/game.o src/entity.o
-	g++ $(FLAGS) src/renderer.o src/input.o src/main.cpp src/game.o src/entity.o -o game
+	g++ src/renderer.o src/input.o src/main.cpp src/game.o src/entity.o -o game $(FLAGS)
 
 main.o: src/main.cpp
 	g++ -c src/main.cpp
