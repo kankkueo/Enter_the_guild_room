@@ -8,7 +8,7 @@ class Room {
 public:
     Room(std::string name, int width, int height, SDL_Texture *texture);
 
-
+    
     std::string name_;
     SDL_Texture *texture_;
     int width_;
