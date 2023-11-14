@@ -2,10 +2,12 @@
 #include <iostream>
 #include "game.hpp"
 
-Entity::Entity() {
-    x_ = 0;
-    y_ = 0;
-    speed_ = 10;
+Entity::Entity(int x, int y, int size_x, int size_y) {
+    x_ = x;
+    y_ = y;
+    size_x_ = size_x;
+    size_y_ = size_y;
+    speed_ = 0;
     direction_ = 0;
 }
 

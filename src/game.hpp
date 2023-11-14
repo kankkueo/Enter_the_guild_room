@@ -9,6 +9,7 @@
 class Game {
     
 public:
+    Room *room_;
     bool running_;
     Input input_;
 
