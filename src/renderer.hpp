@@ -3,7 +3,6 @@
 
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_events.h>
-#include "room.hpp"
 
 
 
@@ -12,7 +11,7 @@ public:
 
     Renderer(int width, int height, uint32_t r_flags, uint32_t w_flags);
     void initSDL();
-    void prepareScene(Room room);
+    void prepareScene();
     void presentScene();
     SDL_Texture* loadTexture(const char*);
     void drawTexture(SDL_Texture*, int, int);

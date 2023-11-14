@@ -42,11 +42,9 @@ void Renderer::initSDL() {
 	}
 }
 
-void Renderer::prepareScene(Room room) {
-	
-	drawTexture(room.texture_, 0, 0);
-	//SDL_SetRenderDrawColor(renderer_, 96, 128, 255, 255);
-	//SDL_RenderClear(renderer_);
+void Renderer::prepareScene() {
+	SDL_SetRenderDrawColor(renderer_, 40, 40, 40, 255);
+	SDL_RenderClear(renderer_);
 }
 
 void Renderer::presentScene() {
