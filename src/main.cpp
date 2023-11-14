@@ -9,17 +9,19 @@ int main() {
     Renderer rend = Renderer(1920, 1080, SDL_RENDERER_ACCELERATED, 0);
     rend.initSDL();
 
-    game.player_.texture_ = rend.loadTexture("./assets/dude.png");
+    game.player_.texture_ = rend.loadTexture("./assets/teekkari1.png");
 
     Room startroom = Room("Startroom", 720, 480, rend.loadTexture("./assets/startroom.png"));
+    Room bigroom = Room("Big room", 2500, 2000, rend.loadTexture("./assets/bigroom1.png"));
     game.room_ = &startroom;
     
 
-    while (game.tick()) {
-        rend.prepareScene(*game.room_);
-        rend.drawTexture(game.player_.texture_, game.player_.x_, game.player_.y_);
+    while (game.running_) {
+        game.tick();
+        rend.prepareScene();
+        game.render(rend);
         rend.presentScene();
-        SDL_Delay(10);
+        SDL_Delay(1000/60);
     }
 
 
