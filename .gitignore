@@ -1,2 +1,3 @@
 *.o
 game
+.vscode/settings.json
