@@ -3,6 +3,11 @@
 
 #include <SDL2/SDL.h>
 
+typedef struct {
+    int x;
+    int y;
+} Coordinate;
+
 class Entity {
 
 public:
@@ -16,6 +21,10 @@ public:
 
     Entity(int, int, int, int);
     void move();
+    Coordinate newPos();
+    Coordinate center();
+    Coordinate newCenter();
+
 };
 
 

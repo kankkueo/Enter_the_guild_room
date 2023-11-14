@@ -1,5 +1,6 @@
 #include <math.h>
 #include <iostream>
+#include "entity.hpp"
 #include "game.hpp"
 
 Entity::Entity(int x, int y, int size_x, int size_y) {
@@ -16,3 +17,24 @@ void Entity::move() {
     y_ -= sin(direction_) * speed_;
 }
 
+Coordinate Entity::newPos() {
+    return Coordinate {
+        (int) (x_ + cos(direction_) * speed_),
+        (int) (y_ - sin(direction_) * speed_)
+    };
+}
+
+Coordinate Entity::center() {
+    return Coordinate {
+        (int) ((2 * x_ + size_x_)/2),
+        (int) ((2 * y_ + size_y_)/2)
+    };
+}
+
+Coordinate Entity::newCenter() {
+    Coordinate c = newPos();
+    return Coordinate {
+        (int) ((2 * c.x + size_x_)/2),
+        (int) ((2 * c.y + size_y_)/2)
+    };
+}
