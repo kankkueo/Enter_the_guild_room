@@ -44,3 +44,21 @@ and create a main menu.
 Ville will create classes for different types of entities.
 
 Johannes will continue making assets.
+
+### 14.11.2023
+
+Inputs are now implemented. Room rendering
+works. Player Monster, room and item classes were added.
+
+Agenda:
+
+Room wall collisions
+
+Projectiles for weapons and hit detection
+
+Map textures
+
+Monsters implementation
+
+The goal is to achieve a game state where a room has a single
+monster and a player. The player should be able to damage the monster.
