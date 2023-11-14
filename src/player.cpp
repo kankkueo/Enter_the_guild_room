@@ -1,11 +1,13 @@
 #include "player.hpp"
 
-Player::Player(const std::string& name): Entity() {
+Player::Player(const std::string& name, int x, int y): 
+Entity(x, y, 20, 20) {
     name_ = name;
     alive_ = true;
     hp_ = 100;
     dmg_ = 10;
     xp_ = 0;
+    max_speed_ = 5;
     inventory_ = std::list<std::string>();
 }
 
@@ -23,6 +25,10 @@ int Player::GetXP() {
 
 int Player::GetDMG() {
     return dmg_;
+}
+
+int Player::GetMaxSpeed() {
+    return max_speed_;
 }
 
 void Player::TakeDMG(int value) {
@@ -77,9 +83,11 @@ void Player::setMove(InputState s) {
         direction_ = 0;
     }
     else {
+        speed_ = 0;
         return;
     }
 
+    speed_ = GetMaxSpeed();
     move();
 }
 

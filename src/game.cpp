@@ -5,7 +5,7 @@
 
 Game::Game(): 
     input_(Input()), 
-    player_(Player("test geezer")) {
+    player_(Player("test geezer", 100, 100)) {
     running_ = true;
 }
 
