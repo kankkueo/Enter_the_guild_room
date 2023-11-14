@@ -3,10 +3,16 @@
 #include "renderer.hpp"
 
 
-Renderer::Renderer() {
-	renderer_flags_ = SDL_RENDERER_ACCELERATED;
+
+Renderer::Renderer(int width, int height, uint32_t r_flags, uint32_t w_flags) {
+
+	width_ = width;
+	height_ = height;
+	renderer_flags_ = r_flags;
+	window_flags_ = w_flags;
+	//renderer_flags_ = SDL_RENDERER_ACCELERATED;
 	//window_flags_ = SDL_WINDOW_FULLSCREEN;
-	window_flags_ = 0;
+	//window_flags_ = 0;
 
 
 }
@@ -19,10 +25,10 @@ void Renderer::initSDL() {
 	}
 
 	window_ = SDL_CreateWindow("game", SDL_WINDOWPOS_UNDEFINED, 
-            SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, window_flags_);
+            SDL_WINDOWPOS_UNDEFINED, width_, height_, window_flags_);
 
 	if (!window_) {
-		printf("Failed to open %d x %d window: %s\n", SCREEN_WIDTH, SCREEN_HEIGHT, SDL_GetError());
+		printf("Failed to open %d x %d window: %s\n", width_, height_, SDL_GetError());
 		exit(1);
 	}
 
@@ -36,9 +42,11 @@ void Renderer::initSDL() {
 	}
 }
 
-void Renderer::prepareScene() {
-	SDL_SetRenderDrawColor(renderer_, 96, 128, 255, 255);
-	SDL_RenderClear(renderer_);
+void Renderer::prepareScene(Room room) {
+	
+	drawTexture(room.texture_, 0, 0);
+	//SDL_SetRenderDrawColor(renderer_, 96, 128, 255, 255);
+	//SDL_RenderClear(renderer_);
 }
 
 void Renderer::presentScene() {
