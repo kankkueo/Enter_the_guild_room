@@ -1,6 +1,3 @@
-#ifndef PLAYER
-#define PLAYER
-
 #include "player.hpp"
 
 Player::Player(const std::string& name, int x, int y): 
@@ -93,5 +90,3 @@ void Player::setMove(InputState s) {
     speed_ = GetMaxSpeed();
     move();
 }
-
-#endif
