@@ -4,22 +4,7 @@
 #include <SDL2/SDL.h>
 #include "renderer.hpp"
 #include "input.hpp"
-
-
-class Entity {
-
-public:
-    int x_;
-    int y_;
-    int speed_;
-    float direction_;
-    SDL_Texture *texture_;
-
-    Entity();
-    void move();
-};
-
-
+#include "player.hpp"
 
 class Game {
     
@@ -28,14 +13,12 @@ public:
     bool running_;
     Input input_;
 
-    Entity entity1_;
+    Player player_;
 
     Game();
     void movePlayer();
     void parseInput();
     int tick();
-
-    int playerMove(InputState); //placeholder
 
 };
 
