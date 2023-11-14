@@ -12,8 +12,8 @@ int main() {
     game.player_.texture_ = rend.loadTexture("./assets/teekkari1.png");
 
     Room startroom = Room("Startroom", 720, 480, rend.loadTexture("./assets/startroom.png"));
-    Room bigroom = Room("Big room", 2500, 2000, rend.loadTexture("./assets/bigroom1.png"));
-    game.room_ = &startroom;
+    Room bigroom = Room("Big room", 2500, 1500, rend.loadTexture("./assets/bigroom1.png"));
+    game.room_ = &bigroom;
     
 
     while (game.running_) {

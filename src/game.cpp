@@ -15,7 +15,10 @@ Game::Game():
 
 void Game::parseInput() {
 
-    input_.scan();
+    if (input_.scan()) {
+        running_ = false;
+        return;
+    }
     
     InputState s = input_.getState();
 
@@ -24,6 +27,24 @@ void Game::parseInput() {
     if (s.menu) {
         running_ = false;
     }
+}
+
+void Game::calcOffset(Coordinate c) {
+    if (player_.x_ >= 1920 - 400 + x_offset_) {
+        x_offset_ += player_.speed_;
+    }
+    else if (player_.x_ <= 400 + x_offset_ && x_offset_ > 0) {
+        x_offset_ -= player_.speed_;
+    }
+
+    if (player_.y_ >= 1080 - 400 + y_offset_) {
+        y_offset_ += player_.speed_;
+    }
+    else if (player_.y_ <= 400 + y_offset_ && y_offset_ > 0) {
+        y_offset_ -= player_.speed_;
+    }
+ 
+    
 }
 
 void Game::movePlayer(InputState s) {
@@ -50,6 +71,7 @@ void Game::movePlayer(InputState s) {
         player_.y_ = c.y;
     }
 
+    calcOffset(c);
 }
 
 int Game::tick() {
@@ -61,7 +83,7 @@ int Game::tick() {
 }
 
 void Game::render(Renderer& r) {
-    r.drawTexture(room_->texture_, x_offset_, y_offset_);
+    r.drawTexture(room_->texture_, -x_offset_, -y_offset_);
     r.drawTexture(player_.texture_, 
         player_.x_ - x_offset_, 
         player_.y_ - y_offset_);

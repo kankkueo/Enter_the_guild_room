@@ -2,6 +2,7 @@
 #define GAME
 
 #include <SDL2/SDL.h>
+#include "entity.hpp"
 #include "input.hpp"
 #include "player.hpp"
 #include "room.hpp"
@@ -23,6 +24,7 @@ public:
     void parseInput();
     int tick();
     void render(Renderer&);
+    void calcOffset(Coordinate);
 
 };
 
