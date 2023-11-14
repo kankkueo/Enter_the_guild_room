@@ -1,7 +1,7 @@
 FLAGS = -lSDL2 -lSDL2_image
 
-game: src/renderer.o src/input.o src/main.o src/game.o src/entity.o
-	g++ src/renderer.o src/input.o src/main.cpp src/game.o src/entity.o -o game $(FLAGS)
+game: src/renderer.o src/input.o src/main.o src/game.o src/entity.o src/player.o src/monster.o src/room.o
+	g++ src/renderer.o src/input.o src/main.cpp src/game.o src/entity.o src/player.o src/monster.o src/room.o -o game $(FLAGS)
 
 main.o: src/main.cpp
 	g++ -c src/main.cpp
@@ -17,6 +17,15 @@ game.o: src/game.cpp
 
 entity.o: src/entity.cpp
 	g++ -c src/entity.cpp
+
+player.o: src/player.cpp
+	g++ -c src/player.cpp
+
+monster.o: src/monster.cpp
+	g++ -c src/monster.cpp
+
+room.o: src/room.cpp
+	g++ -c src/room.cpp
 
 clean:
 	rm src/*.o
