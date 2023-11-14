@@ -24,7 +24,7 @@ public:
     void parseInput();
     int tick();
     void render(Renderer&);
-    void calcOffset(Coordinate);
+    void calcOffset();
 
 };
 

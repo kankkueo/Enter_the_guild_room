@@ -19,7 +19,7 @@ void Game::parseInput() {
         running_ = false;
         return;
     }
-    
+     
     InputState s = input_.getState();
 
     movePlayer(s);
@@ -29,19 +29,26 @@ void Game::parseInput() {
     }
 }
 
-void Game::calcOffset(Coordinate c) {
-    if (player_.x_ >= 1920 - 400 + x_offset_) {
-        x_offset_ += player_.speed_;
+void Game::calcOffset() {
+    // temporary variables. Ideally uses actual window size
+    // window size - padding
+    int padding = 300;
+    int width = 1920 - padding; 
+    int height = 1080 - padding;
+
+
+    if ((player_.x_ >= width + x_offset_)) {
+        x_offset_ = player_.x_ - width ;
     }
-    else if (player_.x_ <= 400 + x_offset_ && x_offset_ > 0) {
-        x_offset_ -= player_.speed_;
+    else if ((player_.x_ <= padding + x_offset_)) {
+        x_offset_ = player_.x_ - padding;
     }
 
-    if (player_.y_ >= 1080 - 400 + y_offset_) {
-        y_offset_ += player_.speed_;
+    if ((player_.y_ >= height + y_offset_)) {
+        y_offset_ = player_.y_ - height;
     }
-    else if (player_.y_ <= 400 + y_offset_ && y_offset_ > 0) {
-        y_offset_ -= player_.speed_;
+    else if ((player_.y_ <= padding + y_offset_)) {
+        y_offset_ = player_.y_ - padding;
     }
  
     
@@ -71,13 +78,13 @@ void Game::movePlayer(InputState s) {
         player_.y_ = c.y;
     }
 
-    calcOffset(c);
 }
 
 int Game::tick() {
 
     parseInput();
     
+    calcOffset();
 
     return 0;
 }
