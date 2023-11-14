@@ -9,11 +9,11 @@ int main() {
     Renderer rend = Renderer();
     rend.initSDL();
 
-    game.entity1_.texture_ = rend.loadTexture("./assets/dude.png");
+    game.player_.texture_ = rend.loadTexture("./assets/dude.png");
 
     while (game.tick()) {
         rend.prepareScene();
-        rend.drawTexture(game.entity1_.texture_, game.entity1_.x_, game.entity1_.y_);
+        rend.drawTexture(game.player_.texture_, game.player_.x_, game.player_.y_);
         rend.presentScene();
         SDL_Delay(10);
     }

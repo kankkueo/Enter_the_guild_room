@@ -1,6 +1,7 @@
-#include "game.hpp"
 #include <list>
 #include <string>
+#include "entity.hpp"
+#include "input.hpp"
 
 class Player: public Entity {
 public:
@@ -11,10 +12,11 @@ public:
     int GetXP();
     int GetDMG();
 
-    void Heal(int value);
-    void TakeDMG(int value);
-    void UpdateXP(int value);
-    void UpdateDMG(int value);
+    void Heal(int);
+    void TakeDMG(int);
+    void UpdateXP(int);
+    void UpdateDMG(int);
+    void setMove(InputState);
 
 private:
     bool alive_;
