@@ -91,6 +91,7 @@ int Game::tick() {
 
 void Game::render(Renderer& r) {
     r.drawTexture(room_->texture_, -x_offset_, -y_offset_);
+    r.drawTexture(room_->advanceDoor_, room_->advanceDoorX_-x_offset_, room_->advanceDoorY_-y_offset_);
     r.drawTexture(player_.texture_, 
         player_.x_ - x_offset_, 
         player_.y_ - y_offset_);
