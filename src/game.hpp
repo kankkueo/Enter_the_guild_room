@@ -24,6 +24,8 @@ public:
     void parseInput();
     int tick(Renderer&);
     void render(Renderer&);
+    void calcOffset();
+    void changeRoom(Room *r);
     void calcOffset(Renderer&);
 
 };
