@@ -1,7 +1,7 @@
 #ifndef MONSTER
 #define MONSTER
 
-#include "game.hpp"
+#include "entity.hpp"
 
 class Monster: public Entity {
 public:

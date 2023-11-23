@@ -4,7 +4,7 @@
 #include <list>
 #include <string>
 #include <SDL2/SDL.h>
-//#include "monster.hpp"
+#include "monster.hpp"
 
 
 class Room {
@@ -19,7 +19,7 @@ public:
     int advanceDoorY_;
     int width_;
     int height_;
-    //std::list<Monster> monsters_;
+    std::list<Monster> monsters_;
 
 
 };
