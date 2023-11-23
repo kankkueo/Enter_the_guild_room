@@ -32,6 +32,7 @@ public:
     int scan();
     void keyDown(SDL_KeyboardEvent*);
     void keyUp(SDL_KeyboardEvent*);
+    void resetInput();
     InputState getState();
 
 private:

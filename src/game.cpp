@@ -11,6 +11,7 @@ Game::Game():
     running_ = true;
     x_offset_ = 0;
     y_offset_ = 0;
+    rooms_ = std::list<Room>();
 }
 
 void Game::parseInput() {
@@ -19,13 +20,25 @@ void Game::parseInput() {
         running_ = false;
         return;
     }
-     
+
     InputState s = input_.getState();
 
     movePlayer(s);
     
     if (s.menu) {
         running_ = false;
+    }
+
+    if (s.interact) {
+        //Coordinate ppos = player_.center();
+        //Coordinate rpos;
+        //rpos.x = room_->advanceDoorX_;
+        //rpos.y = room_->advanceDoorY_;
+
+        //if(ppos.x > rpos.x-64 && ppos.x < rpos.x + 64){
+            
+            changeRoom(room1_);
+        //}
     }
 }
 
@@ -50,11 +63,14 @@ void Game::calcOffset(Renderer& r) {
     else if ((player_.y_ <= padding_y + y_offset_)) {
         y_offset_ = player_.y_ - padding_y;
     }
- 
+    
     
 }
 
+
+
 void Game::changeRoom(Room *r){
+    //input_.resetInput();
     room_ = r;
 }
 

@@ -2,6 +2,7 @@
 #define GAME
 
 #include <SDL2/SDL.h>
+#include <list>
 #include "entity.hpp"
 #include "input.hpp"
 #include "player.hpp"
@@ -11,11 +12,14 @@
 class Game {
 
 public:
+    std::list<Room> rooms_;
     Room *room_;
+    Room *room1_;
     bool running_;
     Input input_;
     int x_offset_;
     int y_offset_;
+
 
     Player player_;
 
