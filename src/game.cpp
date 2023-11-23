@@ -54,6 +54,10 @@ void Game::calcOffset() {
     
 }
 
+void Game::changeRoom(Room *r){
+    room_ = r;
+}
+
 void Game::movePlayer(InputState s) {
     player_.setMove(s);
     Coordinate c = player_.newPos();

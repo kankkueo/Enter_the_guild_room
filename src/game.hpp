@@ -25,6 +25,7 @@ public:
     int tick();
     void render(Renderer&);
     void calcOffset();
+    void changeRoom(Room *r);
 
 };
 
