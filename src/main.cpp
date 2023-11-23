@@ -19,7 +19,7 @@ int main() {
 
     bigroom.addMonster();
     for(Monster m: bigroom.monsters_) {
-        //std::cout << m.GetHP() << std::endl;
+        std::cout << m.texture_ << std::endl; // for debugging
         m.texture_ = rend.loadTexture("./assets/Koneteekkari.png");
     }
 

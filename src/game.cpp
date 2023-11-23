@@ -118,6 +118,7 @@ void Game::render(Renderer& r) {
 
     for (Monster m: room_->monsters_) {
         r.drawTexture(m.texture_, m.x_ - x_offset_, m.y_ - y_offset_);
+        std::cout << m.texture_ << std::endl; // for debugging
     }
 
 }
