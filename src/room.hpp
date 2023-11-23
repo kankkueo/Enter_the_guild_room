@@ -1,3 +1,6 @@
+#ifndef ROOM
+#define ROOM
+
 #include <list>
 #include <string>
 #include <SDL2/SDL.h>
@@ -20,3 +23,5 @@ public:
 
 
 };
+
+#endif

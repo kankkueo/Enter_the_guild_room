@@ -1,3 +1,6 @@
+#ifndef ITEM
+#define ITEM
+
 #include <SDL2/SDL.h>
 #include <string>
 
@@ -24,3 +27,5 @@ private:
     int size_;
 
 };
+
+#endif

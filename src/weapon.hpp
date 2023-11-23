@@ -1,3 +1,6 @@
+#ifndef WEAPON
+#define WEAPON
+
 #include "item.hpp"
 #include <string>
 
@@ -15,3 +18,5 @@ public:
 private:
     int dmg_;
 };
+
+#endif

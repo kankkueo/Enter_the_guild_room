@@ -1,3 +1,6 @@
+#ifndef CONSUMABLES
+#define CONSUMABLES
+
 #include <string>
 #include "item.hpp"
 
@@ -13,3 +16,5 @@ public:
 private:
     int healing_;
 };
+
+#endif
