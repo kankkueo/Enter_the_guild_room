@@ -44,8 +44,8 @@ void Game::parseInput() {
 
 void Game::calcOffset(Renderer& r) {
     // window size - padding
-    int padding_x = 300;
-    int padding_y = 300;
+    int padding_x = 800;
+    int padding_y = 400;
     int width = r.getWinWidth() - padding_x; 
     int height = r.getWinHeight() - padding_y;
 
@@ -112,14 +112,13 @@ int Game::tick(Renderer& r) {
 void Game::render(Renderer& r) {
     r.drawTexture(room_->texture_, -x_offset_, -y_offset_);
     r.drawTexture(room_->advanceDoor_, room_->advanceDoorX_-x_offset_, room_->advanceDoorY_-y_offset_);
-    r.drawTexture(player_.texture_, 
-        player_.x_ - x_offset_, 
-        player_.y_ - y_offset_);
 
     for (Monster m: room_->monsters_) {
         r.drawTexture(m.texture_, m.x_ - x_offset_, m.y_ - y_offset_);
-        //std::cout << m.texture_ << std::endl; // for debugging
     }
 
+    r.drawTexture(player_.texture_, 
+        player_.x_ - x_offset_, 
+        player_.y_ - y_offset_);
 }
 

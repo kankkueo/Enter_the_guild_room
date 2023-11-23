@@ -2,6 +2,7 @@
 #include "game.hpp"
 
 #include <iostream>
+#include <list>
 
 int main() {
 
@@ -18,9 +19,8 @@ int main() {
     game.room_ = &bigroom;
 
     bigroom.addMonster();
-    for(Monster m: bigroom.monsters_) {
-        //std::cout << m.texture_ << std::endl; // for debugging
-        m.texture_ = rend.loadTexture("./assets/Koneteekkari.png");
+    for(auto it = bigroom.monsters_.begin(); it != bigroom.monsters_.end(); it++) {
+        it->texture_ = rend.loadTexture("./assets/Koneteekkari.png");
     }
 
     while (game.running_) {
