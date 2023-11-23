@@ -105,3 +105,13 @@ InputState Input::getState() {
     return state_;
 }
 
+void Input::resetInput() {
+	state_.attack = false;
+	state_.down = false;
+	state_.up = false;
+	state_.right = false;
+	state_.left = false;
+	state_.interact = false;
+	state_.menu = false;
+}
+
