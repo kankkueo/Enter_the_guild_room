@@ -1,3 +1,4 @@
+
 #include "player.hpp"
 
 Player::Player(const std::string& name, int x, int y): 
@@ -9,6 +10,8 @@ Entity(x, y, 128, 128) {
     xp_ = 0;
     max_speed_ = 15;
     inventory_ = std::list<std::string>();
+    level_ = 0;
+    xp_to_Level_up_ = 100;
 }
 
 const std::string Player::GetName() const {
@@ -29,6 +32,10 @@ int Player::GetDMG() {
 
 int Player::GetMaxSpeed() {
     return max_speed_;
+}
+
+int Player::GetLevel() {
+    return level_;
 }
 
 void Player::TakeDMG(int value) {
@@ -88,4 +95,16 @@ void Player::setMove(InputState s) {
     }
 
     speed_ = GetMaxSpeed();
+    move();
+}
+
+void Player::gainXP(int amount) {
+    xp_ += amount;
+    if (xp_ >= xp_to_Level_up_) {
+        level_++;
+        xp_ -= xp_to_Level_up_;
+        dmg_ += level_ * 0.1 * 10;
+        hp_ += level_ * 0.1 * 100;
+        xp_to_Level_up_ += level_ * 0.1 * 100;
+    }
 }
