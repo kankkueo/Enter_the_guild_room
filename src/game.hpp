@@ -22,9 +22,9 @@ public:
     Game();
     void movePlayer(InputState s);
     void parseInput();
-    int tick();
+    int tick(Renderer&);
     void render(Renderer&);
-    void calcOffset();
+    void calcOffset(Renderer&);
 
 };
 

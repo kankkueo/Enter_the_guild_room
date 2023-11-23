@@ -75,3 +75,11 @@ void Renderer::destroy() {
     SDL_Quit();
 }
 
+int Renderer::getWinWidth() {
+    return width_;
+}
+
+int Renderer::getWinHeight() {
+    return height_;
+}
+

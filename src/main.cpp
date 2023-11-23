@@ -18,7 +18,7 @@ int main() {
     
 
     while (game.running_) {
-        game.tick();
+        game.tick(rend);
         rend.prepareScene();
         game.render(rend);
         rend.presentScene();

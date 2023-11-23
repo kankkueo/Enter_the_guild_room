@@ -17,6 +17,8 @@ public:
     void drawTexture(SDL_Texture*, int, int);
     void destroy();
     void set_flags(uint32_t, uint32_t);
+    int getWinWidth();
+    int getWinHeight();
 
 private:
 
