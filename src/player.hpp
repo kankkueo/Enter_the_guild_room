@@ -5,6 +5,7 @@
 #include <string>
 #include "entity.hpp"
 #include "input.hpp"
+#include "weapon.hpp"
 
 class Player: public Entity {
 public:
@@ -23,6 +24,8 @@ public:
     void UpdateDMG(int);
     void setMove(InputState);
     void gainXP(int);
+
+    Weapon weapon_;
 
 private:
     bool alive_;

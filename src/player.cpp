@@ -2,13 +2,13 @@
 #include "player.hpp"
 
 Player::Player(const std::string& name, int x, int y): 
-Entity(x, y, 128, 128) {
+Entity(x, y, 128, 128), weapon_(Weapon("Starter weapon", 10, 10, 30, 5)) {
     name_ = name;
     alive_ = true;
     hp_ = 100;
     dmg_ = 10;
     xp_ = 0;
-    max_speed_ = 15;
+    max_speed_ = 20;
     inventory_ = std::list<std::string>();
     level_ = 0;
     xp_to_Level_up_ = 100;
@@ -95,7 +95,6 @@ void Player::setMove(InputState s) {
     }
 
     speed_ = GetMaxSpeed();
-    move();
 }
 
 void Player::gainXP(int amount) {
@@ -108,3 +107,4 @@ void Player::gainXP(int amount) {
         xp_to_Level_up_ += level_ * 0.1 * 100;
     }
 }
+

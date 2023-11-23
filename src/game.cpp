@@ -12,15 +12,18 @@ Game::Game():
     x_offset_ = 0;
     y_offset_ = 0;
     rooms_ = std::list<Room>();
+    projectiles_ = std::list<Entity>();
 }
 
 void Game::parseInput() {
 
+    // scans the inputs into inputState
     if (input_.scan()) {
         running_ = false;
         return;
     }
 
+    // fetches inputState
     InputState s = input_.getState();
 
     movePlayer(s);
@@ -39,6 +42,10 @@ void Game::parseInput() {
             
             changeRoom(room1_);
         //}
+    }
+
+    if (s.attack) {
+        playerAttack();
     }
 }
 
@@ -66,8 +73,6 @@ void Game::calcOffset(Renderer& r) {
     
     
 }
-
-
 
 void Game::changeRoom(Room *r){
     //input_.resetInput();
@@ -97,13 +102,38 @@ void Game::movePlayer(InputState s) {
     else {
         player_.y_ = c.y;
     }
+}
 
+void Game::playerAttack() {
+    Coordinate place = player_.center();
+    spawnProjectile(place.x ,
+            place.y ,
+            5, 5, player_.weapon_.getProjectileSpeed(), player_.direction_,
+            player_.weapon_.projectile_texture_);
+}
+
+void Game::spawnProjectile(int x, int y, int size_x, int size_y, int speed, float direction, SDL_Texture* tex) {
+    Entity p = Entity(x, y, size_x, size_y);
+    p.speed_ = speed;
+    p.direction_ = direction;
+    p.texture_ = tex;
+
+    projectiles_.push_back(p);
+    std::cout << projectiles_.size() << std::endl;
+}
+
+void Game::moveProjectiles() {
+    for (auto it = projectiles_.begin(); it != projectiles_.end(); it++) {
+        it->move();
+    }
 }
 
 int Game::tick(Renderer& r) {
 
     parseInput();
-    
+
+    moveProjectiles();
+
     calcOffset(r);
 
     return 0;
@@ -120,5 +150,10 @@ void Game::render(Renderer& r) {
     r.drawTexture(player_.texture_, 
         player_.x_ - x_offset_, 
         player_.y_ - y_offset_);
+
+    for (Entity e: projectiles_) {
+        r.drawTexture(e.texture_, e.x_ - x_offset_, e.y_ - y_offset_);
+    }
+
 }
 

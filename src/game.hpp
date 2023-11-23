@@ -2,6 +2,7 @@
 #define GAME
 
 #include <SDL2/SDL.h>
+#include <SDL2/SDL_render.h>
 #include <list>
 #include "entity.hpp"
 #include "input.hpp"
@@ -22,9 +23,13 @@ public:
 
 
     Player player_;
+    std::list<Entity> projectiles_;
 
     Game();
-    void movePlayer(InputState s);
+    void movePlayer(InputState);
+    void playerAttack();
+    void spawnProjectile(int, int, int, int, int, float, SDL_Texture*);
+    void moveProjectiles();
     void parseInput();
     int tick(Renderer&);
     void render(Renderer&);
