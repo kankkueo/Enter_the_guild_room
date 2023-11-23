@@ -22,10 +22,11 @@ public:
     Game();
     void movePlayer(InputState s);
     void parseInput();
-    int tick();
+    int tick(Renderer&);
     void render(Renderer&);
     void calcOffset();
     void changeRoom(Room *r);
+    void calcOffset(Renderer&);
 
 };
 

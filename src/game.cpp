@@ -29,26 +29,26 @@ void Game::parseInput() {
     }
 }
 
-void Game::calcOffset() {
-    // temporary variables. Ideally uses actual window size
+void Game::calcOffset(Renderer& r) {
     // window size - padding
-    int padding = 300;
-    int width = 1920 - padding; 
-    int height = 1080 - padding;
+    int padding_x = 300;
+    int padding_y = 300;
+    int width = r.getWinWidth() - padding_x; 
+    int height = r.getWinHeight() - padding_y;
 
 
     if ((player_.x_ >= width + x_offset_)) {
         x_offset_ = player_.x_ - width ;
     }
-    else if ((player_.x_ <= padding + x_offset_)) {
-        x_offset_ = player_.x_ - padding;
+    else if ((player_.x_ <= padding_x + x_offset_)) {
+        x_offset_ = player_.x_ - padding_x;
     }
 
     if ((player_.y_ >= height + y_offset_)) {
         y_offset_ = player_.y_ - height;
     }
-    else if ((player_.y_ <= padding + y_offset_)) {
-        y_offset_ = player_.y_ - padding;
+    else if ((player_.y_ <= padding_y + y_offset_)) {
+        y_offset_ = player_.y_ - padding_y;
     }
  
     
@@ -84,11 +84,11 @@ void Game::movePlayer(InputState s) {
 
 }
 
-int Game::tick() {
+int Game::tick(Renderer& r) {
 
     parseInput();
     
-    calcOffset();
+    calcOffset(r);
 
     return 0;
 }
@@ -100,6 +100,9 @@ void Game::render(Renderer& r) {
         player_.x_ - x_offset_, 
         player_.y_ - y_offset_);
 
+    for (Monster m: room_->monsters_) {
+        r.drawTexture(m.texture_, m.x_ - x_offset_, m.y_ - y_offset_);
+    }
 
 }
 
