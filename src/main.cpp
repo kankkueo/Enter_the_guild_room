@@ -16,9 +16,10 @@ int main() {
     
     game.room_ = &bigroom;
 
-    game.room_->addMonster();
-    for(Monster m: game.room_->monsters_) {
-        m.texture_ = rend.loadTexture("./assets/teekkari1.png");
+    bigroom.addMonster();
+    for(Monster m: bigroom.monsters_) {
+        //std::cout << m.GetHP() << std::endl;
+        m.texture_ = rend.loadTexture("./assets/Koneteekkari.png");
     }
 
     while (game.running_) {
