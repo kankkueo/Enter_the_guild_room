@@ -23,6 +23,8 @@ public:
     void UpdateXP(int);
     void UpdateDMG(int);
     void setMove(InputState);
+    void setAttack(InputState);
+    float getAttackDirection();
     void gainXP(int);
 
     Weapon weapon_;
@@ -37,6 +39,7 @@ private:
     std::list<std::string> inventory_;      // string should be changed to Item when there is a class for it
     int level_;
     int xp_to_Level_up_;
+    float attack_direction_;
 
 };
 

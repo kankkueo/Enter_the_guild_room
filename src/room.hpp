@@ -22,7 +22,6 @@ public:
     int height_;
     std::list<Monster> monsters_;
 
-
 };
 
 #endif

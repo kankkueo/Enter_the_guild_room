@@ -45,8 +45,8 @@ void Game::parseInput() {
         }
     }
 
-    if (s.attack) {
-        playerAttack();
+    if (s.attack || s.attackUp || s.attackDown || s.attackLeft || s.attackRight) {
+        playerAttack(s);
     }
 }
 
@@ -105,11 +105,12 @@ void Game::movePlayer(InputState s) {
     }
 }
 
-void Game::playerAttack() {
+void Game::playerAttack(InputState s) {
+    player_.setAttack(s);
     Coordinate place = player_.center();
     spawnProjectile(place.x ,
             place.y ,
-            5, 5, player_.weapon_.getProjectileSpeed(), player_.direction_,
+            5, 5, player_.weapon_.getProjectileSpeed(), player_.getAttackDirection(),
             player_.weapon_.projectile_texture_);
 }
 

@@ -11,6 +11,10 @@ Input::Input() {
     state_.attack = false;
     state_.interact = false;
     state_.menu = false;
+    state_.attackUp = false;
+    state_.attackDown = false;
+    state_.attackLeft = false;
+    state_.attackRight = false;
 
     mapping_.up = SDL_SCANCODE_W;
     mapping_.down = SDL_SCANCODE_S;
@@ -19,6 +23,10 @@ Input::Input() {
     mapping_.attack = SDL_SCANCODE_SPACE;
     mapping_.interact = SDL_SCANCODE_E;
     mapping_.menu = SDL_SCANCODE_ESCAPE;
+    mapping_.attackUp = SDL_SCANCODE_UP;
+    mapping_.attackDown = SDL_SCANCODE_DOWN;
+    mapping_.attackLeft = SDL_SCANCODE_LEFT;
+    mapping_.attackRight = SDL_SCANCODE_RIGHT;
 }
 
 void Input::keyDown(SDL_KeyboardEvent *event) {
@@ -43,6 +51,18 @@ void Input::keyDown(SDL_KeyboardEvent *event) {
 		}
 		if (event->keysym.scancode == mapping_.menu) {
             state_.menu = true;
+		}
+		if (event->keysym.scancode == mapping_.attackUp) {
+            state_.attackUp = true;
+		}
+		if (event->keysym.scancode == mapping_.attackDown) {
+            state_.attackDown = true;
+		}
+		if (event->keysym.scancode == mapping_.attackLeft) {
+            state_.attackLeft = true;
+		}
+		if (event->keysym.scancode == mapping_.attackRight) {
+            state_.attackRight = true;
 		}
 	}
 }
@@ -69,6 +89,18 @@ void Input::keyUp(SDL_KeyboardEvent *event) {
 		}
 		if (event->keysym.scancode == mapping_.menu) {
             state_.menu = false;
+		}
+		if (event->keysym.scancode == mapping_.attackUp) {
+            state_.attackUp = false;
+		}
+		if (event->keysym.scancode == mapping_.attackDown) {
+            state_.attackDown = false;
+		}
+		if (event->keysym.scancode == mapping_.attackLeft) {
+            state_.attackLeft = false;
+		}
+		if (event->keysym.scancode == mapping_.attackRight) {
+            state_.attackRight = false;
 		}
 	}
 }

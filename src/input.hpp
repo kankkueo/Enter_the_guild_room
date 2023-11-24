@@ -11,6 +11,10 @@ typedef struct {
     bool attack;
     bool interact;
     bool menu;
+    bool attackUp;
+    bool attackDown;
+    bool attackLeft;
+    bool attackRight;
 } InputState;
 
 typedef struct {
@@ -21,6 +25,10 @@ typedef struct {
     uint32_t attack;
     uint32_t interact;
     uint32_t menu;
+    uint32_t attackUp;
+    uint32_t attackDown;
+    uint32_t attackLeft;
+    uint32_t attackRight;
 } InputMapping;
 
 

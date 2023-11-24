@@ -27,7 +27,7 @@ public:
 
     Game();
     void movePlayer(InputState);
-    void playerAttack();
+    void playerAttack(InputState);
     void spawnProjectile(int, int, int, int, int, float, SDL_Texture*);
     void moveProjectiles();
     void parseInput();

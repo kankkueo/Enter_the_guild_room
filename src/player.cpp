@@ -97,6 +97,41 @@ void Player::setMove(InputState s) {
     speed_ = GetMaxSpeed();
 }
 
+void Player::setAttack(InputState s) {
+
+    if (s.attackUp && s.attackRight) {
+        attack_direction_ = 0.7853982;
+    }
+    else if (s.attackUp && s.attackLeft) {
+        attack_direction_ = 2.3561945;
+    }
+    else if (s.attackDown && s.attackRight) {
+        attack_direction_ = 5.4977871;
+    }
+    else if (s.attackDown && s.attackLeft) {
+        attack_direction_ = 3.9269908;
+    }
+    else if (s.attackUp) {
+        attack_direction_ = 1.5707963;
+    }
+    else if (s.attackDown) {
+        attack_direction_ = 4.7123890;
+    }
+    else if (s.attackLeft) {
+        attack_direction_ = 3.1415927;
+    }
+    else if (s.attackRight) {
+        attack_direction_ = 0;
+    }
+    else {
+        return;
+    }
+}
+
+float Player::getAttackDirection() {
+    return attack_direction_;
+}
+
 void Player::gainXP(int amount) {
     xp_ += amount;
     if (xp_ >= xp_to_Level_up_) {
