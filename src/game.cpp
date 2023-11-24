@@ -151,6 +151,34 @@ void Game::moveProjectiles() {
     }
 }
 
+void Game::moveMonsters() {
+    for (auto m = room_->monsters_.begin(); m != room_->monsters_.end(); m++) {
+        m->setMove(player_);
+        
+        Coordinate c = m->newPos();
+
+        if (c.x <= 0) {
+            m->x_ = 0;
+        }
+        else if (c.x + m->size_x_ >= room_->width_) {
+            m->x_ = room_->width_ - m->size_x_;
+        }
+        else {
+            m->x_ = c.x;
+        }
+
+        if (c.y <= 0) {
+            m->y_ = 0;
+        }
+        else if (c.y + m->size_y_ >= room_->height_) {
+            m->y_ = room_->height_ - m->size_y_;
+        }
+        else {
+            m->y_ = c.y;
+        }
+    }
+}
+
 // Main game cycle
 int Game::tick(Renderer& r) {
 
@@ -163,6 +191,8 @@ int Game::tick(Renderer& r) {
     parseInput();
 
     moveProjectiles();
+    
+    moveMonsters();
 
     calcOffset(r);
 
@@ -190,9 +220,28 @@ void Game::render(Renderer& r) {
         r.drawTexture(m.texture_, m.x_ - x_offset_, m.y_ - y_offset_);
     }
 
-    r.drawTexture(player_.texture_, 
-        player_.x_ - x_offset_, 
-        player_.y_ - y_offset_);
+    InputState state = input_.getState();
+
+    if(state.left) {
+        r.drawTexture(player_.texture_left_, 
+            player_.x_ - x_offset_, 
+            player_.y_ - y_offset_);
+    }
+    else if(state.right) {
+        r.drawTexture(player_.texture_right_, 
+            player_.x_ - x_offset_, 
+            player_.y_ - y_offset_);
+    }
+    else if(state.up || state.down) {
+        r.drawTexture(player_.texture_front_, 
+            player_.x_ - x_offset_, 
+            player_.y_ - y_offset_);
+    }
+    else {
+        r.drawTexture(player_.texture_front_, 
+            player_.x_ - x_offset_, 
+            player_.y_ - y_offset_);
+    }
 
     r.drawTexture(player_.weapon_.texture_, 
         player_.x_ - x_offset_ + 50,

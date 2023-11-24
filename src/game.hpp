@@ -33,6 +33,7 @@ public:
     void playerAttack(InputState);
     void spawnProjectile(int, int, int, int, int, float, SDL_Texture*);
     void moveProjectiles();
+    void moveMonsters();
     void parseInput();
     int tick(Renderer&);
     void render(Renderer&);

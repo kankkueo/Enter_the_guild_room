@@ -1,3 +1,4 @@
+#include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 #include <SDL2/SDL_video.h>
 #include "renderer.hpp"
@@ -21,7 +22,7 @@ Renderer::Renderer(int width, int height, uint32_t r_flags, uint32_t w_flags) {
 
 void Renderer::initSDL() {
 
-	if (SDL_Init(SDL_INIT_TIMER | SDL_INIT_VIDEO) < 0) {
+	if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO) < 0) {
 		printf("Couldn't initialize SDL: %s\n", SDL_GetError());
 		exit(1);
 	}

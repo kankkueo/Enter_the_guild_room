@@ -3,6 +3,7 @@
 
 #include <list>
 #include <string>
+#include <SDL2/SDL.h>
 #include "entity.hpp"
 #include "input.hpp"
 #include "weapon.hpp"
@@ -28,6 +29,9 @@ public:
     void gainXP(int);
 
     Weapon weapon_;
+    SDL_Texture *texture_front_;
+    SDL_Texture *texture_right_;
+    SDL_Texture *texture_left_;
 
 private:
     bool alive_;
