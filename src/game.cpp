@@ -14,6 +14,8 @@ Game::Game():
     y_offset_ = 0;
     rooms_ = std::list<Room>();
     projectiles_ = std::list<Entity>();
+    ticks_ = 0;
+    shoot_tick_ = 0;
 }
 
 void Game::parseInput() {
@@ -106,12 +108,15 @@ void Game::movePlayer(InputState s) {
 }
 
 void Game::playerAttack(InputState s) {
-    player_.setAttack(s);
-    Coordinate place = player_.center();
-    spawnProjectile(place.x ,
-            place.y ,
-            5, 5, player_.weapon_.getProjectileSpeed(), player_.getAttackDirection(),
-            player_.weapon_.projectile_texture_);
+    if ((ticks_ - shoot_tick_) > 200000) {
+        shoot_tick_ = ticks_;
+        player_.setAttack(s);
+        Coordinate place = player_.center();
+        spawnProjectile(place.x ,
+                place.y ,
+                5, 5, player_.weapon_.getProjectileSpeed(), player_.getAttackDirection(),
+                player_.weapon_.projectile_texture_);
+    }
 }
 
 void Game::spawnProjectile(int x, int y, int size_x, int size_y, int speed, float direction, SDL_Texture* tex) {
@@ -130,6 +135,8 @@ void Game::moveProjectiles() {
 }
 
 int Game::tick(Renderer& r) {
+
+    ticks_++;
 
     parseInput();
 
