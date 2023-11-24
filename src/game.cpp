@@ -14,8 +14,7 @@ Game::Game():
     y_offset_ = 0;
     rooms_ = std::list<Room>();
     projectiles_ = std::list<Entity>();
-    ticks_ = 0;
-    shoot_tick_ = 0;
+    shoot_ticks_ = 0;
 }
 
 void Game::parseInput() {
@@ -107,8 +106,9 @@ void Game::movePlayer(InputState s) {
 }
 
 void Game::playerAttack(InputState s) {
-    if ((ticks_ - shoot_tick_) > 200000) {
-        shoot_tick_ = ticks_;
+    if (shoot_ticks_ <= 0) {
+        shoot_ticks_ = 60 / player_.weapon_.getFirerate();
+
         player_.setAttack(s);
         Coordinate place = player_.center();
         spawnProjectile(place.x ,
@@ -153,7 +153,9 @@ void Game::moveProjectiles() {
 // Main game cycle
 int Game::tick(Renderer& r) {
 
-    ticks_++;
+    if (shoot_ticks_ > 0) {
+        shoot_ticks_--;
+    }
 
     parseInput();
 
