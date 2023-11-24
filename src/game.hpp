@@ -9,6 +9,7 @@
 #include "player.hpp"
 #include "room.hpp"
 #include "renderer.hpp"
+#include "hud.hpp"
 
 class Game {
 
@@ -23,7 +24,7 @@ public:
     int shoot_ticks_;
     std::string infoText;
 
-
+    Hud hud_;
     Player player_;
     std::list<Entity> projectiles_;
 
