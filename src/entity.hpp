@@ -24,6 +24,7 @@ public:
     Coordinate newPos();
     Coordinate center();
     Coordinate newCenter();
+    bool collidesWith(Entity&);
 
 };
 

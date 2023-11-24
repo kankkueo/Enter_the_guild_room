@@ -10,6 +10,7 @@ public:
     int GetHP();
     int GetDMG();
     void TakeDMG(int);
+    bool isAlive();
 
 private:
     bool alive_;

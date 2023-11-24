@@ -26,3 +26,6 @@ void Monster::TakeDMG(int value) {
     }
 }
 
+bool Monster::isAlive() {
+    return alive_;
+}

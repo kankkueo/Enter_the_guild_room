@@ -38,3 +38,17 @@ Coordinate Entity::newCenter() {
         (int) ((2 * c.y + size_y_)/2)
     };
 }
+
+bool Entity::collidesWith(Entity& e) {
+    Coordinate c = center();
+    if ((c.x > e.x_) && 
+        (c.x < e.x_ + e.size_x_) &&
+        (c.y > e.y_) &&
+        (c.y < e.y_ + e.size_y_)) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+

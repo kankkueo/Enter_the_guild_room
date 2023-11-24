@@ -14,6 +14,7 @@ Game::Game():
     y_offset_ = 0;
     rooms_ = std::list<Room>();
     projectiles_ = std::list<Entity>();
+    shoot_ticks_ = 0;
 }
 
 void Game::parseInput() {
@@ -72,7 +73,6 @@ void Game::calcOffset(Renderer& r) {
         y_offset_ = player_.y_ - padding_y;
     }
     
-    
 }
 
 void Game::changeRoom(Room *r){
@@ -106,12 +106,16 @@ void Game::movePlayer(InputState s) {
 }
 
 void Game::playerAttack(InputState s) {
-    player_.setAttack(s);
-    Coordinate place = player_.center();
-    spawnProjectile(place.x ,
-            place.y ,
-            5, 5, player_.weapon_.getProjectileSpeed(), player_.getAttackDirection(),
-            player_.weapon_.projectile_texture_);
+    if (shoot_ticks_ <= 0) {
+        shoot_ticks_ = 60 / player_.weapon_.getFirerate();
+
+        player_.setAttack(s);
+        Coordinate place = player_.center();
+        spawnProjectile(place.x ,
+                place.y ,
+                5, 5, player_.weapon_.getProjectileSpeed(), player_.getAttackDirection(),
+                player_.weapon_.projectile_texture_);
+    }
 }
 
 void Game::spawnProjectile(int x, int y, int size_x, int size_y, int speed, float direction, SDL_Texture* tex) {
@@ -124,12 +128,34 @@ void Game::spawnProjectile(int x, int y, int size_x, int size_y, int speed, floa
 }
 
 void Game::moveProjectiles() {
-    for (auto it = projectiles_.begin(); it != projectiles_.end(); it++) {
-        it->move();
+    for (auto p = projectiles_.begin(); p != projectiles_.end(); p++) {
+        p->move();
+
+        for (auto m = room_->monsters_.begin(); m != room_->monsters_.end(); m++) {
+            if (p->collidesWith(*m)) {
+                m->TakeDMG(player_.weapon_.getDmg() + player_.GetDMG());
+                p = projectiles_.erase(p);
+                
+                if (!m->isAlive()) {
+                    m = room_->monsters_.erase(m);
+                }
+
+                break;
+            }
+        }
+
+        if (p->x_ > room_->width_ || p->x_ < 0 || p->y_ > room_->height_ || p->y_ < 0) {
+            p = projectiles_.erase(p);
+        }
     }
 }
 
+// Main game cycle
 int Game::tick(Renderer& r) {
+
+    if (shoot_ticks_ > 0) {
+        shoot_ticks_--;
+    }
 
     parseInput();
 

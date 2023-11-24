@@ -13,7 +13,8 @@ public:
             dmg_ = dmg;
             projectile_speed_ = pspeed;
             firerate_ = firerate;
-        }
+    }
+
     int getDmg() {
         return dmg_;
     }
@@ -22,13 +23,17 @@ public:
         return projectile_speed_;
     }
 
+    int getFirerate() {
+        return firerate_;
+    }
+
     SDL_Texture* texture_;
     SDL_Texture* projectile_texture_;
     
 private:
     int dmg_;
     int projectile_speed_;
-    int firerate_;
+    int firerate_;  // Rounds per second
 };
 
 #endif
