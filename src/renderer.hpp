@@ -14,7 +14,7 @@ public:
     void prepareScene();
     void presentScene();
     SDL_Texture* loadTexture(const char*);
-    void drawTexture(SDL_Texture*, int, int);
+    void drawTexture(SDL_Texture*, int, int, double, SDL_RendererFlip);
     void destroy();
     void set_flags(uint32_t, uint32_t);
     int getWinWidth();

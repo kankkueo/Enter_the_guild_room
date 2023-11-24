@@ -72,13 +72,13 @@ SDL_Texture* Renderer::loadTexture(const char* filename) {
 	return texture;
 }
 
-void Renderer::drawTexture(SDL_Texture* texture, int x, int y) {
+void Renderer::drawTexture(SDL_Texture* texture, int x, int y, double angle, SDL_RendererFlip flip) {
 	SDL_Rect dest;
 	dest.x = x;
 	dest.y = y;
 
 	SDL_QueryTexture(texture, NULL, NULL, &dest.w, &dest.h);
-	SDL_RenderCopy(renderer_, texture, NULL, &dest);
+	SDL_RenderCopyEx(renderer_, texture, NULL, &dest, angle, NULL, flip);
 }
 
 void Renderer::destroy() {
