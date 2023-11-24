@@ -20,8 +20,6 @@ public:
     Input input_;
     int x_offset_;
     int y_offset_;
-    int ticks_;
-    int shoot_tick_;
 
 
     Player player_;
