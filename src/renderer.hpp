@@ -3,7 +3,7 @@
 
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_events.h>
-
+#include <SDL2/SDL_ttf.h>
 
 
 class Renderer {
@@ -19,6 +19,8 @@ public:
     void set_flags(uint32_t, uint32_t);
     int getWinWidth();
     int getWinHeight();
+    void draw_text(char* text, int x, int y);
+    
 
 private:
 
@@ -26,6 +28,7 @@ private:
 	SDL_Window* window_;
     uint32_t renderer_flags_;
     uint32_t window_flags_;
+    TTF_Font *font_;
 
     int width_;
     int height_;

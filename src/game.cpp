@@ -4,6 +4,7 @@
 #include <SDL2/SDL_render.h>
 #include <iostream>
 
+
 Game::Game(): 
     input_(Input()), 
     player_(Player("test geezer", 100, 100))
@@ -22,7 +23,7 @@ void Game::parseInput() {
         running_ = false;
         return;
     }
-
+    
     // fetches inputState
     InputState s = input_.getState();
 
@@ -33,15 +34,15 @@ void Game::parseInput() {
     }
 
     if (s.interact) {
-        //Coordinate ppos = player_.center();
-        //Coordinate rpos;
-        //rpos.x = room_->advanceDoorX_;
-        //rpos.y = room_->advanceDoorY_;
+        Coordinate ppos = player_.center();
+        Coordinate rpos;
+        rpos.x = room_->advanceDoorX_;
+        rpos.y = room_->advanceDoorY_;
 
-        //if(ppos.x > rpos.x-64 && ppos.x < rpos.x + 64){
+        if(ppos.x > rpos.x-64 && ppos.x < rpos.x + 64 && ppos.y > rpos.y-64 && ppos.y < rpos.y+64){
             
             changeRoom(room1_);
-        //}
+        }
     }
 
     if (s.attack) {
@@ -75,7 +76,7 @@ void Game::calcOffset(Renderer& r) {
 }
 
 void Game::changeRoom(Room *r){
-    //input_.resetInput();
+    input_.resetInput();
     room_ = r;
 }
 

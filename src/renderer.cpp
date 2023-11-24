@@ -10,6 +10,7 @@ Renderer::Renderer(int width, int height, uint32_t r_flags, uint32_t w_flags) {
 	height_ = height;
 	renderer_flags_ = r_flags;
 	window_flags_ = w_flags;
+	font_ = TTF_OpenFont("./assets/fonts/Ubuntu-C.ttf", 24);
 	//renderer_flags_ = SDL_RENDERER_ACCELERATED;
 	//window_flags_ = SDL_WINDOW_FULLSCREEN;
 	//window_flags_ = 0;
@@ -40,6 +41,9 @@ void Renderer::initSDL() {
 		printf("Failed to create renderer: %s\n", SDL_GetError());
 		exit(1);
 	}
+
+	TTF_Init();
+	TTF_Font *font = TTF_OpenFont("", 24);
 }
 
 void Renderer::prepareScene() {
@@ -81,5 +85,9 @@ int Renderer::getWinWidth() {
 
 int Renderer::getWinHeight() {
     return height_;
+}
+
+void Renderer::draw_text(char* text, int x, int y){
+	
 }
 

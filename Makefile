@@ -1,4 +1,4 @@
-FLAGS = -lSDL2 -lSDL2_image
+FLAGS = -lSDL2 -lSDL2_image -lSDL2_ttf
 
 game: src/renderer.o src/input.o src/main.o src/game.o src/entity.o src/player.o src/monster.o src/room.o
 	g++ src/renderer.o src/input.o src/main.cpp src/game.o src/entity.o src/player.o src/monster.o src/room.o -o game $(FLAGS)
