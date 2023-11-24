@@ -14,7 +14,7 @@
 class Game {
 
 public:
-    std::list<Room> rooms_;
+    std::list<Room> room_templates_;
     Room *room_;
     Room *room1_;
     bool running_;
@@ -26,7 +26,10 @@ public:
     
 
 
+<<<<<<< HEAD
     Hud hud_;
+=======
+>>>>>>> d4da41eb547e643765a4380f8cf7a224619ca70b
     Player player_;
     std::list<Entity> projectiles_;
 

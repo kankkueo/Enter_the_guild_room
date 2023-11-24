@@ -62,3 +62,22 @@ Monsters implementation
 
 The goal is to achieve a game state where a room has a single
 monster and a player. The player should be able to damage the monster.
+
+### 24.11.2023
+
+Currently the game has functional monsters which take damage
+and die. They do not deal damage to the player at the moment, but
+they follow the player around. Room transitions after clearing work.
+The player has different models for walking direction.
+
+Agenda for next week:
+
+Rotating textures for weapon model.
+
+Heads up display to show player stats.
+
+Room generation.
+
+Animations.
+
+
