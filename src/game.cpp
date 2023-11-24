@@ -150,6 +150,34 @@ void Game::moveProjectiles() {
     }
 }
 
+void Game::moveMonsters() {
+    for (auto m = room_->monsters_.begin(); m != room_->monsters_.end(); m++) {
+        m->setMove(player_);
+        
+        Coordinate c = m->newPos();
+
+        if (c.x <= 0) {
+            m->x_ = 0;
+        }
+        else if (c.x + m->size_x_ >= room_->width_) {
+            m->x_ = room_->width_ - m->size_x_;
+        }
+        else {
+            m->x_ = c.x;
+        }
+
+        if (c.y <= 0) {
+            m->y_ = 0;
+        }
+        else if (c.y + m->size_y_ >= room_->height_) {
+            m->y_ = room_->height_ - m->size_y_;
+        }
+        else {
+            m->y_ = c.y;
+        }
+    }
+}
+
 // Main game cycle
 int Game::tick(Renderer& r) {
 
@@ -160,6 +188,8 @@ int Game::tick(Renderer& r) {
     parseInput();
 
     moveProjectiles();
+    
+    moveMonsters();
 
     calcOffset(r);
 

@@ -2,6 +2,7 @@
 #define MONSTER
 
 #include "entity.hpp"
+#include "player.hpp"
 
 class Monster: public Entity {
 public:
@@ -12,12 +13,26 @@ public:
     void TakeDMG(int);
     bool isAlive();
 
-private:
+    void setMove(Player&);
+
+protected:
     bool alive_;
     int hp_;
     int dmg_;
     int max_speed_;
 
 };
+
+/*
+class MeleeMob: public Monster {
+
+public:
+    MeleeMob(int, int, int, int, int, int, int);
+
+    void action(Player&);
+
+
+};
+*/
 
 #endif
