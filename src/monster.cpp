@@ -47,6 +47,9 @@ void Monster::setMove(Player& p) {
         direction_ = atan(-y_diff/x_diff) + 3.1415927;
     }
 
+    float random_modifier = (float)(rand() % 1000 - 500) / 1200 ;
+    direction_ += random_modifier;
+
     speed_ = max_speed_; 
 }
 

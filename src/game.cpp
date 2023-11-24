@@ -41,7 +41,7 @@ void Game::parseInput() {
         rpos.x = room_->advanceDoorX_;
         rpos.y = room_->advanceDoorY_;
 
-        if(ppos.x > rpos.x-64 && ppos.x < rpos.x + 64 && ppos.y > rpos.y-64 && ppos.y < rpos.y+64){
+        if(ppos.x > rpos.x - 64 && ppos.x < rpos.x + 64 && ppos.y > rpos.y - 64 && ppos.y < rpos.y + 64 && room_->monsters_.empty()){
             
             changeRoom(room1_);
         }
@@ -53,12 +53,10 @@ void Game::parseInput() {
 }
 
 void Game::calcOffset(Renderer& r) {
-    // window size - padding
     int padding_x = 800;
     int padding_y = 400;
     int width = r.getWinWidth() - padding_x; 
     int height = r.getWinHeight() - padding_y;
-
 
     if ((player_.x_ >= width + x_offset_)) {
         x_offset_ = player_.x_ - width ;
@@ -205,9 +203,9 @@ void Game::scanNear(Renderer& r){
     rpos.x = room_->advanceDoorX_;
     rpos.y = room_->advanceDoorY_;
 
-    if(ppos.x > rpos.x-64 && ppos.x < rpos.x + 64 && ppos.y > rpos.y-64 && ppos.y < rpos.y+64){
+    if (ppos.x > rpos.x - 64 && ppos.x < rpos.x + 64 && ppos.y > rpos.y - 64 && ppos.y < rpos.y + 64 && room_->monsters_.empty()) {
         infoText = "Press E to advance";
-    }else{
+    } else {
         infoText = " ";
     }
 }

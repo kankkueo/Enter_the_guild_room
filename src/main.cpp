@@ -6,6 +6,8 @@
 
 int main() {
 
+    srand (time(NULL));
+
     Game game = Game();
     Renderer rend = Renderer(1920, 1080, SDL_RENDERER_ACCELERATED, 0);
     rend.initSDL();
