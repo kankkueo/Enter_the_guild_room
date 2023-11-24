@@ -148,9 +148,28 @@ void Game::render(Renderer& r) {
         r.drawTexture(m.texture_, m.x_ - x_offset_, m.y_ - y_offset_);
     }
 
-    r.drawTexture(player_.texture_, 
-        player_.x_ - x_offset_, 
-        player_.y_ - y_offset_);
+    InputState state = input_.getState();
+
+    if(state.left) {
+        r.drawTexture(player_.texture_left_, 
+            player_.x_ - x_offset_, 
+            player_.y_ - y_offset_);
+    }
+    else if(state.right) {
+        r.drawTexture(player_.texture_right_, 
+            player_.x_ - x_offset_, 
+            player_.y_ - y_offset_);
+    }
+    else if(state.up || state.down) {
+        r.drawTexture(player_.texture_front_, 
+            player_.x_ - x_offset_, 
+            player_.y_ - y_offset_);
+    }
+    else {
+        r.drawTexture(player_.texture_front_, 
+            player_.x_ - x_offset_, 
+            player_.y_ - y_offset_);
+    }
 
     r.drawTexture(player_.weapon_.texture_, 
         player_.x_ - x_offset_ + 50,

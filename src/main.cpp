@@ -10,7 +10,9 @@ int main() {
     Renderer rend = Renderer(1920, 1080, SDL_RENDERER_ACCELERATED, 0);
     rend.initSDL();
 
-    game.player_.texture_ = rend.loadTexture("./assets/teekkari1.png");
+    game.player_.texture_front_ = rend.loadTexture("./assets/teekkari1-front.png");
+    game.player_.texture_left_= rend.loadTexture("./assets/teekkari1-left.png");
+    game.player_.texture_right_= rend.loadTexture("./assets/teekkari1-right.png");
 
     game.player_.weapon_.texture_ = rend.loadTexture("./assets/gun1.png");
     game.player_.weapon_.projectile_texture_ = rend.loadTexture("./assets/projectile1.png");
