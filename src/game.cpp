@@ -12,7 +12,7 @@ Game::Game():
     running_ = true;
     x_offset_ = 0;
     y_offset_ = 0;
-    rooms_ = std::list<Room>();
+    room_templates_ = std::list<Room>();
     projectiles_ = std::list<Entity>();
     shoot_ticks_ = 0;
     infoText = " ";

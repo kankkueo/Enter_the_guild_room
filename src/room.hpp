@@ -9,9 +9,10 @@
 
 class Room {
 public:
-    Room(std::string name, int width, int height, SDL_Texture *texture, SDL_Texture *advanceDoor, int advanceDoorX, int advanceDoorY);
+    Room(std::string, int, int, SDL_Texture*, SDL_Texture*);
 
     void addMonster();
+    void addAdvanceDoor();
     
     std::string name_;
     SDL_Texture *texture_;

@@ -13,7 +13,7 @@
 class Game {
 
 public:
-    std::list<Room> rooms_;
+    std::list<Room> room_templates_;
     Room *room_;
     Room *room1_;
     bool running_;
@@ -22,7 +22,6 @@ public:
     int y_offset_;
     int shoot_ticks_;
     std::string infoText;
-
 
 
     Player player_;
