@@ -120,7 +120,6 @@ void Game::spawnProjectile(int x, int y, int size_x, int size_y, int speed, floa
     p.texture_ = tex;
 
     projectiles_.push_back(p);
-    std::cout << projectiles_.size() << std::endl;
 }
 
 void Game::moveProjectiles() {
