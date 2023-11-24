@@ -26,6 +26,8 @@ int main() {
         it->texture_ = rend.loadTexture("./assets/Koneteekkari.png");
     }
 
+    std::cout << "Starting game" << std::endl;
+
     while (game.running_) {
         game.tick(rend);
         rend.prepareScene();
