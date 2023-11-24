@@ -115,7 +115,7 @@ void Renderer::draw_text(const char* str, int x, int y){
 
 	text_texture = SDL_CreateTextureFromSurface( renderer_, text );
 
-	SDL_Rect dest = { x, y, text->w, text->h };
+	SDL_Rect dest = { x - text->w/2, y, text->w, text->h };
 
 	SDL_RenderCopy( renderer_, text_texture,NULL, &dest );
 
