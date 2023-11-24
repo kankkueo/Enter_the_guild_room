@@ -25,10 +25,11 @@ int main() {
     for(auto it = bigroom.monsters_.begin(); it != bigroom.monsters_.end(); it++) {
         it->texture_ = rend.loadTexture("./assets/Koneteekkari.png");
     }
-
+    
     std::cout << "Starting game" << std::endl;
 
     while (game.running_) {
+        
         game.tick(rend);
         rend.prepareScene();
         game.render(rend);

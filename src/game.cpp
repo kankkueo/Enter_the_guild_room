@@ -15,6 +15,7 @@ Game::Game():
     rooms_ = std::list<Room>();
     projectiles_ = std::list<Entity>();
     shoot_ticks_ = 0;
+    infoText = " ";
 }
 
 void Game::parseInput() {
@@ -157,6 +158,8 @@ int Game::tick(Renderer& r) {
         shoot_ticks_--;
     }
 
+    scanNear(r);
+
     parseInput();
 
     moveProjectiles();
@@ -164,6 +167,19 @@ int Game::tick(Renderer& r) {
     calcOffset(r);
 
     return 0;
+}
+
+void Game::scanNear(Renderer& r){
+    Coordinate ppos = player_.center();
+    Coordinate rpos;
+    rpos.x = room_->advanceDoorX_;
+    rpos.y = room_->advanceDoorY_;
+
+    if(ppos.x > rpos.x-64 && ppos.x < rpos.x + 64 && ppos.y > rpos.y-64 && ppos.y < rpos.y+64){
+        infoText = "Press E to advance";
+    }else{
+        infoText = " ";
+    }
 }
 
 void Game::render(Renderer& r) {
@@ -185,6 +201,9 @@ void Game::render(Renderer& r) {
     for (Entity e: projectiles_) {
         r.drawTexture(e.texture_, e.x_ - x_offset_, e.y_ - y_offset_);
     }
+    
+    r.draw_text(infoText.c_str(), 100, 100);
+    
 
 }
 
