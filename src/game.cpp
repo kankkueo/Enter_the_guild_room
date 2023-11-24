@@ -74,7 +74,6 @@ void Game::calcOffset(Renderer& r) {
         y_offset_ = player_.y_ - padding_y;
     }
     
-    
 }
 
 void Game::changeRoom(Room *r){
@@ -129,11 +128,29 @@ void Game::spawnProjectile(int x, int y, int size_x, int size_y, int speed, floa
 }
 
 void Game::moveProjectiles() {
-    for (auto it = projectiles_.begin(); it != projectiles_.end(); it++) {
-        it->move();
+    for (auto p = projectiles_.begin(); p != projectiles_.end(); p++) {
+        p->move();
+
+        for (auto m = room_->monsters_.begin(); m != room_->monsters_.end(); m++) {
+            if (p->collidesWith(*m)) {
+                m->TakeDMG(player_.weapon_.getDmg() + player_.GetDMG());
+                p = projectiles_.erase(p);
+                
+                if (!m->isAlive()) {
+                    m = room_->monsters_.erase(m);
+                }
+
+                break;
+            }
+        }
+
+        if (p->x_ > room_->width_ || p->x_ < 0 || p->y_ > room_->height_ || p->y_ < 0) {
+            p = projectiles_.erase(p);
+        }
     }
 }
 
+// Main game cycle
 int Game::tick(Renderer& r) {
 
     ticks_++;
