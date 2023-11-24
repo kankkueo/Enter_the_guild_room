@@ -152,6 +152,10 @@ void Game::render(Renderer& r) {
         player_.x_ - x_offset_, 
         player_.y_ - y_offset_);
 
+    r.drawTexture(player_.weapon_.texture_, 
+        player_.x_ - x_offset_ + 50,
+        player_.y_ - y_offset_ + 70);
+
     for (Entity e: projectiles_) {
         r.drawTexture(e.texture_, e.x_ - x_offset_, e.y_ - y_offset_);
     }
