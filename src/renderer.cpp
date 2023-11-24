@@ -48,7 +48,7 @@ void Renderer::initSDL() {
 	if ( TTF_Init() < 0 ) {
 		std::cout << "Error initializing SDL_ttf: " << TTF_GetError() << std::endl;
 	}
-	TTF_Font *font_ = TTF_OpenFont("./assets/fonts/Example-Bold.ttf", 24);
+	font_ = TTF_OpenFont("./assets/fonts/Example-Bold.ttf", 24);
 	if ( !font_ ) {
 		std::cout << "Failed to load font: " << TTF_GetError() << std::endl;
 	}
@@ -99,9 +99,16 @@ void Renderer::draw_text(const char* str, int x, int y){
 	SDL_Surface* text;
 	// Set color to white
 	SDL_Color color = { 255, 255, 255 };
-	TTF_Font *font = TTF_OpenFont("./assets/fonts/Example-Bold.ttf", 24);
+	TTF_Font *font = font_;//TTF_OpenFont("./assets/fonts/Example-Bold.ttf", 24);
+
 	text = TTF_RenderText_Solid( font, str, color );
 	if ( !text ) {
+		if(!font){
+			std::cout << "FONT FUKKED" << std::endl;
+		}
+		if(!str){
+			std::cout << "STR FUKKED" << std::endl;
+		}
 		std::cout << "Failed to render text: " << TTF_GetError() << std::endl;
 	}
 	SDL_Texture* text_texture;
