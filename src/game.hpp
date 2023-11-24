@@ -21,6 +21,8 @@ public:
     int x_offset_;
     int y_offset_;
     int shoot_ticks_;
+    std::string infoText;
+
 
 
     Player player_;
@@ -38,6 +40,7 @@ public:
     void calcOffset();
     void changeRoom(Room *r);
     void calcOffset(Renderer&);
+    void scanNear(Renderer&);
 
 };
 

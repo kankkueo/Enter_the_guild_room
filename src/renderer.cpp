@@ -2,6 +2,7 @@
 #include <SDL2/SDL_image.h>
 #include <SDL2/SDL_video.h>
 #include "renderer.hpp"
+#include <iostream>
 
 
 
@@ -44,7 +45,13 @@ void Renderer::initSDL() {
 	}
 
 	TTF_Init();
-	TTF_Font *font = TTF_OpenFont("", 24);
+	if ( TTF_Init() < 0 ) {
+		std::cout << "Error initializing SDL_ttf: " << TTF_GetError() << std::endl;
+	}
+	TTF_Font *font_ = TTF_OpenFont("./assets/fonts/Example-Bold.ttf", 24);
+	if ( !font_ ) {
+		std::cout << "Failed to load font: " << TTF_GetError() << std::endl;
+	}
 }
 
 void Renderer::prepareScene() {
@@ -88,7 +95,51 @@ int Renderer::getWinHeight() {
     return height_;
 }
 
-void Renderer::draw_text(char* text, int x, int y){
-	
+void Renderer::draw_text(const char* str, int x, int y){
+	SDL_Surface* text;
+	// Set color to white
+	SDL_Color color = { 255, 255, 255 };
+	TTF_Font *font = TTF_OpenFont("./assets/fonts/Example-Bold.ttf", 24);
+	text = TTF_RenderText_Solid( font, str, color );
+	if ( !text ) {
+		std::cout << "Failed to render text: " << TTF_GetError() << std::endl;
+	}
+	SDL_Texture* text_texture;
+
+	text_texture = SDL_CreateTextureFromSurface( renderer_, text );
+
+	SDL_Rect dest = { x, y, text->w, text->h };
+
+	SDL_RenderCopy( renderer_, text_texture,NULL, &dest );
+
+	SDL_DestroyTexture( text_texture );
+	SDL_FreeSurface( text );
+}
+
+SDL_Surface* Renderer::InitText(char* str){
+	SDL_Surface* text;
+	// Set color to black
+	SDL_Color color = { 255, 255, 255 };
+	TTF_Font *font = TTF_OpenFont("./assets/fonts/Example-Bold.ttf", 24);
+	text = TTF_RenderText_Solid( font, str, color );
+	if ( !text ) {
+		std::cout << "Failed to render text: " << TTF_GetError() << std::endl;
+	}
+	return text;
+
+}
+
+void Renderer::renderText(SDL_Surface* text, int x ,int y){
+	SDL_Texture* text_texture;
+
+	text_texture = SDL_CreateTextureFromSurface( renderer_, text );
+
+	SDL_Rect dest = { x, y, text->w, text->h };
+
+	SDL_RenderCopy( renderer_, text_texture,NULL, &dest );
+}
+
+TTF_Font* Renderer::GetFont(){
+	return font_;
 }
 
