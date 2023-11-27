@@ -32,6 +32,7 @@ public:
     SDL_Texture *texture_front_;
     SDL_Texture *texture_right_;
     SDL_Texture *texture_left_;
+    int shoot_ticks_;
 
 private:
     bool alive_;

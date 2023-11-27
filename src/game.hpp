@@ -21,7 +21,6 @@ public:
     Input input_;
     int x_offset_;
     int y_offset_;
-    int shoot_ticks_;
     std::string infoText;
 
     Hud hud_;

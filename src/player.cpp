@@ -12,6 +12,7 @@ Entity(x, y, 128, 128), weapon_(Weapon("Starter weapon", 10, 10, 30, 5)) {
     inventory_ = std::list<std::string>();
     level_ = 0;
     xp_to_Level_up_ = 100;
+    shoot_ticks_ = 0;
 }
 
 const std::string Player::GetName() const {

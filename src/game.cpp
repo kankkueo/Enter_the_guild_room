@@ -15,7 +15,6 @@ Game::Game():
     y_offset_ = 0;
     room_templates_ = std::list<Room>();
     projectiles_ = std::list<Entity>();
-    shoot_ticks_ = 0;
     infoText = " ";
 }
 
@@ -106,8 +105,8 @@ void Game::movePlayer(InputState s) {
 }
 
 void Game::playerAttack(InputState s) {
-    if (shoot_ticks_ <= 0) {
-        shoot_ticks_ = 60 / player_.weapon_.getFirerate();
+    if (player_.shoot_ticks_ <= 0) {
+        player_.shoot_ticks_ = 60 / player_.weapon_.getFirerate();
 
         player_.setAttack(s);
         player_.weapon_.shoot(projectiles_, player_, player_.GetDMG(), player_.getAttackDirection());
@@ -169,8 +168,8 @@ void Game::moveMonsters() {
 // Main game cycle
 int Game::tick(Renderer& r) {
 
-    if (shoot_ticks_ > 0) {
-        shoot_ticks_--;
+    if (player_.shoot_ticks_ > 0) {
+        player_.shoot_ticks_--;
     }
 
     scanNear(r);
