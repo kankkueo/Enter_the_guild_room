@@ -220,73 +220,40 @@ void Game::render(Renderer& r) {
     }
 
     InputState state = input_.getState();
-
     SDL_RendererFlip flip = SDL_FLIP_NONE;
-    double angle = 0;
+    SDL_Texture* player_texture;
     int weapon_xpos, weapon_ypos;
+
+    double angle = -(player_.getAttackDirection() / 3.1415927 * 180);
+    if (angle < -90 && angle > -270) {
+        flip = SDL_FLIP_HORIZONTAL;
+        angle -= 180;
+    }
+
     if(state.left) {
-        r.drawTexture(player_.texture_left_, 
-            player_.x_ - x_offset_, 
-            player_.y_ - y_offset_, 0.0, SDL_FLIP_NONE);
+        player_texture = player_.texture_left_;
         weapon_xpos = -15;
         weapon_ypos = 60;
-        flip = SDL_FLIP_HORIZONTAL;
     }
     else if(state.right) {
-        r.drawTexture(player_.texture_right_, 
-            player_.x_ - x_offset_, 
-            player_.y_ - y_offset_, 0.0, SDL_FLIP_NONE);
+        player_texture = player_.texture_right_;
         weapon_xpos = 62;
         weapon_ypos = 74;
     }
     else if(state.up || state.down) {
-        r.drawTexture(player_.texture_front_, 
-            player_.x_ - x_offset_, 
-            player_.y_ - y_offset_, 0.0, SDL_FLIP_NONE);
+        player_texture = player_.texture_front_;
         weapon_xpos = 37;
         weapon_ypos = 77;
     }
     else {
-        r.drawTexture(player_.texture_front_, 
-            player_.x_ - x_offset_, 
-            player_.y_ - y_offset_, 0.0, SDL_FLIP_NONE);
+        player_texture = player_.texture_front_;
         weapon_xpos = 37;
         weapon_ypos = 77;
     }
 
-    if(state.attackRight && state.attackUp) {
-        flip = SDL_FLIP_NONE;
-        angle = -45;
-    }
-    else if (state.attackLeft && state.attackUp) {
-        flip = SDL_FLIP_HORIZONTAL;
-        angle = 45;
-    }
-    else if (state.attackLeft && state.attackDown) {
-        flip = SDL_FLIP_HORIZONTAL;
-        angle = -45;
-    }
-    else if (state.attackRight && state.attackDown) {
-        flip = SDL_FLIP_NONE;
-        angle = 45;
-    }
-    else if (state.attackRight) {
-        flip = SDL_FLIP_NONE;
-        angle = 0;
-    }
-    else if (state.attackUp) {
-        flip = SDL_FLIP_NONE;
-        angle = -90;
-    }
-    else if (state.attackLeft) {
-        flip = SDL_FLIP_HORIZONTAL;
-        angle = 0;
-    }
-    else if (state.attackDown) {
-        flip = SDL_FLIP_HORIZONTAL;
-        angle = -90;
-    }
-
+     r.drawTexture(player_texture, 
+        player_.x_ - x_offset_, 
+        player_.y_ - y_offset_, 0.0, SDL_FLIP_NONE);
     
     r.drawTexture(player_.weapon_.texture_, 
         player_.x_ - x_offset_ + weapon_xpos,
@@ -294,7 +261,8 @@ void Game::render(Renderer& r) {
         angle, flip);
 
     for (Entity e: projectiles_) {
-        r.drawTexture(e.texture_, e.x_ - x_offset_, e.y_ - y_offset_, 0.0, SDL_FLIP_NONE);
+        angle = -(e.direction_ / 3.1415927 * 180);
+        r.drawTexture(e.texture_, e.x_ - x_offset_, e.y_ - y_offset_, angle, SDL_FLIP_NONE);
     }
     
     hud_.drawInfo(r, player_.GetLevel());
