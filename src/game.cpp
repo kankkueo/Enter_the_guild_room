@@ -110,21 +110,8 @@ void Game::playerAttack(InputState s) {
         shoot_ticks_ = 60 / player_.weapon_.getFirerate();
 
         player_.setAttack(s);
-        Coordinate place = player_.center();
-        spawnProjectile(place.x ,
-                place.y ,
-                5, 5, player_.weapon_.getProjectileSpeed(), player_.getAttackDirection(),
-                player_.weapon_.projectile_texture_);
+        player_.weapon_.shoot(projectiles_, player_, player_.GetDMG(), player_.getAttackDirection());
     }
-}
-
-void Game::spawnProjectile(int x, int y, int size_x, int size_y, int speed, float direction, SDL_Texture* tex) {
-    Entity p = Entity(x, y, size_x, size_y);
-    p.speed_ = speed;
-    p.direction_ = direction;
-    p.texture_ = tex;
-
-    projectiles_.push_back(p);
 }
 
 void Game::moveProjectiles() {
