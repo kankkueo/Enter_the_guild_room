@@ -27,7 +27,7 @@ int main() {
 
     bigroom.addMonster();
     for(auto it = bigroom.monsters_.begin(); it != bigroom.monsters_.end(); it++) {
-        it->texture_ = rend.loadTexture("./assets/Koneteekkari.png");
+        (*it)->texture_ = rend.loadTexture("./assets/Koneteekkari.png");
     }
     
     std::cout << "Starting game" << std::endl;

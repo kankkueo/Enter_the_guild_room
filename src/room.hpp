@@ -21,7 +21,7 @@ public:
     int advanceDoorY_;
     int width_;
     int height_;
-    std::list<Monster> monsters_;
+    std::list<Monster*> monsters_;
 
 };
 

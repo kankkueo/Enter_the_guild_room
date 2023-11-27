@@ -132,11 +132,12 @@ void Game::moveProjectiles() {
         p->move();
 
         for (auto m = room_->monsters_.begin(); m != room_->monsters_.end(); m++) {
-            if (p->collidesWith(*m)) {
-                m->TakeDMG(player_.weapon_.getDmg() + player_.GetDMG());
+            if (p->collidesWith(**m)) {
+                (*m)->TakeDMG(player_.weapon_.getDmg() + player_.GetDMG());
                 p = projectiles_.erase(p);
                 
-                if (!m->isAlive()) {
+                if (!(*m)->isAlive()) {
+                    delete *m;
                     m = room_->monsters_.erase(m);
                 }
 
@@ -152,28 +153,28 @@ void Game::moveProjectiles() {
 
 void Game::moveMonsters() {
     for (auto m = room_->monsters_.begin(); m != room_->monsters_.end(); m++) {
-        m->setMove(player_);
+        (*m)->setMove(player_);
         
-        Coordinate c = m->newPos();
+        Coordinate c = (*m)->newPos();
 
         if (c.x <= 0) {
-            m->x_ = 0;
+            (*m)->x_ = 0;
         }
-        else if (c.x + m->size_x_ >= room_->width_) {
-            m->x_ = room_->width_ - m->size_x_;
+        else if (c.x + (*m)->size_x_ >= room_->width_) {
+            (*m)->x_ = room_->width_ - (*m)->size_x_;
         }
         else {
-            m->x_ = c.x;
+            (*m)->x_ = c.x;
         }
 
         if (c.y <= 0) {
-            m->y_ = 0;
+            (*m)->y_ = 0;
         }
-        else if (c.y + m->size_y_ >= room_->height_) {
-            m->y_ = room_->height_ - m->size_y_;
+        else if (c.y + (*m)->size_y_ >= room_->height_) {
+            (*m)->y_ = room_->height_ - (*m)->size_y_;
         }
         else {
-            m->y_ = c.y;
+            (*m)->y_ = c.y;
         }
     }
 }
@@ -215,8 +216,8 @@ void Game::render(Renderer& r) {
     r.drawTexture(room_->texture_, -x_offset_, -y_offset_, 0.0, SDL_FLIP_NONE);
     r.drawTexture(room_->advanceDoor_, room_->advanceDoorX_-x_offset_, room_->advanceDoorY_-y_offset_, 0.0, SDL_FLIP_NONE);
 
-    for (Monster m: room_->monsters_) {
-        r.drawTexture(m.texture_, m.x_ - x_offset_, m.y_ - y_offset_, 0.0, SDL_FLIP_NONE);
+    for (Monster* m: room_->monsters_) {
+        r.drawTexture(m->texture_, m->x_ - x_offset_, m->y_ - y_offset_, 0.0, SDL_FLIP_NONE);
     }
 
     InputState state = input_.getState();
