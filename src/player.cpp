@@ -2,7 +2,7 @@
 #include "player.hpp"
 
 Player::Player(const std::string& name, int x, int y): 
-Entity(x, y, 128, 128), weapon_(Weapon("Starter weapon", 10, 10, 30, 5)) {
+Entity(x, y, 128, 128), weapon_(new Shotgun("Starter weapon", 10, 10, 30, 5, 10, 0.5)) {
     name_ = name;
     alive_ = true;
     hp_ = 100;

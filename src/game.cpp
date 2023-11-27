@@ -106,10 +106,10 @@ void Game::movePlayer(InputState s) {
 
 void Game::playerAttack(InputState s) {
     if (player_.shoot_ticks_ <= 0) {
-        player_.shoot_ticks_ = 60 / player_.weapon_.getFirerate();
+        player_.shoot_ticks_ = 60 / player_.weapon_->getFirerate();
 
         player_.setAttack(s);
-        player_.weapon_.shoot(projectiles_, player_, player_.GetDMG(), player_.getAttackDirection());
+        player_.weapon_->shoot(projectiles_, player_, player_.GetDMG(), player_.getAttackDirection());
     }
 }
 
@@ -119,7 +119,7 @@ void Game::moveProjectiles() {
 
         for (auto m = room_->monsters_.begin(); m != room_->monsters_.end(); m++) {
             if (p->collidesWith(**m)) {
-                (*m)->TakeDMG(player_.weapon_.getDmg() + player_.GetDMG());
+                (*m)->TakeDMG(player_.weapon_->getDmg() + player_.GetDMG());
                 p = projectiles_.erase(p);
                 
                 if (!(*m)->isAlive()) {
@@ -242,7 +242,7 @@ void Game::render(Renderer& r) {
         player_.x_ - x_offset_, 
         player_.y_ - y_offset_, 0.0, SDL_FLIP_NONE);
     
-    r.drawTexture(player_.weapon_.texture_, 
+    r.drawTexture(player_.weapon_->texture_, 
         player_.x_ - x_offset_ + weapon_xpos,
         player_.y_ - y_offset_ + weapon_ypos,
         angle, flip);

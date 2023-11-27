@@ -28,7 +28,7 @@ public:
     float getAttackDirection();
     void gainXP(int);
 
-    Weapon weapon_;
+    Weapon *weapon_;
     SDL_Texture *texture_front_;
     SDL_Texture *texture_right_;
     SDL_Texture *texture_left_;
