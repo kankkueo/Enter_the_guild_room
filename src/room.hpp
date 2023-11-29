@@ -12,7 +12,7 @@ class Room {
 public:
     Room(std::string, int, int, SDL_Texture*, SDL_Texture*);
 
-    void addMonster(Renderer&);
+    void addRandomMonsters(Renderer&, int, int);
     void addAdvanceDoor();
     
     std::string name_;

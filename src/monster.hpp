@@ -3,8 +3,10 @@
 
 #include "entity.hpp"
 #include "player.hpp"
+#include "renderer.hpp"
 #include "weapon.hpp"
 #include <SDL2/SDL_render.h>
+#include <string>
 
 /*
  * Base class for monster
@@ -12,7 +14,7 @@
 
 class Monster: public Entity {
 public:
-    Monster(int, int, int, int, int, int, int);
+    Monster(const std::string&, int, int, int, int, int, int, int);
     ~Monster();
 
     int GetHP();
@@ -28,6 +30,7 @@ protected:
     int hp_;
     int dmg_;
     int max_speed_;
+    std::string name_;
 
 };
 
@@ -41,7 +44,7 @@ protected:
 class MeleeMob: public Monster {
 
 public:
-    MeleeMob(int, int, int, int, int, int, int);
+    MeleeMob(int, int, int, int, int);
 
     void attack(Player&, std::list<Projectile>&);
     void setMove(Player&);
@@ -58,7 +61,7 @@ public:
 class RangedMob: public Monster {
 
 public:
-    RangedMob(int, int, int, int, int, int, int, Weapon*);
+    RangedMob(int, int, int, int, int, Weapon*);
 
     void attack(Player&, std::list<Projectile>&);
     void setMove(Player&);
@@ -68,5 +71,11 @@ public:
 
 };
 
+enum MonsterType {
+    MeleeMobType,
+    RangedMobType
+};
+
+Monster* genRandomMob(Renderer&, int, int, int);
 
 #endif

@@ -25,10 +25,7 @@ int main() {
     
     game.room_ = &bigroom;
 
-    bigroom.addMonster(rend);
-    for(auto it = bigroom.monsters_.begin(); it != bigroom.monsters_.end(); it++) {
-        (*it)->texture_ = rend.loadTexture("./assets/Koneteekkari.png");
-    }
+    bigroom.addRandomMonsters(rend, 1, 4);
     
     std::cout << "Starting game" << std::endl;
 
