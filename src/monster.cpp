@@ -38,7 +38,7 @@ bool Monster::isAlive() {
 
 void Monster::setMove(Player&) {}
 
-void Monster::action(Player&) {}
+void Monster::attack(Player&, std::list<Projectile>&) {}
 
 /*
  *  Melee mob
@@ -65,14 +65,16 @@ void MeleeMob::setMove(Player& p) {
     speed_ = max_speed_; 
 }
 
-void MeleeMob::action(Player& p) {}
+void MeleeMob::attack(Player& p, std::list<Projectile>&) {
+
+}
 
 /*
  *  Ranged mob
  */
 
-RangedMob::RangedMob(int hp, int dmg, int max_speed, int x, int y, int size_x, int size_y): 
-Monster(hp, dmg, max_speed, x, y, size_x, size_y) {}
+RangedMob::RangedMob(int hp, int dmg, int max_speed, int x, int y, int size_x, int size_y, Weapon* weapon): 
+Monster(hp, dmg, max_speed, x, y, size_x, size_y), weapon_(weapon) {}
 
 void RangedMob::setMove(Player& p) {
     Coordinate pc = p.center();
@@ -91,5 +93,25 @@ void RangedMob::setMove(Player& p) {
     speed_ = max_speed_;
 }
 
-void RangedMob::action(Player& p) {}
+void RangedMob::attack(Player& p, std::list<Projectile>& projectiles) {
+    if (attack_ticks_ <= 0) {
+        attack_ticks_ = 60 / weapon_->getFirerate();
+        float d;
+
+        Coordinate pc = p.center();
+        float x_diff = pc.x - x_;
+        float y_diff = pc.y - y_;
+        if (x_diff > 0) {
+            d = atan(-y_diff/x_diff);
+        }
+        else if (x_diff < 0) {
+            d = atan(-y_diff/x_diff) + 3.1415927;
+        }
+
+        weapon_->shoot(projectiles, *this, dmg_, d);
+    }
+    else {
+        attack_ticks_--;
+    }
+}
 

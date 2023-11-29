@@ -166,6 +166,9 @@ void Game::moveMonsters() {
         else {
             (*m)->y_ = c.y;
         }
+
+        (*m)->attack(player_, projectiles_);
+
     }
 }
 

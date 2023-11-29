@@ -5,13 +5,14 @@
 #include <string>
 #include <SDL2/SDL.h>
 #include "monster.hpp"
+#include "renderer.hpp"
 
 
 class Room {
 public:
     Room(std::string, int, int, SDL_Texture*, SDL_Texture*);
 
-    void addMonster();
+    void addMonster(Renderer&);
     void addAdvanceDoor();
     
     std::string name_;

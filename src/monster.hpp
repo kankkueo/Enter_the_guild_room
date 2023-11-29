@@ -3,6 +3,8 @@
 
 #include "entity.hpp"
 #include "player.hpp"
+#include "weapon.hpp"
+#include <SDL2/SDL_render.h>
 
 /*
  * Base class for monster
@@ -19,7 +21,7 @@ public:
     bool isAlive();
 
     virtual void setMove(Player&);
-    virtual void action(Player&);
+    virtual void attack(Player&, std::list<Projectile>&);
 
 protected:
     bool alive_;
@@ -41,7 +43,7 @@ class MeleeMob: public Monster {
 public:
     MeleeMob(int, int, int, int, int, int, int);
 
-    void action(Player&);
+    void attack(Player&, std::list<Projectile>&);
     void setMove(Player&);
 
 };
@@ -56,10 +58,13 @@ public:
 class RangedMob: public Monster {
 
 public:
-    RangedMob(int, int, int, int, int, int, int);
+    RangedMob(int, int, int, int, int, int, int, Weapon*);
 
-    void action(Player&);
+    void attack(Player&, std::list<Projectile>&);
     void setMove(Player&);
+
+    Weapon* weapon_;
+    int attack_ticks_;
 
 };
 

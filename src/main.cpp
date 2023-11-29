@@ -25,7 +25,7 @@ int main() {
     
     game.room_ = &bigroom;
 
-    bigroom.addMonster();
+    bigroom.addMonster(rend);
     for(auto it = bigroom.monsters_.begin(); it != bigroom.monsters_.end(); it++) {
         (*it)->texture_ = rend.loadTexture("./assets/Koneteekkari.png");
     }
