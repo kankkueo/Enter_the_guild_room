@@ -27,6 +27,7 @@ public:
     void setAttack(InputState);
     float getAttackDirection();
     void gainXP(int);
+    bool isAlive();
 
     Weapon *weapon_;
     SDL_Texture *texture_front_;

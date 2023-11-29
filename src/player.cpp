@@ -144,3 +144,6 @@ void Player::gainXP(int amount) {
     }
 }
 
+bool Player::isAlive() {
+    return alive_;
+}

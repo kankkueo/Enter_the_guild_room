@@ -2,6 +2,7 @@
 #include "entity.hpp"
 #include "input.hpp"
 #include <SDL2/SDL_render.h>
+#include <SDL2/SDL_timer.h>
 #include <iostream>
 
 
@@ -189,6 +190,11 @@ int Game::tick(Renderer& r) {
 
     calcOffset(r);
 
+    if (!player_.isAlive()) {
+        SDL_Delay(2000);
+        running_ = false;
+    }
+
     return 0;
 }
 
@@ -262,7 +268,6 @@ void Game::render(Renderer& r) {
     hud_.drawInfo(r, player_.GetLevel());
 
     r.draw_text(infoText.c_str(), r.getWinWidth()/2, 100);
-    
 
 }
 
