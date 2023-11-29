@@ -3,6 +3,7 @@
 
 #include "item.hpp"
 #include "entity.hpp"
+#include "renderer.hpp"
 #include <list>
 #include <SDL2/SDL_render.h>
 #include <string>
@@ -23,35 +24,13 @@ public:
 class Weapon: public Item {
 
 public:
-    Weapon(std::string name, int size, int dmg, int pspeed, int firerate): 
-    Item(name, size) {
-            dmg_ = dmg;
-            projectile_speed_ = pspeed;
-            firerate_ = firerate;
-    }
+    Weapon(const std::string& name, int size, int dmg, int pspeed, int firerate);
+    int getDmg();
+    int getProjectileSpeed();
+    int getFirerate();
+    std::string getName();
 
-    int getDmg() {
-        return dmg_;
-    }
-
-    int getProjectileSpeed() {
-        return projectile_speed_;
-    }
-
-    int getFirerate() {
-        return firerate_;
-    }
-
-    virtual void shoot(std::list<Projectile>& projectiles, Entity source, int dmg, float direction, bool damage_monsters) {
-        Coordinate c = source.center();
-        Projectile p = Projectile(c.x, c.y, projectile_size_x_, projectile_size_y_,
-            dmg_ + dmg, direction, projectile_speed_);
-
-        p.damage_monsters_ = damage_monsters;
-        p.texture_ = projectile_texture_;
-
-        projectiles.push_back(p);
-    }
+    virtual void shoot(std::list<Projectile>& projectiles, Entity source, int dmg, float direction, bool damage_monsters);
 
     SDL_Texture* texture_;
     SDL_Texture* projectile_texture_;
@@ -62,45 +41,34 @@ protected:
     int firerate_;  // Rounds per second
     int projectile_size_x_ = 10;
     int projectile_size_y_ = 10;
+    std::string name_;
 };
 
 
 class Pistol: public Weapon {
 public:
-    Pistol(std::string name, int size, int dmg, int pspeed, int firerate):
-    Weapon(name, size, dmg, pspeed, firerate) {}
+    Pistol(const std::string& name, int size, int dmg, int pspeed, int firerate);
 
 };
 
 class Shotgun: public Weapon {
 public:
-    Shotgun(std::string name, int size, int dmg, int pspeed, int firerate, int pellets, float spread):
-    Weapon(name, size, dmg, pspeed, firerate) {
-        pellets_ = pellets;
-        spread_ = spread;
-    }
-
-    void shoot(std::list<Projectile>& projectiles, Entity source, int dmg, float direction, bool damage_monsters) {
-        Coordinate c = source.center();
-        float d_step = spread_ / pellets_;
-        float d = direction - ((float) pellets_ / 2) * d_step;
-
-        for (int i = 0; i < pellets_; i++) {
-            Projectile p = Projectile(c.x, c.y, projectile_size_x_, projectile_size_y_,
-                dmg_ + dmg, d, projectile_speed_);
-
-            p.damage_monsters_ = damage_monsters;
-            p.texture_ = projectile_texture_;
-            projectiles.push_back(p);
-
-            d += d_step;
-        }
-    }
+    Shotgun(const std::string& name, int size, int dmg, int pspeed, int firerate, int pellets, float spread);
+    void shoot(std::list<Projectile>& projectiles, Entity source, int dmg, float direction, bool damage_monsters);
+    int getPellets();
+    float getSpread();
 
 private:
     int pellets_;
     float spread_;
 
 };
+
+enum GunType {
+    PistolType,
+    ShotgunType
+};
+
+Weapon* genRandomWeapon(Renderer&, int);
 
 #endif

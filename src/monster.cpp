@@ -1,5 +1,6 @@
 #include "monster.hpp"
 #include "renderer.hpp"
+#include "weapon.hpp"
 #include <iostream>
 
 /*
@@ -138,12 +139,9 @@ Monster* genRandomMob(Renderer& r, int level, int room_width, int room_height) {
             break;
         }
         case RangedMobType: {
-            Weapon* w = new Pistol("Mob pistol", 10, 5, 10, 2); // TODO: Randomize weapon
-            RangedMob* rm = new RangedMob(level, x, y, 60, 90, w);
-            rm->texture_ = r.loadTexture("./assets/Koneteekkari.png"); // Different textures for mob types??
-            rm->weapon_->texture_ = r.loadTexture("./assets/gun1.png");
-            rm->weapon_->projectile_texture_ = r.loadTexture("./assets/bulet1.png");
-            m = rm;
+            Weapon* w = genRandomWeapon(r, level);
+            m = new RangedMob(level, x, y, 60, 90, w);
+            m->texture_ = r.loadTexture("./assets/Koneteekkari.png"); // Different textures for mob types??
             break;
         }
         default:

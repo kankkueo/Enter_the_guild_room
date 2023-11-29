@@ -2,7 +2,8 @@
 #include "player.hpp"
 
 Player::Player(const std::string& name, int x, int y): 
-Entity(x, y, 128, 128), weapon_(new Shotgun("Starter weapon", 10, 10, 30, 5, 10, 0.5)) {
+//Entity(x, y, 128, 128), weapon_(new Shotgun("Starter weapon", 10, 10, 30, 5, 10, 0.5)) {
+Entity(x, y, 128, 128), weapon_(NULL) {
     name_ = name;
     alive_ = true;
     hp_ = 100;
@@ -13,6 +14,10 @@ Entity(x, y, 128, 128), weapon_(new Shotgun("Starter weapon", 10, 10, 30, 5, 10,
     level_ = 0;
     xp_to_Level_up_ = 100;
     shoot_ticks_ = 0;
+}
+
+void Player::equipWeapon(Weapon* w) {
+    weapon_ = w;
 }
 
 const std::string Player::GetName() const {

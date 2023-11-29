@@ -34,7 +34,6 @@ protected:
 
 };
 
-
 /*  Basic melee monster
  * 
  *  - Moves towards the player

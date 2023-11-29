@@ -1,5 +1,6 @@
 #include "renderer.hpp"
 #include "game.hpp"
+#include "weapon.hpp"
 
 #include <iostream>
 #include <list>
@@ -16,8 +17,11 @@ int main() {
     game.player_.texture_left_= rend.loadTexture("./assets/teekkari1-left.png");
     game.player_.texture_right_= rend.loadTexture("./assets/teekkari1-right.png");
 
-    game.player_.weapon_->texture_ = rend.loadTexture("./assets/gun1.png");
-    game.player_.weapon_->projectile_texture_ = rend.loadTexture("./assets/bulet1.png");
+    Weapon* w = genRandomWeapon(rend, 1);
+    game.player_.equipWeapon(w);
+
+//    game.player_.weapon_->texture_ = rend.loadTexture("./assets/gun1.png");
+//    game.player_.weapon_->projectile_texture_ = rend.loadTexture("./assets/bulet1.png");
 
     Room startroom = Room("Startroom", 720, 480, rend.loadTexture("./assets/startroom.png"), rend.loadTexture("./assets/trapdoor.png"));
     Room bigroom = Room("Big room", 2500, 1500, rend.loadTexture("./assets/bigroom1.png"), rend.loadTexture("./assets/trapdoor.png"));
