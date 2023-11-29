@@ -14,7 +14,7 @@ Game::Game():
     x_offset_ = 0;
     y_offset_ = 0;
     room_templates_ = std::list<Room>();
-    projectiles_ = std::list<Entity>();
+    projectiles_ = std::list<Projectile>();
     infoText = " ";
 }
 
@@ -119,7 +119,7 @@ void Game::moveProjectiles() {
 
         for (auto m = room_->monsters_.begin(); m != room_->monsters_.end(); m++) {
             if (p->collidesWith(**m)) {
-                (*m)->TakeDMG(player_.weapon_->getDmg() + player_.GetDMG());
+                (*m)->TakeDMG(p->dmg_);
                 p = projectiles_.erase(p);
                 
                 if (!(*m)->isAlive()) {
@@ -129,6 +129,10 @@ void Game::moveProjectiles() {
 
                 break;
             }
+        }
+
+        if (p->collidesWith(player_)) {
+            player_.TakeDMG(p->dmg_);
         }
 
         if (p->x_ > room_->width_ || p->x_ < 0 || p->y_ > room_->height_ || p->y_ < 0) {

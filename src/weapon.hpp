@@ -41,7 +41,7 @@ public:
         return firerate_;
     }
 
-    virtual void shoot(std::list<Entity>& projectiles, Entity source, int dmg, float direction) {
+    virtual void shoot(std::list<Projectile>& projectiles, Entity source, int dmg, float direction) {
         Coordinate c = source.center();
         Projectile p = Projectile(c.x, c.y, projectile_size_x_, projectile_size_y_,
             dmg_ + dmg, direction, projectile_speed_);
@@ -78,7 +78,7 @@ public:
         spread_ = spread;
     }
 
-    void shoot(std::list<Entity>& projectiles, Entity source, int dmg, float direction) {
+    void shoot(std::list<Projectile>& projectiles, Entity source, int dmg, float direction) {
         Coordinate c = source.center();
         float d_step = spread_ / pellets_;
         float d = direction - ((float) pellets_ / 2) * d_step;
