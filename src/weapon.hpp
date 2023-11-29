@@ -17,6 +17,7 @@ public:
     }
 
     int dmg_;
+    bool damage_monsters_;
 };
 
 class Weapon: public Item {
@@ -41,11 +42,12 @@ public:
         return firerate_;
     }
 
-    virtual void shoot(std::list<Projectile>& projectiles, Entity source, int dmg, float direction) {
+    virtual void shoot(std::list<Projectile>& projectiles, Entity source, int dmg, float direction, bool damage_monsters) {
         Coordinate c = source.center();
         Projectile p = Projectile(c.x, c.y, projectile_size_x_, projectile_size_y_,
             dmg_ + dmg, direction, projectile_speed_);
 
+        p.damage_monsters_ = damage_monsters;
         p.texture_ = projectile_texture_;
 
         projectiles.push_back(p);
@@ -78,7 +80,7 @@ public:
         spread_ = spread;
     }
 
-    void shoot(std::list<Projectile>& projectiles, Entity source, int dmg, float direction) {
+    void shoot(std::list<Projectile>& projectiles, Entity source, int dmg, float direction, bool damage_monsters) {
         Coordinate c = source.center();
         float d_step = spread_ / pellets_;
         float d = direction - ((float) pellets_ / 2) * d_step;
@@ -87,6 +89,7 @@ public:
             Projectile p = Projectile(c.x, c.y, projectile_size_x_, projectile_size_y_,
                 dmg_ + dmg, d, projectile_speed_);
 
+            p.damage_monsters_ = damage_monsters;
             p.texture_ = projectile_texture_;
             projectiles.push_back(p);
 

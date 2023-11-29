@@ -108,7 +108,7 @@ void RangedMob::attack(Player& p, std::list<Projectile>& projectiles) {
             d = atan(-y_diff/x_diff) + 3.1415927;
         }
 
-        weapon_->shoot(projectiles, *this, dmg_, d);
+        weapon_->shoot(projectiles, *this, dmg_, d, false);
     }
     else {
         attack_ticks_--;

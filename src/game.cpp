@@ -109,7 +109,7 @@ void Game::playerAttack(InputState s) {
         player_.shoot_ticks_ = 60 / player_.weapon_->getFirerate();
 
         player_.setAttack(s);
-        player_.weapon_->shoot(projectiles_, player_, player_.GetDMG(), player_.getAttackDirection());
+        player_.weapon_->shoot(projectiles_, player_, player_.GetDMG(), player_.getAttackDirection(), true);
     }
 }
 
@@ -118,7 +118,7 @@ void Game::moveProjectiles() {
         p->move();
 
         for (auto m = room_->monsters_.begin(); m != room_->monsters_.end(); m++) {
-            if (p->collidesWith(**m)) {
+            if (p->collidesWith(**m) && p->damage_monsters_) {
                 (*m)->TakeDMG(p->dmg_);
                 p = projectiles_.erase(p);
                 
