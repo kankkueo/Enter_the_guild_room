@@ -132,7 +132,7 @@ void Game::moveProjectiles() {
             }
         }
 
-        if (p->collidesWith(player_)) {
+        if (p->collidesWith(player_) && !p->damage_monsters_) {
             player_.TakeDMG(p->dmg_);
         }
 
