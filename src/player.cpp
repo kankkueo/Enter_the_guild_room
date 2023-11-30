@@ -9,7 +9,7 @@ Entity(x, y, 128, 128), weapon_(NULL) {
     hp_ = 200;
     dmg_ = 10;
     xp_ = 0;
-    max_speed_ = 20;
+    max_speed_ = 15;
     inventory_ = std::list<std::string>();
     level_ = 0;
     xp_to_Level_up_ = 100;
