@@ -116,6 +116,21 @@ Weapon* genRandomWeapon(Renderer& r, int level) {
 
             break;
         }
+        case SMGType: {
+            int dmg = 2 + ceil(0.2*level*level * randomFloat(0.5, 1.8));
+            int firerate = 6 + rand() % 14;
+            int pspeed = ceil(0.05 * level + 15 * randomFloat(0.7, 1.4));
+
+            w = new Pistol("Random SMG", 10, dmg, pspeed, firerate);
+            w->texture_ = r.loadTexture("./assets/gun1.png");
+            w->projectile_texture_ = r.loadTexture("./assets/bulet1.png");
+
+            std::cout << "Generated SMG " << w-> getName() << " with: dmg =" << w->getDmg();
+            std::cout << ", firerate = " << w->getFirerate();
+            std::cout << ", projectile speed = " << w->getProjectileSpeed() << std::endl;
+
+            break;
+        }
         case ShotgunType: {
             int dmg = 2 + ceil(0.4*level*level * randomFloat(0.6, 1.3));
             int firerate = 1 + rand() % 3;
@@ -135,6 +150,7 @@ Weapon* genRandomWeapon(Renderer& r, int level) {
 
             break;
         }
+
         default:
             break;
     }

@@ -51,6 +51,12 @@ public:
 
 };
 
+class SMG: public Weapon {
+public:
+    SMG(const std::string& name, int size, int dmg, int pspeed, int firerate);
+
+};
+
 class Shotgun: public Weapon {
 public:
     Shotgun(const std::string& name, int size, int dmg, int pspeed, int firerate, int pellets, float spread);
@@ -66,6 +72,7 @@ private:
 
 enum GunType {
     PistolType,
+    SMGType,
     ShotgunType
 };
 
