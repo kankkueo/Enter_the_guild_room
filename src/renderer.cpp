@@ -95,7 +95,8 @@ int Renderer::getWinHeight() {
     return height_;
 }
 
-void Renderer::draw_text(const char* str, int x, int y, int xalign){
+void Renderer::draw_text(const char* str, int x, int y){
+	int xalign = 1;
 	SDL_Surface* text;
 	// Set color to white
 	SDL_Color color = { 255, 255, 255 };

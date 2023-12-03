@@ -298,7 +298,7 @@ void Game::render(Renderer& r) {
         r.drawTexture(e.texture_, e.x_ - x_offset_, e.y_ - y_offset_, angle, SDL_FLIP_NONE);
     }
     
-    hud_.drawInfo(r, 100, player_.GetHP());
+    hud_.drawInfo(r, 11, 0);
 
     r.draw_text(infoText.c_str(), r.getWinWidth()/2, 100);
 

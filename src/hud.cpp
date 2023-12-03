@@ -1,5 +1,6 @@
 #include "hud.hpp"
 #include <iostream>
+#include <string>
 
 
 
@@ -10,16 +11,16 @@ Hud::Hud(int hudposx, int hudposy){
 
 void Hud::drawInfo(Renderer& r, int level, int health){
     std::string sLevel = std::to_string(level);
-    char lvText[] = "Level: ";
-    char const *cLevel = strcat(lvText, sLevel.c_str()); 
+    char lvText[50] = "Level: ";
+    strcat(lvText, sLevel.c_str()); 
     
 
-    r.draw_text(cLevel, hudPosX, hudPosY, 0);
+    r.draw_text(lvText, hudPosX, hudPosY);
 
     std::string sHealth = std::to_string(health);
-    char hpText[] = "HP: ";
-    char const *cHealth = strcat(hpText, sLevel.c_str()); 
+    char hpText[50] = "HP: ";
+    strcat(hpText, sLevel.c_str()); 
 
-    r.draw_text(cHealth, hudPosX, hudPosY + 25, 0);
+    r.draw_text(hpText, hudPosX, hudPosY + 25);
 
 }
