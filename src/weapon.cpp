@@ -5,6 +5,9 @@
 /*
  *  Common methods
  */
+std::string Weapon::toString(){
+    return "weapon";
+}
 
 Weapon::Weapon(const std::string& name, int size, int dmg, int pspeed, int firerate): 
     Item(name, size) {
@@ -81,6 +84,10 @@ void Shotgun::shoot(std::list<Projectile>& projectiles, Entity source, int dmg, 
 
         d += d_step;
     }
+}
+
+std::string Shotgun::toString(){
+    return "shotgun";
 }
 
 /*

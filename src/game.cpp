@@ -238,7 +238,7 @@ void Game::scanNear(Renderer& r) {
         int x_diff = (*w)->x_ - ppos.x;
         int y_diff = (*w)->y_ - ppos.y;
         if (x_diff * x_diff + y_diff * y_diff <= 100 * 100) {
-            infoText = "Press E to swap weapon";
+            infoText = "Press E to swap weapon\n";
             return;
         }
     }
@@ -324,7 +324,7 @@ void Game::render(Renderer& r) {
         r.drawTexture(e.texture_, e.x_ - x_offset_, e.y_ - y_offset_, angle, SDL_FLIP_NONE);
     }
     
-//    hud_.drawInfo(r, 100, player_.GetHP());
+    hud_.drawInfo(r, player_.GetLevel(), player_.GetHP());
 
     r.draw_text(infoText.c_str(), r.getWinWidth()/2, 100);
 

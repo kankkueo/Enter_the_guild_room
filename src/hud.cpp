@@ -19,7 +19,7 @@ void Hud::drawInfo(Renderer& r, int level, int health){
 
     std::string sHealth = std::to_string(health);
     char hpText[50] = "HP: ";
-    strcat(hpText, sLevel.c_str()); 
+    strcat(hpText, sHealth.c_str()); 
 
     r.draw_text(hpText, hudPosX, hudPosY + 25);
 

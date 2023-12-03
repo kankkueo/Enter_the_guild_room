@@ -31,6 +31,7 @@ public:
     std::string getName();
 
     virtual void shoot(std::list<Projectile>& projectiles, Entity source, int dmg, float direction, bool damage_monsters);
+    virtual std::string toString();
 
     SDL_Texture* texture_;
     SDL_Texture* projectile_texture_;
@@ -63,6 +64,7 @@ public:
     void shoot(std::list<Projectile>& projectiles, Entity source, int dmg, float direction, bool damage_monsters);
     int getPellets();
     float getSpread();
+    std::string toString();
 
 private:
     int pellets_;
