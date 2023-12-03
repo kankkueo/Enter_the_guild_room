@@ -22,7 +22,7 @@ public:
     int x_offset_;
     int y_offset_;
     std::string infoText;
-
+    int game_level_;
     Hud hud_;
     Player player_;
     std::list<Projectile> projectiles_;
@@ -33,13 +33,13 @@ public:
     void spawnProjectile(int, int, int, int, int, float, SDL_Texture*);
     void moveProjectiles();
     void moveMonsters();
-    void parseInput();
+    void parseInput(Renderer&);
     int tick(Renderer&);
     void render(Renderer&);
     void calcOffset();
-    void changeRoom(Room *r);
+    void changeRoom(Renderer&);
     void calcOffset(Renderer&);
-    void scanNear(Renderer&);
+    Weapon* scanWeapons(Renderer&);
 
 };
 

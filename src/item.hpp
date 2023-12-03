@@ -10,6 +10,8 @@ public:
     Item(std::string name, int size) {
         name_ = name;
         size_ = size;
+        x_ = 0;
+        y_ = 0;
     }
 
     void equip() {
@@ -20,6 +22,10 @@ public:
     }
     
     SDL_Texture *texture_; 
+
+    // For world location
+    int x_;
+    int y_;
 
 private:
     std::string name_;

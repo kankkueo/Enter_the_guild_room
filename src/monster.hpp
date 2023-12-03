@@ -21,9 +21,11 @@ public:
     int GetDMG();
     void TakeDMG(int);
     bool isAlive();
+    std::string getName();
 
     virtual void setMove(Player&);
     virtual void attack(Player&, std::list<Projectile>&);
+    virtual void dropItem(std::list<Weapon*>&);
 
 protected:
     bool alive_;
@@ -48,12 +50,14 @@ public:
     void attack(Player&, std::list<Projectile>&);
     void setMove(Player&);
 
+    int attack_ticks_;
+    int attack_cooldown_;
 };
 
 
 /*  Basic ranged monster
  * 
- *  - Moves away from the player
+ *  - Tries to keep at optimal_distance_ from the player
  *  - Deals ranged damage
  */ 
 
@@ -64,9 +68,11 @@ public:
 
     void attack(Player&, std::list<Projectile>&);
     void setMove(Player&);
+    void dropItem(std::list<Weapon*>&);
 
     Weapon* weapon_;
     int attack_ticks_;
+    int optimal_distance_; 
 
 };
 

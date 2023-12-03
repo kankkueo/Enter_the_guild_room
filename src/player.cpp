@@ -6,10 +6,10 @@ Player::Player(const std::string& name, int x, int y):
 Entity(x, y, 128, 128), weapon_(NULL) {
     name_ = name;
     alive_ = true;
-    hp_ = 100;
+    hp_ = 200;
     dmg_ = 10;
     xp_ = 0;
-    max_speed_ = 20;
+    max_speed_ = 15;
     inventory_ = std::list<std::string>();
     level_ = 0;
     xp_to_Level_up_ = 100;
