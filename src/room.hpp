@@ -27,6 +27,7 @@ public:
     int height_;
     std::list<Monster*> monsters_;
     std::list<Item*> items_;
+    std::list<Weapon*> weapons_;
 
 };
 

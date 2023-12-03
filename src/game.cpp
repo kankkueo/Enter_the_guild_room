@@ -39,6 +39,13 @@ void Game::parseInput(Renderer& r) {
     }
 
     if (s.interact) {
+
+        Weapon* w = scanWeapons(r);
+        if (w) {
+            room_->weapons_.push_back(player_.weapon_);
+            player_.weapon_ = w;
+        }
+
         Coordinate ppos = player_.center();
         Coordinate rpos;
         rpos.x = room_->advanceDoorX_;
@@ -128,11 +135,7 @@ void Game::moveProjectiles() {
                 p = projectiles_.erase(p);
                 
                 if (!(*m)->isAlive()) {
-                    (*m)->dropItem(room_->items_);
-                    if ((*m)->getName() == "Gun guy") {
-
-                    room_->items_.push_back(((RangedMob*)(*m))->weapon_);
-                    }
+                    (*m)->dropItem(room_->weapons_);
                     delete *m;
                     m = room_->monsters_.erase(m);
                 }
@@ -189,7 +192,7 @@ int Game::tick(Renderer& r) {
         player_.shoot_ticks_--;
     }
 
-    scanNear(r);
+    scanWeapons(r);
 
     parseInput(r);
 
@@ -207,17 +210,28 @@ int Game::tick(Renderer& r) {
     return 0;
 }
 
-void Game::scanNear(Renderer& r) {
+Weapon* Game::scanWeapons(Renderer& r) {
     Coordinate ppos = player_.center();
     Coordinate rpos;
     rpos.x = room_->advanceDoorX_;
     rpos.y = room_->advanceDoorY_;
+
+    for (Weapon* w: room_->weapons_) {
+        int x_diff = w->x_ - player_.x_;
+        int y_diff = w->y_ - player_.y_;
+        if (x_diff * x_diff + y_diff * y_diff <= 100 * 100) {
+            infoText = "Press E to pick up";
+            return w;
+        }
+    }
 
     if (ppos.x > rpos.x - 64 && ppos.x < rpos.x + 64 && ppos.y > rpos.y - 64 && ppos.y < rpos.y + 64 && room_->monsters_.empty()) {
         infoText = "Press E to advance";
     } else {
         infoText = " ";
     }
+
+    return NULL;
 }
 
 void Game::render(Renderer& r) {
@@ -229,9 +243,14 @@ void Game::render(Renderer& r) {
     }
 
     for (Item* itm: room_->items_) {
-        r.drawTexture(((Weapon*)itm)->texture_, itm->x_ - x_offset_, itm->y_ - y_offset_, 0.0, SDL_FLIP_NONE);
-        // Only renders when casted to weapon??? TODO: fix
+        r.drawTexture(itm->texture_, itm->x_ - x_offset_, itm->y_ - y_offset_, 0.0, SDL_FLIP_NONE);
     }
+
+    for (Weapon* w: room_->weapons_) {
+        r.drawTexture(w->texture_, w->x_ - x_offset_, w->y_ - y_offset_, 0.0, SDL_FLIP_NONE);
+    }
+
+
 
     InputState state = input_.getState();
     SDL_RendererFlip flip = SDL_FLIP_NONE;

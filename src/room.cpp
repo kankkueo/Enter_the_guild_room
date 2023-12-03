@@ -18,6 +18,12 @@ Room::~Room() {
         itm = items_.erase(itm);
     }
 
+    for (auto w = weapons_.begin(); w != weapons_.end(); w++) {
+        w = weapons_.erase(w);
+    }
+
+
+
 }
 
 Room::Room(const std::string& name, int width, int height, SDL_Texture *texture, SDL_Texture *advanceDoor)
