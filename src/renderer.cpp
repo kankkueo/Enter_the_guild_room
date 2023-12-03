@@ -95,7 +95,7 @@ int Renderer::getWinHeight() {
     return height_;
 }
 
-void Renderer::draw_text(const char* str, int x, int y){
+void Renderer::draw_text(const char* str, int x, int y, int xalign){
 	SDL_Surface* text;
 	// Set color to white
 	SDL_Color color = { 255, 255, 255 };
@@ -112,10 +112,13 @@ void Renderer::draw_text(const char* str, int x, int y){
 		std::cout << "Failed to render text: " << TTF_GetError() << std::endl;
 	}
 	SDL_Texture* text_texture;
-
+	SDL_Rect dest;
 	text_texture = SDL_CreateTextureFromSurface( renderer_, text );
-
-	SDL_Rect dest = { x - text->w/2, y, text->w, text->h };
+	if(xalign == 1){
+		dest = { x - text->w/2, y, text->w, text->h };
+	}else{
+		dest = { x, y, text->w, text->h };
+	}
 
 	SDL_RenderCopy( renderer_, text_texture,NULL, &dest );
 

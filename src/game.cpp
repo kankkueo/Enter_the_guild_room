@@ -9,7 +9,7 @@
 Game::Game(): 
     input_(Input()), 
     player_(Player("test geezer", 100, 100)),
-    hud_(Hud(0,0))
+    hud_(Hud(100,100))
 {
     running_ = true;
     x_offset_ = 0;
@@ -265,7 +265,7 @@ void Game::render(Renderer& r) {
         r.drawTexture(e.texture_, e.x_ - x_offset_, e.y_ - y_offset_, angle, SDL_FLIP_NONE);
     }
     
-    hud_.drawInfo(r, player_.GetLevel());
+    hud_.drawInfo(r, 100, player_.GetHP());
 
     r.draw_text(infoText.c_str(), r.getWinWidth()/2, 100);
 
