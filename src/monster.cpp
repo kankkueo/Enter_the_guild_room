@@ -47,6 +47,8 @@ void Monster::setMove(Player&) {}
 
 void Monster::attack(Player&, std::list<Projectile>&) {}
 
+void Monster::dropItem(std::list<Item*>&) {}
+
 /*
  *  Melee mob
  */
@@ -161,14 +163,20 @@ void RangedMob::attack(Player& p, std::list<Projectile>& projectiles) {
     }
 }
 
+void RangedMob::dropItem(std::list<Item*>& items) {
+    weapon_->x_ = x_;
+    weapon_->y_ = y_;
+    items.push_back(weapon_);
+}
+
 /*
  *  Non-member functions
  */
 
 Monster* genRandomMob(Renderer& r, int level, int room_width, int room_height) {
 
-    int x = rand() % (room_width - 80) + 80;
-    int y = rand() % (room_height - 80) + 80;
+    int x = rand() % (room_width - 150) + 150;
+    int y = rand() % (room_height - 150) + 150;
 
     int type = rand() % 2;
 

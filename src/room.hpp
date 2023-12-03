@@ -14,7 +14,9 @@ public:
     ~Room();
 
     void addRandomMonsters(Renderer&, int, int);
+    void addRandomItems(Renderer& r, int level, int amount);
     void addAdvanceDoor();
+    void addItem(Item*);
     
     std::string name_;
     SDL_Texture *texture_;
@@ -24,6 +26,7 @@ public:
     int width_;
     int height_;
     std::list<Monster*> monsters_;
+    std::list<Item*> items_;
 
 };
 

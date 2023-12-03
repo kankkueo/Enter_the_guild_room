@@ -1,6 +1,7 @@
 #include "game.hpp"
 #include "entity.hpp"
 #include "input.hpp"
+#include "weapon.hpp"
 #include <SDL2/SDL_render.h>
 #include <SDL2/SDL_timer.h>
 #include <iostream>
@@ -127,6 +128,11 @@ void Game::moveProjectiles() {
                 p = projectiles_.erase(p);
                 
                 if (!(*m)->isAlive()) {
+                    (*m)->dropItem(room_->items_);
+                    if ((*m)->getName() == "Gun guy") {
+
+                    room_->items_.push_back(((RangedMob*)(*m))->weapon_);
+                    }
                     delete *m;
                     m = room_->monsters_.erase(m);
                 }
@@ -201,7 +207,7 @@ int Game::tick(Renderer& r) {
     return 0;
 }
 
-void Game::scanNear(Renderer& r){
+void Game::scanNear(Renderer& r) {
     Coordinate ppos = player_.center();
     Coordinate rpos;
     rpos.x = room_->advanceDoorX_;
@@ -220,6 +226,11 @@ void Game::render(Renderer& r) {
 
     for (Monster* m: room_->monsters_) {
         r.drawTexture(m->texture_, m->x_ - x_offset_, m->y_ - y_offset_, 0.0, SDL_FLIP_NONE);
+    }
+
+    for (Item* itm: room_->items_) {
+        r.drawTexture(((Weapon*)itm)->texture_, itm->x_ - x_offset_, itm->y_ - y_offset_, 0.0, SDL_FLIP_NONE);
+        // Only renders when casted to weapon??? TODO: fix
     }
 
     InputState state = input_.getState();
@@ -254,7 +265,7 @@ void Game::render(Renderer& r) {
         weapon_ypos = 77;
     }
 
-     r.drawTexture(player_texture, 
+    r.drawTexture(player_texture, 
         player_.x_ - x_offset_, 
         player_.y_ - y_offset_, 0.0, SDL_FLIP_NONE);
     

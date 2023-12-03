@@ -1,6 +1,7 @@
 #include <iostream>
 #include "room.hpp"
 #include "monster.hpp"
+#include "weapon.hpp"
 
 #define ROOM_TEMPLATES 2
 
@@ -12,13 +13,19 @@ RoomTemplate rt[ROOM_TEMPLATES] = {
 Room::~Room() {
     //free(texture_);
     //free(advanceDoor_);
+
+    for (auto itm = items_.begin(); itm != items_.end(); itm++) {
+        itm = items_.erase(itm);
+    }
+
 }
 
 Room::Room(const std::string& name, int width, int height, SDL_Texture *texture, SDL_Texture *advanceDoor)
     : name_(name), width_(width), height_(height), texture_(texture), advanceDoor_(advanceDoor) {
         monsters_ = std::list<Monster*>();
-        advanceDoorX_ = 120 + rand() % (width - 120);
-        advanceDoorY_ = 120 + rand() % (height - 120);
+        items_ = std::list<Item*>();
+        advanceDoorX_ = 75 + rand() % (width - 150);
+        advanceDoorY_ = 75 + rand() % (height - 150);
 }
 
 void Room::addRandomMonsters(Renderer& r, int level, int amount) {
@@ -40,3 +47,4 @@ Room* genRoom(Renderer& r, int level) {
 
     return rm;
 }
+

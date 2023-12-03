@@ -96,7 +96,7 @@ float randomFloat(float from, float to) {
 
 Weapon* genRandomWeapon(Renderer& r, int level) {
 
-    int type = rand() % 2;
+    int type = rand() % 3;
 
     Weapon* w = NULL;
 
@@ -107,7 +107,7 @@ Weapon* genRandomWeapon(Renderer& r, int level) {
             int pspeed = ceil(0.05 * level + 15 * randomFloat(0.7, 1.4));
 
             w = new Pistol("Random pistol", 10, dmg, pspeed, firerate);
-            w->texture_ = r.loadTexture("./assets/gun1.png");
+            w->texture_ = r.loadTexture("./assets/pistol.png");
             w->projectile_texture_ = r.loadTexture("./assets/bulet1.png");
 
             std::cout << "Generated pistol " << w-> getName() << " with: dmg =" << w->getDmg();
@@ -118,11 +118,11 @@ Weapon* genRandomWeapon(Renderer& r, int level) {
         }
         case SMGType: {
             int dmg = 2 + ceil(0.2*level*level * randomFloat(0.5, 1.8));
-            int firerate = 6 + rand() % 14;
+            int firerate = 6 + rand() % 10;
             int pspeed = ceil(0.05 * level + 15 * randomFloat(0.7, 1.4));
 
             w = new Pistol("Random SMG", 10, dmg, pspeed, firerate);
-            w->texture_ = r.loadTexture("./assets/gun1.png");
+            w->texture_ = r.loadTexture("./assets/smg.png");
             w->projectile_texture_ = r.loadTexture("./assets/bulet1.png");
 
             std::cout << "Generated SMG " << w-> getName() << " with: dmg =" << w->getDmg();
@@ -139,7 +139,7 @@ Weapon* genRandomWeapon(Renderer& r, int level) {
             float spread = randomFloat(0.1, 0.5);
 
             w = new Shotgun("Random shotgun", 10, dmg, pspeed, firerate, pellets, spread);
-            w->texture_ = r.loadTexture("./assets/gun1.png");
+            w->texture_ = r.loadTexture("./assets/shotgun.png");
             w->projectile_texture_ = r.loadTexture("./assets/bulet1.png");
 
             std::cout << "Generated shotgun " << w->getName() << " with: dmg =" << w->getDmg();
