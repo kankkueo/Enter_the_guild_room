@@ -40,13 +40,16 @@ void Game::parseInput(Renderer& r) {
 
     if (s.interact) {
 
+        Coordinate ppos = player_.center();
+
         Weapon* w = scanWeapons(r);
         if (w) {
+            player_.weapon_->x_ = ppos.x;
+            player_.weapon_->y_ = ppos.y;
             room_->weapons_.push_back(player_.weapon_);
             player_.weapon_ = w;
         }
 
-        Coordinate ppos = player_.center();
         Coordinate rpos;
         rpos.x = room_->advanceDoorX_;
         rpos.y = room_->advanceDoorY_;
@@ -55,6 +58,7 @@ void Game::parseInput(Renderer& r) {
             
             changeRoom(r);
         }
+        input_.resetInteract();
     }
 
     if (s.attack || s.attackUp || s.attackDown || s.attackLeft || s.attackRight) {
@@ -192,7 +196,7 @@ int Game::tick(Renderer& r) {
         player_.shoot_ticks_--;
     }
 
-    scanWeapons(r);
+    scanNear(r);
 
     parseInput(r);
 
@@ -212,16 +216,39 @@ int Game::tick(Renderer& r) {
 
 Weapon* Game::scanWeapons(Renderer& r) {
     Coordinate ppos = player_.center();
+
+    for (auto w = room_->weapons_.begin(); w != room_->weapons_.end(); w++) {
+        int x_diff = (*w)->x_ - ppos.x;
+        int y_diff = (*w)->y_ - ppos.y;
+        if (x_diff * x_diff + y_diff * y_diff <= 100 * 100) {
+            room_->weapons_.erase(w);
+            return *w;
+        }
+    }
+    return NULL;
+}
+
+void Game::scanNear(Renderer& r) {
+    Coordinate ppos = player_.center();
     Coordinate rpos;
     rpos.x = room_->advanceDoorX_;
     rpos.y = room_->advanceDoorY_;
 
-    for (Weapon* w: room_->weapons_) {
-        int x_diff = w->x_ - player_.x_;
-        int y_diff = w->y_ - player_.y_;
+    for (auto w = room_->weapons_.begin(); w != room_->weapons_.end(); w++) {
+        int x_diff = (*w)->x_ - ppos.x;
+        int y_diff = (*w)->y_ - ppos.y;
+        if (x_diff * x_diff + y_diff * y_diff <= 100 * 100) {
+            infoText = "Press E to swap weapon";
+            return;
+        }
+    }
+
+    for (auto w = room_->items_.begin(); w != room_->items_.end(); w++) {
+        int x_diff = (*w)->x_ - ppos.x;
+        int y_diff = (*w)->y_ - ppos.y;
         if (x_diff * x_diff + y_diff * y_diff <= 100 * 100) {
             infoText = "Press E to pick up";
-            return w;
+            return;
         }
     }
 
@@ -231,7 +258,6 @@ Weapon* Game::scanWeapons(Renderer& r) {
         infoText = " ";
     }
 
-    return NULL;
 }
 
 void Game::render(Renderer& r) {
@@ -298,7 +324,7 @@ void Game::render(Renderer& r) {
         r.drawTexture(e.texture_, e.x_ - x_offset_, e.y_ - y_offset_, angle, SDL_FLIP_NONE);
     }
     
-    hud_.drawInfo(r, 11, 0);
+//    hud_.drawInfo(r, 100, player_.GetHP());
 
     r.draw_text(infoText.c_str(), r.getWinWidth()/2, 100);
 

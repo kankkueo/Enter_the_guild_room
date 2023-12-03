@@ -137,6 +137,10 @@ InputState Input::getState() {
     return state_;
 }
 
+void Input::resetInteract() {
+    state_.interact = false;
+}
+
 void Input::resetInput() {
 	state_.attack = false;
 	state_.down = false;
