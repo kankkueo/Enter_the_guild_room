@@ -10,7 +10,8 @@
 
 class Room {
 public:
-    Room(std::string, int, int, SDL_Texture*, SDL_Texture*);
+    Room(const std::string&, int, int, SDL_Texture*, SDL_Texture*);
+    ~Room();
 
     void addRandomMonsters(Renderer&, int, int);
     void addAdvanceDoor();
@@ -25,5 +26,17 @@ public:
     std::list<Monster*> monsters_;
 
 };
+
+typedef struct {
+    std::string name;
+    std::string texture_location;
+    int width;
+    int height;
+    int mobs_min;
+    int mobs_max;
+} RoomTemplate;
+
+
+Room* genRoom(Renderer&, int);
 
 #endif

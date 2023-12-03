@@ -17,9 +17,10 @@ Game::Game():
     room_templates_ = std::list<Room>();
     projectiles_ = std::list<Projectile>();
     infoText = " ";
+    game_level_ = 1;
 }
 
-void Game::parseInput() {
+void Game::parseInput(Renderer& r) {
 
     // scans the inputs into inputState
     if (input_.scan()) {
@@ -44,7 +45,7 @@ void Game::parseInput() {
 
         if(ppos.x > rpos.x - 64 && ppos.x < rpos.x + 64 && ppos.y > rpos.y - 64 && ppos.y < rpos.y + 64 && room_->monsters_.empty()){
             
-            changeRoom(room1_);
+            changeRoom(r);
         }
     }
 
@@ -75,9 +76,11 @@ void Game::calcOffset(Renderer& r) {
     
 }
 
-void Game::changeRoom(Room *r){
+void Game::changeRoom(Renderer& r) {
     input_.resetInput();
-    room_ = r;
+    delete room_;
+    game_level_++;
+    room_ = genRoom(r, game_level_);
 }
 
 void Game::movePlayer(InputState s) {
@@ -182,7 +185,7 @@ int Game::tick(Renderer& r) {
 
     scanNear(r);
 
-    parseInput();
+    parseInput(r);
 
     moveProjectiles();
     
