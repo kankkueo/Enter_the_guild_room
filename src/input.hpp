@@ -41,6 +41,7 @@ public:
     void keyDown(SDL_KeyboardEvent*);
     void keyUp(SDL_KeyboardEvent*);
     void resetInput();
+    void resetInteract();
     InputState getState();
 
 private:
