@@ -208,7 +208,8 @@ int Game::tick(Renderer& r) {
     calcOffset(r);
 
     if (!player_.isAlive()) {
-        SDL_Delay(2000);
+        infoText = "YOU DIED";
+        render(r);
         running_ = false;
     }
 

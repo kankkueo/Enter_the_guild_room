@@ -40,7 +40,7 @@ int main() {
         SDL_Delay(1000/60);
     }
 
-
+    SDL_Delay(2000);
     rend.destroy();
 
 }
