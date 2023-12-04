@@ -109,7 +109,7 @@ Weapon* genRandomWeapon(Renderer& r, int level) {
 
     switch (type) {
         case PistolType: {
-            int dmg = 6 + ceil(0.8*level*level * randomFloat(0.5, 1.8));
+            int dmg = 6 + ceil(6*level*level * randomFloat(0.5, 1.8));
             int firerate = 1 + rand() % 5;
             int pspeed = ceil(0.05 * level + 15 * randomFloat(0.7, 1.4));
 
@@ -124,7 +124,7 @@ Weapon* genRandomWeapon(Renderer& r, int level) {
             break;
         }
         case SMGType: {
-            int dmg = 2 + ceil(0.2*level*level * randomFloat(0.5, 1.8));
+            int dmg = 2 + ceil(2*level*level * randomFloat(0.5, 1.8));
             int firerate = 6 + rand() % 10;
             int pspeed = ceil(0.05 * level + 15 * randomFloat(0.7, 1.4));
 
@@ -139,7 +139,7 @@ Weapon* genRandomWeapon(Renderer& r, int level) {
             break;
         }
         case ShotgunType: {
-            int dmg = 2 + ceil(0.4*level*level * randomFloat(0.6, 1.3));
+            int dmg = 2 + ceil(1*level*level * randomFloat(0.6, 1.3));
             int firerate = 1 + rand() % 3;
             int pspeed = ceil(0.05 * level + 12 * randomFloat(0.7, 1.5));
             int pellets = 3 + rand() % 10;

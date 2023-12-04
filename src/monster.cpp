@@ -54,8 +54,8 @@ void Monster::dropItem(std::list<Weapon*>&) {}
  */
 
 MeleeMob::MeleeMob(int level, int x, int y, int size_x, int size_y): 
-Monster("Melee chump", 20 + 0.2*level*level, 10 + 0.4*level*level, 
-    5 + 0.1*level, x, y, size_x, size_y) {
+Monster("Melee chump", 50 + 5*level*level, 100 + 10*level*level, 
+    5 + 0.5*level, x, y, size_x, size_y) {
     attack_cooldown_ = 60 + rand() % 540;
     attack_ticks_ = 0;
 }
@@ -108,7 +108,7 @@ void MeleeMob::attack(Player& p, std::list<Projectile>&) {
  */
 
 RangedMob::RangedMob(int level, int x, int y, int size_x, int size_y, Weapon* weapon): 
-Monster("Gun guy", 10 + 0.14*level*level, 0.1*level*level, 
+Monster("Gun guy", 20 + 3*level*level, level*level, 
     3 + 0.1*level, x, y, size_x, size_y), weapon_(weapon) {
     optimal_distance_ = 300 + rand() % 500;
 }

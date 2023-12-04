@@ -6,13 +6,14 @@ Player::Player(const std::string& name, int x, int y):
 Entity(x, y, 128, 128), weapon_(NULL) {
     name_ = name;
     alive_ = true;
-    hp_ = 200;
+    max_hp_ = 1000;
+    hp_ = max_hp_;
     dmg_ = 10;
     xp_ = 0;
     max_speed_ = 15;
     inventory_ = std::list<std::string>();
-    level_ = 0;
-    xp_to_Level_up_ = 100;
+    level_ = 1;
+    xp_to_Level_up_ = 1000;
     shoot_ticks_ = 0;
 }
 
@@ -54,8 +55,8 @@ void Player::TakeDMG(int value) {
 }
 
 void Player::Heal(int value) {
-    if (hp_ + value >= 100) {
-        hp_ = 100;
+    if (hp_ + value >= max_hp_) {
+        hp_ = max_hp_;
     } else {
         hp_ += value;
     }
@@ -143,12 +144,14 @@ void Player::gainXP(int amount) {
     if (xp_ >= xp_to_Level_up_) {
         level_++;
         xp_ -= xp_to_Level_up_;
-        dmg_ += level_ * 0.1 * 10;
-        hp_ += level_ * 0.1 * 100;
-        xp_to_Level_up_ += level_ * 0.1 * 100;
+        dmg_ = level_ * 2;
+        max_hp_ += level_ * level_ * 10;
+        hp_ = max_hp_;
+        xp_to_Level_up_ += level_ * 10;
     }
 }
 
 bool Player::isAlive() {
     return alive_;
 }
+

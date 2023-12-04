@@ -40,6 +40,7 @@ private:
     bool alive_;
     std::string name_;
     int hp_;
+    int max_hp_;
     int dmg_;
     int xp_;
     int max_speed_;
