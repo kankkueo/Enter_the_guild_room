@@ -17,7 +17,8 @@ Entity(x, y, 128, 128), weapon_(NULL) {
     shoot_ticks_ = 0;
 }
 
-void Player::equipWeapon(Weapon* w) {
+void Player::equipWeapon(Weapon* w, Renderer& r) {
+    w->projectile_texture_ = r.loadTexture("./assets/player-bullet.png");
     weapon_ = w;
 }
 

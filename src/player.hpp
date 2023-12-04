@@ -28,7 +28,7 @@ public:
     float getAttackDirection();
     void gainXP(int);
     bool isAlive();
-    void equipWeapon(Weapon*);
+    void equipWeapon(Weapon*, Renderer& r);
 
     Weapon *weapon_;
     SDL_Texture *texture_front_;

@@ -18,7 +18,7 @@ int main() {
     game.player_.texture_right_= rend.loadTexture("./assets/teekkari1-right.png");
 
     Weapon* w = genRandomWeapon(rend, 1);
-    game.player_.equipWeapon(w);
+    game.player_.equipWeapon(w, rend);
 
 
 //    Room startroom = Room("Startroom", 720, 480, rend.loadTexture("./assets/startroom.png"), rend.loadTexture("./assets/trapdoor.png"));
