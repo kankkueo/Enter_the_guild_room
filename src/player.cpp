@@ -71,7 +71,7 @@ void Player::UpdateDMG(int value) {
     dmg_  += value;
 }
 
-void Player::setMove(InputState s) {
+void Player::setMove(InputState& s) {
 
     if (s.up && s.right) {
         direction_ = 0.7853982;
@@ -105,34 +105,43 @@ void Player::setMove(InputState s) {
     speed_ = GetMaxSpeed();
 }
 
-void Player::setAttack(InputState s) {
+bool Player::attack(InputState& s, std::list<Projectile>& projectiles) {
+    if (shoot_ticks_ <= 0) {
+        shoot_ticks_ = 60 / weapon_->getFirerate();
 
-    if (s.attackUp && s.attackRight) {
-        attack_direction_ = 0.7853982;
-    }
-    else if (s.attackUp && s.attackLeft) {
-        attack_direction_ = 2.3561945;
-    }
-    else if (s.attackDown && s.attackRight) {
-        attack_direction_ = 5.4977871;
-    }
-    else if (s.attackDown && s.attackLeft) {
-        attack_direction_ = 3.9269908;
-    }
-    else if (s.attackUp) {
-        attack_direction_ = 1.5707963;
-    }
-    else if (s.attackDown) {
-        attack_direction_ = 4.7123890;
-    }
-    else if (s.attackLeft) {
-        attack_direction_ = 3.1415927;
-    }
-    else if (s.attackRight) {
-        attack_direction_ = 0;
+        if (s.attackUp && s.attackRight) {
+            attack_direction_ = 0.7853982;
+        }
+        else if (s.attackUp && s.attackLeft) {
+            attack_direction_ = 2.3561945;
+        }
+        else if (s.attackDown && s.attackRight) {
+            attack_direction_ = 5.4977871;
+        }
+        else if (s.attackDown && s.attackLeft) {
+            attack_direction_ = 3.9269908;
+        }
+        else if (s.attackUp) {
+            attack_direction_ = 1.5707963;
+        }
+        else if (s.attackDown) {
+            attack_direction_ = 4.7123890;
+        }
+        else if (s.attackLeft) {
+            attack_direction_ = 3.1415927;
+        }
+        else if (s.attackRight) {
+            attack_direction_ = 0;
+        }
+        else {
+            return false;
+        }
+
+        weapon_->shoot(projectiles, *this, dmg_, attack_direction_, true);
+        return true;
     }
     else {
-        return;
+        return false;
     }
 }
 

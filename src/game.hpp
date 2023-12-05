@@ -28,8 +28,7 @@ public:
     std::list<Projectile> projectiles_;
 
     Game();
-    void movePlayer(InputState);
-    void playerAttack(InputState);
+    void movePlayer(InputState&);
     void spawnProjectile(int, int, int, int, int, float, SDL_Texture*);
     void moveProjectiles();
     void moveMonsters();

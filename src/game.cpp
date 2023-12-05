@@ -63,7 +63,9 @@ void Game::parseInput(Renderer& r) {
     }
 
     if (s.attack || s.attackUp || s.attackDown || s.attackLeft || s.attackRight) {
-        playerAttack(s);
+        if (player_.attack(s, projectiles_)) {
+            r.playSound(player_.weapon_->sound_, 0);
+        }
     }
 }
 
@@ -96,7 +98,7 @@ void Game::changeRoom(Renderer& r) {
     room_ = genRoom(r, game_level_);
 }
 
-void Game::movePlayer(InputState s) {
+void Game::movePlayer(InputState& s) {
     player_.setMove(s);
     Coordinate c = player_.newPos();
 
@@ -118,15 +120,6 @@ void Game::movePlayer(InputState s) {
     }
     else {
         player_.y_ = c.y;
-    }
-}
-
-void Game::playerAttack(InputState s) {
-    if (player_.shoot_ticks_ <= 0) {
-        player_.shoot_ticks_ = 60 / player_.weapon_->getFirerate();
-
-        player_.setAttack(s);
-        player_.weapon_->shoot(projectiles_, player_, player_.GetDMG(), player_.getAttackDirection(), true);
     }
 }
 

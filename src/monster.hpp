@@ -24,7 +24,7 @@ public:
     std::string getName();
 
     virtual void setMove(Player&);
-    virtual void attack(Player&, std::list<Projectile>&);
+    virtual bool attack(Player&, std::list<Projectile>&);
     virtual void dropItem(std::list<Weapon*>&);
 
 protected:
@@ -47,7 +47,7 @@ class MeleeMob: public Monster {
 public:
     MeleeMob(int, int, int, int, int);
 
-    void attack(Player&, std::list<Projectile>&);
+    bool attack(Player&, std::list<Projectile>&);
     void setMove(Player&);
 
     int attack_ticks_;
@@ -66,7 +66,7 @@ class RangedMob: public Monster {
 public:
     RangedMob(int, int, int, int, int, Weapon*);
 
-    void attack(Player&, std::list<Projectile>&);
+    bool attack(Player&, std::list<Projectile>&);
     void setMove(Player&);
     void dropItem(std::list<Weapon*>&);
 

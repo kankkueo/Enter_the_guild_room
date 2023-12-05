@@ -45,7 +45,9 @@ bool Monster::isAlive() {
 
 void Monster::setMove(Player&) {}
 
-void Monster::attack(Player&, std::list<Projectile>&) {}
+bool Monster::attack(Player&, std::list<Projectile>&) {
+    return false;
+}
 
 void Monster::dropItem(std::list<Weapon*>&) {}
 
@@ -89,7 +91,7 @@ void MeleeMob::setMove(Player& p) {
     speed_ = max_speed_; 
 }
 
-void MeleeMob::attack(Player& p, std::list<Projectile>&) {
+bool MeleeMob::attack(Player& p, std::list<Projectile>&) {
     Coordinate pc = p.center();
     float x_diff = pc.x - x_;
     float y_diff = pc.y - y_;
@@ -101,6 +103,8 @@ void MeleeMob::attack(Player& p, std::list<Projectile>&) {
     else {
         attack_ticks_--;
     }
+
+    return true;
 }
 
 /*
@@ -141,7 +145,7 @@ void RangedMob::setMove(Player& p) {
     speed_ = max_speed_;
 }
 
-void RangedMob::attack(Player& p, std::list<Projectile>& projectiles) {
+bool RangedMob::attack(Player& p, std::list<Projectile>& projectiles) {
     if (attack_ticks_ <= 0) {
         attack_ticks_ = 60 / weapon_->getFirerate();
         float d;
@@ -161,6 +165,8 @@ void RangedMob::attack(Player& p, std::list<Projectile>& projectiles) {
     else {
         attack_ticks_--;
     }
+
+    return true;
 }
 
 void RangedMob::dropItem(std::list<Weapon*>& items) {

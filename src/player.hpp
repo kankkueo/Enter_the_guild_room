@@ -23,8 +23,8 @@ public:
     void TakeDMG(int);
     void UpdateXP(int);
     void UpdateDMG(int);
-    void setMove(InputState);
-    void setAttack(InputState);
+    void setMove(InputState&);
+    bool attack(InputState&, std::list<Projectile>&);
     float getAttackDirection();
     void gainXP(int);
     bool isAlive();
