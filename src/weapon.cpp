@@ -116,6 +116,7 @@ Weapon* genRandomWeapon(Renderer& r, int level) {
             w = new Pistol("Random pistol", 10, dmg, pspeed, firerate);
             w->texture_ = r.loadTexture("./assets/pistol.png");
             w->projectile_texture_ = r.loadTexture("./assets/bulet1.png");
+            w->sound_ = r.loadSound("./assets/sounds/testi.mp3");
 
             std::cout << "Generated pistol " << w-> getName() << " with: dmg =" << w->getDmg();
             std::cout << ", firerate = " << w->getFirerate();
@@ -131,6 +132,7 @@ Weapon* genRandomWeapon(Renderer& r, int level) {
             w = new Pistol("Random SMG", 10, dmg, pspeed, firerate);
             w->texture_ = r.loadTexture("./assets/smg.png");
             w->projectile_texture_ = r.loadTexture("./assets/bulet1.png");
+            w->sound_ = r.loadSound("./assets/sounds/testi.mp3");
 
             std::cout << "Generated SMG " << w-> getName() << " with: dmg =" << w->getDmg();
             std::cout << ", firerate = " << w->getFirerate();
@@ -148,6 +150,7 @@ Weapon* genRandomWeapon(Renderer& r, int level) {
             w = new Shotgun("Random shotgun", 10, dmg, pspeed, firerate, pellets, spread);
             w->texture_ = r.loadTexture("./assets/shotgun.png");
             w->projectile_texture_ = r.loadTexture("./assets/bulet1.png");
+            w->sound_ = r.loadSound("./assets/sounds/testi.mp3");
 
             std::cout << "Generated shotgun " << w->getName() << " with: dmg =" << w->getDmg();
             std::cout << ", firerate = " << w->getFirerate();

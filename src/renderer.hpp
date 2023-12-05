@@ -4,6 +4,7 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_events.h>
 #include <SDL2/SDL_ttf.h>
+#include <SDL2/SDL_mixer.h>
 
 
 class Renderer {
@@ -23,6 +24,8 @@ public:
     TTF_Font* GetFont();
     void renderText(SDL_Surface* text, int x, int y);
     SDL_Surface* InitText(char* str);
+    void playSound(Mix_Chunk*, int);
+    Mix_Chunk* loadSound(const char*);
     
 
 private:
