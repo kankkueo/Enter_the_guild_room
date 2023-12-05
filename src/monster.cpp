@@ -99,12 +99,13 @@ bool MeleeMob::attack(Player& p, std::list<Projectile>&) {
     if (attack_ticks_ <= 0 && x_diff * x_diff + y_diff * y_diff <= p.size_x_ * p.size_x_ + 20) {
         p.TakeDMG(dmg_);
         attack_ticks_ = attack_cooldown_;
+        
+        return true;
     }
     else {
         attack_ticks_--;
+        return false;
     }
-
-    return true;
 }
 
 /*
@@ -161,12 +162,14 @@ bool RangedMob::attack(Player& p, std::list<Projectile>& projectiles) {
         }
 
         weapon_->shoot(projectiles, *this, dmg_, d, false);
+
+        return true;
+
     }
     else {
         attack_ticks_--;
+        return false;
     }
-
-    return true;
 }
 
 void RangedMob::dropItem(std::list<Weapon*>& items) {

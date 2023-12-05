@@ -153,7 +153,7 @@ void Game::moveProjectiles() {
     }
 }
 
-void Game::moveMonsters() {
+void Game::moveMonsters(Renderer& r) {
     for (auto m = room_->monsters_.begin(); m != room_->monsters_.end(); m++) {
         (*m)->setMove(player_);
         
@@ -179,7 +179,9 @@ void Game::moveMonsters() {
             (*m)->y_ = c.y;
         }
 
-        (*m)->attack(player_, projectiles_);
+        if ((*m)->attack(player_, projectiles_)) {
+            r.playSound(player_.weapon_->sound_, 1);
+        }
 
     }
 }
@@ -197,7 +199,7 @@ int Game::tick(Renderer& r) {
 
     moveProjectiles();
     
-    moveMonsters();
+    moveMonsters(r);
 
     calcOffset(r);
 

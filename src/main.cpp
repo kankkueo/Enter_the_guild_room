@@ -19,15 +19,9 @@ int main() {
 
     Weapon* w = genRandomWeapon(rend, 1);
     game.player_.equipWeapon(w, rend);
-
-
-//    Room startroom = Room("Startroom", 720, 480, rend.loadTexture("./assets/startroom.png"), rend.loadTexture("./assets/trapdoor.png"));
- //   Room bigroom = Room("Big room", 2500, 1500, rend.loadTexture("./assets/bigroom1.png"), rend.loadTexture("./assets/trapdoor.png"));
-  //  game.room1_ = &startroom;
     
     game.room_ = genRoom(rend, 1);
 
-    //bigroom.addRandomMonsters(rend, 1, 4);
     
     std::cout << "Starting game" << std::endl;
 
