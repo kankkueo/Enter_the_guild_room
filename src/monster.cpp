@@ -39,6 +39,10 @@ void Monster::TakeDMG(int value) {
     }
 }
 
+Mix_Chunk* Monster::getAttackSound() {
+    return NULL;
+}
+
 bool Monster::isAlive() {
     return alive_;
 }
@@ -176,6 +180,10 @@ void RangedMob::dropItem(std::list<Weapon*>& items) {
     weapon_->x_ = x_;
     weapon_->y_ = y_;
     items.push_back(weapon_);
+}
+
+Mix_Chunk* RangedMob::getAttackSound() {
+    return weapon_->sound_;
 }
 
 /*

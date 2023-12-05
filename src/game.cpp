@@ -180,7 +180,7 @@ void Game::moveMonsters(Renderer& r) {
         }
 
         if ((*m)->attack(player_, projectiles_)) {
-            r.playSound(player_.weapon_->sound_, 1);
+            r.playSound((*m)->getAttackSound(), 1);
         }
 
     }

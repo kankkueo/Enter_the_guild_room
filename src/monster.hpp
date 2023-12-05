@@ -5,6 +5,7 @@
 #include "player.hpp"
 #include "renderer.hpp"
 #include "weapon.hpp"
+#include <SDL2/SDL_mixer.h>
 #include <SDL2/SDL_render.h>
 #include <string>
 
@@ -26,6 +27,7 @@ public:
     virtual void setMove(Player&);
     virtual bool attack(Player&, std::list<Projectile>&);
     virtual void dropItem(std::list<Weapon*>&);
+    virtual Mix_Chunk* getAttackSound();
 
 protected:
     bool alive_;
@@ -69,6 +71,7 @@ public:
     bool attack(Player&, std::list<Projectile>&);
     void setMove(Player&);
     void dropItem(std::list<Weapon*>&);
+    Mix_Chunk* getAttackSound();
 
     Weapon* weapon_;
     int attack_ticks_;
