@@ -60,9 +60,9 @@ void Monster::dropItem(std::list<Weapon*>&) {}
  */
 
 MeleeMob::MeleeMob(int level, int x, int y, int size_x, int size_y): 
-Monster("Melee chump", 50 + 5*level*level, 100 + 10*level*level, 
+Monster("Melee chump", 50 + 15*level*level, 100 + 10*level*level, 
     5 + 0.5*level, x, y, size_x, size_y) {
-    attack_cooldown_ = 60 + rand() % 540;
+    attack_cooldown_ = 60 + rand() % 300;
     attack_ticks_ = 0;
 }
 
@@ -100,7 +100,7 @@ bool MeleeMob::attack(Player& p, std::list<Projectile>&) {
     float x_diff = pc.x - x_;
     float y_diff = pc.y - y_;
 
-    if (attack_ticks_ <= 0 && x_diff * x_diff + y_diff * y_diff <= p.size_x_ * p.size_x_ + 20) {
+    if (attack_ticks_ <= 0 && x_diff * x_diff + y_diff * y_diff <= 250 * 250) {
         p.TakeDMG(dmg_);
         attack_ticks_ = attack_cooldown_;
         
