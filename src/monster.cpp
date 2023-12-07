@@ -14,6 +14,11 @@ Entity(x, y, size_x, size_y) {
     hp_ = hp;
     dmg_ = dmg;
     max_speed_ = max_speed;
+
+    sounds_.attack_ = NULL;
+    sounds_.hit_ = NULL;
+    sounds_.death_ = NULL;
+    sounds_.taunt_ = NULL;
 }
 
 Monster::~Monster() {}
@@ -40,7 +45,7 @@ void Monster::TakeDMG(int value) {
 }
 
 Mix_Chunk* Monster::getAttackSound() {
-    return NULL;
+    return sounds_.attack_;
 }
 
 bool Monster::isAlive() {
@@ -203,6 +208,7 @@ Monster* genRandomMob(Renderer& r, int level, int room_width, int room_height) {
         case MeleeMobType: {
             m = new MeleeMob(level, x, y, 60, 90);
             m->texture_ = r.loadTexture("./assets/Koneteekkari.png");
+            m->sounds_.death_ = r.loadSound("");
 
             std::cout << "Generated melee mob " << m->getName() << " with: dmg =" << m->GetDMG();
             std::cout << ", attack cooldown = " << ((MeleeMob*)m)->attack_cooldown_ << std::endl;
@@ -213,6 +219,7 @@ Monster* genRandomMob(Renderer& r, int level, int room_width, int room_height) {
             Weapon* w = genRandomWeapon(r, level);
             m = new RangedMob(level, x, y, 60, 90, w);
             m->texture_ = r.loadTexture("./assets/Koneteekkari.png"); // Different textures for mob types??
+            m->sounds_.death_ = r.loadSound("");
                                                                       
             std::cout << "Generated melee mob " << m->getName() << " with: dmg =" << m->GetDMG() << std::endl;
                                                                      

@@ -123,7 +123,7 @@ void Game::movePlayer(InputState& s) {
     }
 }
 
-void Game::moveProjectiles() {
+void Game::moveProjectiles(Renderer& r) {
     for (auto p = projectiles_.begin(); p != projectiles_.end(); p++) {
         p->move();
 
@@ -134,6 +134,7 @@ void Game::moveProjectiles() {
                 
                 if (!(*m)->isAlive()) {
                     (*m)->dropItem(room_->weapons_);
+                    r.playSound((*m)->sounds_.death_, 2);
                     delete *m;
                     m = room_->monsters_.erase(m);
                     player_.gainXP(300);
@@ -197,7 +198,7 @@ int Game::tick(Renderer& r) {
 
     parseInput(r);
 
-    moveProjectiles();
+    moveProjectiles(r);
     
     moveMonsters(r);
 
