@@ -1,6 +1,7 @@
 #include "monster.hpp"
 #include "renderer.hpp"
 #include "weapon.hpp"
+#include "consumables.cpp"
 #include <iostream>
 
 /*
@@ -48,6 +49,12 @@ void Monster::setMove(Player&) {}
 void Monster::attack(Player&, std::list<Projectile>&) {}
 
 void Monster::dropWeapon(std::list<Weapon*>&) {}
+
+void Monster::dropItem(std::list<Item*>& items) {
+    item_->x_ = x_;
+    item_->y_ = y_;
+    items.push_back(item_);
+}
 
 /*
  *  Melee mob
@@ -103,9 +110,6 @@ void MeleeMob::attack(Player& p, std::list<Projectile>&) {
     }
 }
 
-void MeleeMob::dropItem(std::list<Item*>& items) {
-    
-}
 
 /*
  *  Ranged mob
@@ -188,7 +192,9 @@ Monster* genRandomMob(Renderer& r, int level, int room_width, int room_height) {
 
     switch (type) {
         case MeleeMobType: {
+            HealingPotion* h = genPotion(r, level);
             m = new MeleeMob(level, x, y, 60, 90);
+            m->item_ = h;
             m->texture_ = r.loadTexture("./assets/Koneteekkari.png");
 
             std::cout << "Generated melee mob " << m->getName() << " with: dmg =" << m->GetDMG();
@@ -201,7 +207,7 @@ Monster* genRandomMob(Renderer& r, int level, int room_width, int room_height) {
             m = new RangedMob(level, x, y, 60, 90, w);
             m->texture_ = r.loadTexture("./assets/Koneteekkari.png"); // Different textures for mob types??
                                                                       
-            std::cout << "Generated melee mob " << m->getName() << " with: dmg =" << m->GetDMG() << std::endl;
+            std::cout << "Generated ranged mob " << m->getName() << " with: dmg =" << m->GetDMG() << std::endl;
                                                                      
             break;
         }

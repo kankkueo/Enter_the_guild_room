@@ -22,11 +22,12 @@ public:
     void TakeDMG(int);
     bool isAlive();
     std::string getName();
+    Item* item_;
 
     virtual void setMove(Player&);
     virtual void attack(Player&, std::list<Projectile>&);
     virtual void dropWeapon(std::list<Weapon*>&);
-    virtual void dropItem(std::list<Item*>&);
+    void dropItem(std::list<Item*>&);
 
 protected:
     bool alive_;
@@ -50,7 +51,6 @@ public:
 
     void attack(Player&, std::list<Projectile>&);
     void setMove(Player&);
-    void dropItem(std::list<Item*>&);
 
     int attack_ticks_;
     int attack_cooldown_;

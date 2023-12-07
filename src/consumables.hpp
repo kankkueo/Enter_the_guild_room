@@ -17,4 +17,6 @@ private:
     int healing_;
 };
 
+HealingPotion* genPotion(Renderer&, int);
+
 #endif
