@@ -80,4 +80,18 @@ Room generation.
 
 Animations.
 
+### 7.12.2023
 
+The game currently supports sound effects, has a HUD
+and a leveling system.
+
+Things still to be implemented before deadline
+
+Consumables
+
+More content
+ - more room types
+ - more monster textures
+ - final boss
+
+Balancing
