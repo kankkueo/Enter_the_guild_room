@@ -47,7 +47,7 @@ void Monster::setMove(Player&) {}
 
 void Monster::attack(Player&, std::list<Projectile>&) {}
 
-void Monster::dropItem(std::list<Weapon*>&) {}
+void Monster::dropWeapon(std::list<Weapon*>&) {}
 
 /*
  *  Melee mob
@@ -163,10 +163,10 @@ void RangedMob::attack(Player& p, std::list<Projectile>& projectiles) {
     }
 }
 
-void RangedMob::dropItem(std::list<Weapon*>& items) {
+void RangedMob::dropItem(std::list<Weapon*>& weapons) {
     weapon_->x_ = x_;
     weapon_->y_ = y_;
-    items.push_back(weapon_);
+    weapons.push_back(weapon_);
 }
 
 /*

@@ -139,7 +139,7 @@ void Game::moveProjectiles() {
                 p = projectiles_.erase(p);
                 
                 if (!(*m)->isAlive()) {
-                    (*m)->dropItem(room_->weapons_);
+                    (*m)->dropWeapon(room_->weapons_);
                     delete *m;
                     m = room_->monsters_.erase(m);
                     player_.gainXP(300);
