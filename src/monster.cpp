@@ -9,8 +9,8 @@
 #define hit_sound_amount 2
 
 std::string death_sounds[death_sound_amount] = {
-    "",
-    ""
+    "./assets/sounds/oyoyoy.wav",
+    "./assets/sounds/hammasratas.wav"
 };
 
 std::string attack_sounds[attack_sound_amount] = {
