@@ -184,6 +184,10 @@ void Game::moveMonsters(Renderer& r) {
             r.playSound((*m)->getAttackSound(), 1);
         }
 
+        if (rand() % 2000 == 1) {
+            r.playSound((*m)->sounds_.taunt_, 3);
+        }
+
     }
 }
 

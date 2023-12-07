@@ -19,8 +19,8 @@ std::string attack_sounds[attack_sound_amount] = {
 };
 
 std::string taunt_sounds[taunt_sound_amount] = {
-    "",
-    ""
+    "./assets/sounds/yykaakone.wav",
+    "./assets/sounds/hammasratas.wav"
 };
 
 std::string hit_sounds[hit_sound_amount] = {
@@ -257,6 +257,11 @@ Monster* genRandomMob(Renderer& r, int level, int room_width, int room_height) {
     m->sounds_.death_ = r.loadSound((death_sounds[rand() % death_sound_amount]).c_str());
     m->sounds_.taunt_ = r.loadSound((taunt_sounds[rand() % taunt_sound_amount]).c_str());
     m->sounds_.hit_ = r.loadSound((hit_sounds[rand() % hit_sound_amount]).c_str());
+
+    std::cout << m->sounds_.attack_ << std::endl;
+    std::cout << m->sounds_.death_ << std::endl;
+    std::cout << m->sounds_.taunt_ << std::endl;
+    std::cout << m->sounds_.hit_ << std::endl;
 
     return m;
 }
