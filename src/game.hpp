@@ -27,6 +27,7 @@ public:
     Player player_;
     std::list<Projectile> projectiles_;
     Weapon* displayWeapon_;
+    bool paused_;
 
     Game();
     void movePlayer(InputState&);
@@ -40,7 +41,10 @@ public:
     void changeRoom(Renderer&);
     void calcOffset(Renderer&);
     void scanNear(Renderer&);
+    void menuTick(Renderer&);
+    void menuRender(Renderer&);
     Weapon* scanWeapons(Renderer&);
+
 
 };
 

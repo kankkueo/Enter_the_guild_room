@@ -30,12 +30,19 @@ int main() {
     std::cout << "Starting game" << std::endl;
 
     while (game.running_) {
-        
-        game.tick(rend);
-        rend.prepareScene();
-        game.render(rend);
-        rend.presentScene();
-        SDL_Delay(1000/60);
+        if(!game.paused_){
+            game.tick(rend);
+            rend.prepareScene();
+            game.render(rend);
+            rend.presentScene();
+            SDL_Delay(1000/60);
+        }else{
+            game.menuTick(rend);
+            rend.prepareScene();
+            game.menuRender(rend);
+            rend.presentScene();
+            SDL_Delay(1000/60);
+        }
     }
 
     SDL_Delay(2000);

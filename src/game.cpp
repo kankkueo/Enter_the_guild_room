@@ -20,6 +20,7 @@ Game::Game():
     projectiles_ = std::list<Projectile>();
     infoText = " ";
     game_level_ = 1;
+    paused_ = false;
 }
 
 void Game::parseInput(Renderer& r) {
@@ -35,9 +36,9 @@ void Game::parseInput(Renderer& r) {
 
     movePlayer(s);
     
-    if (s.menu) {
+    /*if (s.menu) {
         running_ = false;
-    }
+    }*/
 
     if (s.interact) {
 
@@ -67,6 +68,11 @@ void Game::parseInput(Renderer& r) {
         if (player_.attack(s, projectiles_)) {
             r.playSound(player_.weapon_->sound_, 0);
         }
+    }
+
+    if(s.menu){
+        s.menu = false;
+        paused_ = true;
     }
 }
 
@@ -224,6 +230,19 @@ int Game::tick(Renderer& r) {
     return 0;
 }
 
+void Game::menuTick(Renderer& r){
+    InputState s = input_.getState();
+    if(s.menu){
+        s.menu = false;
+        paused_ = false;
+    }
+}
+
+void Game::menuRender(Renderer& r){
+
+}
+
+
 Weapon* Game::scanWeapons(Renderer& r) {
     Coordinate ppos = player_.center();
 
@@ -356,8 +375,9 @@ void Game::render(Renderer& r) {
     std::string txt = "";
     for(std::list<std::string>::const_iterator i = rows.begin(); i != rows.end(); ++i){
         txt = (*i);
-        txt += "(";
         if(y == 1){
+            txt += "(";
+            //Display dmgDiff
             if(displayWeapon_->getDmg() > player_.weapon_->getDmg()){
                 c = {0,255,0};
                 txt += "+";
@@ -367,7 +387,10 @@ void Game::render(Renderer& r) {
                 
             }
             txt += std::to_string(displayWeapon_->getDmg() - player_.weapon_->getDmg()) + ")";
+
         }else if(y == 2){
+            txt += "(";
+            //display firerateDiff
             if(displayWeapon_->getFirerate() > player_.weapon_->getFirerate()){
                 c = {0,255,0};
                 txt += "+";
@@ -376,9 +399,10 @@ void Game::render(Renderer& r) {
             }else{
             
             }
-            txt += std::to_string(displayWeapon_->getDmg() - player_.weapon_->getDmg()) + ")";
+            txt += std::to_string(displayWeapon_->getFirerate() - player_.weapon_->getFirerate()) + ")";
         }
 
+        //draw info on weapon to be picked up
         r.draw_text(txt.c_str(), r.getWinWidth()/2, 100+(22*y), c);
         y++;
     }
