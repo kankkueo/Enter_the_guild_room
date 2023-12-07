@@ -3,11 +3,12 @@
 #include "monster.hpp"
 #include "weapon.hpp"
 
-#define ROOM_TEMPLATES 2
+#define ROOM_TEMPLATES 3
 
 RoomTemplate rt[ROOM_TEMPLATES] = {
     RoomTemplate {"Big room", "./assets/bigroom1.png", 2500, 1500, 4, 8},
     RoomTemplate {"Red room", "./assets/startroom.png", 720, 480, 1, 3},
+    RoomTemplate {"Tile room", "./assets/tileroom.png", 1920, 1080, 2, 6},
 };
 
 Room::~Room() {
