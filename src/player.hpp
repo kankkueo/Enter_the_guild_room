@@ -26,7 +26,7 @@ public:
     void setMove(InputState&);
     bool attack(InputState&, std::list<Projectile>&);
     float getAttackDirection();
-    void gainXP(int);
+    bool gainXP(int);
     bool isAlive();
     void equipWeapon(Weapon*, Renderer& r);
 

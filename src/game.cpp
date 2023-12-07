@@ -137,7 +137,12 @@ void Game::moveProjectiles(Renderer& r) {
                     r.playSound((*m)->sounds_.death_, 2);
                     delete *m;
                     m = room_->monsters_.erase(m);
-                    player_.gainXP(300);
+                    if (player_.gainXP(300)) {
+                        r.playSound(player_.sounds_.taunt_, 6);
+                    }
+                }
+                else {
+                    r.playSound((*m)->sounds_.hit_, 5);
                 }
 
                 break;
@@ -146,6 +151,7 @@ void Game::moveProjectiles(Renderer& r) {
 
         if (p->collidesWith(player_) && !p->damage_monsters_) {
             player_.TakeDMG(p->dmg_);
+            r.playSound(player_.sounds_.hit_, 4);
         }
 
         if (p->x_ > room_->width_ || p->x_ < 0 || p->y_ > room_->height_ || p->y_ < 0) {
@@ -210,8 +216,8 @@ int Game::tick(Renderer& r) {
 
     if (!player_.isAlive()) {
         infoText = "YOU DIED";
-        render(r);
         running_ = false;
+        r.playSound(player_.sounds_.death_, 4);
     }
 
     return 0;

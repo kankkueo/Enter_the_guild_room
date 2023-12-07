@@ -149,7 +149,7 @@ float Player::getAttackDirection() {
     return attack_direction_;
 }
 
-void Player::gainXP(int amount) {
+bool Player::gainXP(int amount) {
     xp_ += amount;
     if (xp_ >= xp_to_Level_up_) {
         level_++;
@@ -158,6 +158,10 @@ void Player::gainXP(int amount) {
         max_hp_ += level_ * level_ * 10;
         hp_ = max_hp_;
         xp_to_Level_up_ += level_ * 10;
+        return true;
+    }
+    else {
+        return false;
     }
 }
 
