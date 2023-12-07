@@ -29,6 +29,8 @@ public:
     virtual void dropItem(std::list<Weapon*>&);
     virtual Mix_Chunk* getAttackSound();
 
+    SoundSet sounds_;
+
 protected:
     bool alive_;
     int hp_;
@@ -87,3 +89,4 @@ enum MonsterType {
 Monster* genRandomMob(Renderer&, int, int, int);
 
 #endif
+

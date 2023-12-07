@@ -3,6 +3,31 @@
 #include "weapon.hpp"
 #include <iostream>
 
+#define death_sound_amount 2
+#define attack_sound_amount 2
+#define taunt_sound_amount 2
+#define hit_sound_amount 2
+
+std::string death_sounds[death_sound_amount] = {
+    "./assets/sounds/oyoyoy.wav",
+    "./assets/sounds/hammasratas.wav"
+};
+
+std::string attack_sounds[attack_sound_amount] = {
+    "",
+    ""
+};
+
+std::string taunt_sounds[taunt_sound_amount] = {
+    "./assets/sounds/yykaakone.wav",
+    "./assets/sounds/hammasratas.wav"
+};
+
+std::string hit_sounds[hit_sound_amount] = {
+    "",
+    ""
+};
+
 /*
  *  Methods common for all monsters
  */
@@ -14,6 +39,11 @@ Entity(x, y, size_x, size_y) {
     hp_ = hp;
     dmg_ = dmg;
     max_speed_ = max_speed;
+
+    sounds_.attack_ = NULL;
+    sounds_.hit_ = NULL;
+    sounds_.death_ = NULL;
+    sounds_.taunt_ = NULL;
 }
 
 Monster::~Monster() {}
@@ -40,7 +70,7 @@ void Monster::TakeDMG(int value) {
 }
 
 Mix_Chunk* Monster::getAttackSound() {
-    return NULL;
+    return sounds_.attack_;
 }
 
 bool Monster::isAlive() {
@@ -203,6 +233,7 @@ Monster* genRandomMob(Renderer& r, int level, int room_width, int room_height) {
         case MeleeMobType: {
             m = new MeleeMob(level, x, y, 60, 90);
             m->texture_ = r.loadTexture("./assets/Koneteekkari.png");
+            m->sounds_.death_ = r.loadSound("");
 
             std::cout << "Generated melee mob " << m->getName() << " with: dmg =" << m->GetDMG();
             std::cout << ", attack cooldown = " << ((MeleeMob*)m)->attack_cooldown_ << std::endl;
@@ -221,6 +252,16 @@ Monster* genRandomMob(Renderer& r, int level, int room_width, int room_height) {
         default:
             break;
     }
+
+    m->sounds_.attack_ = r.loadSound((attack_sounds[rand() % attack_sound_amount]).c_str());
+    m->sounds_.death_ = r.loadSound((death_sounds[rand() % death_sound_amount]).c_str());
+    m->sounds_.taunt_ = r.loadSound((taunt_sounds[rand() % taunt_sound_amount]).c_str());
+    m->sounds_.hit_ = r.loadSound((hit_sounds[rand() % hit_sound_amount]).c_str());
+
+    std::cout << m->sounds_.attack_ << std::endl;
+    std::cout << m->sounds_.death_ << std::endl;
+    std::cout << m->sounds_.taunt_ << std::endl;
+    std::cout << m->sounds_.hit_ << std::endl;
 
     return m;
 }

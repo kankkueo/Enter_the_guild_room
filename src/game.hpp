@@ -30,7 +30,7 @@ public:
     Game();
     void movePlayer(InputState&);
     void spawnProjectile(int, int, int, int, int, float, SDL_Texture*);
-    void moveProjectiles();
+    void moveProjectiles(Renderer&);
     void moveMonsters(Renderer&);
     void parseInput(Renderer&);
     int tick(Renderer&);
