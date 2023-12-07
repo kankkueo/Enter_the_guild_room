@@ -249,6 +249,7 @@ void Game::scanNear(Renderer& r) {
         int y_diff = (*w)->y_ - ppos.y;
         if (x_diff * x_diff + y_diff * y_diff <= 100 * 100) {
             infoText = "Press E to swap weapon: " + (*w)->toString();
+            displayWeapon_ = (*w);
             return;
         }
     }
@@ -284,7 +285,6 @@ void Game::render(Renderer& r) {
 
     for (Weapon* w: room_->weapons_) {
         r.drawTexture(w->texture_, w->x_ - x_offset_, w->y_ - y_offset_, 0.0, SDL_FLIP_NONE);
-        //r.draw_text()
     }
 
 
@@ -335,12 +335,13 @@ void Game::render(Renderer& r) {
         r.drawTexture(e.texture_, e.x_ - x_offset_, e.y_ - y_offset_, angle, SDL_FLIP_NONE);
     }
     
-    hud_.drawInfo(r, player_.GetLevel(), player_.GetHP());
+    hud_.drawInfo(r, player_.GetLevel(), player_.GetHP(), player_.getMaxHp(), game_level_);
 
     std::list<std::string> rows;
     std::string row = "";
     for(char& c : infoText){
         if(c == '\n' || c == '\0'){
+
             rows.push_back(row);
             row = "";
         }else{
@@ -350,10 +351,22 @@ void Game::render(Renderer& r) {
     if(row.size() > 0){
         rows.push_back(row);
     }
-
+    SDL_Color c = {255,255,255};
     int y = 0;
+    std::string txt = "";
     for(std::list<std::string>::const_iterator i = rows.begin(); i != rows.end(); ++i){
-        r.draw_text(i->c_str(), r.getWinWidth()/2, 100+(22*y));
+        txt = (*i);
+        if(y == 1){
+            if(displayWeapon_->getDmg() > player_.weapon_->getDmg()){
+                c = {0,255,255};
+                txt += "(+";
+            }else{
+                txt += "(";
+            }
+            txt += std::to_string(displayWeapon_->getDmg() - player_.weapon_->getDmg()) + ")";
+        }
+
+        r.draw_text(txt.c_str(), r.getWinWidth()/2, 100+(22*y), c);
         y++;
     }
     

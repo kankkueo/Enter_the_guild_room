@@ -105,6 +105,10 @@ void Player::setMove(InputState& s) {
     speed_ = GetMaxSpeed();
 }
 
+int Player::getMaxHp(){
+    return max_hp_;
+}
+
 bool Player::attack(InputState& s, std::list<Projectile>& projectiles) {
     if (shoot_ticks_ <= 0) {
         shoot_ticks_ = 60 / weapon_->getFirerate();

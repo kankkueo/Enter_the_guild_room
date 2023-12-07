@@ -18,6 +18,7 @@ public:
     int GetDMG();
     int GetMaxSpeed();
     int GetLevel();
+    int getMaxHp();
 
     void Heal(int);
     void TakeDMG(int);
@@ -29,6 +30,7 @@ public:
     bool gainXP(int);
     bool isAlive();
     void equipWeapon(Weapon*, Renderer& r);
+
 
     Weapon *weapon_;
     SDL_Texture *texture_front_;

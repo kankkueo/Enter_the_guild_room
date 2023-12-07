@@ -26,6 +26,7 @@ public:
     Hud hud_;
     Player player_;
     std::list<Projectile> projectiles_;
+    Weapon* displayWeapon_;
 
     Game();
     void movePlayer(InputState&);

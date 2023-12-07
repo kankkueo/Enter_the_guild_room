@@ -105,11 +105,11 @@ int Renderer::getWinHeight() {
     return height_;
 }
 
-void Renderer::draw_text(const char* str, int x, int y){
+void Renderer::draw_text(const char* str, int x, int y, const SDL_Color c){
 	int xalign = 1;
 	SDL_Surface* text;
 	// Set color to white
-	SDL_Color color = { 255, 255, 255 };
+	SDL_Color color = c;//{ 255, 255, 255 };
 	TTF_Font *font = font_;//TTF_OpenFont("./assets/fonts/Example-Bold.ttf", 24);
 
 	text = TTF_RenderText_Solid( font, str, color );

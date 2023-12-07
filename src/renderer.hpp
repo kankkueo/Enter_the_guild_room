@@ -20,7 +20,7 @@ public:
     void set_flags(uint32_t, uint32_t);
     int getWinWidth();
     int getWinHeight();
-    void draw_text(const char* str, int x, int y);
+    void draw_text(const char* str, int x, int y, SDL_Color = {255,255,255});
     TTF_Font* GetFont();
     void renderText(SDL_Surface* text, int x, int y);
     SDL_Surface* InitText(char* str);
