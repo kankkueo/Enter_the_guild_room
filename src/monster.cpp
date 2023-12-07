@@ -103,6 +103,10 @@ void MeleeMob::attack(Player& p, std::list<Projectile>&) {
     }
 }
 
+void MeleeMob::dropItem(std::list<Item*>& items) {
+    
+}
+
 /*
  *  Ranged mob
  */
@@ -163,7 +167,7 @@ void RangedMob::attack(Player& p, std::list<Projectile>& projectiles) {
     }
 }
 
-void RangedMob::dropItem(std::list<Weapon*>& weapons) {
+void RangedMob::dropWeapon(std::list<Weapon*>& weapons) {
     weapon_->x_ = x_;
     weapon_->y_ = y_;
     weapons.push_back(weapon_);
