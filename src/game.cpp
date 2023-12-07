@@ -356,12 +356,25 @@ void Game::render(Renderer& r) {
     std::string txt = "";
     for(std::list<std::string>::const_iterator i = rows.begin(); i != rows.end(); ++i){
         txt = (*i);
+        txt += "(";
         if(y == 1){
             if(displayWeapon_->getDmg() > player_.weapon_->getDmg()){
-                c = {0,255,255};
-                txt += "(+";
+                c = {0,255,0};
+                txt += "+";
+            }else if(displayWeapon_->getDmg() < player_.weapon_->getDmg()){
+                c = {255,0,0};
             }else{
-                txt += "(";
+                
+            }
+            txt += std::to_string(displayWeapon_->getDmg() - player_.weapon_->getDmg()) + ")";
+        }else if(y == 2){
+            if(displayWeapon_->getFirerate() > player_.weapon_->getFirerate()){
+                c = {0,255,0};
+                txt += "+";
+            }else if(displayWeapon_->getFirerate() < player_.weapon_->getFirerate()){
+                c = {255,0,0};
+            }else{
+            
             }
             txt += std::to_string(displayWeapon_->getDmg() - player_.weapon_->getDmg()) + ")";
         }
