@@ -3,6 +3,31 @@
 #include "weapon.hpp"
 #include <iostream>
 
+#define death_sound_amount 2
+#define attack_sound_amount 2
+#define taunt_sound_amount 2
+#define hit_sound_amount 2
+
+std::string death_sounds[death_sound_amount] = {
+    "",
+    ""
+};
+
+std::string attack_sounds[attack_sound_amount] = {
+    "",
+    ""
+};
+
+std::string taunt_sounds[taunt_sound_amount] = {
+    "",
+    ""
+};
+
+std::string hit_sounds[hit_sound_amount] = {
+    "",
+    ""
+};
+
 /*
  *  Methods common for all monsters
  */
@@ -219,7 +244,6 @@ Monster* genRandomMob(Renderer& r, int level, int room_width, int room_height) {
             Weapon* w = genRandomWeapon(r, level);
             m = new RangedMob(level, x, y, 60, 90, w);
             m->texture_ = r.loadTexture("./assets/Koneteekkari.png"); // Different textures for mob types??
-            m->sounds_.death_ = r.loadSound("");
                                                                       
             std::cout << "Generated melee mob " << m->getName() << " with: dmg =" << m->GetDMG() << std::endl;
                                                                      
@@ -228,6 +252,11 @@ Monster* genRandomMob(Renderer& r, int level, int room_width, int room_height) {
         default:
             break;
     }
+
+    m->sounds_.attack_ = r.loadSound((attack_sounds[rand() % attack_sound_amount]).c_str());
+    m->sounds_.death_ = r.loadSound((death_sounds[rand() % death_sound_amount]).c_str());
+    m->sounds_.taunt_ = r.loadSound((taunt_sounds[rand() % taunt_sound_amount]).c_str());
+    m->sounds_.hit_ = r.loadSound((hit_sounds[rand() % hit_sound_amount]).c_str());
 
     return m;
 }
