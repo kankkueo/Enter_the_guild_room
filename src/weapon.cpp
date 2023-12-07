@@ -6,7 +6,7 @@
  *  Common methods
  */
 std::string Weapon::toString(){
-    return "weapon";
+    return "weapon\nDamage: " + std::to_string(dmg_) + "\nFirerate: " + std::to_string(firerate_);
 }
 
 Weapon::Weapon(const std::string& name, int size, int dmg, int pspeed, int firerate): 
@@ -87,7 +87,7 @@ void Shotgun::shoot(std::list<Projectile>& projectiles, Entity source, int dmg, 
 }
 
 std::string Shotgun::toString(){
-    return "shotgun";
+    return "SHOTGUUN\nDamage: " + std::to_string(dmg_) + "\nFirerate: " + std::to_string(firerate_);
 }
 
 /*
