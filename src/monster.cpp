@@ -130,7 +130,7 @@ bool MeleeMob::attack(Player& p, std::list<Projectile>&) {
     float x_diff = pc.x - x_;
     float y_diff = pc.y - y_;
 
-    if (attack_ticks_ <= 0 && x_diff * x_diff + y_diff * y_diff <= 250 * 250) {
+    if (attack_ticks_ <= 0 && x_diff * x_diff + y_diff * y_diff <= 150 * 150) {
         p.TakeDMG(dmg_);
         attack_ticks_ = attack_cooldown_;
         
@@ -214,6 +214,21 @@ void RangedMob::dropItem(std::list<Weapon*>& items) {
 
 Mix_Chunk* RangedMob::getAttackSound() {
     return weapon_->sound_;
+}
+
+/*
+ *  Final boss
+ */
+
+Boss::Boss(int level):
+Monster("Final boss", 20 * level * level, 3 * level * level, 15, 10, 10, 200, 200) {}
+
+bool Boss::attack(Player& p, std::list<Projectile>& projectiles) {
+    return false;
+}
+
+void Boss::setMove(Player& p) {
+
 }
 
 /*

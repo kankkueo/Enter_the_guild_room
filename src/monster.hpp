@@ -81,6 +81,21 @@ public:
 
 };
 
+/*
+ *  Final boss
+ */
+
+class Boss: public Monster {
+    
+public:
+    Boss(int);
+
+    bool attack(Player&, std::list<Projectile>&);
+    void setMove(Player&);
+
+};
+
+// enum for randomizing mobs
 enum MonsterType {
     MeleeMobType,
     RangedMobType
