@@ -71,7 +71,7 @@ void Game::parseInput(Renderer& r) {
     }
 
     if(s.menu){
-        s.menu = false;
+        input_.resetInput();
         paused_ = true;
     }
 }
@@ -235,7 +235,9 @@ void Game::menuTick(Renderer& r){
     if(s.menu){
         s.menu = false;
         paused_ = false;
+        std::cout << "DD" << std::endl; //ei mee tänne???
     }
+    //std::cout << "ASD" << std::endl; menee tänne!!!
 }
 
 void Game::menuRender(Renderer& r){
