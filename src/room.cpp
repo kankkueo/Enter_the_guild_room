@@ -12,6 +12,7 @@ RoomTemplate rt[ROOM_TEMPLATES] = {
     RoomTemplate {"Tile room3", "./assets/rooms/tileroom3.PNG", 1603, 903, 3, 5},
     RoomTemplate {"Holy room", "./assets/rooms/holyroom.PNG", 1442, 811, 2, 4},
     RoomTemplate {"Freaky room", "./assets/rooms/freakyroom.PNG", 1366, 768, 2, 3},
+    RoomTemplate {"Tall room", "./assets/rooms/tall_room.png", 1600, 3200, 4, 10},
 };
 
 Room::~Room() {
