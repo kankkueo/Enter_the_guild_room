@@ -221,14 +221,109 @@ Mix_Chunk* RangedMob::getAttackSound() {
  */
 
 Boss::Boss(int level):
-Monster("Final boss", 20 * level * level, 3 * level * level, 15, 10, 10, 200, 200) {}
+Monster("Final boss", 300 + 300 * level * level, 5 * level * level, 12, 500, 500, 200, 200) {
+    optimal_distance_ = 600;
+    attack_ticks_ = 0;
+    attack_cooldown_ = 70;
+    attack_pattern_ = 0;
+}
 
 bool Boss::attack(Player& p, std::list<Projectile>& projectiles) {
+    Coordinate pc = p.center();
+    float x_diff = pc.x - x_;
+    float y_diff = pc.y - y_;
+
+
+    if (attack_pattern_ == 0) {
+        if (attack_ticks_ <= 0 && x_diff * x_diff + y_diff * y_diff <= 150 * 150) {
+            p.TakeDMG(dmg_);
+            attack_ticks_ = attack_cooldown_;
+            return true;
+        }
+    }
+    else if (attack_pattern_ == 1) {
+        if (attack_ticks_ <= 0) {
+            attack_ticks_ = 60 / weapon_->getFirerate();
+            float d;
+
+            if (x_diff > 0) {
+                d = atan(-y_diff/x_diff);
+            }
+            else if (x_diff < 0) {
+                d = atan(-y_diff/x_diff) + 3.1415927;
+            }
+
+            weapon_->shoot(projectiles, *this, dmg_, d, false);
+
+            return true;
+        }
+    }
+
+    attack_ticks_--;
     return false;
 }
 
-void Boss::setMove(Player& p) {
+Mix_Chunk* Boss::getAttackSound() {
+    if (attack_pattern_ == 0) {
+        return sounds_.attack_;
+    }
+    else {
+        return weapon_->sound_;
+    }
+}
 
+void Boss::setMove(Player& p) {
+    Coordinate pc = p.center();
+    float x_diff = pc.x - x_;
+    float y_diff = pc.y - y_;
+
+    if (rand() % 500 == 1) {
+        if (attack_pattern_ == 0) {
+            attack_pattern_ = 1;
+        }
+        else {
+            attack_pattern_ = 0;
+        }
+    }
+
+    if (attack_pattern_ == 0) {
+        if (x_diff * x_diff + y_diff * y_diff > p.size_x_ * p.size_x_) {
+            if (x_diff > 0) {
+                direction_ = atan(-y_diff/x_diff);
+            }
+            else if (x_diff < 0) {
+                direction_ = atan(-y_diff/x_diff) + 3.1415927;
+            }
+        }
+        else {
+            if (x_diff > 0) {
+                direction_ = atan(-y_diff/x_diff) + 3.1415927;
+            }
+            else if (x_diff < 0) {
+                direction_ = atan(-y_diff/x_diff);
+            }
+        }
+    }
+    else if (attack_pattern_== 1) {
+        if (x_diff * x_diff + y_diff * y_diff < optimal_distance_ * optimal_distance_) {
+            if (x_diff > 0) {
+                direction_ = atan(-y_diff/x_diff) + 3.1415927;
+            }
+            else if (x_diff < 0) {
+                direction_ = atan(-y_diff/x_diff);
+            }
+        }
+        else {
+            if (x_diff > 0) {
+                direction_ = atan(-y_diff/x_diff);
+            }
+            else if (x_diff < 0) {
+                direction_ = atan(-y_diff/x_diff) + 3.1415927;
+            }
+        }
+    }
+
+    speed_ = max_speed_;
 }
 
 /*

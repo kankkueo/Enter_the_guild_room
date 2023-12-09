@@ -1,6 +1,7 @@
 #include <iostream>
 #include "room.hpp"
 #include "monster.hpp"
+#include "weapon.hpp"
 
 #define ROOM_TEMPLATES 7
 
@@ -64,6 +65,7 @@ Room* genBossRoom(Renderer& r, int level) {
     
     Boss* b = new Boss(level);
     b->texture_ = r.loadTexture("./assets/boss_placeholder.png");
+    b->weapon_ = genRandomWeapon(r, level);
     rm->monsters_.push_back(b);
 
     std::cout << "Generated boss room " << rm->name_;

@@ -83,6 +83,8 @@ public:
 
 /*
  *  Final boss
+ *
+ *  - Combines melee and ranged attack patterns
  */
 
 class Boss: public Monster {
@@ -92,6 +94,14 @@ public:
 
     bool attack(Player&, std::list<Projectile>&);
     void setMove(Player&);
+    Mix_Chunk* getAttackSound();
+
+    // attack pattern 0 = melee, 1 = ranged
+    int attack_pattern_;
+    Weapon* weapon_;
+    int attack_ticks_;
+    int attack_cooldown_;
+    int optimal_distance_; 
 
 };
 

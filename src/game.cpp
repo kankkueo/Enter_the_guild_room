@@ -103,7 +103,7 @@ void Game::changeRoom(Renderer& r) {
     input_.resetInput();
     delete room_;
     game_level_++;
-    if (game_level_ == 3) {
+    if (game_level_ == 20) {
         room_ = genBossRoom(r, game_level_);
     }
     else {
