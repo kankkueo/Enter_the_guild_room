@@ -1,7 +1,6 @@
 #include <iostream>
 #include "room.hpp"
 #include "monster.hpp"
-#include "weapon.hpp"
 
 #define ROOM_TEMPLATES 7
 
@@ -55,6 +54,19 @@ Room* genRoom(Renderer& r, int level) {
 
     std::cout << "Generated room " << rm->name_;
     std::cout << " with " << mobs << " monsters" << std::endl;;
+
+    return rm;
+}
+
+Room* genBossRoom(Renderer& r, int level) {
+    Room* rm = new Room("Boss room", 1200, 1200,
+        r.loadTexture("./assets/rooms/boss_room_placeholder.png"), r.loadTexture("./assets/trapdoor.png"));
+    
+    Boss* b = new Boss(level);
+    b->texture_ = r.loadTexture("./assets/boss_placeholder.png");
+    rm->monsters_.push_back(b);
+
+    std::cout << "Generated boss room " << rm->name_;
 
     return rm;
 }

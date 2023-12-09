@@ -1,6 +1,7 @@
 #include "game.hpp"
 #include "entity.hpp"
 #include "input.hpp"
+#include "room.hpp"
 #include "weapon.hpp"
 #include <SDL2/SDL_render.h>
 #include <SDL2/SDL_timer.h>
@@ -102,7 +103,12 @@ void Game::changeRoom(Renderer& r) {
     input_.resetInput();
     delete room_;
     game_level_++;
-    room_ = genRoom(r, game_level_);
+    if (game_level_ == 3) {
+        room_ = genBossRoom(r, game_level_);
+    }
+    else {
+        room_ = genRoom(r, game_level_);
+    }
 }
 
 void Game::movePlayer(InputState& s) {
