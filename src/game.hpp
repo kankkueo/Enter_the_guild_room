@@ -26,13 +26,14 @@ public:
     Hud hud_;
     Player player_;
     std::list<Projectile> projectiles_;
+    Weapon* displayWeapon_;
+    bool paused_;
 
     Game();
-    void movePlayer(InputState);
-    void playerAttack(InputState);
+    void movePlayer(InputState&);
     void spawnProjectile(int, int, int, int, int, float, SDL_Texture*);
-    void moveProjectiles();
-    void moveMonsters();
+    void moveProjectiles(Renderer&);
+    void moveMonsters(Renderer&);
     void parseInput(Renderer&);
     int tick(Renderer&);
     void render(Renderer&);
@@ -40,8 +41,11 @@ public:
     void changeRoom(Renderer&);
     void calcOffset(Renderer&);
     void scanNear(Renderer&);
+    void menuTick(Renderer&);
+    void menuRender(Renderer&);
     Weapon* scanWeapons(Renderer&);
     Item* scanItems(Renderer&);
+
 
 };
 

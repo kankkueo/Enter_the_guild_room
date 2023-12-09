@@ -3,11 +3,16 @@
 #include "monster.hpp"
 #include "weapon.hpp"
 
-#define ROOM_TEMPLATES 2
+#define ROOM_TEMPLATES 7
 
 RoomTemplate rt[ROOM_TEMPLATES] = {
-    RoomTemplate {"Big room", "./assets/bigroom1.png", 2500, 1500, 4, 8},
-    RoomTemplate {"Red room", "./assets/startroom.png", 720, 480, 1, 3},
+    RoomTemplate {"Big room", "./assets/rooms/bigroom1.png", 2500, 1500, 4, 8},
+    RoomTemplate {"Tile room1", "./assets/rooms/tileroom.PNG", 1920, 1080, 2, 6},
+    RoomTemplate {"Tile room2", "./assets/rooms/tileroom2.PNG", 2560, 1440, 4, 8},
+    RoomTemplate {"Tile room3", "./assets/rooms/tileroom3.PNG", 1603, 903, 3, 5},
+    RoomTemplate {"Holy room", "./assets/rooms/holyroom.PNG", 1442, 811, 2, 4},
+    RoomTemplate {"Freaky room", "./assets/rooms/freakyroom.PNG", 1366, 768, 2, 3},
+    RoomTemplate {"Tall room", "./assets/rooms/tall_room.png", 1600, 3200, 4, 10},
 };
 
 Room::~Room() {
@@ -50,6 +55,20 @@ Room* genRoom(Renderer& r, int level) {
 
     std::cout << "Generated room " << rm->name_;
     std::cout << " with " << mobs << " monsters" << std::endl;;
+
+    return rm;
+}
+
+Room* genBossRoom(Renderer& r, int level) {
+    Room* rm = new Room("Boss room", 1200, 1200,
+        r.loadTexture("./assets/rooms/boss_room_placeholder.png"), r.loadTexture("./assets/trapdoor.png"));
+    
+    Boss* b = new Boss(level);
+    b->texture_ = r.loadTexture("./assets/boss_placeholder.png");
+    b->weapon_ = genRandomWeapon(r, level);
+    rm->monsters_.push_back(b);
+
+    std::cout << "Generated boss room " << rm->name_;
 
     return rm;
 }

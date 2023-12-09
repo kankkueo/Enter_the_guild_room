@@ -18,23 +18,26 @@ public:
     int GetDMG();
     int GetMaxSpeed();
     int GetLevel();
+    int getMaxHp();
 
     void Heal(int);
     void TakeDMG(int);
     void UpdateXP(int);
     void UpdateDMG(int);
-    void setMove(InputState);
-    void setAttack(InputState);
+    void setMove(InputState&);
+    bool attack(InputState&, std::list<Projectile>&);
     float getAttackDirection();
-    void gainXP(int);
+    bool gainXP(int);
     bool isAlive();
-    void equipWeapon(Weapon*);
+    void equipWeapon(Weapon*, Renderer& r);
+
 
     Weapon *weapon_;
     SDL_Texture *texture_front_;
     SDL_Texture *texture_right_;
     SDL_Texture *texture_left_;
     int shoot_ticks_;
+    SoundSet sounds_;
 
 private:
     bool alive_;

@@ -1,10 +1,12 @@
 #include "game.hpp"
 #include "entity.hpp"
 #include "input.hpp"
+#include "room.hpp"
 #include "weapon.hpp"
 #include <SDL2/SDL_render.h>
 #include <SDL2/SDL_timer.h>
 #include <iostream>
+#include <list>
 
 
 Game::Game(): 
@@ -19,6 +21,7 @@ Game::Game():
     projectiles_ = std::list<Projectile>();
     infoText = " ";
     game_level_ = 1;
+    paused_ = false;
 }
 
 void Game::parseInput(Renderer& r) {
@@ -34,9 +37,9 @@ void Game::parseInput(Renderer& r) {
 
     movePlayer(s);
     
-    if (s.menu) {
+    /*if (s.menu) {
         running_ = false;
-    }
+    }*/
 
     if (s.interact) {
 
@@ -48,6 +51,7 @@ void Game::parseInput(Renderer& r) {
             player_.weapon_->y_ = ppos.y;
             room_->weapons_.push_back(player_.weapon_);
             player_.weapon_ = w;
+            w->projectile_texture_ = r.loadTexture("./assets/player-bullet.png");
         }
 
         Item* i = scanItems(r);
@@ -67,7 +71,14 @@ void Game::parseInput(Renderer& r) {
     }
 
     if (s.attack || s.attackUp || s.attackDown || s.attackLeft || s.attackRight) {
-        playerAttack(s);
+        if (player_.attack(s, projectiles_)) {
+            r.playSound(player_.weapon_->sound_, 0);
+        }
+    }
+
+    if(s.menu){
+        input_.resetInput();
+        paused_ = true;
     }
 }
 
@@ -97,10 +108,15 @@ void Game::changeRoom(Renderer& r) {
     input_.resetInput();
     delete room_;
     game_level_++;
-    room_ = genRoom(r, game_level_);
+    if (game_level_ == 20) {
+        room_ = genBossRoom(r, game_level_);
+    }
+    else {
+        room_ = genRoom(r, game_level_);
+    }
 }
 
-void Game::movePlayer(InputState s) {
+void Game::movePlayer(InputState& s) {
     player_.setMove(s);
     Coordinate c = player_.newPos();
 
@@ -125,16 +141,7 @@ void Game::movePlayer(InputState s) {
     }
 }
 
-void Game::playerAttack(InputState s) {
-    if (player_.shoot_ticks_ <= 0) {
-        player_.shoot_ticks_ = 60 / player_.weapon_->getFirerate();
-
-        player_.setAttack(s);
-        player_.weapon_->shoot(projectiles_, player_, player_.GetDMG(), player_.getAttackDirection(), true);
-    }
-}
-
-void Game::moveProjectiles() {
+void Game::moveProjectiles(Renderer& r) {
     for (auto p = projectiles_.begin(); p != projectiles_.end(); p++) {
         p->move();
 
@@ -146,9 +153,15 @@ void Game::moveProjectiles() {
                 if (!(*m)->isAlive()) {
                     (*m)->dropWeapon(room_->weapons_);
                     (*m)->dropItem(room_->items_);
+                    r.playSound((*m)->sounds_.death_, 2);
                     delete *m;
                     m = room_->monsters_.erase(m);
-                    player_.gainXP(300);
+                    if (player_.gainXP(300)) {
+                        r.playSound(player_.sounds_.taunt_, 6);
+                    }
+                }
+                else {
+                    r.playSound((*m)->sounds_.hit_, 5);
                 }
 
                 break;
@@ -157,6 +170,7 @@ void Game::moveProjectiles() {
 
         if (p->collidesWith(player_) && !p->damage_monsters_) {
             player_.TakeDMG(p->dmg_);
+            r.playSound(player_.sounds_.hit_, 4);
         }
 
         if (p->x_ > room_->width_ || p->x_ < 0 || p->y_ > room_->height_ || p->y_ < 0) {
@@ -165,7 +179,7 @@ void Game::moveProjectiles() {
     }
 }
 
-void Game::moveMonsters() {
+void Game::moveMonsters(Renderer& r) {
     for (auto m = room_->monsters_.begin(); m != room_->monsters_.end(); m++) {
         (*m)->setMove(player_);
         
@@ -191,7 +205,13 @@ void Game::moveMonsters() {
             (*m)->y_ = c.y;
         }
 
-        (*m)->attack(player_, projectiles_);
+        if ((*m)->attack(player_, projectiles_)) {
+            r.playSound((*m)->getAttackSound(), 1);
+        }
+
+        if (rand() % 2000 == 1) {
+            r.playSound((*m)->sounds_.taunt_, 3);
+        }
 
     }
 }
@@ -207,20 +227,35 @@ int Game::tick(Renderer& r) {
 
     parseInput(r);
 
-    moveProjectiles();
+    moveProjectiles(r);
     
-    moveMonsters();
+    moveMonsters(r);
 
     calcOffset(r);
 
     if (!player_.isAlive()) {
         infoText = "YOU DIED";
-        render(r);
         running_ = false;
+        r.playSound(player_.sounds_.death_, 4);
     }
 
     return 0;
 }
+
+void Game::menuTick(Renderer& r){
+    InputState s = input_.getState();
+    if(s.menu){
+        s.menu = false;
+        paused_ = false;
+        std::cout << "DD" << std::endl; //ei mee tänne???
+    }
+    //std::cout << "ASD" << std::endl; menee tänne!!!
+}
+
+void Game::menuRender(Renderer& r){
+
+}
+
 
 Weapon* Game::scanWeapons(Renderer& r) {
     Coordinate ppos = player_.center();
@@ -260,7 +295,8 @@ void Game::scanNear(Renderer& r) {
         int x_diff = (*w)->x_ - ppos.x;
         int y_diff = (*w)->y_ - ppos.y;
         if (x_diff * x_diff + y_diff * y_diff <= 100 * 100) {
-            infoText = "Press E to swap weapon\n";
+            infoText = "Press E to swap weapon: " + (*w)->toString();
+            displayWeapon_ = (*w);
             return;
         }
     }
@@ -346,9 +382,59 @@ void Game::render(Renderer& r) {
         r.drawTexture(e.texture_, e.x_ - x_offset_, e.y_ - y_offset_, angle, SDL_FLIP_NONE);
     }
     
-    hud_.drawInfo(r, player_.GetLevel(), player_.GetHP());
+    hud_.drawInfo(r, player_.GetLevel(), player_.GetHP(), player_.getMaxHp(), game_level_);
 
-    r.draw_text(infoText.c_str(), r.getWinWidth()/2, 100);
+    std::list<std::string> rows;
+    std::string row = "";
+    for(char& c : infoText){
+        if(c == '\n' || c == '\0'){
+
+            rows.push_back(row);
+            row = "";
+        }else{
+            row += c;
+        }
+    }
+    if(row.size() > 0){
+        rows.push_back(row);
+    }
+    SDL_Color c = {255,255,255};
+    int y = 0;
+    std::string txt = "";
+    for(std::list<std::string>::const_iterator i = rows.begin(); i != rows.end(); ++i){
+        txt = (*i);
+        if(y == 1){
+            txt += "(";
+            //Display dmgDiff
+            if(displayWeapon_->getDmg() > player_.weapon_->getDmg()){
+                c = {0,255,0};
+                txt += "+";
+            }else if(displayWeapon_->getDmg() < player_.weapon_->getDmg()){
+                c = {255,0,0};
+            }else{
+                
+            }
+            txt += std::to_string(displayWeapon_->getDmg() - player_.weapon_->getDmg()) + ")";
+
+        }else if(y == 2){
+            txt += "(";
+            //display firerateDiff
+            if(displayWeapon_->getFirerate() > player_.weapon_->getFirerate()){
+                c = {0,255,0};
+                txt += "+";
+            }else if(displayWeapon_->getFirerate() < player_.weapon_->getFirerate()){
+                c = {255,0,0};
+            }else{
+            
+            }
+            txt += std::to_string(displayWeapon_->getFirerate() - player_.weapon_->getFirerate()) + ")";
+        }
+
+        //draw info on weapon to be picked up
+        r.draw_text(txt.c_str(), r.getWinWidth()/2, 100+(22*y), c);
+        y++;
+    }
+    
 
 }
 

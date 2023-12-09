@@ -17,27 +17,32 @@ int main() {
     game.player_.texture_left_= rend.loadTexture("./assets/teekkari1-left.png");
     game.player_.texture_right_= rend.loadTexture("./assets/teekkari1-right.png");
 
+    game.player_.sounds_.taunt_ = rend.loadSound("");
+    game.player_.sounds_.death_ = rend.loadSound("");
+    game.player_.sounds_.hit_ = rend.loadSound("");
+
     Weapon* w = genRandomWeapon(rend, 1);
-    game.player_.equipWeapon(w);
-
-
-//    Room startroom = Room("Startroom", 720, 480, rend.loadTexture("./assets/startroom.png"), rend.loadTexture("./assets/trapdoor.png"));
- //   Room bigroom = Room("Big room", 2500, 1500, rend.loadTexture("./assets/bigroom1.png"), rend.loadTexture("./assets/trapdoor.png"));
-  //  game.room1_ = &startroom;
+    game.player_.equipWeapon(w, rend);
     
     game.room_ = genRoom(rend, 1);
 
-    //bigroom.addRandomMonsters(rend, 1, 4);
     
     std::cout << "Starting game" << std::endl;
 
     while (game.running_) {
-        
-        game.tick(rend);
-        rend.prepareScene();
-        game.render(rend);
-        rend.presentScene();
-        SDL_Delay(1000/60);
+        if(!game.paused_){
+            game.tick(rend);
+            rend.prepareScene();
+            game.render(rend);
+            rend.presentScene();
+            SDL_Delay(1000/60);
+        }else{
+            game.menuTick(rend);
+            rend.prepareScene();
+            game.menuRender(rend);
+            rend.presentScene();
+            SDL_Delay(1000/60);
+        }
     }
 
     SDL_Delay(2000);

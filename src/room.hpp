@@ -42,5 +42,6 @@ typedef struct {
 
 
 Room* genRoom(Renderer&, int);
+Room* genBossRoom(Renderer&, int);
 
 #endif

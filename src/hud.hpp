@@ -6,7 +6,7 @@
 class Hud{
 public:
     Hud(int hudposx, int hudposy);
-    void drawInfo(Renderer&, int level, int health);
+    void drawInfo(Renderer&, int level, int health, int maxHp, int room);
 
 private:
     int hudPosX;

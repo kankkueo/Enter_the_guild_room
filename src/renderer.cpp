@@ -1,6 +1,8 @@
 #include <SDL2/SDL.h>
+#include <SDL2/SDL_audio.h>
 #include <SDL2/SDL_image.h>
 #include <SDL2/SDL_video.h>
+#include <SDL2/SDL_mixer.h>
 #include "renderer.hpp"
 #include <iostream>
 
@@ -52,6 +54,14 @@ void Renderer::initSDL() {
 	if ( !font_ ) {
 		std::cout << "Failed to load font: " << TTF_GetError() << std::endl;
 	}
+
+    if (Mix_OpenAudio(44100, AUDIO_S16SYS, 2, 1024) == -1) {
+		printf("Couldn't initialize SDL Mixer\n");
+		exit(1);
+    }
+
+	Mix_AllocateChannels(8);
+
 }
 
 void Renderer::prepareScene() {
@@ -95,11 +105,11 @@ int Renderer::getWinHeight() {
     return height_;
 }
 
-void Renderer::draw_text(const char* str, int x, int y){
+void Renderer::draw_text(const char* str, int x, int y, const SDL_Color c){
 	int xalign = 1;
 	SDL_Surface* text;
 	// Set color to white
-	SDL_Color color = { 255, 255, 255 };
+	SDL_Color color = c;//{ 255, 255, 255 };
 	TTF_Font *font = font_;//TTF_OpenFont("./assets/fonts/Example-Bold.ttf", 24);
 
 	text = TTF_RenderText_Solid( font, str, color );
@@ -152,5 +162,13 @@ void Renderer::renderText(SDL_Surface* text, int x ,int y){
 
 TTF_Font* Renderer::GetFont(){
 	return font_;
+}
+
+void Renderer::playSound(Mix_Chunk* sound, int channel) {
+    Mix_PlayChannel(channel, sound, 0);
+}
+
+Mix_Chunk* Renderer::loadSound(const char* filename) {
+    return Mix_LoadWAV(filename);
 }
 

@@ -4,6 +4,7 @@
 #include "item.hpp"
 #include "entity.hpp"
 #include "renderer.hpp"
+#include <SDL2/SDL_mixer.h>
 #include <list>
 #include <SDL2/SDL_render.h>
 #include <string>
@@ -35,6 +36,7 @@ public:
 
     SDL_Texture* texture_;
     SDL_Texture* projectile_texture_;
+    Mix_Chunk* sound_;
     
 protected:
     int dmg_;

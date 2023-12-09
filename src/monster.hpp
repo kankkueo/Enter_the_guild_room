@@ -5,6 +5,7 @@
 #include "player.hpp"
 #include "renderer.hpp"
 #include "weapon.hpp"
+#include <SDL2/SDL_mixer.h>
 #include <SDL2/SDL_render.h>
 #include <string>
 
@@ -25,9 +26,12 @@ public:
     Item* item_;
 
     virtual void setMove(Player&);
-    virtual void attack(Player&, std::list<Projectile>&);
+    virtual bool attack(Player&, std::list<Projectile>&);
     virtual void dropWeapon(std::list<Weapon*>&);
     virtual void dropItem(std::list<Item*>&);
+    virtual Mix_Chunk* getAttackSound();
+
+    SoundSet sounds_;
 
 protected:
     bool alive_;
@@ -49,7 +53,7 @@ class MeleeMob: public Monster {
 public:
     MeleeMob(int, int, int, int, int);
 
-    void attack(Player&, std::list<Projectile>&);
+    bool attack(Player&, std::list<Projectile>&);
     void setMove(Player&);
     void dropItem(std::list<Item*>&);
 
@@ -69,9 +73,10 @@ class RangedMob: public Monster {
 public:
     RangedMob(int, int, int, int, int, Weapon*);
 
-    void attack(Player&, std::list<Projectile>&);
+    bool attack(Player&, std::list<Projectile>&);
     void setMove(Player&);
     void dropWeapon(std::list<Weapon*>&);
+    Mix_Chunk* getAttackSound();
 
     Weapon* weapon_;
     int attack_ticks_;
@@ -79,6 +84,31 @@ public:
 
 };
 
+/*
+ *  Final boss
+ *
+ *  - Combines melee and ranged attack patterns
+ */
+
+class Boss: public Monster {
+    
+public:
+    Boss(int);
+
+    bool attack(Player&, std::list<Projectile>&);
+    void setMove(Player&);
+    Mix_Chunk* getAttackSound();
+
+    // attack pattern 0 = melee, 1 = ranged
+    int attack_pattern_;
+    Weapon* weapon_;
+    int attack_ticks_;
+    int attack_cooldown_;
+    int optimal_distance_; 
+
+};
+
+// enum for randomizing mobs
 enum MonsterType {
     MeleeMobType,
     RangedMobType
@@ -87,3 +117,4 @@ enum MonsterType {
 Monster* genRandomMob(Renderer&, int, int, int);
 
 #endif
+

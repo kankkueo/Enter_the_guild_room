@@ -2,11 +2,21 @@
 #define ENTITY
 
 #include <SDL2/SDL.h>
+#include <SDL2/SDL_mixer.h>
 
 typedef struct {
     int x;
     int y;
 } Coordinate;
+
+
+typedef struct {
+    Mix_Chunk* attack_;
+    Mix_Chunk* hit_;
+    Mix_Chunk* death_;
+    Mix_Chunk* taunt_;
+} SoundSet;
+
 
 class Entity {
 
