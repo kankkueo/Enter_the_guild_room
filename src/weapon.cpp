@@ -110,7 +110,8 @@ void Shotgun::shoot(std::list<Projectile>& projectiles, Entity source, int dmg, 
 }
 
 std::string Shotgun::toString(){
-    return name_ + "\nDamage: " + std::to_string(dmg_) + "\nFirerate: " + std::to_string(firerate_);
+    return name_ + "\nDamage: " + std::to_string(dmg_) + " x " + std::to_string(pellets_) +
+        "\nFirerate: " + std::to_string(firerate_);
 }
 
 /*
