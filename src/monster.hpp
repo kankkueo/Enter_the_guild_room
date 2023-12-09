@@ -27,7 +27,7 @@ public:
     virtual void setMove(Player&);
     virtual void attack(Player&, std::list<Projectile>&);
     virtual void dropWeapon(std::list<Weapon*>&);
-    void dropItem(std::list<Item*>&);
+    virtual void dropItem(std::list<Item*>&);
 
 protected:
     bool alive_;
@@ -51,6 +51,7 @@ public:
 
     void attack(Player&, std::list<Projectile>&);
     void setMove(Player&);
+    void dropItem(std::list<Item*>&);
 
     int attack_ticks_;
     int attack_cooldown_;

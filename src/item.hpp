@@ -20,6 +20,9 @@ public:
     int getSize() {
         return size_;
     }
+    std::string getName() {
+        return name_;
+    }
     
     SDL_Texture *texture_; 
 

@@ -1,5 +1,4 @@
 #include "consumables.hpp"
-#include "renderer.hpp"
 
 HealingPotion* genPotion(Renderer& r, int level) {
     int healing = 100 + 10 * level;

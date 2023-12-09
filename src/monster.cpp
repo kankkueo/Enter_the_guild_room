@@ -1,7 +1,7 @@
 #include "monster.hpp"
 #include "renderer.hpp"
 #include "weapon.hpp"
-#include "consumables.cpp"
+#include "consumables.hpp"
 #include <iostream>
 
 /*
@@ -50,11 +50,7 @@ void Monster::attack(Player&, std::list<Projectile>&) {}
 
 void Monster::dropWeapon(std::list<Weapon*>&) {}
 
-void Monster::dropItem(std::list<Item*>& items) {
-    item_->x_ = x_;
-    item_->y_ = y_;
-    items.push_back(item_);
-}
+void Monster::dropItem(std::list<Item*>& items) {}
 
 /*
  *  Melee mob
@@ -65,6 +61,12 @@ Monster("Melee chump", 50 + 5*level*level, 100 + 10*level*level,
     5 + 0.5*level, x, y, size_x, size_y) {
     attack_cooldown_ = 60 + rand() % 540;
     attack_ticks_ = 0;
+}
+
+void MeleeMob::dropItem(std::list<Item*>& items) {
+    item_->x_ = x_;
+    item_->y_ = y_;
+    items.push_back(item_);
 }
 
 void MeleeMob::setMove(Player& p) {

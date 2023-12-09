@@ -50,6 +50,11 @@ void Game::parseInput(Renderer& r) {
             player_.weapon_ = w;
         }
 
+        Item* i = scanItems(r);
+        if(i) {
+            std::cout << "used potion" << std::endl;
+        }
+
         Coordinate rpos;
         rpos.x = room_->advanceDoorX_;
         rpos.y = room_->advanceDoorY_;
@@ -231,6 +236,20 @@ Weapon* Game::scanWeapons(Renderer& r) {
     return NULL;
 }
 
+Item* Game::scanItems(Renderer& r) {
+    Coordinate ppos = player_.center();
+
+    for (auto w = room_->items_.begin(); w != room_->items_.end(); w++) {
+        int x_diff = (*w)->x_ - ppos.x;
+        int y_diff = (*w)->y_ - ppos.y;
+        if (x_diff * x_diff + y_diff * y_diff <= 100 * 100) {
+            room_->items_.erase(w);
+            return *w;
+        }
+    }
+    return NULL;
+}
+
 void Game::scanNear(Renderer& r) {
     Coordinate ppos = player_.center();
     Coordinate rpos;
@@ -250,7 +269,7 @@ void Game::scanNear(Renderer& r) {
         int x_diff = (*w)->x_ - ppos.x;
         int y_diff = (*w)->y_ - ppos.y;
         if (x_diff * x_diff + y_diff * y_diff <= 100 * 100) {
-            infoText = "Press E to pick up";
+            infoText = "Press E to use item";
             return;
         }
     }

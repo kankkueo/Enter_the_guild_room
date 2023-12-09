@@ -3,6 +3,7 @@
 
 #include <string>
 #include "item.hpp"
+#include "renderer.hpp"
 
 class HealingPotion: public Item {
 public:

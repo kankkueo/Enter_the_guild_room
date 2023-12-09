@@ -41,6 +41,7 @@ public:
     void calcOffset(Renderer&);
     void scanNear(Renderer&);
     Weapon* scanWeapons(Renderer&);
+    Item* scanItems(Renderer&);
 
 };
 
