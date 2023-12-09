@@ -180,7 +180,7 @@ Weapon* genRandomWeapon(Renderer& r, int level) {
             w = new Shotgun(name, 10, dmg, pspeed, firerate, pellets, spread);
             w->texture_ = r.loadTexture("./assets/shotgun.png");
             w->projectile_texture_ = r.loadTexture("./assets/bulet1.png");
-            w->sound_ = r.loadSound("./assets/sounds/testi.mp3");
+            w->sound_ = r.loadSound("./assets/sounds/shotgun.wav");
 
             std::cout << "Generated shotgun " << w->getName() << " with: dmg =" << w->getDmg();
             std::cout << ", firerate = " << w->getFirerate();
