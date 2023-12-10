@@ -109,6 +109,10 @@ int Player::getMaxHp(){
     return max_hp_;
 }
 
+void Player::healMax() {
+    hp_ = max_hp_;
+}
+
 bool Player::attack(InputState& s, std::list<Projectile>& projectiles) {
     if (shoot_ticks_ <= 0) {
         shoot_ticks_ = 60 / weapon_->getFirerate();
@@ -159,8 +163,7 @@ bool Player::gainXP(int amount) {
         level_++;
         xp_ -= xp_to_Level_up_;
         dmg_ = level_ * 2;
-        max_hp_ += level_ * level_ * 10;
-        hp_ = max_hp_;
+        max_hp_ += level_ * level_ * 50;
         xp_to_Level_up_ += level_ * 10;
         return true;
     }

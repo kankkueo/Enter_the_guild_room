@@ -19,7 +19,7 @@ public:
     int GetMaxSpeed();
     int GetLevel();
     int getMaxHp();
-
+    void healMax();
     void Heal(int);
     void TakeDMG(int);
     void UpdateXP(int);

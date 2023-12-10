@@ -104,9 +104,14 @@ void Game::changeRoom(Renderer& r) {
     input_.resetInput();
     delete room_;
     game_level_++;
-    mob_attack_delay_ = 120;
+    mob_attack_delay_ = 180;
+    player_.healMax();
     if (game_level_ == 20) {
         room_ = genBossRoom(r, game_level_);
+    }
+    else if (game_level_ == 21) {
+        infoText = "You won!";
+        running_ = false;
     }
     else {
         room_ = genRoom(r, game_level_);

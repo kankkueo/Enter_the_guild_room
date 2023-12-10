@@ -50,7 +50,7 @@ Room* genRoom(Renderer& r, int level) {
     Room* rm = new Room(rt[n].name, rt[n].width, rt[n].height,
         r.loadTexture(rt[n].texture_location.c_str()), r.loadTexture("./assets/trapdoor.png"));
 
-    int mobs = rt[n].mobs_min + rand() % (rt[n].mobs_max - rt[n].mobs_min);
+    int mobs = rt[n].mobs_min + rand() % (rt[n].mobs_max - rt[n].mobs_min) + floor(level * 0.34);
     rm->addRandomMonsters(r, level, mobs);
 
     std::cout << "Generated room " << rm->name_;
