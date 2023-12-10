@@ -4,7 +4,6 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_render.h>
 #include <list>
-#include "entity.hpp"
 #include "input.hpp"
 #include "player.hpp"
 #include "room.hpp"
@@ -53,6 +52,7 @@ public:
     std::list<Projectile> projectiles_;
     Weapon* displayWeapon_;
     bool paused_;
+    int mob_attack_delay_; // delay to prevent spawn kill
 
 };
 

@@ -22,6 +22,7 @@ Game::Game():
     infoText = " ";
     game_level_ = 1;
     paused_ = false;
+    mob_attack_delay_ = 120;
 }
 
 void Game::parseInput(Renderer& r) {
@@ -103,6 +104,7 @@ void Game::changeRoom(Renderer& r) {
     input_.resetInput();
     delete room_;
     game_level_++;
+    mob_attack_delay_ = 120;
     if (game_level_ == 20) {
         room_ = genBossRoom(r, game_level_);
     }
@@ -199,10 +201,16 @@ void Game::moveMonsters(Renderer& r) {
             (*m)->y_ = c.y;
         }
 
-        if ((*m)->attack(player_, projectiles_)) {
-            r.playSound((*m)->getAttackSound(), 1);
+        if (mob_attack_delay_ <= 0) {
+            if ((*m)->attack(player_, projectiles_)) {
+                r.playSound((*m)->getAttackSound(), 1);
+            }
+        }
+        else {
+            mob_attack_delay_--;
         }
 
+        // mobs make random taunt sounds
         if (rand() % 2000 == 1) {
             r.playSound((*m)->sounds_.taunt_, 3);
         }
