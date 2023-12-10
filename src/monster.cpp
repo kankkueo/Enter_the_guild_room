@@ -353,7 +353,7 @@ Monster* genRandomMob(Renderer& r, int level, int room_width, int room_height) {
         case MeleeMobType: {
             HealingPotion* h = genPotion(r, level);
             m = new MeleeMob(level, x, y, 60, 90, h);
-            m->texture_ = r.loadTexture("./assets/Koneteekkari.png");
+            m->texture_ = r.loadTexture("./assets/entities/Koneteekkari.png");
             m->sounds_.death_ = r.loadSound("");
 
             std::cout << "Generated melee mob " << m->getName() << " with: dmg =" << m->GetDMG();
@@ -364,7 +364,7 @@ Monster* genRandomMob(Renderer& r, int level, int room_width, int room_height) {
         case RangedMobType: {
             Weapon* w = genRandomWeapon(r, level);
             m = new RangedMob(level, x, y, 60, 90, w);
-            m->texture_ = r.loadTexture("./assets/Koneteekkari.png"); // Different textures for mob types??
+            m->texture_ = r.loadTexture("./assets/entities/Koneteekkari.png"); // Different textures for mob types??
                                                                       
             std::cout << "Generated ranged mob " << m->getName() << " with: dmg =" << m->GetDMG() << std::endl;
                                                                      
