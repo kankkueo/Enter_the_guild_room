@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['readme_0',['README',['../md_README.html',1,'']]]
+  ['game_20name_0',['Game name',['../md_README.html',1,'']]]
 ];

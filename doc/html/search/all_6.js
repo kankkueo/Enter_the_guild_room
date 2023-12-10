@@ -4,5 +4,6 @@ var searchData=
   ['input_1',['Input',['../classInput.html',1,'']]],
   ['inputmapping_2',['InputMapping',['../structInputMapping.html',1,'']]],
   ['inputstate_3',['InputState',['../structInputState.html',1,'']]],
-  ['item_4',['Item',['../classItem.html',1,'']]]
+  ['instructions_4',['Build instructions',['../md_README.html#autotoc_md1',1,'']]],
+  ['item_5',['Item',['../classItem.html',1,'']]]
 ];
