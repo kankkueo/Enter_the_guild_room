@@ -27,3 +27,13 @@ These can be installed by running
 
 Run `make` in the project root.  
 `make run` starts the game.
+
+## Playing the game
+
+After `make run` the game starts instantly. The game quits when the player either dies or completes the game.
+
+#### Controls
+
+- WASD keys: Move around
+- Arrow keys: Shoot your weapon
+- E: Interact with items (switch weapons, pick up healing potions, go to the next room)
