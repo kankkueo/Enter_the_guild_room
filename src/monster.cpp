@@ -5,7 +5,7 @@
 #include <iostream>
 
 #define death_sound_amount 2
-#define attack_sound_amount 2
+#define attack_sound_amount 1
 #define taunt_sound_amount 2
 #define hit_sound_amount 2
 
@@ -15,8 +15,7 @@ std::string death_sounds[death_sound_amount] = {
 };
 
 std::string attack_sounds[attack_sound_amount] = {
-    "",
-    ""
+    "./assets/sounds/slap.wav",
 };
 
 std::string taunt_sounds[taunt_sound_amount] = {
@@ -95,7 +94,7 @@ void Monster::dropPotion(std::list<HealingPotion*>&) {}
 MeleeMob::MeleeMob(int level, int x, int y, int size_x, int size_y, HealingPotion* potion): 
 Monster("Melee chump", 50 + 15*level*level, 100 + 10*level*level, 
     5 + 0.5*level, x, y, size_x, size_y) {
-    attack_cooldown_ = 60 + rand() % 300;
+    attack_cooldown_ = 20 + rand() % 120;
     attack_ticks_ = 0;
     potion_ = potion;
 }
