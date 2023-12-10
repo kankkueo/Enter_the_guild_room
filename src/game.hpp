@@ -32,7 +32,9 @@ public:
     void calcOffset(Renderer&);
     //! Scans nearby objects to display in info text
     void scanNear(Renderer&);
+    //! replaces game cycle when paused
     void menuTick(Renderer&);
+    //! replaces game render when paused
     void menuRender(Renderer&);
     //! Checks if weapons are nearby to pick up
     Weapon* scanWeapons(Renderer&);
@@ -55,6 +57,8 @@ public:
     Weapon* displayWeapon_;
     bool paused_;
     int mob_attack_delay_; // delay to prevent spawn kill
+    int menuSelected_; // menu button currently selected
+    
 
 };
 
