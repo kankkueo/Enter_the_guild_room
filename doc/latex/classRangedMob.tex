@@ -20,7 +20,7 @@ bool \mbox{\hyperlink{classRangedMob_acd694b611eaeced3365370f2ecebfa86}{attack}}
 \item 
 void \mbox{\hyperlink{classRangedMob_a57f5d867654cac7b2d9e5889c5ee75e9}{set\+Move}} (\mbox{\hyperlink{classPlayer}{Player}} \&)
 \item 
-void \mbox{\hyperlink{classRangedMob_ae2903c4b1148d5c76dc4c590aa4ead0a}{drop\+Item}} (std\+::list$<$ \mbox{\hyperlink{classWeapon}{Weapon}} \texorpdfstring{$\ast$}{*} $>$ \&)
+void \mbox{\hyperlink{classRangedMob_a9ff56fb49abd4347b367ec2bfd82f5ad}{drop\+Weapon}} (std\+::list$<$ \mbox{\hyperlink{classWeapon}{Weapon}} \texorpdfstring{$\ast$}{*} $>$ \&)
 \item 
 Mix\+\_\+\+Chunk \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classRangedMob_acd6fedf772b725706dc133935bbc97b0}{get\+Attack\+Sound}} ()
 \end{DoxyCompactItemize}
@@ -38,6 +38,8 @@ void {\bfseries Take\+DMG} (int)
 bool {\bfseries is\+Alive} ()
 \item 
 std\+::string {\bfseries get\+Name} ()
+\item 
+virtual void {\bfseries drop\+Potion} (std\+::list$<$ \mbox{\hyperlink{classHealingPotion}{Healing\+Potion}} \texorpdfstring{$\ast$}{*} $>$ \&)
 \end{DoxyCompactItemize}
 \doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classEntity}{Entity}}}
 \begin{DoxyCompactItemize}
@@ -68,6 +70,8 @@ int {\bfseries optimal\+\_\+distance\+\_\+}
 \end{DoxyCompactItemize}
 \doxysubsection*{Public Attributes inherited from \mbox{\hyperlink{classMonster}{Monster}}}
 \begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classItem}{Item}} \texorpdfstring{$\ast$}{*} {\bfseries item\+\_\+}
 \item 
 \mbox{\hyperlink{structSoundSet}{Sound\+Set}} {\bfseries sounds\+\_\+}
 \end{DoxyCompactItemize}
@@ -124,11 +128,11 @@ Basic ranged monster
 
 Reimplemented from \mbox{\hyperlink{classMonster}{Monster}}.
 
-\Hypertarget{classRangedMob_ae2903c4b1148d5c76dc4c590aa4ead0a}\label{classRangedMob_ae2903c4b1148d5c76dc4c590aa4ead0a} 
-\index{RangedMob@{RangedMob}!dropItem@{dropItem}}
-\index{dropItem@{dropItem}!RangedMob@{RangedMob}}
-\doxysubsubsection{\texorpdfstring{dropItem()}{dropItem()}}
-{\footnotesize\ttfamily void Ranged\+Mob\+::drop\+Item (\begin{DoxyParamCaption}\item[{std\+::list$<$ \mbox{\hyperlink{classWeapon}{Weapon}} \texorpdfstring{$\ast$}{*} $>$ \&}]{items }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+\Hypertarget{classRangedMob_a9ff56fb49abd4347b367ec2bfd82f5ad}\label{classRangedMob_a9ff56fb49abd4347b367ec2bfd82f5ad} 
+\index{RangedMob@{RangedMob}!dropWeapon@{dropWeapon}}
+\index{dropWeapon@{dropWeapon}!RangedMob@{RangedMob}}
+\doxysubsubsection{\texorpdfstring{dropWeapon()}{dropWeapon()}}
+{\footnotesize\ttfamily void Ranged\+Mob\+::drop\+Weapon (\begin{DoxyParamCaption}\item[{std\+::list$<$ \mbox{\hyperlink{classWeapon}{Weapon}} \texorpdfstring{$\ast$}{*} $>$ \&}]{weapons }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
 
 
 

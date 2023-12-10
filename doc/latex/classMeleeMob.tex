@@ -13,12 +13,14 @@ Inheritance diagram for Melee\+Mob\+:\begin{figure}[H]
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\Hypertarget{classMeleeMob_ab0c50393570977ac8784911519ff6af7}\label{classMeleeMob_ab0c50393570977ac8784911519ff6af7} 
-{\bfseries Melee\+Mob} (int, int, int, int, int)
+\Hypertarget{classMeleeMob_ae27293085f08f33d27f4b5f7daead93f}\label{classMeleeMob_ae27293085f08f33d27f4b5f7daead93f} 
+{\bfseries Melee\+Mob} (int, int, int, int, int, \mbox{\hyperlink{classHealingPotion}{Healing\+Potion}} \texorpdfstring{$\ast$}{*})
 \item 
 bool \mbox{\hyperlink{classMeleeMob_a50bdfa77fcd3aa4b572a777deff3128d}{attack}} (\mbox{\hyperlink{classPlayer}{Player}} \&, std\+::list$<$ \mbox{\hyperlink{classProjectile}{Projectile}} $>$ \&)
 \item 
 void \mbox{\hyperlink{classMeleeMob_a5454731d86f62ae464287fdb0c520467}{set\+Move}} (\mbox{\hyperlink{classPlayer}{Player}} \&)
+\item 
+void \mbox{\hyperlink{classMeleeMob_a2d8b16597b7b5a97109b026abbc4d793}{drop\+Potion}} (std\+::list$<$ \mbox{\hyperlink{classHealingPotion}{Healing\+Potion}} \texorpdfstring{$\ast$}{*} $>$ \&)
 \end{DoxyCompactItemize}
 \doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classMonster}{Monster}}}
 \begin{DoxyCompactItemize}
@@ -35,7 +37,7 @@ bool {\bfseries is\+Alive} ()
 \item 
 std\+::string {\bfseries get\+Name} ()
 \item 
-virtual void {\bfseries drop\+Item} (std\+::list$<$ \mbox{\hyperlink{classWeapon}{Weapon}} \texorpdfstring{$\ast$}{*} $>$ \&)
+virtual void {\bfseries drop\+Weapon} (std\+::list$<$ \mbox{\hyperlink{classWeapon}{Weapon}} \texorpdfstring{$\ast$}{*} $>$ \&)
 \item 
 virtual Mix\+\_\+\+Chunk \texorpdfstring{$\ast$}{*} {\bfseries get\+Attack\+Sound} ()
 \end{DoxyCompactItemize}
@@ -57,6 +59,9 @@ bool {\bfseries collides\+With} (\mbox{\hyperlink{classEntity}{Entity}} \&)
 \doxysubsubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
+\Hypertarget{classMeleeMob_ab0feee5ddcfd0a4ee5fc7c5cc0fb41de}\label{classMeleeMob_ab0feee5ddcfd0a4ee5fc7c5cc0fb41de} 
+\mbox{\hyperlink{classHealingPotion}{Healing\+Potion}} \texorpdfstring{$\ast$}{*} {\bfseries potion\+\_\+}
+\item 
 \Hypertarget{classMeleeMob_a050f39a2498556c4e741e5a1d6e0b5e8}\label{classMeleeMob_a050f39a2498556c4e741e5a1d6e0b5e8} 
 int {\bfseries attack\+\_\+ticks\+\_\+}
 \item 
@@ -65,6 +70,8 @@ int {\bfseries attack\+\_\+cooldown\+\_\+}
 \end{DoxyCompactItemize}
 \doxysubsection*{Public Attributes inherited from \mbox{\hyperlink{classMonster}{Monster}}}
 \begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classItem}{Item}} \texorpdfstring{$\ast$}{*} {\bfseries item\+\_\+}
 \item 
 \mbox{\hyperlink{structSoundSet}{Sound\+Set}} {\bfseries sounds\+\_\+}
 \end{DoxyCompactItemize}
@@ -116,6 +123,16 @@ Basic melee monster
 \index{attack@{attack}!MeleeMob@{MeleeMob}}
 \doxysubsubsection{\texorpdfstring{attack()}{attack()}}
 {\footnotesize\ttfamily bool Melee\+Mob\+::attack (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classPlayer}{Player}} \&}]{p,  }\item[{std\+::list$<$ \mbox{\hyperlink{classProjectile}{Projectile}} $>$ \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classMonster}{Monster}}.
+
+\Hypertarget{classMeleeMob_a2d8b16597b7b5a97109b026abbc4d793}\label{classMeleeMob_a2d8b16597b7b5a97109b026abbc4d793} 
+\index{MeleeMob@{MeleeMob}!dropPotion@{dropPotion}}
+\index{dropPotion@{dropPotion}!MeleeMob@{MeleeMob}}
+\doxysubsubsection{\texorpdfstring{dropPotion()}{dropPotion()}}
+{\footnotesize\ttfamily void Melee\+Mob\+::drop\+Potion (\begin{DoxyParamCaption}\item[{std\+::list$<$ \mbox{\hyperlink{classHealingPotion}{Healing\+Potion}} \texorpdfstring{$\ast$}{*} $>$ \&}]{potions }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
 
 
 

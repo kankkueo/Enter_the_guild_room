@@ -256,13 +256,17 @@ int Game::tick(Renderer& r) {
 }
 
 void Game::menuTick(Renderer& r){
+    if (input_.scan()) {
+        running_ = false;
+        return;
+    }
+    
     InputState s = input_.getState();
     if(s.menu){
+        input_.resetInput();
         s.menu = false;
         paused_ = false;
-        std::cout << "DD" << std::endl; //ei mee tänne???
     }
-    //std::cout << "ASD" << std::endl; menee tänne!!!
 }
 
 void Game::menuRender(Renderer& r){
