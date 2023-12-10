@@ -15,6 +15,7 @@ typedef struct {
     bool attackDown;
     bool attackLeft;
     bool attackRight;
+    bool enter;
 } InputState;
 
 typedef struct {
@@ -29,6 +30,7 @@ typedef struct {
     uint32_t attackDown;
     uint32_t attackLeft;
     uint32_t attackRight;
+    uint32_t enter;
 } InputMapping;
 
 

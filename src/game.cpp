@@ -24,6 +24,9 @@ Game::Game():
     paused_ = false;
     mob_attack_delay_ = 120;
     menuSelected_ = 0;
+    menuButtons_.push_back("Continue");
+    menuButtons_.push_back("New Game");
+    menuButtons_.push_back("Exit Game");
 }
 
 void Game::parseInput(Renderer& r) {
@@ -270,16 +273,60 @@ void Game::menuTick(Renderer& r){
         s.menu = false;
         paused_ = false;
     }else if(s.attackDown || s.down){
-
+        input_.resetInput();
+        menuSelected_++;
     }else if(s.attackUp || s.up){
-        
+        input_.resetInput();
+        menuSelected_--;
+    }else if(s.enter){
+        input_.resetInput();
+        menuSelect(r);
     }
-
-    
+    if(menuSelected_ == -1){
+        menuSelected_ = 2;
+    }
+    if(menuSelected_ == 3){
+        menuSelected_ = 0;
+    }
 
 }
 
+void Game::menuSelect(Renderer& r){
+    if(menuSelected_ == 0){
+        //unpause game
+        if(player_.isAlive()){
+            paused_ = false;
+        }
+    }else if(menuSelected_ == 1){
+        //new game
+        game_level_ = 1;
+        player_.resetStats();
+        Weapon* w = genRandomWeapon(r, 1);
+        player_.equipWeapon(w, r);
+        changeRoom(r);
+        paused_ = false;
+    }else if(menuSelected_ == 2){
+        //Exit game
+        running_ = false;
+    }
+}
+
 void Game::menuRender(Renderer& r){
+    int i = 0;
+    SDL_Color c = {255,255,255};
+    for (auto b = menuButtons_.begin(); b != menuButtons_.end(); b++){
+       std::string txt = (*b);
+
+        if(i == menuSelected_){
+            c = {0,255,0};
+        }else{
+            c = {255,255,255};
+        }
+        
+        r.draw_text(txt.c_str(), r.getWinWidth()/2, (r.getWinHeight()/3) + i*35, c);
+        i++;
+    } 
+    
     
 }
 

@@ -34,6 +34,7 @@ public:
     bool gainXP(int);
     bool isAlive();
     void equipWeapon(Weapon*, Renderer& r);
+    void resetStats();
 
 
     Weapon *weapon_;
