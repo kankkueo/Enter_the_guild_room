@@ -119,9 +119,11 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>scanNear</b> (<a clas
 <tr class="separator:a863eda7cbccfa153ae7921ee0142c216"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7cd6af30c03814d92c5ec57492bd4590" id="r_a7cd6af30c03814d92c5ec57492bd4590"><td class="memItemLeft" align="right" valign="top"><a id="a7cd6af30c03814d92c5ec57492bd4590" name="a7cd6af30c03814d92c5ec57492bd4590"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>menuTick</b> (<a class="el" href="classRenderer.html">Renderer</a> &amp;)</td></tr>
+<tr class="memdesc:a7cd6af30c03814d92c5ec57492bd4590"><td class="mdescLeft">&#160;</td><td class="mdescRight">replaces game cycle when paused <br /></td></tr>
 <tr class="separator:a7cd6af30c03814d92c5ec57492bd4590"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae0f89f04b52d3f9c825bd6a7d2cd5898" id="r_ae0f89f04b52d3f9c825bd6a7d2cd5898"><td class="memItemLeft" align="right" valign="top"><a id="ae0f89f04b52d3f9c825bd6a7d2cd5898" name="ae0f89f04b52d3f9c825bd6a7d2cd5898"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>menuRender</b> (<a class="el" href="classRenderer.html">Renderer</a> &amp;)</td></tr>
+<tr class="memdesc:ae0f89f04b52d3f9c825bd6a7d2cd5898"><td class="mdescLeft">&#160;</td><td class="mdescRight">replaces game render when paused <br /></td></tr>
 <tr class="separator:ae0f89f04b52d3f9c825bd6a7d2cd5898"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ada63913c3ab6d3e032e05b642d566a5c" id="r_ada63913c3ab6d3e032e05b642d566a5c"><td class="memItemLeft" align="right" valign="top"><a id="ada63913c3ab6d3e032e05b642d566a5c" name="ada63913c3ab6d3e032e05b642d566a5c"></a>
 <a class="el" href="classWeapon.html">Weapon</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>scanWeapons</b> (<a class="el" href="classRenderer.html">Renderer</a> &amp;)</td></tr>
@@ -131,6 +133,10 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>menuRender</b> (<a cl
 <a class="el" href="classHealingPotion.html">HealingPotion</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>scanPotions</b> (<a class="el" href="classRenderer.html">Renderer</a> &amp;)</td></tr>
 <tr class="memdesc:ab9050fa89e0672494c1a7d493fc020b9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if potions are nearby to pick up. <br /></td></tr>
 <tr class="separator:ab9050fa89e0672494c1a7d493fc020b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9868a4834e953a00f3ccf1500dde4c1d" id="r_a9868a4834e953a00f3ccf1500dde4c1d"><td class="memItemLeft" align="right" valign="top"><a id="a9868a4834e953a00f3ccf1500dde4c1d" name="a9868a4834e953a00f3ccf1500dde4c1d"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>menuSelect</b> (<a class="el" href="classRenderer.html">Renderer</a> &amp;)</td></tr>
+<tr class="memdesc:a9868a4834e953a00f3ccf1500dde4c1d"><td class="mdescLeft">&#160;</td><td class="mdescRight">handles input in menu <br /></td></tr>
+<tr class="separator:a9868a4834e953a00f3ccf1500dde4c1d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -179,6 +185,12 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>paused_</b></td></tr>
 <tr class="memitem:a44627e92d13d6ce614837e4e4c1dcd49" id="r_a44627e92d13d6ce614837e4e4c1dcd49"><td class="memItemLeft" align="right" valign="top"><a id="a44627e92d13d6ce614837e4e4c1dcd49" name="a44627e92d13d6ce614837e4e4c1dcd49"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>mob_attack_delay_</b></td></tr>
 <tr class="separator:a44627e92d13d6ce614837e4e4c1dcd49"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4817efd9791a74c30dbdb5eeb0e15e57" id="r_a4817efd9791a74c30dbdb5eeb0e15e57"><td class="memItemLeft" align="right" valign="top"><a id="a4817efd9791a74c30dbdb5eeb0e15e57" name="a4817efd9791a74c30dbdb5eeb0e15e57"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>menuSelected_</b></td></tr>
+<tr class="separator:a4817efd9791a74c30dbdb5eeb0e15e57"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a790a9410e9c61262e1188337320ea2f1" id="r_a790a9410e9c61262e1188337320ea2f1"><td class="memItemLeft" align="right" valign="top"><a id="a790a9410e9c61262e1188337320ea2f1" name="a790a9410e9c61262e1188337320ea2f1"></a>
+std::list&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>menuButtons_</b></td></tr>
+<tr class="separator:a790a9410e9c61262e1188337320ea2f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li><a class="el" href="game_8hpp_source.html">game.hpp</a></li>

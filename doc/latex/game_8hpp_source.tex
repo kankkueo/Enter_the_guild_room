@@ -28,33 +28,37 @@
 \DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGame_a925ef39a74485ed8a21f6bf7d7267ca2}{changeRoom}}(\mbox{\hyperlink{classRenderer}{Renderer}}\&);}
 \DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGame_adcd7f6c571a5fb5f8cc4cb5c35935f15}{calcOffset}}(\mbox{\hyperlink{classRenderer}{Renderer}}\&);}
 \DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGame_a863eda7cbccfa153ae7921ee0142c216}{scanNear}}(\mbox{\hyperlink{classRenderer}{Renderer}}\&);}
-\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordtype}{void}\ menuTick(\mbox{\hyperlink{classRenderer}{Renderer}}\&);}
-\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordtype}{void}\ menuRender(\mbox{\hyperlink{classRenderer}{Renderer}}\&);}
-\DoxyCodeLine{00038\ \ \ \ \ \mbox{\hyperlink{classWeapon}{Weapon}}*\ \mbox{\hyperlink{classGame_ada63913c3ab6d3e032e05b642d566a5c}{scanWeapons}}(\mbox{\hyperlink{classRenderer}{Renderer}}\&);}
-\DoxyCodeLine{00040\ \ \ \ \ \mbox{\hyperlink{classHealingPotion}{HealingPotion}}*\ \mbox{\hyperlink{classGame_ab9050fa89e0672494c1a7d493fc020b9}{scanPotions}}(\mbox{\hyperlink{classRenderer}{Renderer}}\&);}
-\DoxyCodeLine{00041\ }
-\DoxyCodeLine{00042\ }
-\DoxyCodeLine{00043\ \ \ \ \ std::list<Room>\ room\_templates\_;}
-\DoxyCodeLine{00044\ \ \ \ \ \mbox{\hyperlink{classRoom}{Room}}\ *room\_;}
-\DoxyCodeLine{00045\ \ \ \ \ \mbox{\hyperlink{classRoom}{Room}}\ *room1\_;}
-\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordtype}{bool}\ running\_;}
-\DoxyCodeLine{00047\ \ \ \ \ \mbox{\hyperlink{classInput}{Input}}\ input\_;}
-\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordtype}{int}\ x\_offset\_;}
-\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keywordtype}{int}\ y\_offset\_;}
-\DoxyCodeLine{00050\ \ \ \ \ std::string\ infoText;}
-\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keywordtype}{int}\ game\_level\_;}
-\DoxyCodeLine{00052\ \ \ \ \ \mbox{\hyperlink{classHud}{Hud}}\ hud\_;}
-\DoxyCodeLine{00053\ \ \ \ \ \mbox{\hyperlink{classPlayer}{Player}}\ player\_;}
-\DoxyCodeLine{00054\ \ \ \ \ std::list<Projectile>\ projectiles\_;}
-\DoxyCodeLine{00055\ \ \ \ \ \mbox{\hyperlink{classWeapon}{Weapon}}*\ displayWeapon\_;}
-\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keywordtype}{bool}\ paused\_;}
-\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keywordtype}{int}\ mob\_attack\_delay\_;\ \textcolor{comment}{//\ delay\ to\ prevent\ spawn\ kill}}
-\DoxyCodeLine{00058\ }
-\DoxyCodeLine{00059\ \};}
-\DoxyCodeLine{00060\ }
-\DoxyCodeLine{00061\ }
-\DoxyCodeLine{00062\ \textcolor{preprocessor}{\#endif}}
-\DoxyCodeLine{00063\ }
-\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGame_a7cd6af30c03814d92c5ec57492bd4590}{menuTick}}(\mbox{\hyperlink{classRenderer}{Renderer}}\&);}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGame_ae0f89f04b52d3f9c825bd6a7d2cd5898}{menuRender}}(\mbox{\hyperlink{classRenderer}{Renderer}}\&);}
+\DoxyCodeLine{00040\ \ \ \ \ \mbox{\hyperlink{classWeapon}{Weapon}}*\ \mbox{\hyperlink{classGame_ada63913c3ab6d3e032e05b642d566a5c}{scanWeapons}}(\mbox{\hyperlink{classRenderer}{Renderer}}\&);}
+\DoxyCodeLine{00042\ \ \ \ \ \mbox{\hyperlink{classHealingPotion}{HealingPotion}}*\ \mbox{\hyperlink{classGame_ab9050fa89e0672494c1a7d493fc020b9}{scanPotions}}(\mbox{\hyperlink{classRenderer}{Renderer}}\&);}
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGame_a9868a4834e953a00f3ccf1500dde4c1d}{menuSelect}}(\mbox{\hyperlink{classRenderer}{Renderer}}\&);}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \ \ \ \ std::list<Room>\ room\_templates\_;}
+\DoxyCodeLine{00048\ \ \ \ \ \mbox{\hyperlink{classRoom}{Room}}\ *room\_;}
+\DoxyCodeLine{00049\ \ \ \ \ \mbox{\hyperlink{classRoom}{Room}}\ *room1\_;}
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordtype}{bool}\ running\_;}
+\DoxyCodeLine{00051\ \ \ \ \ \mbox{\hyperlink{classInput}{Input}}\ input\_;}
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keywordtype}{int}\ x\_offset\_;}
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keywordtype}{int}\ y\_offset\_;}
+\DoxyCodeLine{00054\ \ \ \ \ std::string\ infoText;}
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keywordtype}{int}\ game\_level\_;}
+\DoxyCodeLine{00056\ \ \ \ \ \mbox{\hyperlink{classHud}{Hud}}\ hud\_;}
+\DoxyCodeLine{00057\ \ \ \ \ \mbox{\hyperlink{classPlayer}{Player}}\ player\_;}
+\DoxyCodeLine{00058\ \ \ \ \ std::list<Projectile>\ projectiles\_;}
+\DoxyCodeLine{00059\ \ \ \ \ \mbox{\hyperlink{classWeapon}{Weapon}}*\ displayWeapon\_;}
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keywordtype}{bool}\ paused\_;}
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keywordtype}{int}\ mob\_attack\_delay\_;\ \textcolor{comment}{//\ delay\ to\ prevent\ spawn\ kill}}
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keywordtype}{int}\ menuSelected\_;\ \textcolor{comment}{//\ menu\ button\ currently\ selected}}
+\DoxyCodeLine{00063\ \ \ \ \ std::list<std::string>\ menuButtons\_;}
+\DoxyCodeLine{00064\ \ \ \ \ }
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00066\ \};}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00069\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00071\ }
 
 \end{DoxyCode}

@@ -18,41 +18,43 @@
 \DoxyCodeLine{00015\ \ \ \ \ \textcolor{keywordtype}{bool}\ attackDown;}
 \DoxyCodeLine{00016\ \ \ \ \ \textcolor{keywordtype}{bool}\ attackLeft;}
 \DoxyCodeLine{00017\ \ \ \ \ \textcolor{keywordtype}{bool}\ attackRight;}
-\DoxyCodeLine{00018\ \}\ \mbox{\hyperlink{structInputState}{InputState}};}
-\DoxyCodeLine{00019\ }
-\DoxyCodeLine{00020\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
-\DoxyCodeLine{00021\ \ \ \ \ uint32\_t\ up;}
-\DoxyCodeLine{00022\ \ \ \ \ uint32\_t\ down;}
-\DoxyCodeLine{00023\ \ \ \ \ uint32\_t\ left;}
-\DoxyCodeLine{00024\ \ \ \ \ uint32\_t\ right;}
-\DoxyCodeLine{00025\ \ \ \ \ uint32\_t\ attack;}
-\DoxyCodeLine{00026\ \ \ \ \ uint32\_t\ interact;}
-\DoxyCodeLine{00027\ \ \ \ \ uint32\_t\ menu;}
-\DoxyCodeLine{00028\ \ \ \ \ uint32\_t\ attackUp;}
-\DoxyCodeLine{00029\ \ \ \ \ uint32\_t\ attackDown;}
-\DoxyCodeLine{00030\ \ \ \ \ uint32\_t\ attackLeft;}
-\DoxyCodeLine{00031\ \ \ \ \ uint32\_t\ attackRight;}
-\DoxyCodeLine{00032\ \}\ \mbox{\hyperlink{structInputMapping}{InputMapping}};}
-\DoxyCodeLine{00033\ }
-\DoxyCodeLine{00034\ }
-\DoxyCodeLine{00036\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classInput}{Input}}\ \{}
-\DoxyCodeLine{00037\ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00038\ }
-\DoxyCodeLine{00039\ \ \ \ \ \mbox{\hyperlink{classInput}{Input}}();}
-\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keywordtype}{int}\ scan();}
-\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordtype}{void}\ keyDown(SDL\_KeyboardEvent*);}
-\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordtype}{void}\ keyUp(SDL\_KeyboardEvent*);}
-\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keywordtype}{void}\ resetInput();}
-\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordtype}{void}\ resetInteract();}
-\DoxyCodeLine{00045\ \ \ \ \ \mbox{\hyperlink{structInputState}{InputState}}\ getState();}
-\DoxyCodeLine{00046\ }
-\DoxyCodeLine{00047\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keywordtype}{bool}\ enter;}
+\DoxyCodeLine{00019\ \}\ \mbox{\hyperlink{structInputState}{InputState}};}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00022\ \ \ \ \ uint32\_t\ up;}
+\DoxyCodeLine{00023\ \ \ \ \ uint32\_t\ down;}
+\DoxyCodeLine{00024\ \ \ \ \ uint32\_t\ left;}
+\DoxyCodeLine{00025\ \ \ \ \ uint32\_t\ right;}
+\DoxyCodeLine{00026\ \ \ \ \ uint32\_t\ attack;}
+\DoxyCodeLine{00027\ \ \ \ \ uint32\_t\ interact;}
+\DoxyCodeLine{00028\ \ \ \ \ uint32\_t\ menu;}
+\DoxyCodeLine{00029\ \ \ \ \ uint32\_t\ attackUp;}
+\DoxyCodeLine{00030\ \ \ \ \ uint32\_t\ attackDown;}
+\DoxyCodeLine{00031\ \ \ \ \ uint32\_t\ attackLeft;}
+\DoxyCodeLine{00032\ \ \ \ \ uint32\_t\ attackRight;}
+\DoxyCodeLine{00033\ \ \ \ \ uint32\_t\ enter;}
+\DoxyCodeLine{00034\ \}\ \mbox{\hyperlink{structInputMapping}{InputMapping}};}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00038\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classInput}{Input}}\ \{}
+\DoxyCodeLine{00039\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \ \ \ \ \mbox{\hyperlink{classInput}{Input}}();}
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordtype}{int}\ scan();}
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keywordtype}{void}\ keyDown(SDL\_KeyboardEvent*);}
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordtype}{void}\ keyUp(SDL\_KeyboardEvent*);}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordtype}{void}\ resetInput();}
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordtype}{void}\ resetInteract();}
+\DoxyCodeLine{00047\ \ \ \ \ \mbox{\hyperlink{structInputState}{InputState}}\ getState();}
 \DoxyCodeLine{00048\ }
-\DoxyCodeLine{00049\ \ \ \ \ \mbox{\hyperlink{structInputState}{InputState}}\ state\_;}
-\DoxyCodeLine{00050\ \ \ \ \ \mbox{\hyperlink{structInputMapping}{InputMapping}}\ mapping\_;}
-\DoxyCodeLine{00051\ }
-\DoxyCodeLine{00052\ \};}
+\DoxyCodeLine{00049\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \ \ \ \ \mbox{\hyperlink{structInputState}{InputState}}\ state\_;}
+\DoxyCodeLine{00052\ \ \ \ \ \mbox{\hyperlink{structInputMapping}{InputMapping}}\ mapping\_;}
 \DoxyCodeLine{00053\ }
-\DoxyCodeLine{00054\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00054\ \};}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \textcolor{preprocessor}{\#endif}}
 
 \end{DoxyCode}
