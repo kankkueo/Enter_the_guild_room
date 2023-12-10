@@ -300,7 +300,7 @@ void Game::menuSelect(Renderer& r){
         }
     }else if(menuSelected_ == 1){
         //new game
-        game_level_ = 1;
+        game_level_ = 0;
         player_.resetStats();
         Weapon* w = genRandomWeapon(r, 1);
         player_.equipWeapon(w, r);
@@ -430,23 +430,23 @@ void Game::render(Renderer& r) {
 
     if(state.left) {
         player_texture = player_.texture_left_;
-        weapon_xpos = -15;
-        weapon_ypos = 60;
+        weapon_xpos = -45;
+        weapon_ypos = 40;
     }
     else if(state.right) {
         player_texture = player_.texture_right_;
-        weapon_xpos = 62;
-        weapon_ypos = 74;
+        weapon_xpos = 20;
+        weapon_ypos = 64;
     }
     else if(state.up || state.down) {
         player_texture = player_.texture_front_;
-        weapon_xpos = 37;
-        weapon_ypos = 77;
+        weapon_xpos = 0;
+        weapon_ypos = 64;
     }
     else {
         player_texture = player_.texture_front_;
-        weapon_xpos = 37;
-        weapon_ypos = 77;
+        weapon_xpos = 0;
+        weapon_ypos = 64;
     }
 
     r.drawTexture(player_texture, 
