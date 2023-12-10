@@ -4,14 +4,15 @@
 #include "consumables.hpp"
 #include <iostream>
 
-#define death_sound_amount 2
+#define death_sound_amount 3
 #define attack_sound_amount 1
-#define taunt_sound_amount 2
-#define hit_sound_amount 2
+#define taunt_sound_amount 3
+#define hit_sound_amount 1
 
 std::string death_sounds[death_sound_amount] = {
     "./assets/sounds/oyoyoy.wav",
-    "./assets/sounds/hammasratas.wav"
+    "./assets/sounds/kshshsshh.wav",
+    "./assets/sounds/hohohohoho.wav",
 };
 
 std::string attack_sounds[attack_sound_amount] = {
@@ -20,12 +21,12 @@ std::string attack_sounds[attack_sound_amount] = {
 
 std::string taunt_sounds[taunt_sound_amount] = {
     "./assets/sounds/yykaakone.wav",
-    "./assets/sounds/hammasratas.wav"
+    "./assets/sounds/hammasratas.wav",
+    "./assets/sounds/ouh-ouh-ouh.wav",
 };
 
 std::string hit_sounds[hit_sound_amount] = {
     "",
-    ""
 };
 
 /*

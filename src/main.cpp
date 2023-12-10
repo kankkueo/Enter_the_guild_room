@@ -17,9 +17,9 @@ int main() {
     game.player_.texture_left_= rend.loadTexture("./assets/entities/teekkari1-left.png");
     game.player_.texture_right_= rend.loadTexture("./assets/entities/teekkari1-right.png");
 
-    game.player_.sounds_.taunt_ = rend.loadSound("");
-    game.player_.sounds_.death_ = rend.loadSound("");
-    game.player_.sounds_.hit_ = rend.loadSound("");
+    game.player_.sounds_.taunt_ = rend.loadSound("./assets/sounds/sheesh.wav");
+    game.player_.sounds_.death_ = rend.loadSound("./assets/sounds/ohh.wav");
+    game.player_.sounds_.hit_ = rend.loadSound("./assets/sounds/ohh.wav");
 
     Weapon* w = genRandomWeapon(rend, 1);
     game.player_.equipWeapon(w, rend);

@@ -117,6 +117,7 @@ void Game::changeRoom(Renderer& r) {
     else if (game_level_ == 21) {
         infoText = "You won!";
         running_ = false;
+        r.playSound(r.loadSound("./assets/sounds/voitit.wav"), 1);
     }
     else {
         room_ = genRoom(r, game_level_);
@@ -164,7 +165,7 @@ void Game::moveProjectiles(Renderer& r) {
                     delete *m;
                     m = room_->monsters_.erase(m);
                     if (player_.gainXP(300)) {
-                        r.playSound(player_.sounds_.taunt_, 3);
+                        r.playSound(player_.sounds_.taunt_, 1);
                     }
                 }
                 else {
@@ -250,6 +251,7 @@ int Game::tick(Renderer& r) {
         infoText = "YOU DIED";
         running_ = false;
         r.playSound(player_.sounds_.death_, 4);
+        r.playSound(r.loadSound("./assets/sounds/havisit.wav"), 1);
     }
 
     return 0;
