@@ -163,7 +163,7 @@ bool Player::gainXP(int amount) {
         level_++;
         xp_ -= xp_to_Level_up_;
         dmg_ = level_ * 2;
-        max_hp_ += level_ * level_ * 50;
+        max_hp_ += level_ * level_ * 25;
         xp_to_Level_up_ += level_ * 10;
         return true;
     }

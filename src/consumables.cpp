@@ -6,7 +6,7 @@ std::string HealingPotion::toString() {
 
 HealingPotion* genPotion(Renderer& r, int level) {
     int rand_int = (rand() % (20 - 10 + 1)) + 10;
-    int healing = 100 + rand_int * level;
+    int healing = 100 + rand_int * level * level * 3;
     HealingPotion* h = NULL;
     h = new HealingPotion("healing potion", 10, healing);
     h->texture_ = r.loadTexture("./assets/healing-potion.png");

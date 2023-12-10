@@ -110,7 +110,7 @@ void Game::changeRoom(Renderer& r) {
     delete room_;
     game_level_++;
     mob_attack_delay_ = 180;
-    player_.healMax();
+    //player_.healMax();
     if (game_level_ == 20) {
         room_ = genBossRoom(r, game_level_);
     }
