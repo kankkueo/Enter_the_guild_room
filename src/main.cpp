@@ -20,6 +20,7 @@ int main() {
     game.player_.sounds_.taunt_ = rend.loadSound("./assets/sounds/sheesh.wav");
     game.player_.sounds_.death_ = rend.loadSound("./assets/sounds/ohh.wav");
     game.player_.sounds_.hit_ = rend.loadSound("./assets/sounds/ohh.wav");
+    
 
     
     std::cout << "Starting game" << std::endl;

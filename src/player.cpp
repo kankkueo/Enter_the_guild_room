@@ -5,7 +5,7 @@ Player::Player(const std::string& name, int x, int y):
 //Entity(x, y, 128, 128), weapon_(new Shotgun("Starter weapon", 10, 10, 30, 5, 10, 0.5)) {
 Entity(x, y, 57, 100), weapon_(NULL) {
     name_ = name;
-    alive_ = true;
+    alive_ = false;
     max_hp_ = 1000;
     hp_ = max_hp_;
     dmg_ = 10;

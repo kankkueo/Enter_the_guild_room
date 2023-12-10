@@ -253,9 +253,10 @@ int Game::tick(Renderer& r) {
 
     if (!player_.isAlive()) {
         infoText = "YOU DIED";
-        running_ = false;
+        paused_ = true;
         r.playSound(player_.sounds_.death_, 4);
         r.playSound(r.loadSound("./assets/sounds/havisit.wav"), 1);
+
     }
 
     return 0;
@@ -326,6 +327,8 @@ void Game::menuRender(Renderer& r){
         r.draw_text(txt.c_str(), r.getWinWidth()/2, (r.getWinHeight()/3) + i*35, c);
         i++;
     } 
+
+    r.draw_text(infoText.c_str(), r.getWinWidth()/2, 100);
     
     
 }
