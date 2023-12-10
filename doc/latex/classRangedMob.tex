@@ -1,0 +1,162 @@
+\doxysection{Ranged\+Mob Class Reference}
+\hypertarget{classRangedMob}{}\label{classRangedMob}\index{RangedMob@{RangedMob}}
+
+
+{\ttfamily \#include $<$monster.\+hpp$>$}
+
+Inheritance diagram for Ranged\+Mob\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classRangedMob}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classRangedMob_a75299ebdd204f0ed29be645fcc4bccf8}\label{classRangedMob_a75299ebdd204f0ed29be645fcc4bccf8} 
+{\bfseries Ranged\+Mob} (int, int, int, int, int, \mbox{\hyperlink{classWeapon}{Weapon}} \texorpdfstring{$\ast$}{*})
+\item 
+bool \mbox{\hyperlink{classRangedMob_acd694b611eaeced3365370f2ecebfa86}{attack}} (\mbox{\hyperlink{classPlayer}{Player}} \&, std\+::list$<$ \mbox{\hyperlink{classProjectile}{Projectile}} $>$ \&)
+\item 
+void \mbox{\hyperlink{classRangedMob_a57f5d867654cac7b2d9e5889c5ee75e9}{set\+Move}} (\mbox{\hyperlink{classPlayer}{Player}} \&)
+\item 
+void \mbox{\hyperlink{classRangedMob_ae2903c4b1148d5c76dc4c590aa4ead0a}{drop\+Item}} (std\+::list$<$ \mbox{\hyperlink{classWeapon}{Weapon}} \texorpdfstring{$\ast$}{*} $>$ \&)
+\item 
+Mix\+\_\+\+Chunk \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classRangedMob_acd6fedf772b725706dc133935bbc97b0}{get\+Attack\+Sound}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classMonster}{Monster}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Monster} (const std\+::string \&, int, int, int, int, int, int, int)
+\item 
+int {\bfseries Get\+HP} ()
+\item 
+int {\bfseries Get\+DMG} ()
+\item 
+void {\bfseries Take\+DMG} (int)
+\item 
+bool {\bfseries is\+Alive} ()
+\item 
+std\+::string {\bfseries get\+Name} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classEntity}{Entity}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Entity} (int, int, int, int)
+\item 
+void {\bfseries move} ()
+\item 
+\mbox{\hyperlink{structCoordinate}{Coordinate}} {\bfseries new\+Pos} ()
+\item 
+\mbox{\hyperlink{structCoordinate}{Coordinate}} {\bfseries center} ()
+\item 
+\mbox{\hyperlink{structCoordinate}{Coordinate}} {\bfseries new\+Center} ()
+\item 
+bool {\bfseries collides\+With} (\mbox{\hyperlink{classEntity}{Entity}} \&)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classRangedMob_ab3e4bb1017a1efa804e4ea1b4eeb9562}\label{classRangedMob_ab3e4bb1017a1efa804e4ea1b4eeb9562} 
+\mbox{\hyperlink{classWeapon}{Weapon}} \texorpdfstring{$\ast$}{*} {\bfseries weapon\+\_\+}
+\item 
+\Hypertarget{classRangedMob_af377df501d7bc1bb0b6f7fd3d8c61a13}\label{classRangedMob_af377df501d7bc1bb0b6f7fd3d8c61a13} 
+int {\bfseries attack\+\_\+ticks\+\_\+}
+\item 
+\Hypertarget{classRangedMob_ae90a4bb0484550894c8449a552daa04b}\label{classRangedMob_ae90a4bb0484550894c8449a552daa04b} 
+int {\bfseries optimal\+\_\+distance\+\_\+}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes inherited from \mbox{\hyperlink{classMonster}{Monster}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structSoundSet}{Sound\+Set}} {\bfseries sounds\+\_\+}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes inherited from \mbox{\hyperlink{classEntity}{Entity}}}
+\begin{DoxyCompactItemize}
+\item 
+int {\bfseries x\+\_\+}
+\item 
+int {\bfseries y\+\_\+}
+\item 
+int {\bfseries size\+\_\+x\+\_\+}
+\item 
+int {\bfseries size\+\_\+y\+\_\+}
+\item 
+int {\bfseries speed\+\_\+}
+\item 
+float {\bfseries direction\+\_\+}
+\item 
+SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*} {\bfseries texture\+\_\+}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{classMonster}{Monster}}}
+\begin{DoxyCompactItemize}
+\item 
+bool {\bfseries alive\+\_\+}
+\item 
+int {\bfseries hp\+\_\+}
+\item 
+int {\bfseries dmg\+\_\+}
+\item 
+int {\bfseries max\+\_\+speed\+\_\+}
+\item 
+std\+::string {\bfseries name\+\_\+}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Basic ranged monster
+
+
+\begin{DoxyItemize}
+\item Tries to keep at optimal\+\_\+distance\+\_\+ from the player
+\item Deals ranged damage 
+\end{DoxyItemize}
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classRangedMob_acd694b611eaeced3365370f2ecebfa86}\label{classRangedMob_acd694b611eaeced3365370f2ecebfa86} 
+\index{RangedMob@{RangedMob}!attack@{attack}}
+\index{attack@{attack}!RangedMob@{RangedMob}}
+\doxysubsubsection{\texorpdfstring{attack()}{attack()}}
+{\footnotesize\ttfamily bool Ranged\+Mob\+::attack (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classPlayer}{Player}} \&}]{p,  }\item[{std\+::list$<$ \mbox{\hyperlink{classProjectile}{Projectile}} $>$ \&}]{projectiles }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classMonster}{Monster}}.
+
+\Hypertarget{classRangedMob_ae2903c4b1148d5c76dc4c590aa4ead0a}\label{classRangedMob_ae2903c4b1148d5c76dc4c590aa4ead0a} 
+\index{RangedMob@{RangedMob}!dropItem@{dropItem}}
+\index{dropItem@{dropItem}!RangedMob@{RangedMob}}
+\doxysubsubsection{\texorpdfstring{dropItem()}{dropItem()}}
+{\footnotesize\ttfamily void Ranged\+Mob\+::drop\+Item (\begin{DoxyParamCaption}\item[{std\+::list$<$ \mbox{\hyperlink{classWeapon}{Weapon}} \texorpdfstring{$\ast$}{*} $>$ \&}]{items }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classMonster}{Monster}}.
+
+\Hypertarget{classRangedMob_acd6fedf772b725706dc133935bbc97b0}\label{classRangedMob_acd6fedf772b725706dc133935bbc97b0} 
+\index{RangedMob@{RangedMob}!getAttackSound@{getAttackSound}}
+\index{getAttackSound@{getAttackSound}!RangedMob@{RangedMob}}
+\doxysubsubsection{\texorpdfstring{getAttackSound()}{getAttackSound()}}
+{\footnotesize\ttfamily Mix\+\_\+\+Chunk \texorpdfstring{$\ast$}{*} Ranged\+Mob\+::get\+Attack\+Sound (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classMonster}{Monster}}.
+
+\Hypertarget{classRangedMob_a57f5d867654cac7b2d9e5889c5ee75e9}\label{classRangedMob_a57f5d867654cac7b2d9e5889c5ee75e9} 
+\index{RangedMob@{RangedMob}!setMove@{setMove}}
+\index{setMove@{setMove}!RangedMob@{RangedMob}}
+\doxysubsubsection{\texorpdfstring{setMove()}{setMove()}}
+{\footnotesize\ttfamily void Ranged\+Mob\+::set\+Move (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classPlayer}{Player}} \&}]{p }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classMonster}{Monster}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+monster.\+hpp\item 
+monster.\+cpp\end{DoxyCompactItemize}

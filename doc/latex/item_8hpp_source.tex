@@ -1,0 +1,42 @@
+\doxysection{item.\+hpp}
+\hypertarget{item_8hpp_source}{}\label{item_8hpp_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ ITEM}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ ITEM}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <SDL2/SDL.h>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classItem}{Item}}\ \{}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00010\ \ \ \ \ \mbox{\hyperlink{classItem}{Item}}(std::string\ name,\ \textcolor{keywordtype}{int}\ size)\ \{}
+\DoxyCodeLine{00011\ \ \ \ \ \ \ \ \ name\_\ =\ name;}
+\DoxyCodeLine{00012\ \ \ \ \ \ \ \ \ size\_\ =\ size;}
+\DoxyCodeLine{00013\ \ \ \ \ \ \ \ \ x\_\ =\ 0;}
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ y\_\ =\ 0;}
+\DoxyCodeLine{00015\ \ \ \ \ \}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keywordtype}{void}\ equip()\ \{}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ equipped\_\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00019\ \ \ \ \ \}}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keywordtype}{int}\ getSize()\ \{}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ size\_;}
+\DoxyCodeLine{00022\ \ \ \ \ \}}
+\DoxyCodeLine{00023\ \ \ \ \ }
+\DoxyCodeLine{00024\ \ \ \ \ SDL\_Texture\ *texture\_;\ }
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{comment}{//\ For\ world\ location}}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordtype}{int}\ x\_;}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordtype}{int}\ y\_;}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00031\ \ \ \ \ std::string\ name\_;}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordtype}{bool}\ equipped\_;}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keywordtype}{int}\ size\_;}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \};}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

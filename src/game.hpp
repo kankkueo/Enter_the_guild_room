@@ -14,6 +14,31 @@
 class Game {
 
 public:
+
+    Game();
+    void movePlayer(InputState&);
+    void spawnProjectile(int, int, int, int, int, float, SDL_Texture*);
+    //! All projectiles move. Deal damage to entities that are hit
+    void moveProjectiles(Renderer&);
+    //! All monsters move according to their movement pattern
+    void moveMonsters(Renderer&);
+    void parseInput(Renderer&);
+    //! A standard game cycle
+    int tick(Renderer&);
+    //! Renders the game
+    void render(Renderer&);
+    //! Creates a new room
+    void changeRoom(Renderer&);
+    //! Calculates camera offset
+    void calcOffset(Renderer&);
+    //! Scans nearby objects to display in info text
+    void scanNear(Renderer&);
+    void menuTick(Renderer&);
+    void menuRender(Renderer&);
+    //! Checks if weapons are nearby to pick up
+    Weapon* scanWeapons(Renderer&);
+
+
     std::list<Room> room_templates_;
     Room *room_;
     Room *room1_;
@@ -28,24 +53,6 @@ public:
     std::list<Projectile> projectiles_;
     Weapon* displayWeapon_;
     bool paused_;
-
-    Game();
-    void movePlayer(InputState&);
-    void spawnProjectile(int, int, int, int, int, float, SDL_Texture*);
-    void moveProjectiles(Renderer&);
-    void moveMonsters(Renderer&);
-    void parseInput(Renderer&);
-    int tick(Renderer&);
-    void render(Renderer&);
-    void calcOffset();
-    void changeRoom(Renderer&);
-    void calcOffset(Renderer&);
-    void scanNear(Renderer&);
-    void menuTick(Renderer&);
-    void menuRender(Renderer&);
-    Weapon* scanWeapons(Renderer&);
-    Item* scanItems(Renderer&);
-
 
 };
 

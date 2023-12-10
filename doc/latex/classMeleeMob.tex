@@ -1,0 +1,139 @@
+\doxysection{Melee\+Mob Class Reference}
+\hypertarget{classMeleeMob}{}\label{classMeleeMob}\index{MeleeMob@{MeleeMob}}
+
+
+{\ttfamily \#include $<$monster.\+hpp$>$}
+
+Inheritance diagram for Melee\+Mob\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classMeleeMob}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classMeleeMob_ab0c50393570977ac8784911519ff6af7}\label{classMeleeMob_ab0c50393570977ac8784911519ff6af7} 
+{\bfseries Melee\+Mob} (int, int, int, int, int)
+\item 
+bool \mbox{\hyperlink{classMeleeMob_a50bdfa77fcd3aa4b572a777deff3128d}{attack}} (\mbox{\hyperlink{classPlayer}{Player}} \&, std\+::list$<$ \mbox{\hyperlink{classProjectile}{Projectile}} $>$ \&)
+\item 
+void \mbox{\hyperlink{classMeleeMob_a5454731d86f62ae464287fdb0c520467}{set\+Move}} (\mbox{\hyperlink{classPlayer}{Player}} \&)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classMonster}{Monster}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Monster} (const std\+::string \&, int, int, int, int, int, int, int)
+\item 
+int {\bfseries Get\+HP} ()
+\item 
+int {\bfseries Get\+DMG} ()
+\item 
+void {\bfseries Take\+DMG} (int)
+\item 
+bool {\bfseries is\+Alive} ()
+\item 
+std\+::string {\bfseries get\+Name} ()
+\item 
+virtual void {\bfseries drop\+Item} (std\+::list$<$ \mbox{\hyperlink{classWeapon}{Weapon}} \texorpdfstring{$\ast$}{*} $>$ \&)
+\item 
+virtual Mix\+\_\+\+Chunk \texorpdfstring{$\ast$}{*} {\bfseries get\+Attack\+Sound} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classEntity}{Entity}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Entity} (int, int, int, int)
+\item 
+void {\bfseries move} ()
+\item 
+\mbox{\hyperlink{structCoordinate}{Coordinate}} {\bfseries new\+Pos} ()
+\item 
+\mbox{\hyperlink{structCoordinate}{Coordinate}} {\bfseries center} ()
+\item 
+\mbox{\hyperlink{structCoordinate}{Coordinate}} {\bfseries new\+Center} ()
+\item 
+bool {\bfseries collides\+With} (\mbox{\hyperlink{classEntity}{Entity}} \&)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classMeleeMob_a050f39a2498556c4e741e5a1d6e0b5e8}\label{classMeleeMob_a050f39a2498556c4e741e5a1d6e0b5e8} 
+int {\bfseries attack\+\_\+ticks\+\_\+}
+\item 
+\Hypertarget{classMeleeMob_a3db3aa1ce1088e10e9bd9a5d6833d0d1}\label{classMeleeMob_a3db3aa1ce1088e10e9bd9a5d6833d0d1} 
+int {\bfseries attack\+\_\+cooldown\+\_\+}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes inherited from \mbox{\hyperlink{classMonster}{Monster}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structSoundSet}{Sound\+Set}} {\bfseries sounds\+\_\+}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes inherited from \mbox{\hyperlink{classEntity}{Entity}}}
+\begin{DoxyCompactItemize}
+\item 
+int {\bfseries x\+\_\+}
+\item 
+int {\bfseries y\+\_\+}
+\item 
+int {\bfseries size\+\_\+x\+\_\+}
+\item 
+int {\bfseries size\+\_\+y\+\_\+}
+\item 
+int {\bfseries speed\+\_\+}
+\item 
+float {\bfseries direction\+\_\+}
+\item 
+SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*} {\bfseries texture\+\_\+}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{classMonster}{Monster}}}
+\begin{DoxyCompactItemize}
+\item 
+bool {\bfseries alive\+\_\+}
+\item 
+int {\bfseries hp\+\_\+}
+\item 
+int {\bfseries dmg\+\_\+}
+\item 
+int {\bfseries max\+\_\+speed\+\_\+}
+\item 
+std\+::string {\bfseries name\+\_\+}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Basic melee monster
+
+
+\begin{DoxyItemize}
+\item Moves towards the player
+\item Deals melee damage when close 
+\end{DoxyItemize}
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classMeleeMob_a50bdfa77fcd3aa4b572a777deff3128d}\label{classMeleeMob_a50bdfa77fcd3aa4b572a777deff3128d} 
+\index{MeleeMob@{MeleeMob}!attack@{attack}}
+\index{attack@{attack}!MeleeMob@{MeleeMob}}
+\doxysubsubsection{\texorpdfstring{attack()}{attack()}}
+{\footnotesize\ttfamily bool Melee\+Mob\+::attack (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classPlayer}{Player}} \&}]{p,  }\item[{std\+::list$<$ \mbox{\hyperlink{classProjectile}{Projectile}} $>$ \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classMonster}{Monster}}.
+
+\Hypertarget{classMeleeMob_a5454731d86f62ae464287fdb0c520467}\label{classMeleeMob_a5454731d86f62ae464287fdb0c520467} 
+\index{MeleeMob@{MeleeMob}!setMove@{setMove}}
+\index{setMove@{setMove}!MeleeMob@{MeleeMob}}
+\doxysubsubsection{\texorpdfstring{setMove()}{setMove()}}
+{\footnotesize\ttfamily void Melee\+Mob\+::set\+Move (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classPlayer}{Player}} \&}]{p }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classMonster}{Monster}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+monster.\+hpp\item 
+monster.\+cpp\end{DoxyCompactItemize}

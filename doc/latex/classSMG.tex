@@ -1,0 +1,91 @@
+\doxysection{SMG Class Reference}
+\hypertarget{classSMG}{}\label{classSMG}\index{SMG@{SMG}}
+
+
+\doxylink{classSMG}{SMG} class. Low damage, high firerate.  
+
+
+
+
+{\ttfamily \#include $<$weapon.\+hpp$>$}
+
+Inheritance diagram for SMG\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classSMG}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classSMG_ae9523b734f9fbfed0e048836ce255588}\label{classSMG_ae9523b734f9fbfed0e048836ce255588} 
+{\bfseries SMG} (const std\+::string \&name, int size, int dmg, int pspeed, int firerate)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classWeapon}{Weapon}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Weapon} (const std\+::string \&name, int size, int dmg, int pspeed, int firerate)
+\item 
+int {\bfseries get\+Dmg} ()
+\item 
+int {\bfseries get\+Projectile\+Speed} ()
+\item 
+int {\bfseries get\+Firerate} ()
+\item 
+std\+::string {\bfseries get\+Name} ()
+\item 
+virtual void \mbox{\hyperlink{classWeapon_ad2df5d56540679bd0dff48c2fda44b80}{shoot}} (std\+::list$<$ \mbox{\hyperlink{classProjectile}{Projectile}} $>$ \&projectiles, \mbox{\hyperlink{classEntity}{Entity}} source, int dmg, float direction, bool damage\+\_\+monsters)
+\begin{DoxyCompactList}\small\item\em Creates a projectile and inserts it into projectiles list. \end{DoxyCompactList}\item 
+virtual std\+::string {\bfseries to\+String} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classItem}{Item}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Item} (std\+::string name, int size)
+\item 
+void {\bfseries equip} ()
+\item 
+int {\bfseries get\+Size} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Public Attributes inherited from \mbox{\hyperlink{classWeapon}{Weapon}}}
+\begin{DoxyCompactItemize}
+\item 
+SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*} {\bfseries texture\+\_\+}
+\item 
+SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*} {\bfseries projectile\+\_\+texture\+\_\+}
+\item 
+Mix\+\_\+\+Chunk \texorpdfstring{$\ast$}{*} {\bfseries sound\+\_\+}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes inherited from \mbox{\hyperlink{classItem}{Item}}}
+\begin{DoxyCompactItemize}
+\item 
+SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*} {\bfseries texture\+\_\+}
+\item 
+int {\bfseries x\+\_\+}
+\item 
+int {\bfseries y\+\_\+}
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{classWeapon}{Weapon}}}
+\begin{DoxyCompactItemize}
+\item 
+int {\bfseries dmg\+\_\+}
+\item 
+int {\bfseries projectile\+\_\+speed\+\_\+}
+\item 
+int {\bfseries firerate\+\_\+}
+\item 
+int {\bfseries projectile\+\_\+size\+\_\+x\+\_\+} = 10
+\item 
+int {\bfseries projectile\+\_\+size\+\_\+y\+\_\+} = 10
+\item 
+std\+::string {\bfseries name\+\_\+}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\doxylink{classSMG}{SMG} class. Low damage, high firerate. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+weapon.\+hpp\end{DoxyCompactItemize}

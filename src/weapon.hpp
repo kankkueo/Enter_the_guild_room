@@ -22,6 +22,7 @@ public:
     bool damage_monsters_;
 };
 
+//! Base class for weapon
 class Weapon: public Item {
 
 public:
@@ -31,6 +32,7 @@ public:
     int getFirerate();
     std::string getName();
 
+    //! Creates a projectile and inserts it into projectiles list
     virtual void shoot(std::list<Projectile>& projectiles, Entity source, int dmg, float direction, bool damage_monsters);
     virtual std::string toString();
 
@@ -47,19 +49,21 @@ protected:
     std::string name_;
 };
 
-
+//! Pistol class. High damage, slow firerate
 class Pistol: public Weapon {
 public:
     Pistol(const std::string& name, int size, int dmg, int pspeed, int firerate);
 
 };
 
+//! SMG class. Low damage, high firerate
 class SMG: public Weapon {
 public:
     SMG(const std::string& name, int size, int dmg, int pspeed, int firerate);
 
 };
 
+//! Shotgun class. Multiple low damage projectiles, low firerate
 class Shotgun: public Weapon {
 public:
     Shotgun(const std::string& name, int size, int dmg, int pspeed, int firerate, int pellets, float spread);
@@ -71,9 +75,9 @@ public:
 private:
     int pellets_;
     float spread_;
-
 };
 
+//! Enum for gun type randomization
 enum GunType {
     PistolType,
     SMGType,

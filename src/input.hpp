@@ -32,7 +32,7 @@ typedef struct {
 } InputMapping;
 
 
-
+//! A class to hande inputs
 class Input {
 public:
 

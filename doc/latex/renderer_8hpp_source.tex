@@ -1,0 +1,51 @@
+\doxysection{renderer.\+hpp}
+\hypertarget{renderer_8hpp_source}{}\label{renderer_8hpp_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ RENDERER}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ RENDERER}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <SDL2/SDL.h>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <SDL2/SDL\_events.h>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <SDL2/SDL\_ttf.h>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <SDL2/SDL\_mixer.h>}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classRenderer}{Renderer}}\ \{}
+\DoxyCodeLine{00011\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00014\ \ \ \ \ \mbox{\hyperlink{classRenderer}{Renderer}}(\textcolor{keywordtype}{int},\ \textcolor{keywordtype}{int},\ uint32\_t,\ uint32\_t);}
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classRenderer_aa18f6ef4818b531bba9e7350656c3121}{initSDL}}();}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keywordtype}{void}\ prepareScene();}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keywordtype}{void}\ presentScene();}
+\DoxyCodeLine{00020\ \ \ \ \ SDL\_Texture*\ \mbox{\hyperlink{classRenderer_ab796aa39770979d99b1d3cf5bc9dd63a}{loadTexture}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*);}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classRenderer_a7c2e68f4a7f9e38dbdf1818e4cf7aabf}{drawTexture}}(SDL\_Texture*,\ \textcolor{keywordtype}{int},\ \textcolor{keywordtype}{int},\ \textcolor{keywordtype}{double},\ SDL\_RendererFlip);}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classRenderer_ac20c4d1858ff7a977be298a86594b541}{destroy}}();}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{void}\ set\_flags(uint32\_t,\ uint32\_t);}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{int}\ getWinWidth();}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordtype}{int}\ getWinHeight();}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordtype}{void}\ draw\_text(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ str,\ \textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y,\ SDL\_Color\ =\ \{255,255,255\});}
+\DoxyCodeLine{00029\ \ \ \ \ TTF\_Font*\ GetFont();}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classRenderer_ab26aeefc03a11e6c2e9031847c53d8dd}{renderText}}(SDL\_Surface*\ text,\ \textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y);}
+\DoxyCodeLine{00032\ \ \ \ \ SDL\_Surface*\ InitText(\textcolor{keywordtype}{char}*\ str);}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classRenderer_afc4f6f1d31983649f67cc65719914bd5}{playSound}}(Mix\_Chunk*,\ \textcolor{keywordtype}{int});}
+\DoxyCodeLine{00036\ \ \ \ \ Mix\_Chunk*\ \mbox{\hyperlink{classRenderer_ab119dff275f4a4e7fc7aed90006298a1}{loadSound}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*);}
+\DoxyCodeLine{00037\ \ \ \ \ }
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \ \ \ \ SDL\_Renderer*\ renderer\_;}
+\DoxyCodeLine{00042\ \ \ \ \ SDL\_Window*\ window\_;}
+\DoxyCodeLine{00043\ \ \ \ \ uint32\_t\ renderer\_flags\_;}
+\DoxyCodeLine{00044\ \ \ \ \ uint32\_t\ window\_flags\_;}
+\DoxyCodeLine{00045\ \ \ \ \ TTF\_Font\ *font\_;}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keywordtype}{int}\ width\_;}
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordtype}{int}\ height\_;}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \};}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00054\ }
+
+\end{DoxyCode}

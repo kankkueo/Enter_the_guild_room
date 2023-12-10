@@ -1,0 +1,95 @@
+\doxysection{Game Class Reference}
+\hypertarget{classGame}{}\label{classGame}\index{Game@{Game}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classGame_a040179486454df9216e0906ae694ebe3}\label{classGame_a040179486454df9216e0906ae694ebe3} 
+void {\bfseries move\+Player} (\mbox{\hyperlink{structInputState}{Input\+State}} \&)
+\item 
+\Hypertarget{classGame_adf9b88ddb8c1c9f5f892123e6fc0953d}\label{classGame_adf9b88ddb8c1c9f5f892123e6fc0953d} 
+void {\bfseries spawn\+Projectile} (int, int, int, int, int, float, SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*})
+\item 
+\Hypertarget{classGame_af0688eea131b45ca074b5e60cff334c5}\label{classGame_af0688eea131b45ca074b5e60cff334c5} 
+void {\bfseries move\+Projectiles} (\mbox{\hyperlink{classRenderer}{Renderer}} \&)
+\begin{DoxyCompactList}\small\item\em All projectiles move. Deal damage to entities that are hit. \end{DoxyCompactList}\item 
+\Hypertarget{classGame_a7fd6e655e1c839db99962737b0a0316b}\label{classGame_a7fd6e655e1c839db99962737b0a0316b} 
+void {\bfseries move\+Monsters} (\mbox{\hyperlink{classRenderer}{Renderer}} \&)
+\begin{DoxyCompactList}\small\item\em All monsters move according to their movement pattern. \end{DoxyCompactList}\item 
+\Hypertarget{classGame_a248e1cf0c61a830832c67dbc2e537221}\label{classGame_a248e1cf0c61a830832c67dbc2e537221} 
+void {\bfseries parse\+Input} (\mbox{\hyperlink{classRenderer}{Renderer}} \&)
+\item 
+\Hypertarget{classGame_a1736eaf0ed1a39486a729c0a2f1b4656}\label{classGame_a1736eaf0ed1a39486a729c0a2f1b4656} 
+int {\bfseries tick} (\mbox{\hyperlink{classRenderer}{Renderer}} \&)
+\begin{DoxyCompactList}\small\item\em A standard game cycle. \end{DoxyCompactList}\item 
+\Hypertarget{classGame_a3b3888fadcb1a8264a3fc79cc69cbb79}\label{classGame_a3b3888fadcb1a8264a3fc79cc69cbb79} 
+void {\bfseries render} (\mbox{\hyperlink{classRenderer}{Renderer}} \&)
+\begin{DoxyCompactList}\small\item\em Renders the game. \end{DoxyCompactList}\item 
+\Hypertarget{classGame_a925ef39a74485ed8a21f6bf7d7267ca2}\label{classGame_a925ef39a74485ed8a21f6bf7d7267ca2} 
+void {\bfseries change\+Room} (\mbox{\hyperlink{classRenderer}{Renderer}} \&)
+\begin{DoxyCompactList}\small\item\em Creates a new room. \end{DoxyCompactList}\item 
+\Hypertarget{classGame_adcd7f6c571a5fb5f8cc4cb5c35935f15}\label{classGame_adcd7f6c571a5fb5f8cc4cb5c35935f15} 
+void {\bfseries calc\+Offset} (\mbox{\hyperlink{classRenderer}{Renderer}} \&)
+\begin{DoxyCompactList}\small\item\em Calculates camera offset. \end{DoxyCompactList}\item 
+\Hypertarget{classGame_a863eda7cbccfa153ae7921ee0142c216}\label{classGame_a863eda7cbccfa153ae7921ee0142c216} 
+void {\bfseries scan\+Near} (\mbox{\hyperlink{classRenderer}{Renderer}} \&)
+\begin{DoxyCompactList}\small\item\em Scans nearby objects to display in info text. \end{DoxyCompactList}\item 
+\Hypertarget{classGame_a7cd6af30c03814d92c5ec57492bd4590}\label{classGame_a7cd6af30c03814d92c5ec57492bd4590} 
+void {\bfseries menu\+Tick} (\mbox{\hyperlink{classRenderer}{Renderer}} \&)
+\item 
+\Hypertarget{classGame_ae0f89f04b52d3f9c825bd6a7d2cd5898}\label{classGame_ae0f89f04b52d3f9c825bd6a7d2cd5898} 
+void {\bfseries menu\+Render} (\mbox{\hyperlink{classRenderer}{Renderer}} \&)
+\item 
+\Hypertarget{classGame_ada63913c3ab6d3e032e05b642d566a5c}\label{classGame_ada63913c3ab6d3e032e05b642d566a5c} 
+\mbox{\hyperlink{classWeapon}{Weapon}} \texorpdfstring{$\ast$}{*} {\bfseries scan\+Weapons} (\mbox{\hyperlink{classRenderer}{Renderer}} \&)
+\begin{DoxyCompactList}\small\item\em Checks if weapons are nearby to pick up. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classGame_a0b012de0e7db2a2508600af9a9fc3bf9}\label{classGame_a0b012de0e7db2a2508600af9a9fc3bf9} 
+std\+::list$<$ \mbox{\hyperlink{classRoom}{Room}} $>$ {\bfseries room\+\_\+templates\+\_\+}
+\item 
+\Hypertarget{classGame_aa634b2ed33ecae3e646dae549fe9bd05}\label{classGame_aa634b2ed33ecae3e646dae549fe9bd05} 
+\mbox{\hyperlink{classRoom}{Room}} \texorpdfstring{$\ast$}{*} {\bfseries room\+\_\+}
+\item 
+\Hypertarget{classGame_a5e99382cab319e634bffa0f80b005db4}\label{classGame_a5e99382cab319e634bffa0f80b005db4} 
+\mbox{\hyperlink{classRoom}{Room}} \texorpdfstring{$\ast$}{*} {\bfseries room1\+\_\+}
+\item 
+\Hypertarget{classGame_a9da12a2d9125bfaa8782a61b69c49f9e}\label{classGame_a9da12a2d9125bfaa8782a61b69c49f9e} 
+bool {\bfseries running\+\_\+}
+\item 
+\Hypertarget{classGame_a9f68915374c45430d4029ddcc6c82574}\label{classGame_a9f68915374c45430d4029ddcc6c82574} 
+\mbox{\hyperlink{classInput}{Input}} {\bfseries input\+\_\+}
+\item 
+\Hypertarget{classGame_a2fc5db1d31133459fa4f62dbec8a6712}\label{classGame_a2fc5db1d31133459fa4f62dbec8a6712} 
+int {\bfseries x\+\_\+offset\+\_\+}
+\item 
+\Hypertarget{classGame_a696552dfe28d6675809f3002b680ada9}\label{classGame_a696552dfe28d6675809f3002b680ada9} 
+int {\bfseries y\+\_\+offset\+\_\+}
+\item 
+\Hypertarget{classGame_ac1a1f5c51769418f59b11a4a53b41fdd}\label{classGame_ac1a1f5c51769418f59b11a4a53b41fdd} 
+std\+::string {\bfseries info\+Text}
+\item 
+\Hypertarget{classGame_ae0706b490eb7b9c01a7cfd4bfa4507be}\label{classGame_ae0706b490eb7b9c01a7cfd4bfa4507be} 
+int {\bfseries game\+\_\+level\+\_\+}
+\item 
+\Hypertarget{classGame_a2cb6cdb08ed2a1ee4494fce2dfb5be1e}\label{classGame_a2cb6cdb08ed2a1ee4494fce2dfb5be1e} 
+\mbox{\hyperlink{classHud}{Hud}} {\bfseries hud\+\_\+}
+\item 
+\Hypertarget{classGame_ae152cbdfd498d72b27aaa01a2ed5fe9b}\label{classGame_ae152cbdfd498d72b27aaa01a2ed5fe9b} 
+\mbox{\hyperlink{classPlayer}{Player}} {\bfseries player\+\_\+}
+\item 
+\Hypertarget{classGame_a9e1e9dd8e2a05f6988b3625c15f3d9d4}\label{classGame_a9e1e9dd8e2a05f6988b3625c15f3d9d4} 
+std\+::list$<$ \mbox{\hyperlink{classProjectile}{Projectile}} $>$ {\bfseries projectiles\+\_\+}
+\item 
+\Hypertarget{classGame_ad29bdf3c15bbae057fd0b6a66bca7d24}\label{classGame_ad29bdf3c15bbae057fd0b6a66bca7d24} 
+\mbox{\hyperlink{classWeapon}{Weapon}} \texorpdfstring{$\ast$}{*} {\bfseries display\+Weapon\+\_\+}
+\item 
+\Hypertarget{classGame_a0199e692575fbb7366551b469b066a6c}\label{classGame_a0199e692575fbb7366551b469b066a6c} 
+bool {\bfseries paused\+\_\+}
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+game.\+hpp\item 
+game.\+cpp\end{DoxyCompactItemize}
