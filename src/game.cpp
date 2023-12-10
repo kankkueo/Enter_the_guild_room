@@ -164,11 +164,11 @@ void Game::moveProjectiles(Renderer& r) {
                     delete *m;
                     m = room_->monsters_.erase(m);
                     if (player_.gainXP(300)) {
-                        r.playSound(player_.sounds_.taunt_, 6);
+                        r.playSound(player_.sounds_.taunt_, 3);
                     }
                 }
                 else {
-                    r.playSound((*m)->sounds_.hit_, 5);
+                    r.playSound((*m)->sounds_.hit_, 4);
                 }
 
                 break;
@@ -177,7 +177,7 @@ void Game::moveProjectiles(Renderer& r) {
 
         if (p->collidesWith(player_) && !p->damage_monsters_) {
             player_.TakeDMG(p->dmg_);
-            r.playSound(player_.sounds_.hit_, 4);
+            r.playSound(player_.sounds_.hit_, 3);
         }
 
         if (p->x_ > room_->width_ || p->x_ < 0 || p->y_ > room_->height_ || p->y_ < 0) {
@@ -214,7 +214,7 @@ void Game::moveMonsters(Renderer& r) {
 
         if (mob_attack_delay_ <= 0) {
             if ((*m)->attack(player_, projectiles_)) {
-                r.playSound((*m)->getAttackSound(), 1);
+                r.playSound((*m)->getAttackSound(), 5 + rand() % 2);
             }
         }
         else {
