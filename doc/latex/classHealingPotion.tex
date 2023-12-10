@@ -1,5 +1,9 @@
 \doxysection{Healing\+Potion Class Reference}
 \hypertarget{classHealingPotion}{}\label{classHealingPotion}\index{HealingPotion@{HealingPotion}}
+
+
+{\ttfamily \#include $<$consumables.\+hpp$>$}
+
 Inheritance diagram for Healing\+Potion\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -14,6 +18,9 @@ Inheritance diagram for Healing\+Potion\+:\begin{figure}[H]
 \item 
 \Hypertarget{classHealingPotion_a75bf2d809ff03ec893e5a7d93a90d780}\label{classHealingPotion_a75bf2d809ff03ec893e5a7d93a90d780} 
 int {\bfseries get\+Healing} ()
+\item 
+\Hypertarget{classHealingPotion_a2fc078ae3f3707dee35228d923ad7f82}\label{classHealingPotion_a2fc078ae3f3707dee35228d923ad7f82} 
+std\+::string {\bfseries to\+String} ()
 \end{DoxyCompactItemize}
 \doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classItem}{Item}}}
 \begin{DoxyCompactItemize}
@@ -23,6 +30,8 @@ int {\bfseries get\+Healing} ()
 void {\bfseries equip} ()
 \item 
 int {\bfseries get\+Size} ()
+\item 
+std\+::string {\bfseries get\+Name} ()
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Additional Inherited Members}
 \doxysubsection*{Public Attributes inherited from \mbox{\hyperlink{classItem}{Item}}}
@@ -36,6 +45,12 @@ int {\bfseries y\+\_\+}
 \end{DoxyCompactItemize}
 
 
-The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\doxysubsection{Detailed Description}
+Class for healing potion
+
+Inherits \doxylink{classItem}{Item} base class Potions are dropped by melee monsters 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-consumables.\+hpp\end{DoxyCompactItemize}
+consumables.\+hpp\item 
+consumables.\+cpp\end{DoxyCompactItemize}

@@ -8,92 +8,97 @@
 \DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}player.hpp"{}}}
 \DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}renderer.hpp"{}}}
 \DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}weapon.hpp"{}}}
-\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <SDL2/SDL\_mixer.h>}}
-\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <SDL2/SDL\_render.h>}}
-\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <string>}}
-\DoxyCodeLine{00011\ }
-\DoxyCodeLine{00016\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classMonster}{Monster}}:\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classEntity}{Entity}}\ \{}
-\DoxyCodeLine{00017\ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00018\ \ \ \ \ \mbox{\hyperlink{classMonster}{Monster}}(\textcolor{keyword}{const}\ std::string\&,\ \textcolor{keywordtype}{int},\ \textcolor{keywordtype}{int},\ \textcolor{keywordtype}{int},\ \textcolor{keywordtype}{int},\ \textcolor{keywordtype}{int},\ \textcolor{keywordtype}{int},\ \textcolor{keywordtype}{int});}
-\DoxyCodeLine{00019\ \ \ \ \ \mbox{\hyperlink{classMonster}{\string~Monster}}();}
-\DoxyCodeLine{00020\ }
-\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordtype}{int}\ GetHP();}
-\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordtype}{int}\ GetDMG();}
-\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keywordtype}{void}\ TakeDMG(\textcolor{keywordtype}{int});}
-\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordtype}{bool}\ isAlive();}
-\DoxyCodeLine{00025\ \ \ \ \ std::string\ getName();}
-\DoxyCodeLine{00026\ }
-\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ setMove(\mbox{\hyperlink{classPlayer}{Player}}\&);}
-\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ attack(\mbox{\hyperlink{classPlayer}{Player}}\&,\ std::list<Projectile>\&);}
-\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ dropItem(std::list<Weapon*>\&);}
-\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keyword}{virtual}\ Mix\_Chunk*\ getAttackSound();}
-\DoxyCodeLine{00031\ }
-\DoxyCodeLine{00032\ \ \ \ \ \mbox{\hyperlink{structSoundSet}{SoundSet}}\ sounds\_;}
-\DoxyCodeLine{00033\ }
-\DoxyCodeLine{00034\ \textcolor{keyword}{protected}:}
-\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordtype}{bool}\ alive\_;}
-\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordtype}{int}\ hp\_;}
-\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keywordtype}{int}\ dmg\_;}
-\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordtype}{int}\ max\_speed\_;}
-\DoxyCodeLine{00039\ \ \ \ \ std::string\ name\_;}
-\DoxyCodeLine{00040\ }
-\DoxyCodeLine{00041\ \};}
-\DoxyCodeLine{00042\ }
-\DoxyCodeLine{00050\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classMeleeMob}{MeleeMob}}:\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classMonster}{Monster}}\ \{}
-\DoxyCodeLine{00051\ }
-\DoxyCodeLine{00052\ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00053\ \ \ \ \ \mbox{\hyperlink{classMeleeMob}{MeleeMob}}(\textcolor{keywordtype}{int},\ \textcolor{keywordtype}{int},\ \textcolor{keywordtype}{int},\ \textcolor{keywordtype}{int},\ \textcolor{keywordtype}{int});}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}consumables.hpp"{}}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <SDL2/SDL\_mixer.h>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <SDL2/SDL\_render.h>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00017\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classMonster}{Monster}}:\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classEntity}{Entity}}\ \{}
+\DoxyCodeLine{00018\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00019\ \ \ \ \ \mbox{\hyperlink{classMonster}{Monster}}(\textcolor{keyword}{const}\ std::string\&,\ \textcolor{keywordtype}{int},\ \textcolor{keywordtype}{int},\ \textcolor{keywordtype}{int},\ \textcolor{keywordtype}{int},\ \textcolor{keywordtype}{int},\ \textcolor{keywordtype}{int},\ \textcolor{keywordtype}{int});}
+\DoxyCodeLine{00020\ \ \ \ \ \mbox{\hyperlink{classMonster}{\string~Monster}}();}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordtype}{int}\ GetHP();}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keywordtype}{int}\ GetDMG();}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordtype}{void}\ TakeDMG(\textcolor{keywordtype}{int});}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{bool}\ isAlive();}
+\DoxyCodeLine{00026\ \ \ \ \ std::string\ getName();}
+\DoxyCodeLine{00027\ \ \ \ \ \mbox{\hyperlink{classItem}{Item}}*\ item\_;}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ setMove(\mbox{\hyperlink{classPlayer}{Player}}\&);}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ attack(\mbox{\hyperlink{classPlayer}{Player}}\&,\ std::list<Projectile>\&);}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ dropWeapon(std::list<Weapon*>\&);}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ dropPotion(std::list<HealingPotion*>\&);}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keyword}{virtual}\ Mix\_Chunk*\ getAttackSound();}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \ \ \ \ \mbox{\hyperlink{structSoundSet}{SoundSet}}\ sounds\_;}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordtype}{bool}\ alive\_;}
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keywordtype}{int}\ hp\_;}
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keywordtype}{int}\ dmg\_;}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordtype}{int}\ max\_speed\_;}
+\DoxyCodeLine{00042\ \ \ \ \ std::string\ name\_;}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \};}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00053\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classMeleeMob}{MeleeMob}}:\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classMonster}{Monster}}\ \{}
 \DoxyCodeLine{00054\ }
-\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keywordtype}{bool}\ attack(\mbox{\hyperlink{classPlayer}{Player}}\&,\ std::list<Projectile>\&);}
-\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keywordtype}{void}\ setMove(\mbox{\hyperlink{classPlayer}{Player}}\&);}
+\DoxyCodeLine{00055\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00056\ \ \ \ \ \mbox{\hyperlink{classMeleeMob}{MeleeMob}}(\textcolor{keywordtype}{int},\ \textcolor{keywordtype}{int},\ \textcolor{keywordtype}{int},\ \textcolor{keywordtype}{int},\ \textcolor{keywordtype}{int},\ \mbox{\hyperlink{classHealingPotion}{HealingPotion}}*);}
 \DoxyCodeLine{00057\ }
-\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keywordtype}{int}\ attack\_ticks\_;}
-\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keywordtype}{int}\ attack\_cooldown\_;}
-\DoxyCodeLine{00060\ \};}
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keywordtype}{bool}\ attack(\mbox{\hyperlink{classPlayer}{Player}}\&,\ std::list<Projectile>\&);}
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keywordtype}{void}\ setMove(\mbox{\hyperlink{classPlayer}{Player}}\&);}
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keywordtype}{void}\ dropPotion(std::list<HealingPotion*>\&);}
 \DoxyCodeLine{00061\ }
-\DoxyCodeLine{00062\ }
-\DoxyCodeLine{00070\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classRangedMob}{RangedMob}}:\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classMonster}{Monster}}\ \{}
-\DoxyCodeLine{00071\ }
-\DoxyCodeLine{00072\ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00073\ \ \ \ \ \mbox{\hyperlink{classRangedMob}{RangedMob}}(\textcolor{keywordtype}{int},\ \textcolor{keywordtype}{int},\ \textcolor{keywordtype}{int},\ \textcolor{keywordtype}{int},\ \textcolor{keywordtype}{int},\ \mbox{\hyperlink{classWeapon}{Weapon}}*);}
-\DoxyCodeLine{00074\ }
-\DoxyCodeLine{00075\ \ \ \ \ \textcolor{keywordtype}{bool}\ attack(\mbox{\hyperlink{classPlayer}{Player}}\&,\ std::list<Projectile>\&);}
-\DoxyCodeLine{00076\ \ \ \ \ \textcolor{keywordtype}{void}\ setMove(\mbox{\hyperlink{classPlayer}{Player}}\&);}
-\DoxyCodeLine{00077\ \ \ \ \ \textcolor{keywordtype}{void}\ dropItem(std::list<Weapon*>\&);}
-\DoxyCodeLine{00078\ \ \ \ \ Mix\_Chunk*\ getAttackSound();}
+\DoxyCodeLine{00062\ \ \ \ \ \mbox{\hyperlink{classHealingPotion}{HealingPotion}}*\ potion\_;}
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keywordtype}{int}\ attack\_ticks\_;}
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keywordtype}{int}\ attack\_cooldown\_;}
+\DoxyCodeLine{00065\ \};}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00075\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classRangedMob}{RangedMob}}:\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classMonster}{Monster}}\ \{}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00077\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00078\ \ \ \ \ \mbox{\hyperlink{classRangedMob}{RangedMob}}(\textcolor{keywordtype}{int},\ \textcolor{keywordtype}{int},\ \textcolor{keywordtype}{int},\ \textcolor{keywordtype}{int},\ \textcolor{keywordtype}{int},\ \mbox{\hyperlink{classWeapon}{Weapon}}*);}
 \DoxyCodeLine{00079\ }
-\DoxyCodeLine{00080\ \ \ \ \ \mbox{\hyperlink{classWeapon}{Weapon}}*\ weapon\_;}
-\DoxyCodeLine{00081\ \ \ \ \ \textcolor{keywordtype}{int}\ attack\_ticks\_;}
-\DoxyCodeLine{00082\ \ \ \ \ \textcolor{keywordtype}{int}\ optimal\_distance\_;\ }
-\DoxyCodeLine{00083\ }
-\DoxyCodeLine{00084\ \};}
-\DoxyCodeLine{00085\ }
-\DoxyCodeLine{00092\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classBoss}{Boss}}:\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classMonster}{Monster}}\ \{}
-\DoxyCodeLine{00093\ \ \ \ \ }
-\DoxyCodeLine{00094\ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00095\ \ \ \ \ \mbox{\hyperlink{classBoss}{Boss}}(\textcolor{keywordtype}{int});}
-\DoxyCodeLine{00096\ }
-\DoxyCodeLine{00097\ \ \ \ \ \textcolor{keywordtype}{bool}\ attack(\mbox{\hyperlink{classPlayer}{Player}}\&,\ std::list<Projectile>\&);}
-\DoxyCodeLine{00098\ \ \ \ \ \textcolor{keywordtype}{void}\ setMove(\mbox{\hyperlink{classPlayer}{Player}}\&);}
-\DoxyCodeLine{00099\ \ \ \ \ Mix\_Chunk*\ getAttackSound();}
-\DoxyCodeLine{00100\ }
-\DoxyCodeLine{00101\ \ \ \ \ \textcolor{comment}{//\ attack\ pattern\ 0\ =\ melee,\ 1\ =\ ranged}}
-\DoxyCodeLine{00102\ \ \ \ \ \textcolor{keywordtype}{int}\ attack\_pattern\_;}
-\DoxyCodeLine{00103\ \ \ \ \ \mbox{\hyperlink{classWeapon}{Weapon}}*\ weapon\_;}
-\DoxyCodeLine{00104\ \ \ \ \ \textcolor{keywordtype}{int}\ attack\_ticks\_;}
-\DoxyCodeLine{00105\ \ \ \ \ \textcolor{keywordtype}{int}\ attack\_cooldown\_;}
-\DoxyCodeLine{00106\ \ \ \ \ \textcolor{keywordtype}{int}\ optimal\_distance\_;\ }
-\DoxyCodeLine{00107\ }
-\DoxyCodeLine{00108\ \};}
-\DoxyCodeLine{00109\ }
-\DoxyCodeLine{00111\ \textcolor{keyword}{enum}\ MonsterType\ \{}
-\DoxyCodeLine{00112\ \ \ \ \ MeleeMobType,}
-\DoxyCodeLine{00113\ \ \ \ \ RangedMobType}
-\DoxyCodeLine{00114\ \};}
-\DoxyCodeLine{00115\ }
-\DoxyCodeLine{00117\ \mbox{\hyperlink{classMonster}{Monster}}*\ genRandomMob(\mbox{\hyperlink{classRenderer}{Renderer}}\&,\ \textcolor{keywordtype}{int},\ \textcolor{keywordtype}{int},\ \textcolor{keywordtype}{int});}
-\DoxyCodeLine{00118\ }
-\DoxyCodeLine{00119\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00080\ \ \ \ \ \textcolor{keywordtype}{bool}\ attack(\mbox{\hyperlink{classPlayer}{Player}}\&,\ std::list<Projectile>\&);}
+\DoxyCodeLine{00081\ \ \ \ \ \textcolor{keywordtype}{void}\ setMove(\mbox{\hyperlink{classPlayer}{Player}}\&);}
+\DoxyCodeLine{00082\ \ \ \ \ \textcolor{keywordtype}{void}\ dropWeapon(std::list<Weapon*>\&);}
+\DoxyCodeLine{00083\ \ \ \ \ Mix\_Chunk*\ getAttackSound();}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00085\ \ \ \ \ \mbox{\hyperlink{classWeapon}{Weapon}}*\ weapon\_;}
+\DoxyCodeLine{00086\ \ \ \ \ \textcolor{keywordtype}{int}\ attack\_ticks\_;}
+\DoxyCodeLine{00087\ \ \ \ \ \textcolor{keywordtype}{int}\ optimal\_distance\_;\ }
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00089\ \};}
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00097\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classBoss}{Boss}}:\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classMonster}{Monster}}\ \{}
+\DoxyCodeLine{00098\ \ \ \ \ }
+\DoxyCodeLine{00099\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00100\ \ \ \ \ \mbox{\hyperlink{classBoss}{Boss}}(\textcolor{keywordtype}{int});}
+\DoxyCodeLine{00101\ }
+\DoxyCodeLine{00102\ \ \ \ \ \textcolor{keywordtype}{bool}\ attack(\mbox{\hyperlink{classPlayer}{Player}}\&,\ std::list<Projectile>\&);}
+\DoxyCodeLine{00103\ \ \ \ \ \textcolor{keywordtype}{void}\ setMove(\mbox{\hyperlink{classPlayer}{Player}}\&);}
+\DoxyCodeLine{00104\ \ \ \ \ Mix\_Chunk*\ getAttackSound();}
+\DoxyCodeLine{00105\ }
+\DoxyCodeLine{00106\ \ \ \ \ \textcolor{comment}{//\ attack\ pattern\ 0\ =\ melee,\ 1\ =\ ranged}}
+\DoxyCodeLine{00107\ \ \ \ \ \textcolor{keywordtype}{int}\ attack\_pattern\_;}
+\DoxyCodeLine{00108\ \ \ \ \ \mbox{\hyperlink{classWeapon}{Weapon}}*\ weapon\_;}
+\DoxyCodeLine{00109\ \ \ \ \ \textcolor{keywordtype}{int}\ attack\_ticks\_;}
+\DoxyCodeLine{00110\ \ \ \ \ \textcolor{keywordtype}{int}\ attack\_cooldown\_;}
+\DoxyCodeLine{00111\ \ \ \ \ \textcolor{keywordtype}{int}\ optimal\_distance\_;\ }
+\DoxyCodeLine{00112\ }
+\DoxyCodeLine{00113\ \};}
+\DoxyCodeLine{00114\ }
+\DoxyCodeLine{00116\ \textcolor{keyword}{enum}\ MonsterType\ \{}
+\DoxyCodeLine{00117\ \ \ \ \ MeleeMobType,}
+\DoxyCodeLine{00118\ \ \ \ \ RangedMobType}
+\DoxyCodeLine{00119\ \};}
 \DoxyCodeLine{00120\ }
+\DoxyCodeLine{00122\ \mbox{\hyperlink{classMonster}{Monster}}*\ genRandomMob(\mbox{\hyperlink{classRenderer}{Renderer}}\&,\ \textcolor{keywordtype}{int},\ \textcolor{keywordtype}{int},\ \textcolor{keywordtype}{int});}
+\DoxyCodeLine{00123\ }
+\DoxyCodeLine{00124\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00125\ }
 
 \end{DoxyCode}
