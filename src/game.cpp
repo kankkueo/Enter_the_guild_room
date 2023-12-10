@@ -111,6 +111,7 @@ void Game::calcOffset(Renderer& r) {
 
 void Game::changeRoom(Renderer& r) {
     input_.resetInput();
+    projectiles_.clear();
     delete room_;
     game_level_++;
     mob_attack_delay_ = 180;
