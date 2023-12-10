@@ -47,7 +47,7 @@ void Room::addRandomMonsters(Renderer& r, int level, int amount) {
 Room* genRoom(Renderer& r, int level) {
     int n = rand() % ROOM_TEMPLATES;
     Room* rm = new Room(rt[n].name, rt[n].width, rt[n].height,
-        r.loadTexture(rt[n].texture_location.c_str()), r.loadTexture("./assets/trapdoor.png"));
+        r.loadTexture(rt[n].texture_location.c_str()), r.loadTexture("./assets/items/trapdoor.png"));
 
     int mobs = rt[n].mobs_min + rand() % (rt[n].mobs_max - rt[n].mobs_min) + floor(level * 0.34);
     rm->addRandomMonsters(r, level, mobs);
@@ -60,14 +60,14 @@ Room* genRoom(Renderer& r, int level) {
 
 Room* genBossRoom(Renderer& r, int level) {
     Room* rm = new Room("Boss room", 1200, 1200,
-        r.loadTexture("./assets/rooms/boss_room_placeholder.png"), r.loadTexture("./assets/trapdoor.png"));
+        r.loadTexture("./assets/rooms/boss_room_placeholder.png"), r.loadTexture("./assets/items/trapdoor.png"));
     
     Boss* b = new Boss(level);
-    b->texture_ = r.loadTexture("./assets/boss_placeholder.png");
+    b->texture_ = r.loadTexture("./assets/entities/dude.png");
     b->weapon_ = genRandomWeapon(r, level);
     rm->monsters_.push_back(b);
 
-    std::cout << "Generated boss room " << rm->name_;
+    std::cout << "Generated boss room " << rm->name_ << std::endl;
 
     return rm;
 }

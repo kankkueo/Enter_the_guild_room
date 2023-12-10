@@ -13,9 +13,9 @@ int main() {
     Renderer rend = Renderer(1920, 1080, SDL_RENDERER_ACCELERATED, 0);
     rend.initSDL();
 
-    game.player_.texture_front_ = rend.loadTexture("./assets/teekkari1-front.png");
-    game.player_.texture_left_= rend.loadTexture("./assets/teekkari1-left.png");
-    game.player_.texture_right_= rend.loadTexture("./assets/teekkari1-right.png");
+    game.player_.texture_front_ = rend.loadTexture("./assets/entities/teekkari1-front.png");
+    game.player_.texture_left_= rend.loadTexture("./assets/entities/teekkari1-left.png");
+    game.player_.texture_right_= rend.loadTexture("./assets/entities/teekkari1-right.png");
 
     game.player_.sounds_.taunt_ = rend.loadSound("");
     game.player_.sounds_.death_ = rend.loadSound("");

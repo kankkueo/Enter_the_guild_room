@@ -9,6 +9,6 @@ HealingPotion* genPotion(Renderer& r, int level) {
     int healing = 100 + rand_int * level * level * 3;
     HealingPotion* h = NULL;
     h = new HealingPotion("healing potion", 10, healing);
-    h->texture_ = r.loadTexture("./assets/healing-potion.png");
+    h->texture_ = r.loadTexture("./assets/items/healing-potion.png");
     return h;
 }

@@ -18,7 +18,7 @@ Entity(x, y, 57, 100), weapon_(NULL) {
 }
 
 void Player::equipWeapon(Weapon* w, Renderer& r) {
-    w->projectile_texture_ = r.loadTexture("./assets/player-bullet.png");
+    w->projectile_texture_ = r.loadTexture("./assets/entities/player-bullet.png");
     weapon_ = w;
 }
 

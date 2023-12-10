@@ -53,7 +53,7 @@ void Game::parseInput(Renderer& r) {
             player_.weapon_->y_ = ppos.y;
             room_->weapons_.push_back(player_.weapon_);
             player_.weapon_ = w;
-            w->projectile_texture_ = r.loadTexture("./assets/player-bullet.png");
+            w->projectile_texture_ = r.loadTexture("./assets/entities/player-bullet.png");
         }
 
         HealingPotion* i = scanPotions(r);
