@@ -23,6 +23,7 @@ Game::Game():
     game_level_ = 1;
     paused_ = false;
     mob_attack_delay_ = 120;
+    menuSelected_ = 0;
 }
 
 void Game::parseInput(Renderer& r) {
@@ -266,11 +267,18 @@ void Game::menuTick(Renderer& r){
         input_.resetInput();
         s.menu = false;
         paused_ = false;
+    }else if(s.attackDown || s.down){
+
+    }else if(s.attackUp || s.up){
+        
     }
+
+    
+
 }
 
 void Game::menuRender(Renderer& r){
-
+    
 }
 
 
@@ -327,8 +335,12 @@ void Game::scanNear(Renderer& r) {
         }
     }
 
-    if (ppos.x > rpos.x - 64 && ppos.x < rpos.x + 64 && ppos.y > rpos.y - 64 && ppos.y < rpos.y + 64 && room_->monsters_.empty()) {
-        infoText = "Press E to advance";
+    if (ppos.x > rpos.x - 64 && ppos.x < rpos.x + 64 && ppos.y > rpos.y - 64 && ppos.y < rpos.y + 64) {
+        if(room_->monsters_.empty()){
+            infoText = "Press E to advance";
+        }else{
+            infoText = "Kill everyone to advance";
+        }
     } else {
         infoText = " ";
     }
