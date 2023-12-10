@@ -7,6 +7,9 @@
 #include "monster.hpp"
 #include "renderer.hpp"
 
+/*!
+ * Class for rooms in the game
+ */
 
 class Room {
 public:

@@ -17,6 +17,9 @@ typedef struct {
     Mix_Chunk* taunt_;
 } SoundSet;
 
+/*!
+ * Base class for entities in the game
+ */
 
 class Entity {
 

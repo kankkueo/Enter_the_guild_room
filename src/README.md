@@ -22,8 +22,20 @@ on your system:
 - sdl2_ttf
 - sdl2_mixer
 
+These can be installed by running  
+`sudo apt install libsdl2-2.0-0 libsdl2-image-2.0-0 libsdl2-ttf-2.0-0 libsd2-mixer-2.0-0`
+
 #### Compiling
 
-Run `make` in the project root.
-
+Run `make` in the project root.  
 `make run` starts the game.
+
+## Playing the game
+
+After `make run` the game starts instantly. The game quits if the player dies or completes the game.
+
+#### Controls
+- WASD keys: Move around
+- Arrow keys: Shoot
+- E: Interact with items (switch weapons, pick up healing potions, enter the next room)
+

@@ -7,8 +7,8 @@
 
 /*! Class for healing potion
  *
- *  - Inherits Item base class
- *  - Potions are dropped by melee monsters
+ *  Inherits Item base class
+ *  Potions are dropped by melee monsters
  */
 
 class HealingPotion: public Item {

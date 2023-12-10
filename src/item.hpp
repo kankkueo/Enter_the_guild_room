@@ -4,6 +4,11 @@
 #include <SDL2/SDL.h>
 #include <string>
 
+/*!
+ * Base class for all types of items found in the game
+ *
+ * Inherited by Weapon and HealingPotion classes
+ */
 class Item {
 
 public:

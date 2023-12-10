@@ -8,6 +8,10 @@
 #include "input.hpp"
 #include "weapon.hpp"
 
+/*!
+ * Class for player
+ */
+
 class Player: public Entity {
 public:
     Player(const std::string&, int, int);

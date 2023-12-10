@@ -9,6 +9,12 @@
 #include <SDL2/SDL_render.h>
 #include <string>
 
+/*!
+ * Class for projectiles shot by weapons
+ *
+ * Inherits Entity base class
+ * 
+ */
 class Projectile: public Entity {
 public:
     Projectile(int x, int y, int size_x, int size_y, int dmg, float direction, int speed):
