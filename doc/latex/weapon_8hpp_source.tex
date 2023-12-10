@@ -12,77 +12,77 @@
 \DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <SDL2/SDL\_render.h>}}
 \DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <string>}}
 \DoxyCodeLine{00011\ }
-\DoxyCodeLine{00012\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classProjectile}{Projectile}}:\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classEntity}{Entity}}\ \{}
-\DoxyCodeLine{00013\ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00014\ \ \ \ \ \mbox{\hyperlink{classProjectile}{Projectile}}(\textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y,\ \textcolor{keywordtype}{int}\ size\_x,\ \textcolor{keywordtype}{int}\ size\_y,\ \textcolor{keywordtype}{int}\ dmg,\ \textcolor{keywordtype}{float}\ direction,\ \textcolor{keywordtype}{int}\ speed):}
-\DoxyCodeLine{00015\ \ \ \ \ \mbox{\hyperlink{classEntity}{Entity}}(x,\ y,\ size\_x,\ size\_y)\ \{}
-\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ dmg\_\ =\ dmg;}
-\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ direction\_\ =\ direction;}
-\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ speed\_\ =\ speed;}
-\DoxyCodeLine{00019\ \ \ \ \ \}}
-\DoxyCodeLine{00020\ }
-\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordtype}{int}\ dmg\_;}
-\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordtype}{bool}\ damage\_monsters\_;}
-\DoxyCodeLine{00023\ \};}
-\DoxyCodeLine{00024\ }
-\DoxyCodeLine{00026\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classWeapon}{Weapon}}:\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classItem}{Item}}\ \{}
-\DoxyCodeLine{00027\ }
-\DoxyCodeLine{00028\ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00029\ \ \ \ \ \mbox{\hyperlink{classWeapon}{Weapon}}(\textcolor{keyword}{const}\ std::string\&\ name,\ \textcolor{keywordtype}{int}\ size,\ \textcolor{keywordtype}{int}\ dmg,\ \textcolor{keywordtype}{int}\ pspeed,\ \textcolor{keywordtype}{int}\ firerate);}
-\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{int}\ getDmg();}
-\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordtype}{int}\ getProjectileSpeed();}
-\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordtype}{int}\ getFirerate();}
-\DoxyCodeLine{00033\ \ \ \ \ std::string\ getName();}
-\DoxyCodeLine{00034\ }
-\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classWeapon_ad2df5d56540679bd0dff48c2fda44b80}{shoot}}(std::list<Projectile>\&\ projectiles,\ \mbox{\hyperlink{classEntity}{Entity}}\ source,\ \textcolor{keywordtype}{int}\ dmg,\ \textcolor{keywordtype}{float}\ direction,\ \textcolor{keywordtype}{bool}\ damage\_monsters);}
-\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keyword}{virtual}\ std::string\ toString();}
-\DoxyCodeLine{00038\ }
-\DoxyCodeLine{00039\ \ \ \ \ SDL\_Texture*\ texture\_;}
-\DoxyCodeLine{00040\ \ \ \ \ SDL\_Texture*\ projectile\_texture\_;}
-\DoxyCodeLine{00041\ \ \ \ \ Mix\_Chunk*\ sound\_;}
-\DoxyCodeLine{00042\ \ \ \ \ }
-\DoxyCodeLine{00043\ \textcolor{keyword}{protected}:}
-\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordtype}{int}\ dmg\_;}
-\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordtype}{int}\ projectile\_speed\_;}
-\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordtype}{int}\ firerate\_;\ \ \textcolor{comment}{//\ Rounds\ per\ second}}
-\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keywordtype}{int}\ projectile\_size\_x\_\ =\ 10;}
-\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordtype}{int}\ projectile\_size\_y\_\ =\ 10;}
-\DoxyCodeLine{00049\ \ \ \ \ std::string\ name\_;}
-\DoxyCodeLine{00050\ \};}
-\DoxyCodeLine{00051\ }
-\DoxyCodeLine{00053\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classPistol}{Pistol}}:\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classWeapon}{Weapon}}\ \{}
-\DoxyCodeLine{00054\ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00055\ \ \ \ \ \mbox{\hyperlink{classPistol}{Pistol}}(\textcolor{keyword}{const}\ std::string\&\ name,\ \textcolor{keywordtype}{int}\ size,\ \textcolor{keywordtype}{int}\ dmg,\ \textcolor{keywordtype}{int}\ pspeed,\ \textcolor{keywordtype}{int}\ firerate);}
-\DoxyCodeLine{00056\ }
-\DoxyCodeLine{00057\ \};}
-\DoxyCodeLine{00058\ }
-\DoxyCodeLine{00060\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classSMG}{SMG}}:\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classWeapon}{Weapon}}\ \{}
-\DoxyCodeLine{00061\ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00062\ \ \ \ \ \mbox{\hyperlink{classSMG}{SMG}}(\textcolor{keyword}{const}\ std::string\&\ name,\ \textcolor{keywordtype}{int}\ size,\ \textcolor{keywordtype}{int}\ dmg,\ \textcolor{keywordtype}{int}\ pspeed,\ \textcolor{keywordtype}{int}\ firerate);}
-\DoxyCodeLine{00063\ }
-\DoxyCodeLine{00064\ \};}
-\DoxyCodeLine{00065\ }
-\DoxyCodeLine{00067\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classShotgun}{Shotgun}}:\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classWeapon}{Weapon}}\ \{}
-\DoxyCodeLine{00068\ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00069\ \ \ \ \ \mbox{\hyperlink{classShotgun}{Shotgun}}(\textcolor{keyword}{const}\ std::string\&\ name,\ \textcolor{keywordtype}{int}\ size,\ \textcolor{keywordtype}{int}\ dmg,\ \textcolor{keywordtype}{int}\ pspeed,\ \textcolor{keywordtype}{int}\ firerate,\ \textcolor{keywordtype}{int}\ pellets,\ \textcolor{keywordtype}{float}\ spread);}
-\DoxyCodeLine{00070\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classShotgun_a14151d9f68f6fa9163018f423d15888c}{shoot}}(std::list<Projectile>\&\ projectiles,\ \mbox{\hyperlink{classEntity}{Entity}}\ source,\ \textcolor{keywordtype}{int}\ dmg,\ \textcolor{keywordtype}{float}\ direction,\ \textcolor{keywordtype}{bool}\ damage\_monsters);}
-\DoxyCodeLine{00071\ \ \ \ \ \textcolor{keywordtype}{int}\ getPellets();}
-\DoxyCodeLine{00072\ \ \ \ \ \textcolor{keywordtype}{float}\ getSpread();}
-\DoxyCodeLine{00073\ \ \ \ \ std::string\ toString();}
-\DoxyCodeLine{00074\ }
-\DoxyCodeLine{00075\ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00076\ \ \ \ \ \textcolor{keywordtype}{int}\ pellets\_;}
-\DoxyCodeLine{00077\ \ \ \ \ \textcolor{keywordtype}{float}\ spread\_;}
-\DoxyCodeLine{00078\ \};}
-\DoxyCodeLine{00079\ }
-\DoxyCodeLine{00081\ \textcolor{keyword}{enum}\ GunType\ \{}
-\DoxyCodeLine{00082\ \ \ \ \ PistolType,}
-\DoxyCodeLine{00083\ \ \ \ \ SMGType,}
-\DoxyCodeLine{00084\ \ \ \ \ ShotgunType}
-\DoxyCodeLine{00085\ \};}
-\DoxyCodeLine{00086\ }
-\DoxyCodeLine{00087\ \mbox{\hyperlink{classWeapon}{Weapon}}*\ genRandomWeapon(\mbox{\hyperlink{classRenderer}{Renderer}}\&,\ \textcolor{keywordtype}{int});}
-\DoxyCodeLine{00088\ }
-\DoxyCodeLine{00089\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00018\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classProjectile}{Projectile}}:\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classEntity}{Entity}}\ \{}
+\DoxyCodeLine{00019\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00020\ \ \ \ \ \mbox{\hyperlink{classProjectile}{Projectile}}(\textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y,\ \textcolor{keywordtype}{int}\ size\_x,\ \textcolor{keywordtype}{int}\ size\_y,\ \textcolor{keywordtype}{int}\ dmg,\ \textcolor{keywordtype}{float}\ direction,\ \textcolor{keywordtype}{int}\ speed):}
+\DoxyCodeLine{00021\ \ \ \ \ \mbox{\hyperlink{classEntity}{Entity}}(x,\ y,\ size\_x,\ size\_y)\ \{}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ dmg\_\ =\ dmg;}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ direction\_\ =\ direction;}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ speed\_\ =\ speed;}
+\DoxyCodeLine{00025\ \ \ \ \ \}}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordtype}{int}\ dmg\_;}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordtype}{bool}\ damage\_monsters\_;}
+\DoxyCodeLine{00029\ \};}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00032\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classWeapon}{Weapon}}:\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classItem}{Item}}\ \{}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00035\ \ \ \ \ \mbox{\hyperlink{classWeapon}{Weapon}}(\textcolor{keyword}{const}\ std::string\&\ name,\ \textcolor{keywordtype}{int}\ size,\ \textcolor{keywordtype}{int}\ dmg,\ \textcolor{keywordtype}{int}\ pspeed,\ \textcolor{keywordtype}{int}\ firerate);}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordtype}{int}\ getDmg();}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keywordtype}{int}\ getProjectileSpeed();}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordtype}{int}\ getFirerate();}
+\DoxyCodeLine{00039\ \ \ \ \ std::string\ getName();}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classWeapon_ad2df5d56540679bd0dff48c2fda44b80}{shoot}}(std::list<Projectile>\&\ projectiles,\ \mbox{\hyperlink{classEntity}{Entity}}\ source,\ \textcolor{keywordtype}{int}\ dmg,\ \textcolor{keywordtype}{float}\ direction,\ \textcolor{keywordtype}{bool}\ damage\_monsters);}
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keyword}{virtual}\ std::string\ toString();}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \ \ \ \ SDL\_Texture*\ texture\_;}
+\DoxyCodeLine{00046\ \ \ \ \ SDL\_Texture*\ projectile\_texture\_;}
+\DoxyCodeLine{00047\ \ \ \ \ Mix\_Chunk*\ sound\_;}
+\DoxyCodeLine{00048\ \ \ \ \ }
+\DoxyCodeLine{00049\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordtype}{int}\ dmg\_;}
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keywordtype}{int}\ projectile\_speed\_;}
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keywordtype}{int}\ firerate\_;\ \ \textcolor{comment}{//\ Rounds\ per\ second}}
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keywordtype}{int}\ projectile\_size\_x\_\ =\ 10;}
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keywordtype}{int}\ projectile\_size\_y\_\ =\ 10;}
+\DoxyCodeLine{00055\ \ \ \ \ std::string\ name\_;}
+\DoxyCodeLine{00056\ \};}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00059\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classPistol}{Pistol}}:\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classWeapon}{Weapon}}\ \{}
+\DoxyCodeLine{00060\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00061\ \ \ \ \ \mbox{\hyperlink{classPistol}{Pistol}}(\textcolor{keyword}{const}\ std::string\&\ name,\ \textcolor{keywordtype}{int}\ size,\ \textcolor{keywordtype}{int}\ dmg,\ \textcolor{keywordtype}{int}\ pspeed,\ \textcolor{keywordtype}{int}\ firerate);}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00063\ \};}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00066\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classSMG}{SMG}}:\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classWeapon}{Weapon}}\ \{}
+\DoxyCodeLine{00067\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00068\ \ \ \ \ \mbox{\hyperlink{classSMG}{SMG}}(\textcolor{keyword}{const}\ std::string\&\ name,\ \textcolor{keywordtype}{int}\ size,\ \textcolor{keywordtype}{int}\ dmg,\ \textcolor{keywordtype}{int}\ pspeed,\ \textcolor{keywordtype}{int}\ firerate);}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00070\ \};}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00073\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classShotgun}{Shotgun}}:\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classWeapon}{Weapon}}\ \{}
+\DoxyCodeLine{00074\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00075\ \ \ \ \ \mbox{\hyperlink{classShotgun}{Shotgun}}(\textcolor{keyword}{const}\ std::string\&\ name,\ \textcolor{keywordtype}{int}\ size,\ \textcolor{keywordtype}{int}\ dmg,\ \textcolor{keywordtype}{int}\ pspeed,\ \textcolor{keywordtype}{int}\ firerate,\ \textcolor{keywordtype}{int}\ pellets,\ \textcolor{keywordtype}{float}\ spread);}
+\DoxyCodeLine{00076\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classShotgun_a14151d9f68f6fa9163018f423d15888c}{shoot}}(std::list<Projectile>\&\ projectiles,\ \mbox{\hyperlink{classEntity}{Entity}}\ source,\ \textcolor{keywordtype}{int}\ dmg,\ \textcolor{keywordtype}{float}\ direction,\ \textcolor{keywordtype}{bool}\ damage\_monsters);}
+\DoxyCodeLine{00077\ \ \ \ \ \textcolor{keywordtype}{int}\ getPellets();}
+\DoxyCodeLine{00078\ \ \ \ \ \textcolor{keywordtype}{float}\ getSpread();}
+\DoxyCodeLine{00079\ \ \ \ \ std::string\ toString();}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00081\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00082\ \ \ \ \ \textcolor{keywordtype}{int}\ pellets\_;}
+\DoxyCodeLine{00083\ \ \ \ \ \textcolor{keywordtype}{float}\ spread\_;}
+\DoxyCodeLine{00084\ \};}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00087\ \textcolor{keyword}{enum}\ GunType\ \{}
+\DoxyCodeLine{00088\ \ \ \ \ PistolType,}
+\DoxyCodeLine{00089\ \ \ \ \ SMGType,}
+\DoxyCodeLine{00090\ \ \ \ \ ShotgunType}
+\DoxyCodeLine{00091\ \};}
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00093\ \mbox{\hyperlink{classWeapon}{Weapon}}*\ genRandomWeapon(\mbox{\hyperlink{classRenderer}{Renderer}}\&,\ \textcolor{keywordtype}{int});}
+\DoxyCodeLine{00094\ }
+\DoxyCodeLine{00095\ \textcolor{preprocessor}{\#endif}}
 
 \end{DoxyCode}

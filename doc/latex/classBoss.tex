@@ -37,7 +37,9 @@ bool {\bfseries is\+Alive} ()
 \item 
 std\+::string {\bfseries get\+Name} ()
 \item 
-virtual void {\bfseries drop\+Item} (std\+::list$<$ \mbox{\hyperlink{classWeapon}{Weapon}} \texorpdfstring{$\ast$}{*} $>$ \&)
+virtual void {\bfseries drop\+Weapon} (std\+::list$<$ \mbox{\hyperlink{classWeapon}{Weapon}} \texorpdfstring{$\ast$}{*} $>$ \&)
+\item 
+virtual void {\bfseries drop\+Potion} (std\+::list$<$ \mbox{\hyperlink{classHealingPotion}{Healing\+Potion}} \texorpdfstring{$\ast$}{*} $>$ \&)
 \end{DoxyCompactItemize}
 \doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classEntity}{Entity}}}
 \begin{DoxyCompactItemize}
@@ -74,6 +76,8 @@ int {\bfseries optimal\+\_\+distance\+\_\+}
 \end{DoxyCompactItemize}
 \doxysubsection*{Public Attributes inherited from \mbox{\hyperlink{classMonster}{Monster}}}
 \begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classItem}{Item}} \texorpdfstring{$\ast$}{*} {\bfseries item\+\_\+}
 \item 
 \mbox{\hyperlink{structSoundSet}{Sound\+Set}} {\bfseries sounds\+\_\+}
 \end{DoxyCompactItemize}

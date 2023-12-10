@@ -11,53 +11,53 @@
 \DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}input.hpp"{}}}
 \DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}weapon.hpp"{}}}
 \DoxyCodeLine{00010\ }
-\DoxyCodeLine{00011\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classPlayer}{Player}}:\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classEntity}{Entity}}\ \{}
-\DoxyCodeLine{00012\ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00013\ \ \ \ \ \mbox{\hyperlink{classPlayer}{Player}}(\textcolor{keyword}{const}\ std::string\&,\ \textcolor{keywordtype}{int},\ \textcolor{keywordtype}{int});}
-\DoxyCodeLine{00014\ }
-\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keyword}{const}\ std::string\ GetName()\ \textcolor{keyword}{const};}
-\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keywordtype}{int}\ GetHP();}
-\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keywordtype}{int}\ GetXP();}
-\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keywordtype}{int}\ GetDMG();}
-\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keywordtype}{int}\ GetMaxSpeed();}
-\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keywordtype}{int}\ GetLevel();}
-\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordtype}{int}\ getMaxHp();}
-\DoxyCodeLine{00022\ }
-\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keywordtype}{void}\ Heal(\textcolor{keywordtype}{int});}
-\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordtype}{void}\ TakeDMG(\textcolor{keywordtype}{int});}
-\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{void}\ UpdateXP(\textcolor{keywordtype}{int});}
-\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{void}\ UpdateDMG(\textcolor{keywordtype}{int});}
-\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordtype}{void}\ setMove(\mbox{\hyperlink{structInputState}{InputState}}\&);}
-\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordtype}{bool}\ attack(\mbox{\hyperlink{structInputState}{InputState}}\&,\ std::list<Projectile>\&);}
-\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordtype}{float}\ getAttackDirection();}
-\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{bool}\ gainXP(\textcolor{keywordtype}{int});}
-\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordtype}{bool}\ isAlive();}
-\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordtype}{void}\ equipWeapon(\mbox{\hyperlink{classWeapon}{Weapon}}*,\ \mbox{\hyperlink{classRenderer}{Renderer}}\&\ r);}
-\DoxyCodeLine{00033\ }
-\DoxyCodeLine{00034\ }
-\DoxyCodeLine{00035\ \ \ \ \ \mbox{\hyperlink{classWeapon}{Weapon}}\ *weapon\_;}
-\DoxyCodeLine{00036\ \ \ \ \ SDL\_Texture\ *texture\_front\_;}
-\DoxyCodeLine{00037\ \ \ \ \ SDL\_Texture\ *texture\_right\_;}
-\DoxyCodeLine{00038\ \ \ \ \ SDL\_Texture\ *texture\_left\_;}
-\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keywordtype}{int}\ shoot\_ticks\_;}
-\DoxyCodeLine{00040\ \ \ \ \ \mbox{\hyperlink{structSoundSet}{SoundSet}}\ sounds\_;}
-\DoxyCodeLine{00041\ }
-\DoxyCodeLine{00042\ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keywordtype}{bool}\ alive\_;}
-\DoxyCodeLine{00044\ \ \ \ \ std::string\ name\_;}
-\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordtype}{int}\ hp\_;}
-\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordtype}{int}\ max\_hp\_;}
-\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keywordtype}{int}\ dmg\_;}
-\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordtype}{int}\ xp\_;}
-\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keywordtype}{int}\ max\_speed\_;}
-\DoxyCodeLine{00050\ \ \ \ \ std::list<std::string>\ inventory\_;\ \ \ \ \ \ \textcolor{comment}{//\ string\ should\ be\ changed\ to\ Item\ when\ there\ is\ a\ class\ for\ it}}
-\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keywordtype}{int}\ level\_;}
-\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keywordtype}{int}\ xp\_to\_Level\_up\_;}
-\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keywordtype}{float}\ attack\_direction\_;}
-\DoxyCodeLine{00054\ }
-\DoxyCodeLine{00055\ \};}
-\DoxyCodeLine{00056\ }
-\DoxyCodeLine{00057\ }
-\DoxyCodeLine{00058\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00015\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classPlayer}{Player}}:\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classEntity}{Entity}}\ \{}
+\DoxyCodeLine{00016\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00017\ \ \ \ \ \mbox{\hyperlink{classPlayer}{Player}}(\textcolor{keyword}{const}\ std::string\&,\ \textcolor{keywordtype}{int},\ \textcolor{keywordtype}{int});}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keyword}{const}\ std::string\ GetName()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keywordtype}{int}\ GetHP();}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordtype}{int}\ GetXP();}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordtype}{int}\ GetDMG();}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keywordtype}{int}\ GetMaxSpeed();}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordtype}{int}\ GetLevel();}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{int}\ getMaxHp();}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{void}\ healMax();}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordtype}{void}\ Heal(\textcolor{keywordtype}{int});}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordtype}{void}\ TakeDMG(\textcolor{keywordtype}{int});}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordtype}{void}\ UpdateXP(\textcolor{keywordtype}{int});}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{void}\ UpdateDMG(\textcolor{keywordtype}{int});}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordtype}{void}\ setMove(\mbox{\hyperlink{structInputState}{InputState}}\&);}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordtype}{bool}\ attack(\mbox{\hyperlink{structInputState}{InputState}}\&,\ std::list<Projectile>\&);}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keywordtype}{float}\ getAttackDirection();}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordtype}{bool}\ gainXP(\textcolor{keywordtype}{int});}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordtype}{bool}\ isAlive();}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordtype}{void}\ equipWeapon(\mbox{\hyperlink{classWeapon}{Weapon}}*,\ \mbox{\hyperlink{classRenderer}{Renderer}}\&\ r);}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \ \ \ \ \mbox{\hyperlink{classWeapon}{Weapon}}\ *weapon\_;}
+\DoxyCodeLine{00040\ \ \ \ \ SDL\_Texture\ *texture\_front\_;}
+\DoxyCodeLine{00041\ \ \ \ \ SDL\_Texture\ *texture\_right\_;}
+\DoxyCodeLine{00042\ \ \ \ \ SDL\_Texture\ *texture\_left\_;}
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keywordtype}{int}\ shoot\_ticks\_;}
+\DoxyCodeLine{00044\ \ \ \ \ \mbox{\hyperlink{structSoundSet}{SoundSet}}\ sounds\_;}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keywordtype}{bool}\ alive\_;}
+\DoxyCodeLine{00048\ \ \ \ \ std::string\ name\_;}
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keywordtype}{int}\ hp\_;}
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordtype}{int}\ max\_hp\_;}
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keywordtype}{int}\ dmg\_;}
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keywordtype}{int}\ xp\_;}
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keywordtype}{int}\ max\_speed\_;}
+\DoxyCodeLine{00054\ \ \ \ \ std::list<std::string>\ inventory\_;\ \ \ \ \ \ \textcolor{comment}{//\ string\ should\ be\ changed\ to\ Item\ when\ there\ is\ a\ class\ for\ it}}
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keywordtype}{int}\ level\_;}
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keywordtype}{int}\ xp\_to\_Level\_up\_;}
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keywordtype}{float}\ attack\_direction\_;}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ \};}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00062\ \textcolor{preprocessor}{\#endif}}
 
 \end{DoxyCode}

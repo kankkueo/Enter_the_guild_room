@@ -37,8 +37,11 @@ virtual void {\bfseries set\+Move} (\mbox{\hyperlink{classPlayer}{Player}} \&)
 \Hypertarget{classMonster_a8623fcc6ba99ed2033c5f661e5dadae4}\label{classMonster_a8623fcc6ba99ed2033c5f661e5dadae4} 
 virtual bool {\bfseries attack} (\mbox{\hyperlink{classPlayer}{Player}} \&, std\+::list$<$ \mbox{\hyperlink{classProjectile}{Projectile}} $>$ \&)
 \item 
-\Hypertarget{classMonster_a2b31b201c33853f5e3e3066ff69774cd}\label{classMonster_a2b31b201c33853f5e3e3066ff69774cd} 
-virtual void {\bfseries drop\+Item} (std\+::list$<$ \mbox{\hyperlink{classWeapon}{Weapon}} \texorpdfstring{$\ast$}{*} $>$ \&)
+\Hypertarget{classMonster_a7475215f9dbfc705376a77dcd077dc4d}\label{classMonster_a7475215f9dbfc705376a77dcd077dc4d} 
+virtual void {\bfseries drop\+Weapon} (std\+::list$<$ \mbox{\hyperlink{classWeapon}{Weapon}} \texorpdfstring{$\ast$}{*} $>$ \&)
+\item 
+\Hypertarget{classMonster_ad2807f8736e9c4e2481f77942ce92f9a}\label{classMonster_ad2807f8736e9c4e2481f77942ce92f9a} 
+virtual void {\bfseries drop\+Potion} (std\+::list$<$ \mbox{\hyperlink{classHealingPotion}{Healing\+Potion}} \texorpdfstring{$\ast$}{*} $>$ \&)
 \item 
 \Hypertarget{classMonster_a1b042f613cf508c0857c10954b733882}\label{classMonster_a1b042f613cf508c0857c10954b733882} 
 virtual Mix\+\_\+\+Chunk \texorpdfstring{$\ast$}{*} {\bfseries get\+Attack\+Sound} ()
@@ -60,6 +63,9 @@ bool {\bfseries collides\+With} (\mbox{\hyperlink{classEntity}{Entity}} \&)
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classMonster_afa4e2c9542132261998e99bcdc762c87}\label{classMonster_afa4e2c9542132261998e99bcdc762c87} 
+\mbox{\hyperlink{classItem}{Item}} \texorpdfstring{$\ast$}{*} {\bfseries item\+\_\+}
 \item 
 \Hypertarget{classMonster_a259bf5876f33ea46e0067e7bee0d96ea}\label{classMonster_a259bf5876f33ea46e0067e7bee0d96ea} 
 \mbox{\hyperlink{structSoundSet}{Sound\+Set}} {\bfseries sounds\+\_\+}

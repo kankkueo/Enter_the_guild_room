@@ -10,43 +10,42 @@
 \DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}monster.hpp"{}}}
 \DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}renderer.hpp"{}}}
 \DoxyCodeLine{00009\ }
-\DoxyCodeLine{00010\ }
-\DoxyCodeLine{00011\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classRoom}{Room}}\ \{}
-\DoxyCodeLine{00012\ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00013\ \ \ \ \ \mbox{\hyperlink{classRoom}{Room}}(\textcolor{keyword}{const}\ std::string\&,\ \textcolor{keywordtype}{int},\ \textcolor{keywordtype}{int},\ SDL\_Texture*,\ SDL\_Texture*);}
-\DoxyCodeLine{00014\ \ \ \ \ \mbox{\hyperlink{classRoom}{\string~Room}}();}
-\DoxyCodeLine{00015\ }
-\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keywordtype}{void}\ addRandomMonsters(\mbox{\hyperlink{classRenderer}{Renderer}}\&,\ \textcolor{keywordtype}{int},\ \textcolor{keywordtype}{int});}
-\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keywordtype}{void}\ addRandomItems(\mbox{\hyperlink{classRenderer}{Renderer}}\&\ r,\ \textcolor{keywordtype}{int}\ level,\ \textcolor{keywordtype}{int}\ amount);}
-\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keywordtype}{void}\ addAdvanceDoor();}
-\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keywordtype}{void}\ addItem(\mbox{\hyperlink{classItem}{Item}}*);}
-\DoxyCodeLine{00020\ \ \ \ \ }
-\DoxyCodeLine{00021\ \ \ \ \ std::string\ name\_;}
-\DoxyCodeLine{00022\ \ \ \ \ SDL\_Texture\ *texture\_;}
-\DoxyCodeLine{00023\ \ \ \ \ SDL\_Texture\ *advanceDoor\_;}
-\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordtype}{int}\ advanceDoorX\_;}
-\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{int}\ advanceDoorY\_;}
-\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{int}\ width\_;}
-\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordtype}{int}\ height\_;}
-\DoxyCodeLine{00028\ \ \ \ \ std::list<Monster*>\ monsters\_;}
-\DoxyCodeLine{00029\ \ \ \ \ std::list<Item*>\ items\_;}
-\DoxyCodeLine{00030\ \ \ \ \ std::list<Weapon*>\ weapons\_;}
-\DoxyCodeLine{00031\ }
-\DoxyCodeLine{00032\ \};}
-\DoxyCodeLine{00033\ }
-\DoxyCodeLine{00034\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
-\DoxyCodeLine{00035\ \ \ \ \ std::string\ name;}
-\DoxyCodeLine{00036\ \ \ \ \ std::string\ texture\_location;}
-\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keywordtype}{int}\ width;}
-\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordtype}{int}\ height;}
-\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keywordtype}{int}\ mobs\_min;}
-\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keywordtype}{int}\ mobs\_max;}
-\DoxyCodeLine{00041\ \}\ \mbox{\hyperlink{structRoomTemplate}{RoomTemplate}};}
-\DoxyCodeLine{00042\ }
-\DoxyCodeLine{00043\ }
-\DoxyCodeLine{00044\ \mbox{\hyperlink{classRoom}{Room}}*\ genRoom(\mbox{\hyperlink{classRenderer}{Renderer}}\&,\ \textcolor{keywordtype}{int});}
-\DoxyCodeLine{00045\ \mbox{\hyperlink{classRoom}{Room}}*\ genBossRoom(\mbox{\hyperlink{classRenderer}{Renderer}}\&,\ \textcolor{keywordtype}{int});}
+\DoxyCodeLine{00014\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classRoom}{Room}}\ \{}
+\DoxyCodeLine{00015\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00016\ \ \ \ \ \mbox{\hyperlink{classRoom}{Room}}(\textcolor{keyword}{const}\ std::string\&,\ \textcolor{keywordtype}{int},\ \textcolor{keywordtype}{int},\ SDL\_Texture*,\ SDL\_Texture*);}
+\DoxyCodeLine{00017\ \ \ \ \ \mbox{\hyperlink{classRoom}{\string~Room}}();}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keywordtype}{void}\ addRandomMonsters(\mbox{\hyperlink{classRenderer}{Renderer}}\&,\ \textcolor{keywordtype}{int},\ \textcolor{keywordtype}{int});}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keywordtype}{void}\ addRandomItems(\mbox{\hyperlink{classRenderer}{Renderer}}\&\ r,\ \textcolor{keywordtype}{int}\ level,\ \textcolor{keywordtype}{int}\ amount);}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordtype}{void}\ addAdvanceDoor();}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordtype}{void}\ addItem(\mbox{\hyperlink{classItem}{Item}}*);}
+\DoxyCodeLine{00023\ \ \ \ \ }
+\DoxyCodeLine{00024\ \ \ \ \ std::string\ name\_;}
+\DoxyCodeLine{00025\ \ \ \ \ SDL\_Texture\ *texture\_;}
+\DoxyCodeLine{00026\ \ \ \ \ SDL\_Texture\ *advanceDoor\_;}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordtype}{int}\ advanceDoorX\_;}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordtype}{int}\ advanceDoorY\_;}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordtype}{int}\ width\_;}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{int}\ height\_;}
+\DoxyCodeLine{00031\ \ \ \ \ std::list<Monster*>\ monsters\_;}
+\DoxyCodeLine{00032\ \ \ \ \ std::list<HealingPotion*>\ potions\_;}
+\DoxyCodeLine{00033\ \ \ \ \ std::list<Weapon*>\ weapons\_;}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \};}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00038\ \ \ \ \ std::string\ name;}
+\DoxyCodeLine{00039\ \ \ \ \ std::string\ texture\_location;}
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keywordtype}{int}\ width;}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordtype}{int}\ height;}
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordtype}{int}\ mobs\_min;}
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keywordtype}{int}\ mobs\_max;}
+\DoxyCodeLine{00044\ \}\ \mbox{\hyperlink{structRoomTemplate}{RoomTemplate}};}
+\DoxyCodeLine{00045\ }
 \DoxyCodeLine{00046\ }
-\DoxyCodeLine{00047\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00047\ \mbox{\hyperlink{classRoom}{Room}}*\ genRoom(\mbox{\hyperlink{classRenderer}{Renderer}}\&,\ \textcolor{keywordtype}{int});}
+\DoxyCodeLine{00048\ \mbox{\hyperlink{classRoom}{Room}}*\ genBossRoom(\mbox{\hyperlink{classRenderer}{Renderer}}\&,\ \textcolor{keywordtype}{int});}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \textcolor{preprocessor}{\#endif}}
 
 \end{DoxyCode}
