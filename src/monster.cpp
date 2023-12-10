@@ -86,23 +86,24 @@ bool Monster::attack(Player&, std::list<Projectile>&) {
 
 void Monster::dropWeapon(std::list<Weapon*>&) {}
 
-void Monster::dropItem(std::list<Item*>& items) {}
+void Monster::dropPotion(std::list<HealingPotion*>&) {}
 
 /*
  *  Melee mob
  */
 
-MeleeMob::MeleeMob(int level, int x, int y, int size_x, int size_y): 
+MeleeMob::MeleeMob(int level, int x, int y, int size_x, int size_y, HealingPotion* potion): 
 Monster("Melee chump", 50 + 15*level*level, 100 + 10*level*level, 
     5 + 0.5*level, x, y, size_x, size_y) {
     attack_cooldown_ = 60 + rand() % 300;
     attack_ticks_ = 0;
+    potion_ = potion;
 }
 
-void MeleeMob::dropItem(std::list<Item*>& items) {
-    item_->x_ = x_;
-    item_->y_ = y_;
-    items.push_back(item_);
+void MeleeMob::dropPotion(std::list<HealingPotion*>& potions) {
+    potion_->x_ = x_;
+    potion_->y_ = y_;
+    potions.push_back(potion_);
 }
 
 void MeleeMob::setMove(Player& p) {
@@ -352,8 +353,7 @@ Monster* genRandomMob(Renderer& r, int level, int room_width, int room_height) {
     switch (type) {
         case MeleeMobType: {
             HealingPotion* h = genPotion(r, level);
-            m = new MeleeMob(level, x, y, 60, 90);
-            m->item_ = h;
+            m = new MeleeMob(level, x, y, 60, 90, h);
             m->texture_ = r.loadTexture("./assets/Koneteekkari.png");
             m->sounds_.death_ = r.loadSound("");
 

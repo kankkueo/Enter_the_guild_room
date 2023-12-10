@@ -26,7 +26,7 @@ public:
     int width_;
     int height_;
     std::list<Monster*> monsters_;
-    std::list<Item*> items_;
+    std::list<HealingPotion*> potions_;
     std::list<Weapon*> weapons_;
 
 };

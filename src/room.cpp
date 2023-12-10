@@ -19,8 +19,8 @@ Room::~Room() {
     //free(texture_);
     //free(advanceDoor_);
 
-    for (auto itm = items_.begin(); itm != items_.end(); itm++) {
-        itm = items_.erase(itm);
+    for (auto itm = potions_.begin(); itm != potions_.end(); itm++) {
+        itm = potions_.erase(itm);
     }
 
     for (auto w = weapons_.begin(); w != weapons_.end(); w++) {
@@ -34,7 +34,6 @@ Room::~Room() {
 Room::Room(const std::string& name, int width, int height, SDL_Texture *texture, SDL_Texture *advanceDoor)
     : name_(name), width_(width), height_(height), texture_(texture), advanceDoor_(advanceDoor) {
         monsters_ = std::list<Monster*>();
-        items_ = std::list<Item*>();
         advanceDoorX_ = 75 + rand() % (width - 150);
         advanceDoorY_ = 75 + rand() % (height - 150);
 }
