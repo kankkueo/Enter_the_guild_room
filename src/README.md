@@ -14,7 +14,7 @@ The game is reset upon player death.
 
 Compiling the project requires gcc and make.
 
-The following libraries also to be installed
+The following libraries also have to be installed
 on your system:
 
 - sdl2
