@@ -36,6 +36,8 @@ public:
     void menuRender(Renderer&);
     //! Checks if weapons are nearby to pick up
     Weapon* scanWeapons(Renderer&);
+    //! Checks if potions are nearby to pick up
+    HealingPotion* scanPotions(Renderer&);
 
 
     std::list<Room> room_templates_;

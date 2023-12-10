@@ -5,6 +5,7 @@
 #include "player.hpp"
 #include "renderer.hpp"
 #include "weapon.hpp"
+#include "consumables.hpp"
 #include <SDL2/SDL_mixer.h>
 #include <SDL2/SDL_render.h>
 #include <string>
@@ -23,10 +24,12 @@ public:
     void TakeDMG(int);
     bool isAlive();
     std::string getName();
+    Item* item_;
 
     virtual void setMove(Player&);
     virtual bool attack(Player&, std::list<Projectile>&);
-    virtual void dropItem(std::list<Weapon*>&);
+    virtual void dropWeapon(std::list<Weapon*>&);
+    virtual void dropPotion(std::list<HealingPotion*>&);
     virtual Mix_Chunk* getAttackSound();
 
     SoundSet sounds_;
@@ -50,11 +53,13 @@ protected:
 class MeleeMob: public Monster {
 
 public:
-    MeleeMob(int, int, int, int, int);
+    MeleeMob(int, int, int, int, int, HealingPotion*);
 
     bool attack(Player&, std::list<Projectile>&);
     void setMove(Player&);
+    void dropPotion(std::list<HealingPotion*>&);
 
+    HealingPotion* potion_;
     int attack_ticks_;
     int attack_cooldown_;
 };
@@ -74,7 +79,7 @@ public:
 
     bool attack(Player&, std::list<Projectile>&);
     void setMove(Player&);
-    void dropItem(std::list<Weapon*>&);
+    void dropWeapon(std::list<Weapon*>&);
     Mix_Chunk* getAttackSound();
 
     Weapon* weapon_;

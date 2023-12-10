@@ -55,6 +55,11 @@ void Game::parseInput(Renderer& r) {
             w->projectile_texture_ = r.loadTexture("./assets/player-bullet.png");
         }
 
+        HealingPotion* i = scanPotions(r);
+        if(i) {
+            player_.Heal(i->getHealing());
+        }
+
         Coordinate rpos;
         rpos.x = room_->advanceDoorX_;
         rpos.y = room_->advanceDoorY_;
@@ -153,7 +158,8 @@ void Game::moveProjectiles(Renderer& r) {
                 p = projectiles_.erase(p);
                 
                 if (!(*m)->isAlive()) {
-                    (*m)->dropItem(room_->weapons_);
+                    (*m)->dropWeapon(room_->weapons_);
+                    (*m)->dropPotion(room_->potions_);
                     r.playSound((*m)->sounds_.death_, 2);
                     delete *m;
                     m = room_->monsters_.erase(m);
@@ -278,6 +284,20 @@ Weapon* Game::scanWeapons(Renderer& r) {
     return NULL;
 }
 
+HealingPotion* Game::scanPotions(Renderer& r) {
+    Coordinate ppos = player_.center();
+
+    for (auto w = room_->potions_.begin(); w != room_->potions_.end(); w++) {
+        int x_diff = (*w)->x_ - ppos.x;
+        int y_diff = (*w)->y_ - ppos.y;
+        if (x_diff * x_diff + y_diff * y_diff <= 100 * 100) {
+            room_->potions_.erase(w);
+            return *w;
+        }
+    }
+    return NULL;
+}
+
 void Game::scanNear(Renderer& r) {
     Coordinate ppos = player_.center();
     Coordinate rpos;
@@ -294,11 +314,11 @@ void Game::scanNear(Renderer& r) {
         }
     }
 
-    for (auto w = room_->items_.begin(); w != room_->items_.end(); w++) {
+    for (auto w = room_->potions_.begin(); w != room_->potions_.end(); w++) {
         int x_diff = (*w)->x_ - ppos.x;
         int y_diff = (*w)->y_ - ppos.y;
         if (x_diff * x_diff + y_diff * y_diff <= 100 * 100) {
-            infoText = "Press E to pick up";
+            infoText = "Press E to use potion: " + (*w)->toString();
             return;
         }
     }
@@ -319,7 +339,7 @@ void Game::render(Renderer& r) {
         r.drawTexture(m->texture_, m->x_ - x_offset_, m->y_ - y_offset_, 0.0, SDL_FLIP_NONE);
     }
 
-    for (Item* itm: room_->items_) {
+    for (HealingPotion* itm: room_->potions_) {
         r.drawTexture(itm->texture_, itm->x_ - x_offset_, itm->y_ - y_offset_, 0.0, SDL_FLIP_NONE);
     }
 
