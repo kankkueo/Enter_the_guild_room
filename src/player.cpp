@@ -46,6 +46,19 @@ int Player::GetLevel() {
     return level_;
 }
 
+void Player::resetStats(){
+    alive_ = true;
+    max_hp_ = 1000;
+    hp_ = max_hp_;
+    dmg_ = 10;
+    xp_ = 0;
+    max_speed_ = 15;
+    inventory_ = std::list<std::string>();
+    level_ = 1;
+    xp_to_Level_up_ = 1000;
+    shoot_ticks_ = 0;
+}
+
 void Player::TakeDMG(int value) {
     if (hp_ - value <= 0) {
         hp_ -= value;

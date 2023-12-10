@@ -15,6 +15,7 @@ Input::Input() {
     state_.attackDown = false;
     state_.attackLeft = false;
     state_.attackRight = false;
+	state_.enter = false;
 
     mapping_.up = SDL_SCANCODE_W;
     mapping_.down = SDL_SCANCODE_S;
@@ -27,6 +28,7 @@ Input::Input() {
     mapping_.attackDown = SDL_SCANCODE_DOWN;
     mapping_.attackLeft = SDL_SCANCODE_LEFT;
     mapping_.attackRight = SDL_SCANCODE_RIGHT;
+	mapping_.enter = SDL_SCANCODE_RETURN;
 }
 
 void Input::keyDown(SDL_KeyboardEvent *event) {
@@ -63,6 +65,9 @@ void Input::keyDown(SDL_KeyboardEvent *event) {
 		}
 		if (event->keysym.scancode == mapping_.attackRight) {
             state_.attackRight = true;
+		}
+		if (event->keysym.scancode == mapping_.enter) {
+            state_.enter = true;
 		}
 	}
 }
@@ -101,6 +106,9 @@ void Input::keyUp(SDL_KeyboardEvent *event) {
 		}
 		if (event->keysym.scancode == mapping_.attackRight) {
             state_.attackRight = false;
+		}
+		if (event->keysym.scancode == mapping_.enter) {
+            state_.enter = false;
 		}
 	}
 }
@@ -149,5 +157,10 @@ void Input::resetInput() {
 	state_.left = false;
 	state_.interact = false;
 	state_.menu = false;
+	state_.attackDown = false;
+	state_.attackLeft = false;
+	state_.attackRight = false;
+	state_.attackUp = false;
+	state_.enter = false;
 }
 

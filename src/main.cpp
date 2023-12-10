@@ -21,14 +21,9 @@ int main() {
     game.player_.sounds_.death_ = rend.loadSound("");
     game.player_.sounds_.hit_ = rend.loadSound("");
 
-    Weapon* w = genRandomWeapon(rend, 1);
-    game.player_.equipWeapon(w, rend);
-    
-    game.room_ = genRoom(rend, 1);
-
     
     std::cout << "Starting game" << std::endl;
-
+    game.paused_ = true;
     while (game.running_) {
         if(!game.paused_){
             game.tick(rend);

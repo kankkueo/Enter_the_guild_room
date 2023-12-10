@@ -40,6 +40,8 @@ public:
     Weapon* scanWeapons(Renderer&);
     //! Checks if potions are nearby to pick up
     HealingPotion* scanPotions(Renderer&);
+    //! handles input in menu
+    void menuSelect(Renderer&);
 
 
     std::list<Room> room_templates_;
@@ -58,6 +60,7 @@ public:
     bool paused_;
     int mob_attack_delay_; // delay to prevent spawn kill
     int menuSelected_; // menu button currently selected
+    std::list<std::string> menuButtons_;
     
 
 };
