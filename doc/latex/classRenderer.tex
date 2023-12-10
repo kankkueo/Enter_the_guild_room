@@ -1,0 +1,59 @@
+\doxysection{Renderer Class Reference}
+\hypertarget{classRenderer}{}\label{classRenderer}\index{Renderer@{Renderer}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classRenderer_a1c7a847b4254c49319cb0b2953c2e14b}\label{classRenderer_a1c7a847b4254c49319cb0b2953c2e14b} 
+{\bfseries Renderer} (int, int, uint32\+\_\+t, uint32\+\_\+t)
+\begin{DoxyCompactList}\small\item\em Create renderer. Takes in window width and height and flags. \end{DoxyCompactList}\item 
+\Hypertarget{classRenderer_aa18f6ef4818b531bba9e7350656c3121}\label{classRenderer_aa18f6ef4818b531bba9e7350656c3121} 
+void {\bfseries init\+SDL} ()
+\begin{DoxyCompactList}\small\item\em initializes SDL \end{DoxyCompactList}\item 
+\Hypertarget{classRenderer_a4d691b00ee7805bbf05b1a37650815bf}\label{classRenderer_a4d691b00ee7805bbf05b1a37650815bf} 
+void {\bfseries prepare\+Scene} ()
+\item 
+\Hypertarget{classRenderer_ae824801e167799c5afdd20a66f587adb}\label{classRenderer_ae824801e167799c5afdd20a66f587adb} 
+void {\bfseries present\+Scene} ()
+\item 
+\Hypertarget{classRenderer_ab796aa39770979d99b1d3cf5bc9dd63a}\label{classRenderer_ab796aa39770979d99b1d3cf5bc9dd63a} 
+SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*} {\bfseries load\+Texture} (const char \texorpdfstring{$\ast$}{*})
+\begin{DoxyCompactList}\small\item\em Loads a texture into memory. Takes path to texture file. \end{DoxyCompactList}\item 
+\Hypertarget{classRenderer_a7c2e68f4a7f9e38dbdf1818e4cf7aabf}\label{classRenderer_a7c2e68f4a7f9e38dbdf1818e4cf7aabf} 
+void {\bfseries draw\+Texture} (SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*}, int, int, double, SDL\+\_\+\+Renderer\+Flip)
+\begin{DoxyCompactList}\small\item\em Draws a texture on the screen. \end{DoxyCompactList}\item 
+\Hypertarget{classRenderer_ac20c4d1858ff7a977be298a86594b541}\label{classRenderer_ac20c4d1858ff7a977be298a86594b541} 
+void {\bfseries destroy} ()
+\begin{DoxyCompactList}\small\item\em Deinitializes SDL. \end{DoxyCompactList}\item 
+\Hypertarget{classRenderer_af2c0ebc3503709c4a48c7b5f65666692}\label{classRenderer_af2c0ebc3503709c4a48c7b5f65666692} 
+void {\bfseries set\+\_\+flags} (uint32\+\_\+t, uint32\+\_\+t)
+\item 
+\Hypertarget{classRenderer_a06175c3cc50b9b2e7079159a3ed098d4}\label{classRenderer_a06175c3cc50b9b2e7079159a3ed098d4} 
+int {\bfseries get\+Win\+Width} ()
+\item 
+\Hypertarget{classRenderer_af61753e672e55b70cf5dd5a4dc83e664}\label{classRenderer_af61753e672e55b70cf5dd5a4dc83e664} 
+int {\bfseries get\+Win\+Height} ()
+\item 
+\Hypertarget{classRenderer_aad5924a14b700b1deffec323a0771275}\label{classRenderer_aad5924a14b700b1deffec323a0771275} 
+void {\bfseries draw\+\_\+text} (const char \texorpdfstring{$\ast$}{*}str, int x, int y, SDL\+\_\+\+Color=\{255, 255, 255\})
+\item 
+\Hypertarget{classRenderer_aa75a937785c61646c014a1e41b17ea44}\label{classRenderer_aa75a937785c61646c014a1e41b17ea44} 
+TTF\+\_\+\+Font \texorpdfstring{$\ast$}{*} {\bfseries Get\+Font} ()
+\item 
+\Hypertarget{classRenderer_ab26aeefc03a11e6c2e9031847c53d8dd}\label{classRenderer_ab26aeefc03a11e6c2e9031847c53d8dd} 
+void {\bfseries render\+Text} (SDL\+\_\+\+Surface \texorpdfstring{$\ast$}{*}text, int x, int y)
+\begin{DoxyCompactList}\small\item\em Renders text on the screen. \end{DoxyCompactList}\item 
+\Hypertarget{classRenderer_af5d16a60fb3f040f1430477735d4167d}\label{classRenderer_af5d16a60fb3f040f1430477735d4167d} 
+SDL\+\_\+\+Surface \texorpdfstring{$\ast$}{*} {\bfseries Init\+Text} (char \texorpdfstring{$\ast$}{*}str)
+\item 
+\Hypertarget{classRenderer_afc4f6f1d31983649f67cc65719914bd5}\label{classRenderer_afc4f6f1d31983649f67cc65719914bd5} 
+void {\bfseries play\+Sound} (Mix\+\_\+\+Chunk \texorpdfstring{$\ast$}{*}, int)
+\begin{DoxyCompactList}\small\item\em Plays back a sound. \end{DoxyCompactList}\item 
+\Hypertarget{classRenderer_ab119dff275f4a4e7fc7aed90006298a1}\label{classRenderer_ab119dff275f4a4e7fc7aed90006298a1} 
+Mix\+\_\+\+Chunk \texorpdfstring{$\ast$}{*} {\bfseries load\+Sound} (const char \texorpdfstring{$\ast$}{*})
+\begin{DoxyCompactList}\small\item\em Loads a sound into memory. Takes path to sound file. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+renderer.\+hpp\item 
+renderer.\+cpp\end{DoxyCompactItemize}

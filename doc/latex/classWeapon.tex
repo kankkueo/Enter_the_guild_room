@@ -1,0 +1,117 @@
+\doxysection{Weapon Class Reference}
+\hypertarget{classWeapon}{}\label{classWeapon}\index{Weapon@{Weapon}}
+
+
+Base class for weapon.  
+
+
+
+
+{\ttfamily \#include $<$weapon.\+hpp$>$}
+
+Inheritance diagram for Weapon\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classWeapon}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classWeapon_a27f0f1aec32610ec5196dd576c901df1}\label{classWeapon_a27f0f1aec32610ec5196dd576c901df1} 
+{\bfseries Weapon} (const std\+::string \&name, int size, int dmg, int pspeed, int firerate)
+\item 
+\Hypertarget{classWeapon_ae0c53e353b00f1eb9c65ac5bfbc88cc7}\label{classWeapon_ae0c53e353b00f1eb9c65ac5bfbc88cc7} 
+int {\bfseries get\+Dmg} ()
+\item 
+\Hypertarget{classWeapon_a85420086afbabc8c8d3bf533282be63b}\label{classWeapon_a85420086afbabc8c8d3bf533282be63b} 
+int {\bfseries get\+Projectile\+Speed} ()
+\item 
+\Hypertarget{classWeapon_a278650c0217e4b7bc6e123aa1727b880}\label{classWeapon_a278650c0217e4b7bc6e123aa1727b880} 
+int {\bfseries get\+Firerate} ()
+\item 
+\Hypertarget{classWeapon_a0cc1adfac060d480dbb6d10b96de0a0d}\label{classWeapon_a0cc1adfac060d480dbb6d10b96de0a0d} 
+std\+::string {\bfseries get\+Name} ()
+\item 
+virtual void \mbox{\hyperlink{classWeapon_ad2df5d56540679bd0dff48c2fda44b80}{shoot}} (std\+::list$<$ \mbox{\hyperlink{classProjectile}{Projectile}} $>$ \&projectiles, \mbox{\hyperlink{classEntity}{Entity}} source, int dmg, float direction, bool damage\+\_\+monsters)
+\begin{DoxyCompactList}\small\item\em Creates a projectile and inserts it into projectiles list. \end{DoxyCompactList}\item 
+\Hypertarget{classWeapon_af1e10f75793cadcaec54a2ff96879312}\label{classWeapon_af1e10f75793cadcaec54a2ff96879312} 
+virtual std\+::string {\bfseries to\+String} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classItem}{Item}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Item} (std\+::string name, int size)
+\item 
+void {\bfseries equip} ()
+\item 
+int {\bfseries get\+Size} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classWeapon_ac68c17fba4ec162e9da70b6a066262a3}\label{classWeapon_ac68c17fba4ec162e9da70b6a066262a3} 
+SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*} {\bfseries texture\+\_\+}
+\item 
+\Hypertarget{classWeapon_a887437097cb9a832ddcad0c66d23cb90}\label{classWeapon_a887437097cb9a832ddcad0c66d23cb90} 
+SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*} {\bfseries projectile\+\_\+texture\+\_\+}
+\item 
+\Hypertarget{classWeapon_a589b9b19133a03018789421e9e36407b}\label{classWeapon_a589b9b19133a03018789421e9e36407b} 
+Mix\+\_\+\+Chunk \texorpdfstring{$\ast$}{*} {\bfseries sound\+\_\+}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes inherited from \mbox{\hyperlink{classItem}{Item}}}
+\begin{DoxyCompactItemize}
+\item 
+SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*} {\bfseries texture\+\_\+}
+\item 
+int {\bfseries x\+\_\+}
+\item 
+int {\bfseries y\+\_\+}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classWeapon_ad5ed6c36db0852c5b4737782537a4451}\label{classWeapon_ad5ed6c36db0852c5b4737782537a4451} 
+int {\bfseries dmg\+\_\+}
+\item 
+\Hypertarget{classWeapon_ab73daa50126625ea21fdeb537afd2872}\label{classWeapon_ab73daa50126625ea21fdeb537afd2872} 
+int {\bfseries projectile\+\_\+speed\+\_\+}
+\item 
+\Hypertarget{classWeapon_ad46c8a6b55dc25535e879558a175480a}\label{classWeapon_ad46c8a6b55dc25535e879558a175480a} 
+int {\bfseries firerate\+\_\+}
+\item 
+\Hypertarget{classWeapon_a6be233966ae334086a3d5f5ea2f8cffa}\label{classWeapon_a6be233966ae334086a3d5f5ea2f8cffa} 
+int {\bfseries projectile\+\_\+size\+\_\+x\+\_\+} = 10
+\item 
+\Hypertarget{classWeapon_ac207b02686003616256d0de4a3438f18}\label{classWeapon_ac207b02686003616256d0de4a3438f18} 
+int {\bfseries projectile\+\_\+size\+\_\+y\+\_\+} = 10
+\item 
+\Hypertarget{classWeapon_abe3b7054e0f681fc0e520a5c3aa1d91f}\label{classWeapon_abe3b7054e0f681fc0e520a5c3aa1d91f} 
+std\+::string {\bfseries name\+\_\+}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Base class for weapon. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classWeapon_ad2df5d56540679bd0dff48c2fda44b80}\label{classWeapon_ad2df5d56540679bd0dff48c2fda44b80} 
+\index{Weapon@{Weapon}!shoot@{shoot}}
+\index{shoot@{shoot}!Weapon@{Weapon}}
+\doxysubsubsection{\texorpdfstring{shoot()}{shoot()}}
+{\footnotesize\ttfamily void Weapon\+::shoot (\begin{DoxyParamCaption}\item[{std\+::list$<$ \mbox{\hyperlink{classProjectile}{Projectile}} $>$ \&}]{projectiles,  }\item[{\mbox{\hyperlink{classEntity}{Entity}}}]{source,  }\item[{int}]{dmg,  }\item[{float}]{direction,  }\item[{bool}]{damage\+\_\+monsters }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Creates a projectile and inserts it into projectiles list. 
+
+
+
+Reimplemented in \mbox{\hyperlink{classShotgun_a14151d9f68f6fa9163018f423d15888c}{Shotgun}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+weapon.\+hpp\item 
+weapon.\+cpp\end{DoxyCompactItemize}

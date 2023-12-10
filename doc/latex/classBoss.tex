@@ -1,0 +1,157 @@
+\doxysection{Boss Class Reference}
+\hypertarget{classBoss}{}\label{classBoss}\index{Boss@{Boss}}
+
+
+{\ttfamily \#include $<$monster.\+hpp$>$}
+
+Inheritance diagram for Boss\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classBoss}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classBoss_a1c036962e9f34b95fdbeed540cb6a3e5}\label{classBoss_a1c036962e9f34b95fdbeed540cb6a3e5} 
+{\bfseries Boss} (int)
+\item 
+bool \mbox{\hyperlink{classBoss_a2e94a6e8439786cd631e81ad99ca352b}{attack}} (\mbox{\hyperlink{classPlayer}{Player}} \&, std\+::list$<$ \mbox{\hyperlink{classProjectile}{Projectile}} $>$ \&)
+\item 
+void \mbox{\hyperlink{classBoss_aa02034da1f4e87671eba0d20b3ca3177}{set\+Move}} (\mbox{\hyperlink{classPlayer}{Player}} \&)
+\item 
+Mix\+\_\+\+Chunk \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classBoss_a997572b0ae6c0e9622f1d93d0a572bb1}{get\+Attack\+Sound}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classMonster}{Monster}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Monster} (const std\+::string \&, int, int, int, int, int, int, int)
+\item 
+int {\bfseries Get\+HP} ()
+\item 
+int {\bfseries Get\+DMG} ()
+\item 
+void {\bfseries Take\+DMG} (int)
+\item 
+bool {\bfseries is\+Alive} ()
+\item 
+std\+::string {\bfseries get\+Name} ()
+\item 
+virtual void {\bfseries drop\+Item} (std\+::list$<$ \mbox{\hyperlink{classWeapon}{Weapon}} \texorpdfstring{$\ast$}{*} $>$ \&)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classEntity}{Entity}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Entity} (int, int, int, int)
+\item 
+void {\bfseries move} ()
+\item 
+\mbox{\hyperlink{structCoordinate}{Coordinate}} {\bfseries new\+Pos} ()
+\item 
+\mbox{\hyperlink{structCoordinate}{Coordinate}} {\bfseries center} ()
+\item 
+\mbox{\hyperlink{structCoordinate}{Coordinate}} {\bfseries new\+Center} ()
+\item 
+bool {\bfseries collides\+With} (\mbox{\hyperlink{classEntity}{Entity}} \&)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classBoss_aa05d9df515d031a25095f658ffe231fa}\label{classBoss_aa05d9df515d031a25095f658ffe231fa} 
+int {\bfseries attack\+\_\+pattern\+\_\+}
+\item 
+\Hypertarget{classBoss_a069ce8e08b6c1de6b1b300ab9f3ab001}\label{classBoss_a069ce8e08b6c1de6b1b300ab9f3ab001} 
+\mbox{\hyperlink{classWeapon}{Weapon}} \texorpdfstring{$\ast$}{*} {\bfseries weapon\+\_\+}
+\item 
+\Hypertarget{classBoss_accd2345ec91b2cd34a4bb003fd37f5da}\label{classBoss_accd2345ec91b2cd34a4bb003fd37f5da} 
+int {\bfseries attack\+\_\+ticks\+\_\+}
+\item 
+\Hypertarget{classBoss_acff0e4ccc28ab18d1426cda72d3177ea}\label{classBoss_acff0e4ccc28ab18d1426cda72d3177ea} 
+int {\bfseries attack\+\_\+cooldown\+\_\+}
+\item 
+\Hypertarget{classBoss_a9a6d4681ba5ba26256a47ce02c2bfdf0}\label{classBoss_a9a6d4681ba5ba26256a47ce02c2bfdf0} 
+int {\bfseries optimal\+\_\+distance\+\_\+}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes inherited from \mbox{\hyperlink{classMonster}{Monster}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structSoundSet}{Sound\+Set}} {\bfseries sounds\+\_\+}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes inherited from \mbox{\hyperlink{classEntity}{Entity}}}
+\begin{DoxyCompactItemize}
+\item 
+int {\bfseries x\+\_\+}
+\item 
+int {\bfseries y\+\_\+}
+\item 
+int {\bfseries size\+\_\+x\+\_\+}
+\item 
+int {\bfseries size\+\_\+y\+\_\+}
+\item 
+int {\bfseries speed\+\_\+}
+\item 
+float {\bfseries direction\+\_\+}
+\item 
+SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*} {\bfseries texture\+\_\+}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{classMonster}{Monster}}}
+\begin{DoxyCompactItemize}
+\item 
+bool {\bfseries alive\+\_\+}
+\item 
+int {\bfseries hp\+\_\+}
+\item 
+int {\bfseries dmg\+\_\+}
+\item 
+int {\bfseries max\+\_\+speed\+\_\+}
+\item 
+std\+::string {\bfseries name\+\_\+}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Final boss
+
+
+\begin{DoxyItemize}
+\item Combines melee and ranged attack patterns 
+\end{DoxyItemize}
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classBoss_a2e94a6e8439786cd631e81ad99ca352b}\label{classBoss_a2e94a6e8439786cd631e81ad99ca352b} 
+\index{Boss@{Boss}!attack@{attack}}
+\index{attack@{attack}!Boss@{Boss}}
+\doxysubsubsection{\texorpdfstring{attack()}{attack()}}
+{\footnotesize\ttfamily bool Boss\+::attack (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classPlayer}{Player}} \&}]{p,  }\item[{std\+::list$<$ \mbox{\hyperlink{classProjectile}{Projectile}} $>$ \&}]{projectiles }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classMonster}{Monster}}.
+
+\Hypertarget{classBoss_a997572b0ae6c0e9622f1d93d0a572bb1}\label{classBoss_a997572b0ae6c0e9622f1d93d0a572bb1} 
+\index{Boss@{Boss}!getAttackSound@{getAttackSound}}
+\index{getAttackSound@{getAttackSound}!Boss@{Boss}}
+\doxysubsubsection{\texorpdfstring{getAttackSound()}{getAttackSound()}}
+{\footnotesize\ttfamily Mix\+\_\+\+Chunk \texorpdfstring{$\ast$}{*} Boss\+::get\+Attack\+Sound (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classMonster}{Monster}}.
+
+\Hypertarget{classBoss_aa02034da1f4e87671eba0d20b3ca3177}\label{classBoss_aa02034da1f4e87671eba0d20b3ca3177} 
+\index{Boss@{Boss}!setMove@{setMove}}
+\index{setMove@{setMove}!Boss@{Boss}}
+\doxysubsubsection{\texorpdfstring{setMove()}{setMove()}}
+{\footnotesize\ttfamily void Boss\+::set\+Move (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classPlayer}{Player}} \&}]{p }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classMonster}{Monster}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+monster.\+hpp\item 
+monster.\+cpp\end{DoxyCompactItemize}

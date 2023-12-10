@@ -10,21 +10,29 @@
 class Renderer {
 public:
 
-    Renderer(int width, int height, uint32_t r_flags, uint32_t w_flags);
+    //! Create renderer. Takes in window width and height and flags
+    Renderer(int, int, uint32_t, uint32_t);
+    //! initializes SDL
     void initSDL();
     void prepareScene();
     void presentScene();
+    //! Loads a texture into memory. Takes path to texture file
     SDL_Texture* loadTexture(const char*);
+    //! Draws a texture on the screen
     void drawTexture(SDL_Texture*, int, int, double, SDL_RendererFlip);
+    //! Deinitializes SDL
     void destroy();
     void set_flags(uint32_t, uint32_t);
     int getWinWidth();
     int getWinHeight();
     void draw_text(const char* str, int x, int y, SDL_Color = {255,255,255});
     TTF_Font* GetFont();
+    //! Renders text on the screen
     void renderText(SDL_Surface* text, int x, int y);
     SDL_Surface* InitText(char* str);
+    //! Plays back a sound
     void playSound(Mix_Chunk*, int);
+    //! Loads a sound into memory. Takes path to sound file
     Mix_Chunk* loadSound(const char*);
     
 

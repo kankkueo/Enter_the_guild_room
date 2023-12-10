@@ -1,0 +1,47 @@
+\doxysection{entity.\+hpp}
+\hypertarget{entity_8hpp_source}{}\label{entity_8hpp_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ ENTITY\ }}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ ENTITY}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <SDL2/SDL.h>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <SDL2/SDL\_mixer.h>}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00008\ \ \ \ \ \textcolor{keywordtype}{int}\ x;}
+\DoxyCodeLine{00009\ \ \ \ \ \textcolor{keywordtype}{int}\ y;}
+\DoxyCodeLine{00010\ \}\ \mbox{\hyperlink{structCoordinate}{Coordinate}};}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00014\ \ \ \ \ Mix\_Chunk*\ attack\_;}
+\DoxyCodeLine{00015\ \ \ \ \ Mix\_Chunk*\ hit\_;}
+\DoxyCodeLine{00016\ \ \ \ \ Mix\_Chunk*\ death\_;}
+\DoxyCodeLine{00017\ \ \ \ \ Mix\_Chunk*\ taunt\_;}
+\DoxyCodeLine{00018\ \}\ \mbox{\hyperlink{structSoundSet}{SoundSet}};}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classEntity}{Entity}}\ \{}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordtype}{int}\ x\_;}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{int}\ y\_;}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{int}\ size\_x\_;}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordtype}{int}\ size\_y\_;}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordtype}{int}\ speed\_;}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordtype}{float}\ direction\_;}
+\DoxyCodeLine{00030\ \ \ \ \ SDL\_Texture\ *texture\_;}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \ \ \ \ \mbox{\hyperlink{classEntity}{Entity}}(\textcolor{keywordtype}{int},\ \textcolor{keywordtype}{int},\ \textcolor{keywordtype}{int},\ \textcolor{keywordtype}{int});}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keywordtype}{void}\ move();}
+\DoxyCodeLine{00034\ \ \ \ \ \mbox{\hyperlink{structCoordinate}{Coordinate}}\ newPos();}
+\DoxyCodeLine{00035\ \ \ \ \ \mbox{\hyperlink{structCoordinate}{Coordinate}}\ center();}
+\DoxyCodeLine{00036\ \ \ \ \ \mbox{\hyperlink{structCoordinate}{Coordinate}}\ newCenter();}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keywordtype}{bool}\ collidesWith(\mbox{\hyperlink{classEntity}{Entity}}\&);}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \};}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

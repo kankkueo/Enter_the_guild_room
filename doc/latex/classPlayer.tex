@@ -1,0 +1,124 @@
+\doxysection{Player Class Reference}
+\hypertarget{classPlayer}{}\label{classPlayer}\index{Player@{Player}}
+Inheritance diagram for Player\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classPlayer}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classPlayer_ac76457092918459248f2ee00d06452a4}\label{classPlayer_ac76457092918459248f2ee00d06452a4} 
+{\bfseries Player} (const std\+::string \&, int, int)
+\item 
+\Hypertarget{classPlayer_a4eb74ce3e302fa5181fc34d35b3d13fa}\label{classPlayer_a4eb74ce3e302fa5181fc34d35b3d13fa} 
+const std\+::string {\bfseries Get\+Name} () const
+\item 
+\Hypertarget{classPlayer_a272eeb50adb6fc6a5ea834538981705f}\label{classPlayer_a272eeb50adb6fc6a5ea834538981705f} 
+int {\bfseries Get\+HP} ()
+\item 
+\Hypertarget{classPlayer_a6d05174c536fac9d691093d59d7bc801}\label{classPlayer_a6d05174c536fac9d691093d59d7bc801} 
+int {\bfseries Get\+XP} ()
+\item 
+\Hypertarget{classPlayer_a3fe7da9608d4a1063f62f70763b9020d}\label{classPlayer_a3fe7da9608d4a1063f62f70763b9020d} 
+int {\bfseries Get\+DMG} ()
+\item 
+\Hypertarget{classPlayer_a074b57796b4a3ade32b79fae8d76ea01}\label{classPlayer_a074b57796b4a3ade32b79fae8d76ea01} 
+int {\bfseries Get\+Max\+Speed} ()
+\item 
+\Hypertarget{classPlayer_ab87cb485cb357c2fb12c840d3abb25ff}\label{classPlayer_ab87cb485cb357c2fb12c840d3abb25ff} 
+int {\bfseries Get\+Level} ()
+\item 
+\Hypertarget{classPlayer_ac05aa8838e6d177af218a7cb58ada41c}\label{classPlayer_ac05aa8838e6d177af218a7cb58ada41c} 
+int {\bfseries get\+Max\+Hp} ()
+\item 
+\Hypertarget{classPlayer_abb4fbccd973c15e6054bcd4bc7c10cc1}\label{classPlayer_abb4fbccd973c15e6054bcd4bc7c10cc1} 
+void {\bfseries Heal} (int)
+\item 
+\Hypertarget{classPlayer_a64602d1129b2bdb98a79bfe00d2ddc73}\label{classPlayer_a64602d1129b2bdb98a79bfe00d2ddc73} 
+void {\bfseries Take\+DMG} (int)
+\item 
+\Hypertarget{classPlayer_a176238a567490c7df2a446b8912f2061}\label{classPlayer_a176238a567490c7df2a446b8912f2061} 
+void {\bfseries Update\+XP} (int)
+\item 
+\Hypertarget{classPlayer_ad49113efd64122e1c382d23bf9128374}\label{classPlayer_ad49113efd64122e1c382d23bf9128374} 
+void {\bfseries Update\+DMG} (int)
+\item 
+\Hypertarget{classPlayer_a838a53ddb817b4d5bf199d13e8ea8f78}\label{classPlayer_a838a53ddb817b4d5bf199d13e8ea8f78} 
+void {\bfseries set\+Move} (\mbox{\hyperlink{structInputState}{Input\+State}} \&)
+\item 
+\Hypertarget{classPlayer_a93772e437e48fb0eacf84737bc3200ec}\label{classPlayer_a93772e437e48fb0eacf84737bc3200ec} 
+bool {\bfseries attack} (\mbox{\hyperlink{structInputState}{Input\+State}} \&, std\+::list$<$ \mbox{\hyperlink{classProjectile}{Projectile}} $>$ \&)
+\item 
+\Hypertarget{classPlayer_ac5db9f8646c18fbbe4e7b32b62be2921}\label{classPlayer_ac5db9f8646c18fbbe4e7b32b62be2921} 
+float {\bfseries get\+Attack\+Direction} ()
+\item 
+\Hypertarget{classPlayer_a7d3c65ca23b708cb6536dbbcbfd1c918}\label{classPlayer_a7d3c65ca23b708cb6536dbbcbfd1c918} 
+bool {\bfseries gain\+XP} (int)
+\item 
+\Hypertarget{classPlayer_a06e38c0f57e67eb006c9d09779bd8f8f}\label{classPlayer_a06e38c0f57e67eb006c9d09779bd8f8f} 
+bool {\bfseries is\+Alive} ()
+\item 
+\Hypertarget{classPlayer_afca676dbd02b85f4c9aa01b54f018cd6}\label{classPlayer_afca676dbd02b85f4c9aa01b54f018cd6} 
+void {\bfseries equip\+Weapon} (\mbox{\hyperlink{classWeapon}{Weapon}} \texorpdfstring{$\ast$}{*}, \mbox{\hyperlink{classRenderer}{Renderer}} \&r)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classEntity}{Entity}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Entity} (int, int, int, int)
+\item 
+void {\bfseries move} ()
+\item 
+\mbox{\hyperlink{structCoordinate}{Coordinate}} {\bfseries new\+Pos} ()
+\item 
+\mbox{\hyperlink{structCoordinate}{Coordinate}} {\bfseries center} ()
+\item 
+\mbox{\hyperlink{structCoordinate}{Coordinate}} {\bfseries new\+Center} ()
+\item 
+bool {\bfseries collides\+With} (\mbox{\hyperlink{classEntity}{Entity}} \&)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classPlayer_aa18704bafca4083b3f28b87fb2bcdba0}\label{classPlayer_aa18704bafca4083b3f28b87fb2bcdba0} 
+\mbox{\hyperlink{classWeapon}{Weapon}} \texorpdfstring{$\ast$}{*} {\bfseries weapon\+\_\+}
+\item 
+\Hypertarget{classPlayer_af985ddfd16d342899dde0897f431bc3a}\label{classPlayer_af985ddfd16d342899dde0897f431bc3a} 
+SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*} {\bfseries texture\+\_\+front\+\_\+}
+\item 
+\Hypertarget{classPlayer_ab9505f233f5d94e19ab29237ecba772c}\label{classPlayer_ab9505f233f5d94e19ab29237ecba772c} 
+SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*} {\bfseries texture\+\_\+right\+\_\+}
+\item 
+\Hypertarget{classPlayer_a77fcfeb2c635b9c595945e301cb0145a}\label{classPlayer_a77fcfeb2c635b9c595945e301cb0145a} 
+SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*} {\bfseries texture\+\_\+left\+\_\+}
+\item 
+\Hypertarget{classPlayer_ac0509344d48e336dca3d473a9bb99742}\label{classPlayer_ac0509344d48e336dca3d473a9bb99742} 
+int {\bfseries shoot\+\_\+ticks\+\_\+}
+\item 
+\Hypertarget{classPlayer_a3149b574fb009b1dc512eda8c7e5bceb}\label{classPlayer_a3149b574fb009b1dc512eda8c7e5bceb} 
+\mbox{\hyperlink{structSoundSet}{Sound\+Set}} {\bfseries sounds\+\_\+}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes inherited from \mbox{\hyperlink{classEntity}{Entity}}}
+\begin{DoxyCompactItemize}
+\item 
+int {\bfseries x\+\_\+}
+\item 
+int {\bfseries y\+\_\+}
+\item 
+int {\bfseries size\+\_\+x\+\_\+}
+\item 
+int {\bfseries size\+\_\+y\+\_\+}
+\item 
+int {\bfseries speed\+\_\+}
+\item 
+float {\bfseries direction\+\_\+}
+\item 
+SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*} {\bfseries texture\+\_\+}
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+player.\+hpp\item 
+player.\+cpp\end{DoxyCompactItemize}

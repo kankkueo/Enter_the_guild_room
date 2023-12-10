@@ -9,7 +9,7 @@
 #include <SDL2/SDL_render.h>
 #include <string>
 
-/*
+/*!
  * Base class for monster
  */
 
@@ -40,7 +40,8 @@ protected:
 
 };
 
-/*  Basic melee monster
+/*! 
+ *  Basic melee monster
  * 
  *  - Moves towards the player
  *  - Deals melee damage when close
@@ -59,7 +60,8 @@ public:
 };
 
 
-/*  Basic ranged monster
+/*! 
+ *  Basic ranged monster
  * 
  *  - Tries to keep at optimal_distance_ from the player
  *  - Deals ranged damage
@@ -81,7 +83,7 @@ public:
 
 };
 
-/*
+/*!
  *  Final boss
  *
  *  - Combines melee and ranged attack patterns
@@ -105,12 +107,13 @@ public:
 
 };
 
-// enum for randomizing mobs
+//! enum for randomizing mobs
 enum MonsterType {
     MeleeMobType,
     RangedMobType
 };
 
+//! Generate a random monster baseed on level
 Monster* genRandomMob(Renderer&, int, int, int);
 
 #endif

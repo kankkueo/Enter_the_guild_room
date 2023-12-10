@@ -1,0 +1,110 @@
+\doxysection{Monster Class Reference}
+\hypertarget{classMonster}{}\label{classMonster}\index{Monster@{Monster}}
+
+
+{\ttfamily \#include $<$monster.\+hpp$>$}
+
+Inheritance diagram for Monster\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classMonster}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classMonster_a25f2a52522237318d58a48af425edd74}\label{classMonster_a25f2a52522237318d58a48af425edd74} 
+{\bfseries Monster} (const std\+::string \&, int, int, int, int, int, int, int)
+\item 
+\Hypertarget{classMonster_a39b3b3ba515e18c45b9c8bc5e6d1e29c}\label{classMonster_a39b3b3ba515e18c45b9c8bc5e6d1e29c} 
+int {\bfseries Get\+HP} ()
+\item 
+\Hypertarget{classMonster_a91684f13712983207c09017c0ea83a4b}\label{classMonster_a91684f13712983207c09017c0ea83a4b} 
+int {\bfseries Get\+DMG} ()
+\item 
+\Hypertarget{classMonster_a819f11bf6660d0554114235ae40559f9}\label{classMonster_a819f11bf6660d0554114235ae40559f9} 
+void {\bfseries Take\+DMG} (int)
+\item 
+\Hypertarget{classMonster_aca4e35d1b32aad3e5cf00157bb212956}\label{classMonster_aca4e35d1b32aad3e5cf00157bb212956} 
+bool {\bfseries is\+Alive} ()
+\item 
+\Hypertarget{classMonster_a3f903085b1a1abb9f02c4e1b45aa08f1}\label{classMonster_a3f903085b1a1abb9f02c4e1b45aa08f1} 
+std\+::string {\bfseries get\+Name} ()
+\item 
+\Hypertarget{classMonster_aed0f2954304f42f99d7836eb05a4fb29}\label{classMonster_aed0f2954304f42f99d7836eb05a4fb29} 
+virtual void {\bfseries set\+Move} (\mbox{\hyperlink{classPlayer}{Player}} \&)
+\item 
+\Hypertarget{classMonster_a8623fcc6ba99ed2033c5f661e5dadae4}\label{classMonster_a8623fcc6ba99ed2033c5f661e5dadae4} 
+virtual bool {\bfseries attack} (\mbox{\hyperlink{classPlayer}{Player}} \&, std\+::list$<$ \mbox{\hyperlink{classProjectile}{Projectile}} $>$ \&)
+\item 
+\Hypertarget{classMonster_a2b31b201c33853f5e3e3066ff69774cd}\label{classMonster_a2b31b201c33853f5e3e3066ff69774cd} 
+virtual void {\bfseries drop\+Item} (std\+::list$<$ \mbox{\hyperlink{classWeapon}{Weapon}} \texorpdfstring{$\ast$}{*} $>$ \&)
+\item 
+\Hypertarget{classMonster_a1b042f613cf508c0857c10954b733882}\label{classMonster_a1b042f613cf508c0857c10954b733882} 
+virtual Mix\+\_\+\+Chunk \texorpdfstring{$\ast$}{*} {\bfseries get\+Attack\+Sound} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classEntity}{Entity}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Entity} (int, int, int, int)
+\item 
+void {\bfseries move} ()
+\item 
+\mbox{\hyperlink{structCoordinate}{Coordinate}} {\bfseries new\+Pos} ()
+\item 
+\mbox{\hyperlink{structCoordinate}{Coordinate}} {\bfseries center} ()
+\item 
+\mbox{\hyperlink{structCoordinate}{Coordinate}} {\bfseries new\+Center} ()
+\item 
+bool {\bfseries collides\+With} (\mbox{\hyperlink{classEntity}{Entity}} \&)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classMonster_a259bf5876f33ea46e0067e7bee0d96ea}\label{classMonster_a259bf5876f33ea46e0067e7bee0d96ea} 
+\mbox{\hyperlink{structSoundSet}{Sound\+Set}} {\bfseries sounds\+\_\+}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes inherited from \mbox{\hyperlink{classEntity}{Entity}}}
+\begin{DoxyCompactItemize}
+\item 
+int {\bfseries x\+\_\+}
+\item 
+int {\bfseries y\+\_\+}
+\item 
+int {\bfseries size\+\_\+x\+\_\+}
+\item 
+int {\bfseries size\+\_\+y\+\_\+}
+\item 
+int {\bfseries speed\+\_\+}
+\item 
+float {\bfseries direction\+\_\+}
+\item 
+SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*} {\bfseries texture\+\_\+}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classMonster_ad5edafaa2a9967cffebec7e412d3494c}\label{classMonster_ad5edafaa2a9967cffebec7e412d3494c} 
+bool {\bfseries alive\+\_\+}
+\item 
+\Hypertarget{classMonster_a9ef04e544693169731db8eec2ad44538}\label{classMonster_a9ef04e544693169731db8eec2ad44538} 
+int {\bfseries hp\+\_\+}
+\item 
+\Hypertarget{classMonster_af981d50013c74083374c7d610f1a3ef4}\label{classMonster_af981d50013c74083374c7d610f1a3ef4} 
+int {\bfseries dmg\+\_\+}
+\item 
+\Hypertarget{classMonster_ad6cb541982ddf32e737db35703cc7f52}\label{classMonster_ad6cb541982ddf32e737db35703cc7f52} 
+int {\bfseries max\+\_\+speed\+\_\+}
+\item 
+\Hypertarget{classMonster_a7162eef22cc130f20233c16c73223115}\label{classMonster_a7162eef22cc130f20233c16c73223115} 
+std\+::string {\bfseries name\+\_\+}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Base class for monster 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+monster.\+hpp\item 
+monster.\+cpp\end{DoxyCompactItemize}
