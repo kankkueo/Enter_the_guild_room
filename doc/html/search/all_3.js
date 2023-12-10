@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['entity_0',['Entity',['../classEntity.html',1,'']]]
+  ['enter_20the_20guild_20room_0',['Enter the Guild Room',['../md_README.html',1,'']]],
+  ['entity_1',['Entity',['../classEntity.html',1,'']]]
 ];

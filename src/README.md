@@ -1,6 +1,6 @@
-# Game name
+# Enter the Guild Room
 
-This is a rogue-like dungeon crawler top-down shooter written in c++.
+Enter the Guild Room is a rogue-like dungeon crawler top-down shooter written in c++.
 In the game, the player has to get through a set of randomized rooms
 with increasingly difficult random monsters with random weapons
 until they reach the final boss.
@@ -32,10 +32,11 @@ Run `make` in the project root.
 
 ## Playing the game
 
-After `make run` the game starts instantly. The game quits if the player dies or completes the game.
+After starting the game, select "New game" from the menu and the game spawns you into a room. Navigate the manu with arrow keys and use ENTER to select.
 
 #### Controls
 - WASD keys: Move around
 - Arrow keys: Shoot
 - E: Interact with items (switch weapons, pick up healing potions, enter the next room)
+- ESC: pause the game
 

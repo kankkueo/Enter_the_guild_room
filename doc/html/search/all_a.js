@@ -1,9 +1,9 @@
 var searchData=
 [
-  ['pistol_0',['Pistol',['../classPistol.html',1,'']]],
-  ['player_1',['Player',['../classPlayer.html',1,'']]],
-  ['playing_20the_20game_2',['Playing the game',['../md_README.html#autotoc_md4',1,'']]],
-  ['playsound_3',['playSound',['../classRenderer.html#afc4f6f1d31983649f67cc65719914bd5',1,'Renderer']]],
-  ['prerequisites_4',['Prerequisites',['../md_README.html#autotoc_md2',1,'']]],
-  ['projectile_5',['Projectile',['../classProjectile.html',1,'']]]
+  ['rangedmob_0',['RangedMob',['../classRangedMob.html',1,'']]],
+  ['render_1',['render',['../classGame.html#a3b3888fadcb1a8264a3fc79cc69cbb79',1,'Game']]],
+  ['renderer_2',['renderer',['../classRenderer.html',1,'Renderer'],['../classRenderer.html#a1c7a847b4254c49319cb0b2953c2e14b',1,'Renderer::Renderer(int, int, uint32_t, uint32_t)']]],
+  ['rendertext_3',['renderText',['../classRenderer.html#ab26aeefc03a11e6c2e9031847c53d8dd',1,'Renderer']]],
+  ['room_4',['room',['../md_README.html',1,'Enter the Guild Room'],['../classRoom.html',1,'Room']]],
+  ['roomtemplate_5',['RoomTemplate',['../structRoomTemplate.html',1,'']]]
 ];
